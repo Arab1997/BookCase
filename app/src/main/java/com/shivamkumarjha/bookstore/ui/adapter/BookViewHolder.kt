@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
@@ -16,6 +17,7 @@ class BookViewHolder(itemView: View, clickListener: BookItemClickListener) :
     private val bookAuthor: TextView = itemView.findViewById(R.id.book_text_view_author)
     private val bookPrice: TextView = itemView.findViewById(R.id.book_text_view_price)
     private val bookRating: TextView = itemView.findViewById(R.id.book_text_view_rating)
+    private val wishStatus: ToggleButton = itemView.findViewById(R.id.book_toggle_wish_id)
     private lateinit var book: Book
 
     init {
@@ -32,5 +34,6 @@ class BookViewHolder(itemView: View, clickListener: BookItemClickListener) :
         bookAuthor.text = book.author
         bookPrice.text = "$" + book.price
         bookRating.text = book.rating
+        wishStatus.isChecked = book.inWishList
     }
 }
