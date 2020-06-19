@@ -1,5 +1,6 @@
 package com.shivamkumarjha.bookstore.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -22,13 +23,14 @@ class BookViewHolder(itemView: View, clickListener: BookItemClickListener) :
         }
     }
 
+    @SuppressLint("SetTextI18n")
     fun initialize(book: Book) {
         this.book = book
         // TODO use glide to get book cover from URL
         bookImage.setBackgroundResource(R.mipmap.ic_launcher)
         bookTitle.text = book.title
         bookAuthor.text = book.author
-        bookPrice.text = book.price.toString()
+        bookPrice.text = "$" + book.price
         bookRating.text = book.rating
     }
 }
