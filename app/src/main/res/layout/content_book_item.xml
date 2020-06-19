@@ -11,7 +11,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/card_view_height"
-        android:layout_marginTop="@dimen/card_view_margin"
         android:background="@color/card_view_background_color"
         android:weightSum="6">
 
