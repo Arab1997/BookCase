@@ -4,6 +4,7 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.model.PopulateBooks
 import java.io.*
 
 private const val TAG = "JSONUtility"

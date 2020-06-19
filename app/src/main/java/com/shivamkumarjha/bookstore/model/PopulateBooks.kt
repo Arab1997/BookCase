@@ -1,4 +1,4 @@
-package com.shivamkumarjha.bookstore.utility
+package com.shivamkumarjha.bookstore.model
 
 import com.shivamkumarjha.bookstore.model.Book
 
