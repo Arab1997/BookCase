@@ -96,6 +96,23 @@ class PopulateBooks {
             false
         )
         addBook(book5)
+        val book6 = Book(
+            booksCount,
+            "One Mistake",
+            "Rona Halsall",
+            "How far would you go to protect your happy home?",
+            "This year’s most gripping psychological thriller" +
+                    " – perfect for fans of My Lovely Wife, The Girl on the Train, and Something in the Water.",
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587990821l/51060039._SY475_.jpg",
+            "Novel",
+            "3.92",
+            "The book is addictive. It is slow at the beginning, but picks up pace as it nears conclusion. " +
+                    "Once it is in the top gear, there is no stopping it! A well crafted psychological thriller indeed.",
+            8,
+            10,
+            false
+        )
+        addBook(book6)
     }
 
 }
