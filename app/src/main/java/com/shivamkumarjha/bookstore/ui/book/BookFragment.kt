@@ -13,6 +13,7 @@ import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.ui.adapter.BookAdapter
 import com.shivamkumarjha.bookstore.ui.adapter.BookItemClickListener
+import com.shivamkumarjha.bookstore.ui.adapter.MarginItemDecoration
 import com.shivamkumarjha.bookstore.utility.JsonUtility
 import java.io.File
 
@@ -51,6 +52,11 @@ class BookFragment : Fragment(), BookItemClickListener {
         bookAdapter = BookAdapter(getBooks(), this)
         recyclerView.adapter = bookAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.addItemDecoration(
+            MarginItemDecoration(
+                resources.getDimension(R.dimen.action_bar_height).toInt()
+            )
+        )
         recyclerView.setHasFixedSize(true)
     }
 
