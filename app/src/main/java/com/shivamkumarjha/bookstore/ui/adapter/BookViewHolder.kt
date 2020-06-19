@@ -2,6 +2,10 @@ package com.shivamkumarjha.bookstore.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.BounceInterpolator
+import android.view.animation.ScaleAnimation
+import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
@@ -19,6 +23,8 @@ class BookViewHolder(itemView: View, clickListener: BookItemClickListener) :
     private val bookRating: TextView = itemView.findViewById(R.id.book_text_view_rating)
     private val wishStatus: ToggleButton = itemView.findViewById(R.id.book_toggle_wish_id)
     private lateinit var book: Book
+    private lateinit var scaleAnimation: ScaleAnimation
+    private lateinit var bounceInterpolator: BounceInterpolator
 
     init {
         itemView.setOnClickListener {
@@ -35,5 +41,30 @@ class BookViewHolder(itemView: View, clickListener: BookItemClickListener) :
         bookPrice.text = "$" + book.price
         bookRating.text = book.rating
         wishStatus.isChecked = book.inWishList
+
+        // toggle button animation
+        scaleAnimation = ScaleAnimation(
+            0.7f,
+            1.0f,
+            0.7f,
+            1.0f,
+            Animation.RELATIVE_TO_SELF,
+            0.7f,
+            Animation.RELATIVE_TO_SELF,
+            0.7f
+        )
+        scaleAnimation.duration = 500
+        bounceInterpolator = BounceInterpolator()
+        scaleAnimation.interpolator = bounceInterpolator
+        wishStatus.setOnCheckedChangeListener(object : View.OnClickListener,
+            CompoundButton.OnCheckedChangeListener {
+            override fun onCheckedChanged(compoundButton: CompoundButton?, status: Boolean) {
+                compoundButton?.startAnimation(scaleAnimation)
+            }
+
+            override fun onClick(p0: View?) {
+                // TODO
+            }
+        })
     }
 }
