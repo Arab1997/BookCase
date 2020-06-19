@@ -113,6 +113,24 @@ class PopulateBooks {
             false
         )
         addBook(book6)
+        val book7 = Book(
+            booksCount,
+            "The House Guest",
+            "Mark Edwards",
+            "A perfect summer. A perfect stranger. A perfect nightmare.",
+            "The House Guest is the chilling new psychological thriller from the three million " +
+                    "copy bestselling author of Here to Stay and Follow You Home.",
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1584383149l/49073380._SY475_.jpg",
+            "Thriller",
+            "4.00",
+            "A long-time fan of Mark Edwards and his writing, I turned to this book to see if " +
+                    "it would bring the same psychological thrill. Edwards succeeds in delivering " +
+                    "and spins a story with layers that the reader will discover as the plot progresses.",
+            10,
+            10,
+            false
+        )
+        addBook(book7)
     }
 
 }
