@@ -1,7 +1,5 @@
 package com.shivamkumarjha.bookstore.model
 
-import com.shivamkumarjha.bookstore.model.Book
-
 class PopulateBooks {
 
     private var books: ArrayList<Book> = ArrayList()
@@ -34,6 +32,24 @@ class PopulateBooks {
             false
         )
         addBook(book1)
+        val book2 = Book(
+            booksCount,
+            "Days of Distraction",
+            "Alexandra Chang",
+            "A wry, tender portrait of a young woman—finally free to decide her own path" +
+                    ", but unsure if she knows herself well enough to choose wisely",
+            "Equal parts tender and humorous, and told in spare but powerful prose, " +
+                    "Days of Distraction is an offbeat coming-of-adulthood tale, a touching family story, " +
+                    "and a razor-sharp appraisal of our times.",
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1561993078l/52973514._SX318_SY475_.jpg",
+            "Novel",
+            "3.77",
+            "This is really a wonderful book. I would say it is a “quiet” book, but that’s true only on the surface.",
+            14,
+            10,
+            true
+        )
+        addBook(book2)
     }
 
 }
