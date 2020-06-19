@@ -1,27 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/book_card_view_id"
+    android:id="@+id/card_view_id"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/card_view_height"
     android:layout_margin="@dimen/card_view_margin"
+    android:background="@color/white_color"
     app:cardCornerRadius="@dimen/card_stroke_radius"
-    app:strokeColor="@android:color/darker_gray"
     app:strokeWidth="@dimen/card_stroke_width">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/card_view_padding">
+        android:layout_height="@dimen/card_view_height"
+        android:background="@color/white_color"
+        android:weightSum="6">
 
         <ImageView
-            android:layout_width="@dimen/book_image_margin"
-            android:layout_height="@dimen/book_image_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/book_image_view_id"
+            android:layout_width="@dimen/margin_0dp"
+            android:layout_height="@dimen/card_image_height"
+            android:layout_weight="1.5"
+            android:contentDescription="@string/book_image"
+            android:padding="@dimen/card_image_padding"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="@dimen/margin_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.3">
 
-</com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/txtBookName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding"
+                android:text="@string/book_name"
+                android:textColor="@color/black_color"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtBookName"
+                android:padding="@dimen/text_padding"
+                android:text="@string/book_author"
+                android:textColor="@color/black_color"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtAuthor"
+                android:padding="@dimen/text_padding"
+                android:text="@string/demo_book_price"
+                android:textColor="@color/black_color"
+                android:textSize="@dimen/text_size_normal" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtRating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:drawableStart="@drawable/ic_rating"
+            android:drawableLeft="@drawable/ic_rating"
+            android:padding="@dimen/rating_padding"
+            android:text="@string/demo_book_rating"
+            android:textColor="@color/rating_color"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
