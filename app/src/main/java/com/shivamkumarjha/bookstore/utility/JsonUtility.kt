@@ -11,7 +11,7 @@ private const val TAG = "JSONUtility"
 class JsonUtility(private val file: File) {
     private val gson = Gson()
 
-    fun fileExists(): Boolean {
+    private fun fileExists(): Boolean {
         if (!file.exists())
             return false
         return true
