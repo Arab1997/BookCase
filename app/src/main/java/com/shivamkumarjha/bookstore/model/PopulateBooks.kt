@@ -50,6 +50,21 @@ class PopulateBooks {
             true
         )
         addBook(book2)
+        val book3 = Book(
+            booksCount,
+            "The Apartment",
+            "K.L. Slater",
+            "They say every cloud has a silver lining. . .",
+            "Old secrets refuse to stay buried and someone is determined to keep a terrible past, very much alive.",
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1591095350l/51140631._SX318_.jpg",
+            "Thriller",
+            "3.73",
+            "This is another devouring with few bites, finishing at one sit, quick, fast pacing and exciting page-turner!",
+            2,
+            20,
+            false
+        )
+        addBook(book3)
     }
 
 }
