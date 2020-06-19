@@ -80,6 +80,22 @@ class PopulateBooks {
             true
         )
         addBook(book4)
+        val book5 = Book(
+            booksCount,
+            "Little Whispers",
+            "K.L. Slater",
+            "You shared a secret with the wrong person.",
+            "Janey faces an impossible choice. Stay quiet about what she saw that terrible day. " +
+                    "Or speak up, and destroy the family she has worked so hard to protect…",
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1582557211l/51664923._SY475_.jpg",
+            "Thriller",
+            "4.10",
+            "I'm always happy to read a new Slater book and this one is filled with secrets, gossip, and lies.",
+            4,
+            10,
+            false
+        )
+        addBook(book5)
     }
 
 }
