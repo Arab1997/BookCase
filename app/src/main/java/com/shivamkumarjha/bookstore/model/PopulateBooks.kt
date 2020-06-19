@@ -36,8 +36,7 @@ class PopulateBooks {
             booksCount,
             "Days of Distraction",
             "Alexandra Chang",
-            "A wry, tender portrait of a young woman—finally free to decide her own path" +
-                    ", but unsure if she knows herself well enough to choose wisely",
+            "A wry, tender portrait of a young woman—finally free to decide her own path",
             "Equal parts tender and humorous, and told in spare but powerful prose, " +
                     "Days of Distraction is an offbeat coming-of-adulthood tale, a touching family story, " +
                     "and a razor-sharp appraisal of our times.",
@@ -65,6 +64,22 @@ class PopulateBooks {
             false
         )
         addBook(book3)
+        val book4 = Book(
+            booksCount,
+            "The Bride",
+            "Wendy Clarke",
+            "The moment Joanna told me she was engaged, I had this awful feeling that something was wrong.",
+            "An addictive, clever and suspenseful thriller that will keep you totally absorbed " +
+                    "and page turning from the very beginning to the climax",
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583096810l/51974210._SY475_.jpg",
+            "Crime",
+            "3.53",
+            "This book keeps me pulled in. The first chapter is curious enough to keep you reading.",
+            4,
+            10,
+            true
+        )
+        addBook(book4)
     }
 
 }

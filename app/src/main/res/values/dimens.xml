@@ -13,7 +13,7 @@
     <dimen name="drawable_left_padding">2dp</dimen>
     <dimen name="rating_padding">8dp</dimen>
     <dimen name="fragment_margin">8dp</dimen>
-    <dimen name="card_view_content_margin">4sp</dimen>
+    <dimen name="card_view_content_margin">4dp</dimen>
     <dimen name="text_size_large">18sp</dimen>
     <dimen name="text_size_normal">16sp</dimen>
     <dimen name="text_size_small">14sp</dimen>
