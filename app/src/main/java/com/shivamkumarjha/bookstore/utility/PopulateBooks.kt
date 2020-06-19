@@ -30,7 +30,8 @@ class PopulateBooks {
             "4.01",
             "Time is a slippery thing. Zambreno reckons with the problematic relationship writers have with time.",
             14,
-            10
+            10,
+            false
         )
         addBook(book1)
     }

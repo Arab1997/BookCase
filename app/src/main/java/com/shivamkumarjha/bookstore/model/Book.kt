@@ -11,6 +11,7 @@ data class Book(
     val rating: String,
     val review: String,
     val price: Int,
-    val stock: Int
+    val stock: Int,
+    val inWishList: Boolean
 )
 
