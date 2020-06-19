@@ -1,7 +1,14 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="book_image_margin">42dp</dimen>
     <dimen name="bottom_bar_margin">0dp</dimen>
+    <dimen name="card_view_margin">4dp</dimen>
+    <dimen name="card_view_padding">48dp</dimen>
+    <dimen name="card_stroke_radius">6dp</dimen>
+    <dimen name="card_stroke_width">1dp</dimen>
     <dimen name="fragment_margin">8dp</dimen>
-    <dimen name="text_big">20sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
 </resources>
