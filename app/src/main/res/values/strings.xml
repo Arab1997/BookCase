@@ -7,6 +7,6 @@
     <string name="book_name">Book title</string>
     <string name="book_author">Book author</string>
     <string name="book_image">Book cover</string>
-    <string name="demo_book_price">Rs 299</string>
+    <string name="demo_book_price">$299</string>
     <string name="demo_book_rating">4.5</string>
 </resources>
