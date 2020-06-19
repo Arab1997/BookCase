@@ -20,6 +20,7 @@
             android:layout_height="@dimen/card_image_height"
             android:layout_marginStart="@dimen/card_view_content_margin"
             android:layout_marginLeft="@dimen/card_view_content_margin"
+            android:layout_marginTop="@dimen/card_view_margin"
             android:layout_weight="1.5"
             android:contentDescription="@string/book_image"
             android:padding="@dimen/card_image_padding"
