@@ -131,6 +131,58 @@ class PopulateBooks {
             false
         )
         addBook(book7)
+        val book8 = Book(
+            booksCount,
+            "The Heatwave",
+            "Katerina Diamond",
+            "The heatwave is back. And so is the killer.",
+            "One summer. One stranger. One killer…\nTwo bad things happened that summer:\n" +
+                    "A stranger arrived. And the first girl disappeared.",
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1589285385l/49082711.jpg",
+            "Crime",
+            "4.12",
+            "I have to admit Katerina Diamond is one of my favourite authors, " +
+                    "so I was jumping for joy to get the chance to review this book.",
+            5,
+            10,
+            false
+        )
+        addBook(book8)
+        val book9 = Book(
+            booksCount,
+            "Hurry Home",
+            "Roz Nay",
+            "Blood is thicker than water... And it could cost you everything.",
+            "Hurry Home is a tantalizing reflection of the chain-and-shackles relationship " +
+                    "between sisters that asks: what lines wouldn't you cross for your own?",
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1571732733l/48552797._SY475_.jpg",
+            "Thriller",
+            "4.03",
+            "This is my first completed book of 2020 and Roz Nay nailed it.\n" +
+                    "Before this book I used to wish I had a sister. Not anymore.",
+            3,
+            10,
+            false
+        )
+        addBook(book9)
+        val book10 = Book(
+            booksCount,
+            "Find Her Alive",
+            "Lisa Regan",
+            "Guess who's back, back again, Josie's back, tell a friend.",
+            "Detective Josie Quinn hasn’t heard from her sister since Trinity stormed out of the house " +
+                    "in the heat of an argument three weeks ago. So, when human remains are found at " +
+                    "the remote hunting cabin where Trinity was last seen, Josie can only assume the worst.",
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1579807468l/50636220._SY475_.jpg",
+            "Novel",
+            "4.63",
+            "This one is just as good as the previous seven titles in the series. " +
+                    "I devoured the first three back-to-back and now I’ve eagerly read each new installment.",
+            12,
+            10,
+            true
+        )
+        addBook(book10)
     }
 
 }
