@@ -19,6 +19,8 @@
             android:id="@+id/book_image_view_id"
             android:layout_width="@dimen/margin_0dp"
             android:layout_height="@dimen/card_image_height"
+            android:layout_marginStart="@dimen/card_view_content_margin"
+            android:layout_marginLeft="@dimen/card_view_content_margin"
             android:layout_weight="1.5"
             android:contentDescription="@string/book_image"
             android:padding="@dimen/card_image_padding"
@@ -31,38 +33,47 @@
             android:layout_weight="3.3">
 
             <TextView
-                android:id="@+id/txtBookName"
+                android:id="@+id/book_text_view_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/card_view_content_margin"
+                android:layout_marginLeft="@dimen/card_view_content_margin"
                 android:padding="@dimen/text_padding"
                 android:text="@string/book_name"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
                 android:textColor="@color/black_color"
                 android:textSize="@dimen/text_size_large"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtAuthor"
+                android:id="@+id/book_text_view_author"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtBookName"
+                android:layout_below="@id/book_text_view_title"
+                android:layout_marginStart="@dimen/card_view_content_margin"
+                android:layout_marginLeft="@dimen/card_view_content_margin"
                 android:padding="@dimen/text_padding"
                 android:text="@string/book_author"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
                 android:textColor="@color/black_color"
                 android:textSize="@dimen/text_size_normal" />
 
             <TextView
-                android:id="@+id/txtPrice"
+                android:id="@+id/book_text_view_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtAuthor"
+                android:layout_below="@id/book_text_view_author"
+                android:layout_marginStart="@dimen/card_view_content_margin"
+                android:layout_marginLeft="@dimen/card_view_content_margin"
                 android:padding="@dimen/text_padding"
                 android:text="@string/demo_book_price"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
                 android:textColor="@color/black_color"
                 android:textSize="@dimen/text_size_normal" />
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/txtRating"
+            android:id="@+id/book_text_view_rating"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
