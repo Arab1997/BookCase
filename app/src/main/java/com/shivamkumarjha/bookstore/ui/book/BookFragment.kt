@@ -15,25 +15,30 @@ import java.io.File
 class BookFragment : Fragment() {
 
     private lateinit var bookViewModel: BookViewModel
+    private val textView by lazy {
+        requireView().findViewById<TextView>(R.id.text_home)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        bookViewModel =
-            ViewModelProvider(this).get(BookViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_book, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        bookViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_book, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpJSON()
+        setUpViewModel()
+    }
+
+    private fun setUpViewModel() {
+        bookViewModel =
+            ViewModelProvider(this).get(BookViewModel::class.java)
+        bookViewModel.text.observe(viewLifecycleOwner, Observer {
+            textView.text = it
+        })
     }
 
     private fun setUpJSON() {
