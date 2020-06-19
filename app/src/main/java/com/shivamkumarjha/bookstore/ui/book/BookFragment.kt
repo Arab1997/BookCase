@@ -1,4 +1,4 @@
-package com.shivamkumarjha.bookstore.ui.home
+package com.shivamkumarjha.bookstore.ui.book
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.shivamkumarjha.bookstore.R
 
-class HomeFragment : Fragment() {
+class BookFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var bookViewModel: BookViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        bookViewModel =
+                ViewModelProviders.of(this).get(BookViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        bookViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
