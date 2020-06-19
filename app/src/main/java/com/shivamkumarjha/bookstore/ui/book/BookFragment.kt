@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.utility.JsonUtility
+import java.io.File
 
 class BookFragment : Fragment() {
 
@@ -27,5 +29,17 @@ class BookFragment : Fragment() {
             textView.text = it
         })
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpJSON()
+    }
+
+    private fun setUpJSON() {
+        val fileName = "Books.json"
+        val file = File(requireActivity().filesDir, fileName)
+        val jsonUtility = JsonUtility(file)
+        jsonUtility.getBooks()
     }
 }

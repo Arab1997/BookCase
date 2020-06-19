@@ -33,7 +33,7 @@ class JsonUtility(private val file: File) {
         return jsonString
     }
 
-    fun writeToFile(books: ArrayList<Book>) {
+    private fun writeToFile(books: ArrayList<Book>) {
         val data = gson.toJson(books)
         try {
             val outputStreamWriter = OutputStreamWriter(file.outputStream())
@@ -45,8 +45,12 @@ class JsonUtility(private val file: File) {
     }
 
     fun getBooks(): ArrayList<Book> {
-        if (!fileExists())
-            return ArrayList()
+        if (!fileExists()) {
+            // Create books JSON
+            val populateBooks = PopulateBooks()
+            populateBooks.populate()
+            writeToFile(populateBooks.getBooks())
+        }
         // read JSON file storing array of Details object
         val jsonString = readFromFile()
         val detailsTypeToken = object : TypeToken<List<Book>>() {}.type
