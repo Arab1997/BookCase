@@ -27,6 +27,7 @@ class PopulateBooks {
             "Novel",
             4.01f,
             "Time is a slippery thing. Zambreno reckons with the problematic relationship writers have with time.",
+            10f,
             14f,
             10,
             false
@@ -44,6 +45,7 @@ class PopulateBooks {
             "Novel",
             3.77f,
             "This is really a wonderful book. I would say it is a “quiet” book, but that’s true only on the surface.",
+            12f,
             14f,
             10,
             true
@@ -60,6 +62,7 @@ class PopulateBooks {
             3.73f,
             "This is another devouring with few bites, finishing at one sit, quick, fast pacing and exciting page-turner!",
             2f,
+            4f,
             20,
             false
         )
@@ -75,6 +78,7 @@ class PopulateBooks {
             "Crime",
             3.53f,
             "This book keeps me pulled in. The first chapter is curious enough to keep you reading.",
+            3f,
             4f,
             10,
             true
@@ -92,6 +96,7 @@ class PopulateBooks {
             4.10f,
             "I'm always happy to read a new Slater book and this one is filled with secrets, gossip, and lies.",
             4f,
+            6f,
             10,
             false
         )
@@ -108,6 +113,7 @@ class PopulateBooks {
             3.92f,
             "The book is addictive. It is slow at the beginning, but picks up pace as it nears conclusion. " +
                     "Once it is in the top gear, there is no stopping it! A well crafted psychological thriller indeed.",
+            5f,
             8f,
             10,
             false
@@ -126,6 +132,7 @@ class PopulateBooks {
             "A long-time fan of Mark Edwards and his writing, I turned to this book to see if " +
                     "it would bring the same psychological thrill. Edwards succeeds in delivering " +
                     "and spins a story with layers that the reader will discover as the plot progresses.",
+            7f,
             10f,
             10,
             false
@@ -143,7 +150,8 @@ class PopulateBooks {
             4.12f,
             "I have to admit Katerina Diamond is one of my favourite authors, " +
                     "so I was jumping for joy to get the chance to review this book.",
-            5f,
+            8f,
+            10f,
             10,
             false
         )
@@ -160,6 +168,7 @@ class PopulateBooks {
             4.03f,
             "This is my first completed book of 2020 and Roz Nay nailed it.\n" +
                     "Before this book I used to wish I had a sister. Not anymore.",
+            2f,
             3f,
             10,
             false
@@ -178,6 +187,7 @@ class PopulateBooks {
             4.63f,
             "This one is just as good as the previous seven titles in the series. " +
                     "I devoured the first three back-to-back and now I’ve eagerly read each new installment.",
+            10f,
             12f,
             10,
             true

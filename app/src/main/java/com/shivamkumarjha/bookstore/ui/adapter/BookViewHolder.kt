@@ -52,6 +52,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         bookTitle.text = book.title
         bookAuthor.text = book.author
         bookPrice.text = "Rs " + book.price * 76.25f // Price USD to INR
+        bookMRP.text = "Rs " + book.maximumRetailPrice * 76.25f // Price USD to INR
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         bookRating.text = book.rating.toString()
         wishStatus.isChecked = book.inWishList
