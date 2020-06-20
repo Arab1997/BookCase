@@ -38,7 +38,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         Picasso.get().load(book.imageLink).into(bookImage)
         bookTitle.text = book.title
         bookAuthor.text = book.author
-        bookPrice.text = "$" + book.price
+        bookPrice.text = "Rs " + book.price * 76.25f // Price USD to INR
         bookRating.text = book.rating.toString()
         wishStatus.isChecked = book.inWishList
         wishStatus.setOnClickListener {
