@@ -14,11 +14,28 @@ class PopulateBooks {
         return books
     }
 
-    fun getDiscountPercentage(price: Float, maximumRetailPrice: Float): Float {
+    private fun getDiscountPercentage(price: Float, maximumRetailPrice: Float): Float {
         return (100 - (price / maximumRetailPrice) * 100)
     }
 
     fun populate() {
+        val reviewList1: ArrayList<Review> = ArrayList()
+        reviewList1.add(
+            Review(
+                "Lauren",
+                4.5f,
+                "This is by no stretch of even the most liberal definition of the term a novel " +
+                        "- and call me cynical, but the author and publishing company attempting to foist " +
+                        "it off as such belies their knowledge that if they marketed it as what it IS, few would want to read it."
+            )
+        )
+        reviewList1.add(
+            Review(
+                "Doug",
+                2.5f,
+                "Time is a slippery thing. Zambreno reckons with the problematic relationship writers have with time."
+            )
+        )
         val book1 = Book(
             booksCount,
             "Drifts",
@@ -29,8 +46,7 @@ class PopulateBooks {
                     "most daring writers.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1578676099l/48585697.jpg",
             "Novel",
-            4.01f,
-            "Time is a slippery thing. Zambreno reckons with the problematic relationship writers have with time.",
+            reviewList1,
             10f,
             14f,
             getDiscountPercentage(10f, 14f),
@@ -38,6 +54,15 @@ class PopulateBooks {
             false
         )
         addBook(book1)
+
+        val reviewList2: ArrayList<Review> = ArrayList()
+        reviewList2.add(
+            Review(
+                "Pam",
+                3.77f,
+                "This is really a wonderful book. I would say it is a “quiet” book, but that’s true only on the surface."
+            )
+        )
         val book2 = Book(
             booksCount,
             "Days of Distraction",
@@ -48,8 +73,7 @@ class PopulateBooks {
                     "and a razor-sharp appraisal of our times.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1561993078l/52973514._SX318_SY475_.jpg",
             "Novel",
-            3.77f,
-            "This is really a wonderful book. I would say it is a “quiet” book, but that’s true only on the surface.",
+            reviewList2,
             12f,
             14f,
             getDiscountPercentage(12f, 14f),
@@ -57,6 +81,15 @@ class PopulateBooks {
             true
         )
         addBook(book2)
+
+        val reviewList3: ArrayList<Review> = ArrayList()
+        reviewList3.add(
+            Review(
+                "Jim",
+                3.73f,
+                "This is another devouring with few bites, finishing at one sit, quick, fast pacing and exciting page-turner!"
+            )
+        )
         val book3 = Book(
             booksCount,
             "The Apartment",
@@ -65,8 +98,7 @@ class PopulateBooks {
             "Old secrets refuse to stay buried and someone is determined to keep a terrible past, very much alive.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1591095350l/51140631._SX318_.jpg",
             "Thriller",
-            3.73f,
-            "This is another devouring with few bites, finishing at one sit, quick, fast pacing and exciting page-turner!",
+            reviewList3,
             2f,
             4f,
             getDiscountPercentage(2f, 4f),
@@ -74,6 +106,15 @@ class PopulateBooks {
             false
         )
         addBook(book3)
+
+        val reviewList4: ArrayList<Review> = ArrayList()
+        reviewList4.add(
+            Review(
+                "Dwight Schrute",
+                3.53f,
+                "This book keeps me pulled in. The first chapter is curious enough to keep you reading."
+            )
+        )
         val book4 = Book(
             booksCount,
             "The Bride",
@@ -83,8 +124,7 @@ class PopulateBooks {
                     "and page turning from the very beginning to the climax",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583096810l/51974210._SY475_.jpg",
             "Crime",
-            3.53f,
-            "This book keeps me pulled in. The first chapter is curious enough to keep you reading.",
+            reviewList4,
             3f,
             4f,
             getDiscountPercentage(3f, 4f),
@@ -92,6 +132,15 @@ class PopulateBooks {
             true
         )
         addBook(book4)
+
+        val reviewList5: ArrayList<Review> = ArrayList()
+        reviewList5.add(
+            Review(
+                "Michael Scott",
+                4.10f,
+                "I'm always happy to read a new Slater book and this one is filled with secrets, gossip, and lies."
+            )
+        )
         val book5 = Book(
             booksCount,
             "Little Whispers",
@@ -101,8 +150,7 @@ class PopulateBooks {
                     "Or speak up, and destroy the family she has worked so hard to protect…",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1582557211l/51664923._SY475_.jpg",
             "Thriller",
-            4.10f,
-            "I'm always happy to read a new Slater book and this one is filled with secrets, gossip, and lies.",
+            reviewList5,
             4f,
             6f,
             getDiscountPercentage(4f, 6f),
@@ -110,6 +158,16 @@ class PopulateBooks {
             false
         )
         addBook(book5)
+
+        val reviewList6: ArrayList<Review> = ArrayList()
+        reviewList6.add(
+            Review(
+                "Erin",
+                3.92f,
+                "The book is addictive. It is slow at the beginning, but picks up pace as it nears conclusion. " +
+                        "Once it is in the top gear, there is no stopping it! A well crafted psychological thriller indeed."
+            )
+        )
         val book6 = Book(
             booksCount,
             "One Mistake",
@@ -119,9 +177,7 @@ class PopulateBooks {
                     " – perfect for fans of My Lovely Wife, The Girl on the Train, and Something in the Water.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587990821l/51060039._SY475_.jpg",
             "Novel",
-            3.92f,
-            "The book is addictive. It is slow at the beginning, but picks up pace as it nears conclusion. " +
-                    "Once it is in the top gear, there is no stopping it! A well crafted psychological thriller indeed.",
+            reviewList6,
             5f,
             8f,
             getDiscountPercentage(5f, 8f),
@@ -129,6 +185,17 @@ class PopulateBooks {
             false
         )
         addBook(book6)
+
+        val reviewList7: ArrayList<Review> = ArrayList()
+        reviewList7.add(
+            Review(
+                "Marcus",
+                4.00f,
+                "A long-time fan of Mark Edwards and his writing, I turned to this book to see if " +
+                        "it would bring the same psychological thrill. Edwards succeeds in delivering " +
+                        "and spins a story with layers that the reader will discover as the plot progresses."
+            )
+        )
         val book7 = Book(
             booksCount,
             "The House Guest",
@@ -138,10 +205,7 @@ class PopulateBooks {
                     "copy bestselling author of Here to Stay and Follow You Home.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1584383149l/49073380._SY475_.jpg",
             "Thriller",
-            4.00f,
-            "A long-time fan of Mark Edwards and his writing, I turned to this book to see if " +
-                    "it would bring the same psychological thrill. Edwards succeeds in delivering " +
-                    "and spins a story with layers that the reader will discover as the plot progresses.",
+            reviewList7,
             7f,
             10f,
             getDiscountPercentage(7f, 10f),
@@ -149,6 +213,16 @@ class PopulateBooks {
             false
         )
         addBook(book7)
+
+        val reviewList8: ArrayList<Review> = ArrayList()
+        reviewList8.add(
+            Review(
+                "Bruno",
+                4.12f,
+                "I have to admit Katerina Diamond is one of my favourite authors, " +
+                        "so I was jumping for joy to get the chance to review this book."
+            )
+        )
         val book8 = Book(
             booksCount,
             "The Heatwave",
@@ -158,9 +232,7 @@ class PopulateBooks {
                     "A stranger arrived. And the first girl disappeared.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1589285385l/49082711.jpg",
             "Crime",
-            4.12f,
-            "I have to admit Katerina Diamond is one of my favourite authors, " +
-                    "so I was jumping for joy to get the chance to review this book.",
+            reviewList8,
             8f,
             10f,
             getDiscountPercentage(8f, 10f),
@@ -168,6 +240,16 @@ class PopulateBooks {
             false
         )
         addBook(book8)
+
+        val reviewList9: ArrayList<Review> = ArrayList()
+        reviewList9.add(
+            Review(
+                "David",
+                4.03f,
+                "This is my first completed book of 2020 and Roz Nay nailed it.\n" +
+                        "Before this book I used to wish I had a sister. Not anymore."
+            )
+        )
         val book9 = Book(
             booksCount,
             "Hurry Home",
@@ -177,9 +259,7 @@ class PopulateBooks {
                     "between sisters that asks: what lines wouldn't you cross for your own?",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1571732733l/48552797._SY475_.jpg",
             "Thriller",
-            4.03f,
-            "This is my first completed book of 2020 and Roz Nay nailed it.\n" +
-                    "Before this book I used to wish I had a sister. Not anymore.",
+            reviewList9,
             2f,
             3f,
             getDiscountPercentage(2f, 3f),
@@ -187,6 +267,16 @@ class PopulateBooks {
             false
         )
         addBook(book9)
+
+        val reviewList10: ArrayList<Review> = ArrayList()
+        reviewList10.add(
+            Review(
+                "Dean Henderson",
+                4.63f,
+                "This one is just as good as the previous seven titles in the series. " +
+                        "I devoured the first three back-to-back and now I’ve eagerly read each new installment."
+            )
+        )
         val book10 = Book(
             booksCount,
             "Find Her Alive",
@@ -197,9 +287,7 @@ class PopulateBooks {
                     "the remote hunting cabin where Trinity was last seen, Josie can only assume the worst.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1579807468l/50636220._SY475_.jpg",
             "Novel",
-            4.63f,
-            "This one is just as good as the previous seven titles in the series. " +
-                    "I devoured the first three back-to-back and now I’ve eagerly read each new installment.",
+            reviewList10,
             10f,
             12f,
             getDiscountPercentage(10f, 12f),
