@@ -24,11 +24,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun callBookFragment() {
-        supportFragmentManager.popBackStack()
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.fragment_holder, BookFragment())
-            .addToBackStack(null)
             .commit()
     }
 }
