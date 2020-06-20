@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,7 @@ import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.ui.adapter.BookAdapter
 import com.shivamkumarjha.bookstore.ui.adapter.BookItemClickListener
 import com.shivamkumarjha.bookstore.ui.adapter.MarginItemDecoration
+import com.shivamkumarjha.bookstore.ui.cart.CartFragment
 import com.shivamkumarjha.bookstore.utility.JsonUtility
 import java.io.File
 
@@ -42,8 +44,8 @@ class BookFragment : Fragment(), BookItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        setUpRecyclerView()
         setUpViewModel()
+        setUpRecyclerView()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -63,6 +65,16 @@ class BookFragment : Fragment(), BookItemClickListener {
                 return false
             }
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.card_menu_id -> {
+                callCartFragment()
+                return true
+            }
+        }
+        return true
     }
 
     override fun onBookClick(book: Book) {
@@ -94,5 +106,13 @@ class BookFragment : Fragment(), BookItemClickListener {
             )
         )
         recyclerView.setHasFixedSize(true)
+    }
+
+    private fun callCartFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, CartFragment())
+            .addToBackStack(null)
+            .commit()
     }
 }
