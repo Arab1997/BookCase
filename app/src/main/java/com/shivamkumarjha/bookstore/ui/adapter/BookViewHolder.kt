@@ -13,7 +13,6 @@ import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
-import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
 class BookViewHolder(itemView: View, private val clickListener: BookItemClickListener) :
@@ -39,15 +38,10 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         this.book = book
 
         // Load book image from URL
-        Picasso.get().load(book.imageLink).into(bookImage, object : Callback {
-            override fun onSuccess() {
-
-            }
-
-            override fun onError(e: Exception) {
-                bookImage.setBackgroundResource(R.mipmap.ic_launcher)
-            }
-        })
+        Picasso.get().load(book.imageLink).fit().centerCrop()
+            .placeholder(R.mipmap.ic_launcher)
+            .error(R.mipmap.ic_launcher)
+            .into(bookImage)
 
         bookTitle.text = book.title
         bookAuthor.text = "By " + book.author
