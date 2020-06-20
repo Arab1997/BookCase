@@ -14,6 +14,10 @@ class PopulateBooks {
         return books
     }
 
+    fun getDiscountPercentage(price: Float, maximumRetailPrice: Float): Float {
+        return (100 - (price / maximumRetailPrice) * 100)
+    }
+
     fun populate() {
         val book1 = Book(
             booksCount,
@@ -29,6 +33,7 @@ class PopulateBooks {
             "Time is a slippery thing. Zambreno reckons with the problematic relationship writers have with time.",
             10f,
             14f,
+            getDiscountPercentage(10f, 14f),
             10,
             false
         )
@@ -47,6 +52,7 @@ class PopulateBooks {
             "This is really a wonderful book. I would say it is a “quiet” book, but that’s true only on the surface.",
             12f,
             14f,
+            getDiscountPercentage(12f, 14f),
             10,
             true
         )
@@ -63,6 +69,7 @@ class PopulateBooks {
             "This is another devouring with few bites, finishing at one sit, quick, fast pacing and exciting page-turner!",
             2f,
             4f,
+            getDiscountPercentage(2f, 4f),
             20,
             false
         )
@@ -80,6 +87,7 @@ class PopulateBooks {
             "This book keeps me pulled in. The first chapter is curious enough to keep you reading.",
             3f,
             4f,
+            getDiscountPercentage(3f, 4f),
             10,
             true
         )
@@ -97,6 +105,7 @@ class PopulateBooks {
             "I'm always happy to read a new Slater book and this one is filled with secrets, gossip, and lies.",
             4f,
             6f,
+            getDiscountPercentage(4f, 6f),
             10,
             false
         )
@@ -115,6 +124,7 @@ class PopulateBooks {
                     "Once it is in the top gear, there is no stopping it! A well crafted psychological thriller indeed.",
             5f,
             8f,
+            getDiscountPercentage(5f, 8f),
             10,
             false
         )
@@ -134,6 +144,7 @@ class PopulateBooks {
                     "and spins a story with layers that the reader will discover as the plot progresses.",
             7f,
             10f,
+            getDiscountPercentage(7f, 10f),
             10,
             false
         )
@@ -152,6 +163,7 @@ class PopulateBooks {
                     "so I was jumping for joy to get the chance to review this book.",
             8f,
             10f,
+            getDiscountPercentage(8f, 10f),
             10,
             false
         )
@@ -170,6 +182,7 @@ class PopulateBooks {
                     "Before this book I used to wish I had a sister. Not anymore.",
             2f,
             3f,
+            getDiscountPercentage(2f, 3f),
             10,
             false
         )
@@ -189,6 +202,7 @@ class PopulateBooks {
                     "I devoured the first three back-to-back and now I’ve eagerly read each new installment.",
             10f,
             12f,
+            getDiscountPercentage(10f, 12f),
             10,
             true
         )
