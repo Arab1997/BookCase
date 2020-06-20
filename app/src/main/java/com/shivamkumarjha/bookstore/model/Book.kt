@@ -8,9 +8,9 @@ data class Book(
     val detail: String,
     val imageLink: String,
     val category: String,
-    val rating: String,
+    val rating: Float,
     val review: String,
-    val price: Int,
+    val price: Float,
     val stock: Int,
     val inWishList: Boolean
 )

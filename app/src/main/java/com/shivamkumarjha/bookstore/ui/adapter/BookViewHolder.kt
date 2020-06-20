@@ -39,7 +39,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         bookTitle.text = book.title
         bookAuthor.text = book.author
         bookPrice.text = "$" + book.price
-        bookRating.text = book.rating
+        bookRating.text = book.rating.toString()
         wishStatus.isChecked = book.inWishList
         wishStatus.setOnClickListener {
             clickListener.onWishClick(book, wishStatus.isChecked)

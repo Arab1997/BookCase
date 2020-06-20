@@ -25,9 +25,9 @@ class PopulateBooks {
                     "most daring writers.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1578676099l/48585697.jpg",
             "Novel",
-            "4.01",
+            4.01f,
             "Time is a slippery thing. Zambreno reckons with the problematic relationship writers have with time.",
-            14,
+            14f,
             10,
             false
         )
@@ -42,9 +42,9 @@ class PopulateBooks {
                     "and a razor-sharp appraisal of our times.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1561993078l/52973514._SX318_SY475_.jpg",
             "Novel",
-            "3.77",
+            3.77f,
             "This is really a wonderful book. I would say it is a “quiet” book, but that’s true only on the surface.",
-            14,
+            14f,
             10,
             true
         )
@@ -57,9 +57,9 @@ class PopulateBooks {
             "Old secrets refuse to stay buried and someone is determined to keep a terrible past, very much alive.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1591095350l/51140631._SX318_.jpg",
             "Thriller",
-            "3.73",
+            3.73f,
             "This is another devouring with few bites, finishing at one sit, quick, fast pacing and exciting page-turner!",
-            2,
+            2f,
             20,
             false
         )
@@ -73,9 +73,9 @@ class PopulateBooks {
                     "and page turning from the very beginning to the climax",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583096810l/51974210._SY475_.jpg",
             "Crime",
-            "3.53",
+            3.53f,
             "This book keeps me pulled in. The first chapter is curious enough to keep you reading.",
-            4,
+            4f,
             10,
             true
         )
@@ -89,9 +89,9 @@ class PopulateBooks {
                     "Or speak up, and destroy the family she has worked so hard to protect…",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1582557211l/51664923._SY475_.jpg",
             "Thriller",
-            "4.10",
+            4.10f,
             "I'm always happy to read a new Slater book and this one is filled with secrets, gossip, and lies.",
-            4,
+            4f,
             10,
             false
         )
@@ -105,10 +105,10 @@ class PopulateBooks {
                     " – perfect for fans of My Lovely Wife, The Girl on the Train, and Something in the Water.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587990821l/51060039._SY475_.jpg",
             "Novel",
-            "3.92",
+            3.92f,
             "The book is addictive. It is slow at the beginning, but picks up pace as it nears conclusion. " +
                     "Once it is in the top gear, there is no stopping it! A well crafted psychological thriller indeed.",
-            8,
+            8f,
             10,
             false
         )
@@ -122,11 +122,11 @@ class PopulateBooks {
                     "copy bestselling author of Here to Stay and Follow You Home.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1584383149l/49073380._SY475_.jpg",
             "Thriller",
-            "4.00",
+            4.00f,
             "A long-time fan of Mark Edwards and his writing, I turned to this book to see if " +
                     "it would bring the same psychological thrill. Edwards succeeds in delivering " +
                     "and spins a story with layers that the reader will discover as the plot progresses.",
-            10,
+            10f,
             10,
             false
         )
@@ -140,10 +140,10 @@ class PopulateBooks {
                     "A stranger arrived. And the first girl disappeared.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1589285385l/49082711.jpg",
             "Crime",
-            "4.12",
+            4.12f,
             "I have to admit Katerina Diamond is one of my favourite authors, " +
                     "so I was jumping for joy to get the chance to review this book.",
-            5,
+            5f,
             10,
             false
         )
@@ -157,10 +157,10 @@ class PopulateBooks {
                     "between sisters that asks: what lines wouldn't you cross for your own?",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1571732733l/48552797._SY475_.jpg",
             "Thriller",
-            "4.03",
+            4.03f,
             "This is my first completed book of 2020 and Roz Nay nailed it.\n" +
                     "Before this book I used to wish I had a sister. Not anymore.",
-            3,
+            3f,
             10,
             false
         )
@@ -175,10 +175,10 @@ class PopulateBooks {
                     "the remote hunting cabin where Trinity was last seen, Josie can only assume the worst.",
             "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1579807468l/50636220._SY475_.jpg",
             "Novel",
-            "4.63",
+            4.63f,
             "This one is just as good as the previous seven titles in the series. " +
                     "I devoured the first three back-to-back and now I’ve eagerly read each new installment.",
-            12,
+            12f,
             10,
             true
         )
