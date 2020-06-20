@@ -25,7 +25,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
     private val bookPrice: TextView = itemView.findViewById(R.id.book_text_view_price)
     private val bookMRP: TextView = itemView.findViewById(R.id.book_text_view_mrp)
     private val bookDiscount: TextView = itemView.findViewById(R.id.book_text_view_discount)
-    private val bookRating: Chip = itemView.findViewById(R.id.book_text_view_rating)
+    private val bookRating: TextView = itemView.findViewById(R.id.book_text_view_rating)
     private val wishStatus: ToggleButton = itemView.findViewById(R.id.book_toggle_wish_id)
     private lateinit var book: Book
 
@@ -56,7 +56,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         bookMRP.text = "Rs " + book.maximumRetailPrice * 76.25f // Price USD to INR
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         bookDiscount.text =
-            (100 - (book.price / book.maximumRetailPrice) * 100).toInt().toString() + "%"
+            (100 - (book.price / book.maximumRetailPrice) * 100).toInt().toString() + "% off"
         bookRating.text = book.rating.toString()
         wishStatus.isChecked = book.inWishList
         wishStatus.setOnClickListener {
