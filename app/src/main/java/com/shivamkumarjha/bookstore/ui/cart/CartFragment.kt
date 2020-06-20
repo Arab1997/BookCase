@@ -61,13 +61,12 @@ class CartFragment : Fragment() {
     }
 
     private fun backPressDispatcher() {
-        activity?.onBackPressedDispatcher?.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    exitFragment()
-                }
-            })
+        val callBackObject = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                exitFragment()
+            }
+        }
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
     }
 
     private fun exitFragment() {
