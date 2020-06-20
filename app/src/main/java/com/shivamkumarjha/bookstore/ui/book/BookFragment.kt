@@ -23,9 +23,7 @@ class BookFragment : Fragment(), BookItemClickListener {
 
     private lateinit var bookViewModel: BookViewModel
     private lateinit var bookAdapter: BookAdapter
-    private val recyclerView by lazy {
-        requireView().findViewById<RecyclerView>(R.id.book_recycler_view)
-    }
+    private lateinit var recyclerView: RecyclerView
     private val file by lazy {
         File(requireActivity().filesDir, "Books.json")
     }
@@ -44,8 +42,8 @@ class BookFragment : Fragment(), BookItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        setUpViewModel()
         setUpRecyclerView()
+        setUpViewModel()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -99,11 +97,10 @@ class BookFragment : Fragment(), BookItemClickListener {
     }
 
     private fun setUpRecyclerView() {
+        recyclerView = requireView().findViewById(R.id.book_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.addItemDecoration(
-            MarginItemDecoration(
-                resources.getDimension(R.dimen.action_bar_height).toInt()
-            )
+            MarginItemDecoration(resources.getDimension(R.dimen.action_bar_height).toInt())
         )
         recyclerView.setHasFixedSize(true)
     }

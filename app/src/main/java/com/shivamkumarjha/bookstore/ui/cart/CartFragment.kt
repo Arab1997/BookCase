@@ -7,11 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.R
-import com.shivamkumarjha.bookstore.ui.book.BookFragment
 
 class CartFragment : Fragment() {
 
@@ -47,16 +45,8 @@ class CartFragment : Fragment() {
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
-                    callBookFragment()
+                    requireActivity().supportFragmentManager.popBackStack()
                 }
             })
-    }
-
-    private fun callBookFragment() {
-        requireActivity().supportFragmentManager.popBackStack()
-        requireActivity().supportFragmentManager.beginTransaction()
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .replace(R.id.fragment_holder, BookFragment())
-            .commit()
     }
 }
