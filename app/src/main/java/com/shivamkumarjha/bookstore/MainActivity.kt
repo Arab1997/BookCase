@@ -3,9 +3,8 @@ package com.shivamkumarjha.bookstore
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.fragment.app.FragmentTransaction
+import com.shivamkumarjha.bookstore.ui.book.BookFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,18 +14,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUpToolbar()
-        setUpBottomNavigationView()
-    }
-
-    private fun setUpBottomNavigationView() {
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
-        navView.setupWithNavController(navController)
+        callBookFragment()
     }
 
     private fun setUpToolbar() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = resources.getString(R.string.app_name)
+    }
+
+    private fun callBookFragment() {
+        supportFragmentManager.popBackStack()
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, BookFragment())
+            .addToBackStack(null)
+            .commit()
     }
 }
