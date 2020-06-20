@@ -24,12 +24,6 @@ class BookFragment : Fragment(), BookItemClickListener {
     private lateinit var bookViewModel: BookViewModel
     private lateinit var bookAdapter: BookAdapter
     private lateinit var recyclerView: RecyclerView
-    private val file by lazy {
-        File(requireActivity().filesDir, "Books.json")
-    }
-    private val jsonUtility by lazy {
-        JsonUtility(file)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -88,6 +82,8 @@ class BookFragment : Fragment(), BookItemClickListener {
     }
 
     private fun setUpViewModel() {
+        val booksFile = File(requireActivity().filesDir, "Books.json")
+        val jsonUtility = JsonUtility(booksFile)
         bookViewModel = ViewModelProvider(this, BookViewModelFactory(jsonUtility))
             .get(BookViewModel::class.java)
         bookViewModel.getBooks().observe(requireActivity(), Observer { books ->
