@@ -210,7 +210,7 @@ class PopulateBooks {
             10f,
             getDiscountPercentage(7f, 10f),
             10,
-            false
+            true
         )
         addBook(book7)
 
