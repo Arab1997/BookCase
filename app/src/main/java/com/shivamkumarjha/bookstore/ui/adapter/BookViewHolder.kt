@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
 import com.squareup.picasso.Picasso
@@ -20,7 +21,7 @@ class BookViewHolder(itemView: View, clickListener: BookItemClickListener) :
     private val bookTitle: TextView = itemView.findViewById(R.id.book_text_view_title)
     private val bookAuthor: TextView = itemView.findViewById(R.id.book_text_view_author)
     private val bookPrice: TextView = itemView.findViewById(R.id.book_text_view_price)
-    private val bookRating: TextView = itemView.findViewById(R.id.book_text_view_rating)
+    private val bookRating: Chip = itemView.findViewById(R.id.book_text_view_rating)
     private val wishStatus: ToggleButton = itemView.findViewById(R.id.book_toggle_wish_id)
     private lateinit var book: Book
     private lateinit var scaleAnimation: ScaleAnimation
