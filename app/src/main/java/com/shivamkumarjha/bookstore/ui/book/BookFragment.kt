@@ -42,6 +42,7 @@ class BookFragment : Fragment(), BookItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+        setUpRecyclerView()
         setUpViewModel()
     }
 
@@ -80,13 +81,12 @@ class BookFragment : Fragment(), BookItemClickListener {
         bookViewModel = ViewModelProvider(this, BookViewModelFactory(jsonUtility))
             .get(BookViewModel::class.java)
         bookViewModel.getBooks().observe(requireActivity(), Observer { books ->
-            setUpRecyclerView(books)
+            bookAdapter = BookAdapter(books, this)
+            recyclerView.adapter = bookAdapter
         })
     }
 
-    private fun setUpRecyclerView(books: ArrayList<Book>) {
-        bookAdapter = BookAdapter(books, this)
-        recyclerView.adapter = bookAdapter
+    private fun setUpRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.addItemDecoration(
             MarginItemDecoration(
