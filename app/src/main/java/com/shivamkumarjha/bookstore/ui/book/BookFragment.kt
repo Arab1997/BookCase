@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,7 +43,6 @@ class BookFragment : Fragment(), BookItemClickListener {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         setUpViewModel()
-        setUpRecyclerView()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -69,12 +69,15 @@ class BookFragment : Fragment(), BookItemClickListener {
     }
 
     private fun setUpViewModel() {
-        bookViewModel =
-            ViewModelProvider(this).get(BookViewModel::class.java)
+        bookViewModel = ViewModelProvider(this, BookViewModelFactory(jsonUtility))
+            .get(BookViewModel::class.java)
+        bookViewModel.getBooks().observe(requireActivity(), Observer { books ->
+            setUpRecyclerView(books)
+        })
     }
 
-    private fun setUpRecyclerView() {
-        bookAdapter = BookAdapter(jsonUtility.getBooks(), this)
+    private fun setUpRecyclerView(books: ArrayList<Book>) {
+        bookAdapter = BookAdapter(books, this)
         recyclerView.adapter = bookAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.addItemDecoration(
