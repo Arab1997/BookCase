@@ -65,7 +65,15 @@ class BookFragment : Fragment(), BookItemClickListener {
     }
 
     override fun onBookClick(book: Book) {
-        Toast.makeText(requireContext(), book.title, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), book.title, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onWishClick(book: Book, isChecked: Boolean) {
+        val toastMessage = if (isChecked)
+            "Added ${book.title} to wish list."
+        else
+            "Removed ${book.title} from wish list."
+        Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()
     }
 
     private fun setUpViewModel() {

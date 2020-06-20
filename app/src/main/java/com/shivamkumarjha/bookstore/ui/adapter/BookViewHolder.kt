@@ -15,7 +15,7 @@ import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
 import com.squareup.picasso.Picasso
 
-class BookViewHolder(itemView: View, clickListener: BookItemClickListener) :
+class BookViewHolder(itemView: View, private val clickListener: BookItemClickListener) :
     RecyclerView.ViewHolder(itemView) {
     private val bookImage: ImageView = itemView.findViewById(R.id.book_image_view_id)
     private val bookTitle: TextView = itemView.findViewById(R.id.book_text_view_title)
@@ -25,7 +25,6 @@ class BookViewHolder(itemView: View, clickListener: BookItemClickListener) :
     private val wishStatus: ToggleButton = itemView.findViewById(R.id.book_toggle_wish_id)
     private lateinit var book: Book
     private lateinit var scaleAnimation: ScaleAnimation
-    private lateinit var bounceInterpolator: BounceInterpolator
 
     init {
         itemView.setOnClickListener {
@@ -42,6 +41,9 @@ class BookViewHolder(itemView: View, clickListener: BookItemClickListener) :
         bookPrice.text = "$" + book.price
         bookRating.text = book.rating
         wishStatus.isChecked = book.inWishList
+        wishStatus.setOnClickListener {
+            clickListener.onWishClick(book, wishStatus.isChecked)
+        }
 
         // toggle button animation
         scaleAnimation = ScaleAnimation(
@@ -55,17 +57,14 @@ class BookViewHolder(itemView: View, clickListener: BookItemClickListener) :
             0.7f
         )
         scaleAnimation.duration = 500
-        bounceInterpolator = BounceInterpolator()
-        scaleAnimation.interpolator = bounceInterpolator
+        scaleAnimation.interpolator = BounceInterpolator()
         wishStatus.setOnCheckedChangeListener(object : View.OnClickListener,
             CompoundButton.OnCheckedChangeListener {
             override fun onCheckedChanged(compoundButton: CompoundButton?, status: Boolean) {
                 compoundButton?.startAnimation(scaleAnimation)
             }
 
-            override fun onClick(p0: View?) {
-                // TODO
-            }
+            override fun onClick(p0: View?) {}
         })
     }
 }
