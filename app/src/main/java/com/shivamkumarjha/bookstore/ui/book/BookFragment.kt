@@ -23,6 +23,12 @@ class BookFragment : Fragment(), BookItemClickListener {
     private val recyclerView by lazy {
         requireView().findViewById<RecyclerView>(R.id.book_recycler_view)
     }
+    private val file by lazy {
+        File(requireActivity().filesDir, "Books.json")
+    }
+    private val jsonUtility by lazy {
+        JsonUtility(file)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,7 +74,7 @@ class BookFragment : Fragment(), BookItemClickListener {
     }
 
     private fun setUpRecyclerView() {
-        bookAdapter = BookAdapter(getBooks(), this)
+        bookAdapter = BookAdapter(jsonUtility.getBooks(), this)
         recyclerView.adapter = bookAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.addItemDecoration(
@@ -77,11 +83,5 @@ class BookFragment : Fragment(), BookItemClickListener {
             )
         )
         recyclerView.setHasFixedSize(true)
-    }
-
-    private fun getBooks(): ArrayList<Book> {
-        val file = File(requireActivity().filesDir, "Books.json")
-        val jsonUtility = JsonUtility(file)
-        return jsonUtility.getBooks()
     }
 }
