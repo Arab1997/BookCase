@@ -24,7 +24,6 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
     private val bookRating: Chip = itemView.findViewById(R.id.book_text_view_rating)
     private val wishStatus: ToggleButton = itemView.findViewById(R.id.book_toggle_wish_id)
     private lateinit var book: Book
-    private lateinit var scaleAnimation: ScaleAnimation
 
     init {
         itemView.setOnClickListener {
@@ -46,7 +45,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         }
 
         // toggle button animation
-        scaleAnimation = ScaleAnimation(
+        val scaleAnimation = ScaleAnimation(
             0.7f,
             1.0f,
             0.7f,
