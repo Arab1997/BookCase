@@ -11,7 +11,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.chip.Chip
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
 import com.squareup.picasso.Callback
@@ -51,7 +50,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         })
 
         bookTitle.text = book.title
-        bookAuthor.text = book.author
+        bookAuthor.text = "By " + book.author
         bookPrice.text = "Rs " + book.price * 76.25f // Price USD to INR
         bookMRP.text = "Rs " + book.maximumRetailPrice * 76.25f // Price USD to INR
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG

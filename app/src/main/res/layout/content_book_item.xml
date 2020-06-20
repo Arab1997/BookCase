@@ -32,7 +32,7 @@
             android:layout_weight="3.3"
             android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/book_text_view_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -65,12 +65,14 @@
                 android:layout_marginStart="@dimen/card_view_text_margin"
                 android:layout_marginLeft="@dimen/card_view_text_margin"
                 android:layout_marginTop="@dimen/card_view_margin"
+                android:background="@drawable/review_background"
                 android:drawableEnd="@drawable/ic_rating"
                 android:drawableRight="@drawable/ic_rating"
                 android:drawablePadding="@dimen/card_view_margin_small"
+                android:padding="@dimen/card_view_margin_small"
                 android:text="@string/demo_book_rating"
-                android:textColor="@color/rating_color"
-                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/text_size_small"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -89,7 +91,7 @@
                     android:text="@string/demo_book_price"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
                     android:textColor="@color/black_color"
-                    android:textSize="@dimen/text_size_normal" />
+                    android:textSize="@dimen/text_size_large" />
 
                 <TextView
                     android:id="@+id/book_text_view_mrp"
@@ -112,7 +114,7 @@
                     android:fontFamily="@font/firasans_semibold"
                     android:text="@string/demo_book_price"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-                    android:textColor="@color/discount_color"
+                    android:textColor="@color/green_500"
                     android:textSize="@dimen/text_size_normal" />
 
             </LinearLayout>
@@ -133,7 +135,7 @@
                 android:id="@+id/book_toggle_wish_id"
                 android:layout_width="@dimen/toggle_button_size"
                 android:layout_height="@dimen/toggle_button_size"
-                android:background="@drawable/button_favorite"
+                android:background="@drawable/button_wish"
                 android:checked="false"
                 android:text=""
                 android:textOff=""
