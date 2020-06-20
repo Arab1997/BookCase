@@ -1,6 +1,7 @@
 package com.shivamkumarjha.bookstore.ui.adapter
 
 import android.annotation.SuppressLint
+import android.graphics.Paint
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
@@ -22,6 +23,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
     private val bookTitle: TextView = itemView.findViewById(R.id.book_text_view_title)
     private val bookAuthor: TextView = itemView.findViewById(R.id.book_text_view_author)
     private val bookPrice: TextView = itemView.findViewById(R.id.book_text_view_price)
+    private val bookMRP: TextView = itemView.findViewById(R.id.book_text_view_mrp)
     private val bookRating: Chip = itemView.findViewById(R.id.book_text_view_rating)
     private val wishStatus: ToggleButton = itemView.findViewById(R.id.book_toggle_wish_id)
     private lateinit var book: Book
@@ -50,13 +52,14 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         bookTitle.text = book.title
         bookAuthor.text = book.author
         bookPrice.text = "Rs " + book.price * 76.25f // Price USD to INR
+        bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         bookRating.text = book.rating.toString()
         wishStatus.isChecked = book.inWishList
         wishStatus.setOnClickListener {
             clickListener.onWishClick(book, wishStatus.isChecked)
         }
 
-        // toggle button animation
+        // wish toggle button animation
         val scaleAnimation = ScaleAnimation(
             0.7f,
             1.0f,
