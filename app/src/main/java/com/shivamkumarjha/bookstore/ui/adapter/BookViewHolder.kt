@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
 class BookViewHolder(itemView: View, private val clickListener: BookItemClickListener) :
@@ -34,7 +35,18 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
     @SuppressLint("SetTextI18n")
     fun initialize(book: Book) {
         this.book = book
-        Picasso.get().load(book.imageLink).into(bookImage)
+
+        // Load book image from URL
+        Picasso.get().load(book.imageLink).into(bookImage, object : Callback {
+            override fun onSuccess() {
+
+            }
+
+            override fun onError(e: Exception) {
+                bookImage.setBackgroundResource(R.mipmap.ic_launcher)
+            }
+        })
+
         bookTitle.text = book.title
         bookAuthor.text = book.author
         bookPrice.text = "Rs " + book.price * 76.25f // Price USD to INR
