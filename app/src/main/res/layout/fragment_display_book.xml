@@ -55,6 +55,25 @@
                     android:background="@color/divider"
                     app:layout_constraintTop_toBottomOf="@id/display_book_image" />
 
+                <ToggleButton
+                    android:id="@+id/display_book_toggle_wish_id"
+                    android:layout_width="@dimen/toggle_button_size"
+                    android:layout_height="@dimen/toggle_button_size"
+                    android:layout_marginStart="@dimen/view_margin_big"
+                    android:layout_marginLeft="@dimen/view_margin_big"
+                    android:layout_marginTop="@dimen/view_margin"
+                    android:layout_marginEnd="@dimen/view_margin_big"
+                    android:layout_marginRight="@dimen/view_margin_big"
+                    android:background="@drawable/button_wish"
+                    android:checked="false"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn=""
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_divider_id" />
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/display_book_title_text_view_id"
                     android:layout_width="wrap_content"

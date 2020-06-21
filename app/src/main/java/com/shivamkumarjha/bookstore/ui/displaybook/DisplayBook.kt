@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.animation.Animation
+import android.view.animation.BounceInterpolator
+import android.view.animation.ScaleAnimation
+import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -26,6 +28,8 @@ class DisplayBook(private val book: Book) : Fragment() {
     private lateinit var bookPrice: TextView
     private lateinit var bookMRP: TextView
     private lateinit var bookDiscount: TextView
+    private lateinit var bookRating: TextView
+    private lateinit var wishStatus: ToggleButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,6 +72,8 @@ class DisplayBook(private val book: Book) : Fragment() {
         bookPrice = requireView().findViewById(R.id.display_book_text_view_price)
         bookMRP = requireView().findViewById(R.id.display_book_text_view_mrp)
         bookDiscount = requireView().findViewById(R.id.display_book_text_view_discount)
+        bookRating = requireView().findViewById(R.id.display_book_text_view_rating)
+        wishStatus = requireView().findViewById(R.id.display_book_toggle_wish_id)
 
         // set value
         Picasso.get().load(book.imageLink)
@@ -82,6 +88,43 @@ class DisplayBook(private val book: Book) : Fragment() {
         bookMRP.text = "Rs " + book.maximumRetailPrice * 76.25f // Price USD to INR
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         bookDiscount.text = book.discount.toInt().toString() + "% off"
+        bookRating.text = "%.2f".format(book.review.map { it.rating }.average()) // Average rating
+
+        // wish toggle
+        wishStatus.isChecked = book.inWishList
+        wishToggleAnimation()
+        wishStatus.setOnClickListener { onWishClick(wishStatus.isChecked) }
+    }
+
+    private fun onWishClick(isChecked: Boolean) {
+        val toastMessage = if (isChecked)
+            "Added ${book.title} to wish list."
+        else
+            "Removed ${book.title} from wish list."
+        Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun wishToggleAnimation() {
+        val scaleAnimation = ScaleAnimation(
+            0.7f,
+            1.0f,
+            0.7f,
+            1.0f,
+            Animation.RELATIVE_TO_SELF,
+            0.7f,
+            Animation.RELATIVE_TO_SELF,
+            0.7f
+        )
+        scaleAnimation.duration = 500
+        scaleAnimation.interpolator = BounceInterpolator()
+        wishStatus.setOnCheckedChangeListener(object : View.OnClickListener,
+            CompoundButton.OnCheckedChangeListener {
+            override fun onCheckedChanged(compoundButton: CompoundButton?, status: Boolean) {
+                compoundButton?.startAnimation(scaleAnimation)
+            }
+
+            override fun onClick(p0: View?) {}
+        })
     }
 
     private fun backPressDispatcher() {
