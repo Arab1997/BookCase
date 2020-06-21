@@ -143,6 +143,7 @@ class DisplayBook(private val book: Book) : Fragment() {
         recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
+        recyclerView.isNestedScrollingEnabled = false
         reviewAdapter = ReviewAdapter(book.review)
         recyclerView.adapter = reviewAdapter
     }
