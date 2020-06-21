@@ -29,6 +29,8 @@ class DisplayBook(private val book: Book) : Fragment() {
     private lateinit var bookMRP: TextView
     private lateinit var bookDiscount: TextView
     private lateinit var bookRating: TextView
+    private lateinit var bookCategory: TextView
+    private lateinit var bookDetail: TextView
     private lateinit var wishStatus: ToggleButton
 
     override fun onCreateView(
@@ -73,6 +75,8 @@ class DisplayBook(private val book: Book) : Fragment() {
         bookMRP = requireView().findViewById(R.id.display_book_text_view_mrp)
         bookDiscount = requireView().findViewById(R.id.display_book_text_view_discount)
         bookRating = requireView().findViewById(R.id.display_book_text_view_rating)
+        bookCategory = requireView().findViewById(R.id.display_book_category_text_view_id)
+        bookDetail = requireView().findViewById(R.id.display_book_detail_text_view_id)
         wishStatus = requireView().findViewById(R.id.display_book_toggle_wish_id)
 
         // set value
@@ -89,6 +93,8 @@ class DisplayBook(private val book: Book) : Fragment() {
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         bookDiscount.text = book.discount.toInt().toString() + "% off"
         bookRating.text = "%.2f".format(book.review.map { it.rating }.average()) // Average rating
+        bookCategory.text = book.category
+        bookDetail.text = book.detail
 
         // wish toggle
         wishStatus.isChecked = book.inWishList
