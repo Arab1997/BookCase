@@ -32,6 +32,7 @@ class DisplayBook(private val book: Book) : Fragment() {
     private lateinit var bookMRP: TextView
     private lateinit var bookDiscount: TextView
     private lateinit var bookRating: TextView
+    private lateinit var bookRatingCount: TextView
     private lateinit var bookCategory: TextView
     private lateinit var bookDetail: TextView
     private lateinit var wishStatus: ToggleButton
@@ -80,6 +81,7 @@ class DisplayBook(private val book: Book) : Fragment() {
         bookMRP = requireView().findViewById(R.id.display_book_text_view_mrp)
         bookDiscount = requireView().findViewById(R.id.display_book_text_view_discount)
         bookRating = requireView().findViewById(R.id.display_book_text_view_rating)
+        bookRatingCount = requireView().findViewById(R.id.display_book_text_view_rating_count)
         bookCategory = requireView().findViewById(R.id.display_book_category_text_view_id)
         bookDetail = requireView().findViewById(R.id.display_book_detail_text_view_id)
         wishStatus = requireView().findViewById(R.id.display_book_toggle_wish_id)
@@ -100,6 +102,7 @@ class DisplayBook(private val book: Book) : Fragment() {
         bookCategory.text = book.category
         bookDetail.text = book.detail
         bookRating.text = "%.2f".format(book.review.map { it.rating }.average()) // Average rating
+        bookRatingCount.text = "${book.review.size} reviews"
         setUpReviewRecyclerView()
 
         // wish toggle
