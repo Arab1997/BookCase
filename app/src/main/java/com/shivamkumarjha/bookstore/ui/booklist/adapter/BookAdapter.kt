@@ -1,4 +1,4 @@
-package com.shivamkumarjha.bookstore.ui.adapter
+package com.shivamkumarjha.bookstore.ui.booklist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

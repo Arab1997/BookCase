@@ -1,4 +1,4 @@
-package com.shivamkumarjha.bookstore.ui.adapter
+package com.shivamkumarjha.bookstore.ui.booklist.adapter
 
 import android.annotation.SuppressLint
 import android.graphics.Paint

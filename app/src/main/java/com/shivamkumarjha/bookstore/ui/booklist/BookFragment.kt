@@ -1,4 +1,4 @@
-package com.shivamkumarjha.bookstore.ui.book
+package com.shivamkumarjha.bookstore.ui.booklist
 
 import android.os.Bundle
 import android.view.*
@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
-import com.shivamkumarjha.bookstore.ui.adapter.BookAdapter
-import com.shivamkumarjha.bookstore.ui.adapter.BookItemClickListener
-import com.shivamkumarjha.bookstore.ui.adapter.MarginItemDecoration
+import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookAdapter
+import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookItemClickListener
+import com.shivamkumarjha.bookstore.ui.booklist.adapter.MarginItemDecoration
 import com.shivamkumarjha.bookstore.ui.cart.CartFragment
 import com.shivamkumarjha.bookstore.utility.JsonUtility
 import java.io.File

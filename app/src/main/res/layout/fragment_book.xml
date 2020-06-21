@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/card_view_margin"
-    tools:context=".ui.book.BookFragment">
+    tools:context=".ui.booklist.BookFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/book_recycler_view"

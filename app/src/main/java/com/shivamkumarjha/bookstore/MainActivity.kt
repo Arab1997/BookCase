@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
-import com.shivamkumarjha.bookstore.ui.book.BookFragment
+import com.shivamkumarjha.bookstore.ui.booklist.BookFragment
 
 class MainActivity : AppCompatActivity() {
 

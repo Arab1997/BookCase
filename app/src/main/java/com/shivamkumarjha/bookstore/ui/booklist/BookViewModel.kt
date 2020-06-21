@@ -1,4 +1,4 @@
-package com.shivamkumarjha.bookstore.ui.book
+package com.shivamkumarjha.bookstore.ui.booklist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
