@@ -20,6 +20,7 @@
     <dimen name="card_view_content_margin">4dp</dimen>
     <dimen name="toggle_button_size">40dp</dimen>
     <dimen name="text_size_title">24sp</dimen>
+    <dimen name="text_size_price">20sp</dimen>
     <dimen name="text_size_large">18sp</dimen>
     <dimen name="text_size_normal">16sp</dimen>
     <dimen name="text_size_small">15sp</dimen>

@@ -162,7 +162,7 @@
                         android:text="@string/demo_book_price"
                         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
                         android:textColor="@color/black_color"
-                        android:textSize="@dimen/text_size_title" />
+                        android:textSize="@dimen/text_size_price" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/display_book_text_view_mrp"
