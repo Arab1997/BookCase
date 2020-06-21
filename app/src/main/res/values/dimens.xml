@@ -10,7 +10,6 @@
     <dimen name="view_text_margin">10dp</dimen>
     <dimen name="view_margin_large">16dp</dimen>
     <dimen name="card_view_height">130dp</dimen>
-    <dimen name="review_card_view_height">100dp</dimen>
     <dimen name="card_image_height">120dp</dimen>
     <dimen name="card_image_padding">5dp</dimen>
     <dimen name="card_stroke_radius">6dp</dimen>

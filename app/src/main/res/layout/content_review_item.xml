@@ -1,48 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/card_view_id"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/review_card_view_height"
+    android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/view_margin_large"
     android:layout_marginLeft="@dimen/view_margin_large"
     android:layout_marginTop="@dimen/view_margin"
     android:layout_marginEnd="@dimen/view_margin_large"
-    android:layout_marginRight="@dimen/view_margin_large">
+    android:layout_marginRight="@dimen/view_margin_large"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/review_author_text_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_margin"
+        android:fontFamily="@font/firasans_semibold"
+        android:text="@string/book_category"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_large" />
+
+    <RatingBar
+        android:id="@+id/review_item_rating_bar_id"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_margin"
+        android:isIndicator="true" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/review_detail_text_view_id"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/review_author_text_view_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/view_margin"
-            android:fontFamily="@font/firasans_semibold"
-            android:text="@string/book_category"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-            android:textColor="@color/black_color"
-            android:textSize="@dimen/text_size_large" />
-
-        <RatingBar
-            android:id="@+id/review_item_rating_bar_id"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/view_margin"
-            android:isIndicator="true" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/review_detail_text_view_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/view_margin"
-            android:fontFamily="@font/firasans_regular"
-            android:text="@string/book_detail"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-            android:textColor="@color/blue_grey_800"
-            android:textSize="@dimen/text_size_small" />
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_margin"
+        android:fontFamily="@font/firasans_regular"
+        android:text="@string/book_detail"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:textColor="@color/blue_grey_800"
+        android:textSize="@dimen/text_size_small" />
+</LinearLayout>
