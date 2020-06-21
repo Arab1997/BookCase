@@ -16,6 +16,7 @@ import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookAdapter
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookItemClickListener
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.MarginItemDecoration
 import com.shivamkumarjha.bookstore.ui.cart.CartFragment
+import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBook
 import com.shivamkumarjha.bookstore.utility.JsonUtility
 import java.io.File
 
@@ -70,7 +71,11 @@ class BookFragment : Fragment(), BookItemClickListener {
     }
 
     override fun onBookClick(book: Book) {
-        Toast.makeText(requireContext(), book.title, Toast.LENGTH_SHORT).show()
+        requireActivity().supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, DisplayBook(book))
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onWishClick(book: Book, isChecked: Boolean) {
