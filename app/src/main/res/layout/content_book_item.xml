@@ -56,7 +56,7 @@
                 android:id="@+id/book_text_view_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/view_margin_big"
+                android:layout_marginTop="@dimen/view_margin_large"
                 android:background="@drawable/review_background"
                 android:drawableEnd="@drawable/ic_rating"
                 android:drawableRight="@drawable/ic_rating"
