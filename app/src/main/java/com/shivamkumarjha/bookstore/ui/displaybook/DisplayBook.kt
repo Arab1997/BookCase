@@ -14,8 +14,11 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.ui.displaybook.adapter.ReviewAdapter
 import com.squareup.picasso.Picasso
 
 class DisplayBook(private val book: Book) : Fragment() {
@@ -32,6 +35,8 @@ class DisplayBook(private val book: Book) : Fragment() {
     private lateinit var bookCategory: TextView
     private lateinit var bookDetail: TextView
     private lateinit var wishStatus: ToggleButton
+    private lateinit var reviewAdapter: ReviewAdapter
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -92,9 +97,10 @@ class DisplayBook(private val book: Book) : Fragment() {
         bookMRP.text = "Rs " + book.maximumRetailPrice * 76.25f // Price USD to INR
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         bookDiscount.text = book.discount.toInt().toString() + "% off"
-        bookRating.text = "%.2f".format(book.review.map { it.rating }.average()) // Average rating
         bookCategory.text = book.category
         bookDetail.text = book.detail
+        bookRating.text = "%.2f".format(book.review.map { it.rating }.average()) // Average rating
+        setUpReviewRecyclerView()
 
         // wish toggle
         wishStatus.isChecked = book.inWishList
@@ -131,6 +137,14 @@ class DisplayBook(private val book: Book) : Fragment() {
 
             override fun onClick(p0: View?) {}
         })
+    }
+
+    private fun setUpReviewRecyclerView() {
+        recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.setHasFixedSize(true)
+        reviewAdapter = ReviewAdapter(book.review)
+        recyclerView.adapter = reviewAdapter
     }
 
     private fun backPressDispatcher() {
