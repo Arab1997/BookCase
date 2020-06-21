@@ -14,11 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/view_margin"
-        android:fontFamily="@font/firasans_semibold"
+        android:fontFamily="@font/firasans_regular"
         android:text="@string/book_category"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:textColor="@color/black_color"
-        android:textSize="@dimen/text_size_large" />
+        android:textSize="@dimen/text_size_normal" />
 
     <RatingBar
         android:id="@+id/review_item_rating_bar_id"
