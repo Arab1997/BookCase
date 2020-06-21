@@ -18,6 +18,81 @@ class PopulateBooks {
         return (100 - (price / maximumRetailPrice) * 100)
     }
 
+    private fun getCommonReviews(): ArrayList<Review> {
+        val commonReviews: ArrayList<Review> = ArrayList()
+        commonReviews.add(
+            Review(
+                "Shivam Kumar Jha",
+                4f,
+                "Thanks for sharing."
+            )
+        )
+        commonReviews.add(
+            Review(
+                "Nikhil Jain",
+                5f,
+                "Enjoyed it. Thanks a lot"
+            )
+        )
+        commonReviews.add(
+            Review(
+                "Gunjan Sharma",
+                3f,
+                "Fine book."
+            )
+        )
+        commonReviews.add(
+            Review(
+                "Bruce Wayne",
+                4f,
+                "Somehow I ended up liking this book."
+            )
+        )
+        commonReviews.add(
+            Review(
+                "Thor Odinson",
+                5f,
+                "My new favourite book."
+            )
+        )
+        commonReviews.add(
+            Review(
+                "Lucifer Morningstar",
+                2f,
+                "I did not enjoy it..."
+            )
+        )
+        commonReviews.add(
+            Review(
+                "Damon Salvatore",
+                3f,
+                "I do not understand the point of this book."
+            )
+        )
+        commonReviews.add(
+            Review(
+                "Dianna Zeus",
+                5f,
+                "Great booking. Please keep writing :)"
+            )
+        )
+        commonReviews.add(
+            Review(
+                "Marcus Rashford",
+                5f,
+                "One of the best books I've read lately."
+            )
+        )
+        commonReviews.add(
+            Review(
+                "Anthony Martial",
+                5f,
+                "Wow. Mind blowing!"
+            )
+        )
+        return commonReviews
+    }
+
     fun populate() {
         val reviewList1: ArrayList<Review> = ArrayList()
         reviewList1.add(
@@ -36,6 +111,7 @@ class PopulateBooks {
                 "Time is a slippery thing. Zambreno reckons with the problematic relationship writers have with time."
             )
         )
+        reviewList1.addAll(getCommonReviews())
         val book1 = Book(
             booksCount,
             "Drifts",
@@ -63,6 +139,7 @@ class PopulateBooks {
                 "This is really a wonderful book. I would say it is a “quiet” book, but that’s true only on the surface."
             )
         )
+        reviewList2.addAll(getCommonReviews())
         val book2 = Book(
             booksCount,
             "Days of Distraction",
@@ -90,6 +167,7 @@ class PopulateBooks {
                 "This is another devouring with few bites, finishing at one sit, quick, fast pacing and exciting page-turner!"
             )
         )
+        reviewList3.addAll(getCommonReviews())
         val book3 = Book(
             booksCount,
             "The Apartment",
@@ -115,6 +193,7 @@ class PopulateBooks {
                 "This book keeps me pulled in. The first chapter is curious enough to keep you reading."
             )
         )
+        reviewList4.addAll(getCommonReviews())
         val book4 = Book(
             booksCount,
             "The Bride",
@@ -141,6 +220,7 @@ class PopulateBooks {
                 "I'm always happy to read a new Slater book and this one is filled with secrets, gossip, and lies."
             )
         )
+        reviewList5.addAll(getCommonReviews())
         val book5 = Book(
             booksCount,
             "Little Whispers",
@@ -168,6 +248,7 @@ class PopulateBooks {
                         "Once it is in the top gear, there is no stopping it! A well crafted psychological thriller indeed."
             )
         )
+        reviewList6.addAll(getCommonReviews())
         val book6 = Book(
             booksCount,
             "One Mistake",
@@ -196,6 +277,7 @@ class PopulateBooks {
                         "and spins a story with layers that the reader will discover as the plot progresses."
             )
         )
+        reviewList7.addAll(getCommonReviews())
         val book7 = Book(
             booksCount,
             "The House Guest",
@@ -223,6 +305,7 @@ class PopulateBooks {
                         "so I was jumping for joy to get the chance to review this book."
             )
         )
+        reviewList8.addAll(getCommonReviews())
         val book8 = Book(
             booksCount,
             "The Heatwave",
@@ -250,6 +333,7 @@ class PopulateBooks {
                         "Before this book I used to wish I had a sister. Not anymore."
             )
         )
+        reviewList9.addAll(getCommonReviews())
         val book9 = Book(
             booksCount,
             "Hurry Home",
@@ -277,6 +361,7 @@ class PopulateBooks {
                         "I devoured the first three back-to-back and now I’ve eagerly read each new installment."
             )
         )
+        reviewList10.addAll(getCommonReviews())
         val book10 = Book(
             booksCount,
             "Find Her Alive",
