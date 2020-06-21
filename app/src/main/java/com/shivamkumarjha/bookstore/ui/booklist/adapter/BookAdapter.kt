@@ -23,9 +23,7 @@ class BookAdapter(
         return BookViewHolder(itemView, clickListener)
     }
 
-    override fun getItemCount(): Int {
-        return books.size
-    }
+    override fun getItemCount(): Int = books.size
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         holder.initialize(books[position])
