@@ -1,12 +1,13 @@
 <resources>
     <dimen name="margin_0dp">0dp</dimen>
+    <dimen name="divider_margin">1dp</dimen>
     <dimen name="action_bar_height">48dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="card_view_margin">4dp</dimen>
-    <dimen name="card_view_margin_small">2dp</dimen>
-    <dimen name="card_view_text_margin">10dp</dimen>
-    <dimen name="card_view_margin_big">18dp</dimen>
+    <dimen name="view_margin">4dp</dimen>
+    <dimen name="view_margin_small">2dp</dimen>
+    <dimen name="view_text_margin">10dp</dimen>
+    <dimen name="view_margin_big">18dp</dimen>
     <dimen name="card_view_height">130dp</dimen>
     <dimen name="card_image_height">120dp</dimen>
     <dimen name="card_image_padding">5dp</dimen>
@@ -17,6 +18,7 @@
     <dimen name="fragment_margin">8dp</dimen>
     <dimen name="card_view_content_margin">4dp</dimen>
     <dimen name="toggle_button_size">40dp</dimen>
+    <dimen name="text_size_title">24sp</dimen>
     <dimen name="text_size_large">18sp</dimen>
     <dimen name="text_size_normal">16sp</dimen>
     <dimen name="text_size_small">14sp</dimen>

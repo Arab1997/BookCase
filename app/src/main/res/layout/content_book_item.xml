@@ -4,7 +4,7 @@
     android:id="@+id/card_view_id"
     android:layout_width="match_parent"
     android:layout_height="@dimen/card_view_height"
-    android:layout_margin="@dimen/card_view_margin"
+    android:layout_margin="@dimen/view_margin"
     app:cardCornerRadius="@dimen/card_stroke_radius"
     app:strokeWidth="@dimen/card_stroke_width">
 
@@ -27,8 +27,8 @@
         <LinearLayout
             android:layout_width="@dimen/margin_0dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/card_view_text_margin"
-            android:layout_marginLeft="@dimen/card_view_text_margin"
+            android:layout_marginStart="@dimen/view_text_margin"
+            android:layout_marginLeft="@dimen/view_text_margin"
             android:layout_weight="3.3"
             android:orientation="vertical">
 
@@ -42,7 +42,7 @@
                 android:textColor="@color/black_color"
                 android:textSize="@dimen/text_size_large" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/book_text_view_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,28 +52,28 @@
                 android:textColor="@color/black_color"
                 android:textSize="@dimen/text_size_normal" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/book_text_view_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/card_view_margin_big"
+                android:layout_marginTop="@dimen/view_margin_big"
                 android:background="@drawable/review_background"
                 android:drawableEnd="@drawable/ic_rating"
                 android:drawableRight="@drawable/ic_rating"
-                android:drawablePadding="@dimen/card_view_margin_small"
-                android:padding="@dimen/card_view_margin_small"
+                android:drawablePadding="@dimen/view_margin_small"
+                android:fontFamily="@font/firasans_regular"
+                android:padding="@dimen/view_margin_small"
                 android:text="@string/demo_book_rating"
                 android:textColor="@color/white_color"
-                android:textSize="@dimen/text_size_small"
-                android:textStyle="bold" />
+                android:textSize="@dimen/text_size_small" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/card_view_margin"
+                android:layout_marginTop="@dimen/view_margin"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/book_text_view_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,24 +83,24 @@
                     android:textColor="@color/black_color"
                     android:textSize="@dimen/text_size_large" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/book_text_view_mrp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/card_view_margin"
-                    android:layout_marginLeft="@dimen/card_view_margin"
+                    android:layout_marginStart="@dimen/view_margin"
+                    android:layout_marginLeft="@dimen/view_margin"
                     android:fontFamily="@font/firasans_regular"
                     android:text="@string/demo_book_price"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
                     android:textColor="@color/black_color"
                     android:textSize="@dimen/text_size_normal" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/book_text_view_discount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/card_view_margin"
-                    android:layout_marginLeft="@dimen/card_view_margin"
+                    android:layout_marginStart="@dimen/view_margin"
+                    android:layout_marginLeft="@dimen/view_margin"
                     android:fontFamily="@font/firasans_semibold"
                     android:text="@string/demo_book_price"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
@@ -114,8 +114,8 @@
         <LinearLayout
             android:layout_width="@dimen/margin_0dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/card_view_margin"
-            android:layout_marginRight="@dimen/card_view_margin"
+            android:layout_marginEnd="@dimen/view_margin"
+            android:layout_marginRight="@dimen/view_margin"
             android:layout_weight="1.2"
             android:gravity="end"
             android:orientation="vertical">

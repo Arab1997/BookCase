@@ -6,7 +6,16 @@
 
     <string name="book_name">Book title</string>
     <string name="book_author">Book author</string>
+    <string name="book_description">Book description</string>
+    <string name="book_detail">Book detail</string>
+    <string name="book_category">Book category</string>
     <string name="book_image">Book cover</string>
+    <string name="book_rating">Book rating</string>
+    <string name="book_review">Book review</string>
+    <string name="book_discount">Book discount</string>
+    <string name="book_price">Book price</string>
+    <string name="book_mrp">Book MRP</string>
+    <string name="book_stock">Book stock</string>
     <string name="demo_book_price">$299</string>
     <string name="demo_book_rating">4.5</string>
 
