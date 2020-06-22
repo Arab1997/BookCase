@@ -60,7 +60,7 @@
                     android:id="@+id/image_divider_id"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/divider_margin"
-                    android:layout_marginTop="@dimen/view_margin_large"
+                    android:layout_marginTop="@dimen/view_margin_small"
                     android:background="@color/divider"
                     app:layout_constraintTop_toBottomOf="@id/display_book_view_pager" />
 
