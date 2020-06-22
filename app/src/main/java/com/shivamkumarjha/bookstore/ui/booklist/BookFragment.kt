@@ -14,7 +14,6 @@ import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookAdapter
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookItemClickListener
-import com.shivamkumarjha.bookstore.ui.booklist.adapter.MarginItemDecoration
 import com.shivamkumarjha.bookstore.ui.cart.CartFragment
 import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBook
 import com.shivamkumarjha.bookstore.utility.JsonUtility
@@ -100,9 +99,6 @@ class BookFragment : Fragment(), BookItemClickListener {
     private fun setUpRecyclerView() {
         recyclerView = requireView().findViewById(R.id.book_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.addItemDecoration(
-            MarginItemDecoration(resources.getDimension(R.dimen.action_bar_height).toInt())
-        )
         recyclerView.setHasFixedSize(true)
     }
 
