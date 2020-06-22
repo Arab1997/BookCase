@@ -18,6 +18,11 @@ class PopulateBooks {
         return (100 - (price / maximumRetailPrice) * 100)
     }
 
+    private fun getRandomNumber(start: Int, end: Int): Int {
+        require(start <= end) { "Illegal Argument" }
+        return (Math.random() * (end - start + 1)).toInt() + start
+    }
+
     private fun getCommonReviews(): ArrayList<Review> {
         val commonReviews: ArrayList<Review> = ArrayList()
         commonReviews.add(
@@ -62,34 +67,17 @@ class PopulateBooks {
                 "I did not enjoy it..."
             )
         )
-        commonReviews.add(
-            Review(
-                "Damon Salvatore",
-                3f,
-                "I do not understand the point of this book."
-            )
-        )
-        commonReviews.add(
-            Review(
-                "Dianna Zeus",
-                5f,
-                "Great booking. Please keep writing :)"
-            )
-        )
-        commonReviews.add(
-            Review(
-                "Marcus Rashford",
-                5f,
-                "One of the best books I've read lately."
-            )
-        )
-        commonReviews.add(
-            Review(
-                "Anthony Martial",
-                5f,
-                "Wow. Mind blowing!"
-            )
-        )
+        val loopSize = getRandomNumber(20, 50)
+        for (index in 1 until loopSize) {
+            val randomRating = getRandomNumber(3, 5)
+            val randomReview = if (randomRating == 3)
+                "Fine book"
+            else
+                "Good book"
+            val review =
+                Review("Random user $index", randomRating.toFloat(), randomReview)
+            commonReviews.add(review)
+        }
         return commonReviews
     }
 
