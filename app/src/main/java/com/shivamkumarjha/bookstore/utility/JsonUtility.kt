@@ -15,7 +15,7 @@ class JsonUtility(private val file: File) {
     init {
         val populateBooks = PopulateBooks()
         populateBooks.populate()
-        writeToFile(populateBooks.getBooks())
+        writeBooks(populateBooks.getBooks())
     }
 
     private fun readFromFile(): String? {
@@ -34,7 +34,7 @@ class JsonUtility(private val file: File) {
         return jsonString
     }
 
-    private fun writeToFile(books: ArrayList<Book>) {
+    private fun writeBooks(books: ArrayList<Book>) {
         val data = gson.toJson(books)
         try {
             val outputStreamWriter = OutputStreamWriter(file.outputStream())
