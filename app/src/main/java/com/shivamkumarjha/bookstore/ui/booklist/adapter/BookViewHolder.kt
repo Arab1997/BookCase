@@ -52,7 +52,6 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         bookDiscount.text = book.discount.toInt().toString() + "% off"
         bookRating.text = "%.2f".format(book.review.map { it.rating }.average()) // Average rating
         bookRatingCount.text = "${book.review.size} reviews"
-        wishStatus.isChecked = book.inWishList
         wishStatus.setOnClickListener {
             clickListener.onWishClick(book, wishStatus.isChecked)
         }

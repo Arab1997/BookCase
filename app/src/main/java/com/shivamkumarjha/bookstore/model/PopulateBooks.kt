@@ -120,9 +120,7 @@ class PopulateBooks {
             reviewList1,
             10f,
             14f,
-            getDiscountPercentage(10f, 14f),
-            10,
-            false
+            getDiscountPercentage(10f, 14f)
         )
         addBook(book1)
 
@@ -152,9 +150,7 @@ class PopulateBooks {
             reviewList2,
             12f,
             14f,
-            getDiscountPercentage(12f, 14f),
-            10,
-            true
+            getDiscountPercentage(12f, 14f)
         )
         addBook(book2)
 
@@ -181,9 +177,7 @@ class PopulateBooks {
             reviewList3,
             2f,
             4f,
-            getDiscountPercentage(2f, 4f),
-            20,
-            false
+            getDiscountPercentage(2f, 4f)
         )
         addBook(book3)
 
@@ -211,9 +205,7 @@ class PopulateBooks {
             reviewList4,
             3f,
             4f,
-            getDiscountPercentage(3f, 4f),
-            10,
-            true
+            getDiscountPercentage(3f, 4f)
         )
         addBook(book4)
 
@@ -241,9 +233,7 @@ class PopulateBooks {
             reviewList5,
             4f,
             6f,
-            getDiscountPercentage(4f, 6f),
-            10,
-            false
+            getDiscountPercentage(4f, 6f)
         )
         addBook(book5)
 
@@ -272,9 +262,7 @@ class PopulateBooks {
             reviewList6,
             5f,
             8f,
-            getDiscountPercentage(5f, 8f),
-            10,
-            false
+            getDiscountPercentage(5f, 8f)
         )
         addBook(book6)
 
@@ -304,9 +292,7 @@ class PopulateBooks {
             reviewList7,
             7f,
             10f,
-            getDiscountPercentage(7f, 10f),
-            10,
-            true
+            getDiscountPercentage(7f, 10f)
         )
         addBook(book7)
 
@@ -336,9 +322,7 @@ class PopulateBooks {
             reviewList8,
             8f,
             10f,
-            getDiscountPercentage(8f, 10f),
-            10,
-            false
+            getDiscountPercentage(8f, 10f)
         )
         addBook(book8)
 
@@ -368,9 +352,7 @@ class PopulateBooks {
             reviewList9,
             2f,
             3f,
-            getDiscountPercentage(2f, 3f),
-            10,
-            false
+            getDiscountPercentage(2f, 3f)
         )
         addBook(book9)
 
@@ -400,9 +382,7 @@ class PopulateBooks {
             reviewList10,
             10f,
             12f,
-            getDiscountPercentage(10f, 12f),
-            10,
-            true
+            getDiscountPercentage(10f, 12f)
         )
         addBook(book10)
     }

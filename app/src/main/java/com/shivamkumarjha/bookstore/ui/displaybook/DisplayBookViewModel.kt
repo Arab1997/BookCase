@@ -67,9 +67,4 @@ class DisplayBookViewModel(private val book: Book) : ViewModel() {
         value = book.imageLink
     }
     val imageLink: LiveData<ArrayList<String>> = _imageLink
-
-    private val _wishStatus = MutableLiveData<Boolean>().apply {
-        value = book.inWishList
-    }
-    val wishStatus: LiveData<Boolean> = _wishStatus
 }

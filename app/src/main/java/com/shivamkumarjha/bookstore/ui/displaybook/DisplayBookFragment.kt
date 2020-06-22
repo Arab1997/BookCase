@@ -147,9 +147,6 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
             sliderAdapter = SliderAdapter(requireContext(), it)
             viewPager.adapter = sliderAdapter
         })
-        displayBookViewModel.wishStatus.observe(viewLifecycleOwner, Observer {
-            wishStatus.isChecked = it
-        })
     }
 
     private fun onWishClick(isChecked: Boolean) {
