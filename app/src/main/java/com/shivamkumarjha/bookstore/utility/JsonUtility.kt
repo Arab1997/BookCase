@@ -12,10 +12,10 @@ private const val TAG = "JSONUtility"
 class JsonUtility(private val file: File) {
     private val gson = Gson()
 
-    init {
-        val populateBooks = PopulateBooks()
-        populateBooks.populate()
-        writeBooks(populateBooks.getBooks())
+    private fun fileExists(): Boolean {
+        if (!file.exists())
+            return false
+        return true
     }
 
     private fun readFromFile(): String? {
@@ -46,6 +46,13 @@ class JsonUtility(private val file: File) {
     }
 
     fun getBooks(): ArrayList<Book> {
+        if (!fileExists()) {
+            // Create books JSON
+            val populateBooks = PopulateBooks()
+            populateBooks.populate()
+            writeBooks(populateBooks.getBooks())
+        }
+        // read JSON file storing array of Details object
         val jsonString = readFromFile()
         val detailsTypeToken = object : TypeToken<List<Book>>() {}.type
         return gson.fromJson(jsonString, detailsTypeToken)
