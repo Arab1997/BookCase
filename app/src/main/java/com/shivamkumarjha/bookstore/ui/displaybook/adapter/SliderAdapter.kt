@@ -1,7 +1,6 @@
 package com.shivamkumarjha.bookstore.ui.displaybook.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,6 @@ class SliderAdapter(private val context: Context, private val images: ArrayList<
     override fun getCount(): Int = images.size
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        Log.d("SLIDER", "instantiateItem")
         val imageView: ImageView
         layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view: View = layoutInflater.inflate(R.layout.content_image_item, container, false)

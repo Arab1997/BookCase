@@ -70,10 +70,12 @@ class PopulateBooks {
         val loopSize = getRandomNumber(20, 50)
         for (index in 1 until loopSize) {
             val randomRating = getRandomNumber(3, 5)
-            val randomReview = if (randomRating == 3)
-                "Fine book"
-            else
-                "Good book"
+            val randomReview: String
+            randomReview = when (randomRating) {
+                3 -> "Fine book"
+                4 -> "Good book"
+                else -> "Excellent book"
+            }
             val review =
                 Review("Random user $index", randomRating.toFloat(), randomReview)
             commonReviews.add(review)
@@ -110,7 +112,9 @@ class PopulateBooks {
                     "most daring writers.",
             arrayListOf(
                 "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1578676099l/48585697.jpg",
-                "https://downtown-brooklyn.imgix.net/imgr/DRIFTS-cover-1059x1600.jpg"
+                "https://downtown-brooklyn.imgix.net/imgr/DRIFTS-cover-1059x1600.jpg",
+                "https://pbs.twimg.com/media/EZ1V_D_WAAE6OFn?format=jpg",
+                "https://pbs.twimg.com/media/EYYiqBTXsAE9oMl?format=jpg"
             ),
             "Novel",
             reviewList1,
@@ -140,7 +144,9 @@ class PopulateBooks {
                     "Days of Distraction is an offbeat coming-of-adulthood tale, a touching family story, " +
                     "and a razor-sharp appraisal of our times.",
             arrayListOf(
-                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1561993078l/52973514._SX318_SY475_.jpg"
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1561993078l/52973514._SX318_SY475_.jpg",
+                "https://pbs.twimg.com/media/EAVPiqOXYAA7Loa?format=jpg",
+                "https://pbs.twimg.com/media/EZB94zzXgAEydQH?format=jpg"
             ),
             "Novel",
             reviewList2,
@@ -168,6 +174,7 @@ class PopulateBooks {
             "They say every cloud has a silver lining. . .",
             "Old secrets refuse to stay buried and someone is determined to keep a terrible past, very much alive.",
             arrayListOf(
+                "https://pbs.twimg.com/media/EWj9MAEXkAEBTCR?format=jpg",
                 "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1591095350l/51140631._SX318_.jpg"
             ),
             "Thriller",
@@ -197,7 +204,8 @@ class PopulateBooks {
             "An addictive, clever and suspenseful thriller that will keep you totally absorbed " +
                     "and page turning from the very beginning to the climax",
             arrayListOf(
-                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583096810l/51974210._SY475_.jpg"
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583096810l/51974210._SY475_.jpg",
+                "https://i2.wp.com/onceuponatimebookblog.com/wp-content/uploads/2020/05/F8D0B8A6-1980-4EB7-882B-786CF418029E.png"
             ),
             "Crime",
             reviewList4,
@@ -226,7 +234,8 @@ class PopulateBooks {
             "Janey faces an impossible choice. Stay quiet about what she saw that terrible day. " +
                     "Or speak up, and destroy the family she has worked so hard to protect…",
             arrayListOf(
-                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1582557211l/51664923._SY475_.jpg"
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1582557211l/51664923._SY475_.jpg",
+                "https://orlandobooksblog.files.wordpress.com/2020/06/1f438e02-633d-428e-b9ed-018218b85016.jpeg"
             ),
             "Thriller",
             reviewList5,
@@ -256,7 +265,8 @@ class PopulateBooks {
             "This year’s most gripping psychological thriller" +
                     " – perfect for fans of My Lovely Wife, The Girl on the Train, and Something in the Water.",
             arrayListOf(
-                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587990821l/51060039._SY475_.jpg"
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587990821l/51060039._SY475_.jpg",
+                "https://i1.wp.com/onceuponatimebookblog.com/wp-content/uploads/2020/05/40F25859-CCC7-48F3-B078-D71B97AA7338.png"
             ),
             "Novel",
             reviewList6,
@@ -287,7 +297,8 @@ class PopulateBooks {
             "The House Guest is the chilling new psychological thriller from the three million " +
                     "copy bestselling author of Here to Stay and Follow You Home.",
             arrayListOf(
-                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1584383149l/49073380._SY475_.jpg"
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1584383149l/49073380._SY475_.jpg",
+                "https://pbs.twimg.com/media/EZkv-ClWoAATJw2?format=jpg"
             ),
             "Thriller",
             reviewList7,
@@ -317,7 +328,9 @@ class PopulateBooks {
             "One summer. One stranger. One killer…\nTwo bad things happened that summer:\n" +
                     "A stranger arrived. And the first girl disappeared.",
             arrayListOf(
-                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1589285385l/49082711.jpg"
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1589285385l/49082711.jpg",
+                "https://pbs.twimg.com/media/EZW6huVXsAABkiK?format=jpg",
+                "https://pbs.twimg.com/media/ET8oCerXkAEZM9M?format=jpg"
             ),
             "Crime",
             reviewList8,
@@ -347,7 +360,9 @@ class PopulateBooks {
             "Hurry Home is a tantalizing reflection of the chain-and-shackles relationship " +
                     "between sisters that asks: what lines wouldn't you cross for your own?",
             arrayListOf(
-                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1571732733l/48552797._SY475_.jpg"
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1571732733l/48552797._SY475_.jpg",
+                "https://pbs.twimg.com/media/EakQ7DSWAAgBm6f?format=jpg",
+                "https://pbs.twimg.com/media/ETjhPx0WsAEImGz?format=jpg"
             ),
             "Thriller",
             reviewList9,
@@ -378,7 +393,8 @@ class PopulateBooks {
                     "in the heat of an argument three weeks ago. So, when human remains are found at " +
                     "the remote hunting cabin where Trinity was last seen, Josie can only assume the worst.",
             arrayListOf(
-                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1579807468l/50636220._SY475_.jpg"
+                "https://pbs.twimg.com/media/EVtP3zDWoAAB9Cv?format=jpg",
+                "https://pbs.twimg.com/media/EVo_745XYAALTmC?format=jpg"
             ),
             "Novel",
             reviewList10,
