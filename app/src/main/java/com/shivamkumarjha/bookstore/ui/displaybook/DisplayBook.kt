@@ -1,6 +1,5 @@
 package com.shivamkumarjha.bookstore.ui.displaybook
 
-import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,6 +16,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
@@ -43,6 +44,7 @@ class DisplayBook(private val book: Book) : Fragment() {
     private lateinit var sliderAdapter: SliderAdapter
     private lateinit var reviewAdapter: ReviewAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var displayBookViewModel: DisplayBookViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,8 +55,10 @@ class DisplayBook(private val book: Book) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initializer()
         setUpToolBar()
         backPressDispatcher()
+        setUpViewModel()
         setUpViews()
     }
 
@@ -68,16 +72,7 @@ class DisplayBook(private val book: Book) : Fragment() {
         (activity as AppCompatActivity).supportActionBar!!.show()
     }
 
-    private fun setUpToolBar() {
-        toolbar = requireView().findViewById(R.id.display_book_toolbar_id)
-        toolbar.title = book.title
-        toolbar.setNavigationIcon(R.drawable.ic_back)
-        toolbar.setNavigationOnClickListener { exitFragment() }
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun setUpViews() {
-        // init view items
+    private fun initializer() {
         bookTitle = requireView().findViewById(R.id.display_book_title_text_view_id)
         bookAuthor = requireView().findViewById(R.id.display_book_author_text_view_id)
         bookDescription = requireView().findViewById(R.id.display_book_description_text_view_id)
@@ -90,29 +85,73 @@ class DisplayBook(private val book: Book) : Fragment() {
         bookDetail = requireView().findViewById(R.id.display_book_detail_text_view_id)
         wishStatus = requireView().findViewById(R.id.display_book_toggle_wish_id)
         viewPager = requireView().findViewById(R.id.display_book_view_pager)
+        displayBookViewModel =
+            ViewModelProvider(this, DisplayBookViewModelFactory(book))
+                .get(DisplayBookViewModel::class.java)
+    }
 
-        // slider adapter
-        sliderAdapter = SliderAdapter(requireContext(), book.imageLink)
-        viewPager.adapter = sliderAdapter
+    private fun setUpToolBar() {
+        toolbar = requireView().findViewById(R.id.display_book_toolbar_id)
+        toolbar.title = book.title
+        toolbar.setNavigationIcon(R.drawable.ic_back)
+        toolbar.setNavigationOnClickListener { exitFragment() }
+    }
 
-        // set value
-        bookTitle.text = book.title
-        bookAuthor.text = "By ${book.author}"
-        bookDescription.text = book.description
-        bookPrice.text = "Rs " + book.price * 76.25f // Price USD to INR
-        bookMRP.text = "Rs " + book.maximumRetailPrice * 76.25f // Price USD to INR
+    private fun setUpViews() {
+        // Strike MRP
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-        bookDiscount.text = book.discount.toInt().toString() + "% off"
-        bookCategory.text = book.category
-        bookDetail.text = book.detail
-        bookRating.text = "%.2f".format(book.review.map { it.rating }.average()) // Average rating
-        bookRatingCount.text = "${book.review.size} reviews"
-        setUpReviewRecyclerView()
-
         // wish toggle
         wishStatus.isChecked = book.inWishList
         wishToggleAnimation()
         wishStatus.setOnClickListener { onWishClick(wishStatus.isChecked) }
+        // review recycler view
+        recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.setHasFixedSize(true)
+    }
+
+    private fun setUpViewModel() {
+        displayBookViewModel.bookTitle.observe(viewLifecycleOwner, Observer {
+            bookTitle.text = it
+        })
+        displayBookViewModel.bookAuthor.observe(viewLifecycleOwner, Observer {
+            bookAuthor.text = it
+        })
+        displayBookViewModel.bookDescription.observe(viewLifecycleOwner, Observer {
+            bookDescription.text = it
+        })
+        displayBookViewModel.bookPrice.observe(viewLifecycleOwner, Observer {
+            bookPrice.text = it
+        })
+        displayBookViewModel.bookMRP.observe(viewLifecycleOwner, Observer {
+            bookMRP.text = it
+        })
+        displayBookViewModel.bookDiscount.observe(viewLifecycleOwner, Observer {
+            bookDiscount.text = it
+        })
+        displayBookViewModel.bookCategory.observe(viewLifecycleOwner, Observer {
+            bookCategory.text = it
+        })
+        displayBookViewModel.bookDetail.observe(viewLifecycleOwner, Observer {
+            bookDetail.text = it
+        })
+        displayBookViewModel.bookRating.observe(viewLifecycleOwner, Observer {
+            bookRating.text = it
+        })
+        displayBookViewModel.bookRatingCount.observe(viewLifecycleOwner, Observer {
+            bookRatingCount.text = it
+        })
+        displayBookViewModel.bookReview.observe(viewLifecycleOwner, Observer {
+            reviewAdapter = ReviewAdapter(it)
+            recyclerView.adapter = reviewAdapter
+        })
+        displayBookViewModel.imageLink.observe(viewLifecycleOwner, Observer {
+            sliderAdapter = SliderAdapter(requireContext(), it)
+            viewPager.adapter = sliderAdapter
+        })
+        displayBookViewModel.wishStatus.observe(viewLifecycleOwner, Observer {
+            wishStatus.isChecked = it
+        })
     }
 
     private fun onWishClick(isChecked: Boolean) {
@@ -144,14 +183,6 @@ class DisplayBook(private val book: Book) : Fragment() {
 
             override fun onClick(p0: View?) {}
         })
-    }
-
-    private fun setUpReviewRecyclerView() {
-        recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.setHasFixedSize(true)
-        reviewAdapter = ReviewAdapter(book.review)
-        recyclerView.adapter = reviewAdapter
     }
 
     private fun backPressDispatcher() {
