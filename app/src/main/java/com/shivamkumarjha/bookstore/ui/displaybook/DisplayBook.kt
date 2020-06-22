@@ -56,10 +56,10 @@ class DisplayBook(private val book: Book) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializer()
-        setUpToolBar()
         backPressDispatcher()
-        setUpViewModel()
+        setUpToolBar()
         setUpViews()
+        setUpViewModel()
     }
 
     override fun onResume() {
@@ -73,6 +73,7 @@ class DisplayBook(private val book: Book) : Fragment() {
     }
 
     private fun initializer() {
+        toolbar = requireView().findViewById(R.id.display_book_toolbar_id)
         bookTitle = requireView().findViewById(R.id.display_book_title_text_view_id)
         bookAuthor = requireView().findViewById(R.id.display_book_author_text_view_id)
         bookDescription = requireView().findViewById(R.id.display_book_description_text_view_id)
@@ -85,13 +86,12 @@ class DisplayBook(private val book: Book) : Fragment() {
         bookDetail = requireView().findViewById(R.id.display_book_detail_text_view_id)
         wishStatus = requireView().findViewById(R.id.display_book_toggle_wish_id)
         viewPager = requireView().findViewById(R.id.display_book_view_pager)
-        displayBookViewModel =
-            ViewModelProvider(this, DisplayBookViewModelFactory(book))
-                .get(DisplayBookViewModel::class.java)
+        recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
+        displayBookViewModel = ViewModelProvider(this, DisplayBookViewModelFactory(book))
+            .get(DisplayBookViewModel::class.java)
     }
 
     private fun setUpToolBar() {
-        toolbar = requireView().findViewById(R.id.display_book_toolbar_id)
         toolbar.title = book.title
         toolbar.setNavigationIcon(R.drawable.ic_back)
         toolbar.setNavigationOnClickListener { exitFragment() }
@@ -101,11 +101,9 @@ class DisplayBook(private val book: Book) : Fragment() {
         // Strike MRP
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         // wish toggle
-        wishStatus.isChecked = book.inWishList
         wishToggleAnimation()
         wishStatus.setOnClickListener { onWishClick(wishStatus.isChecked) }
         // review recycler view
-        recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
     }

@@ -90,7 +90,7 @@ class BookFragment : Fragment(), BookItemClickListener {
         val jsonUtility = JsonUtility(booksFile)
         bookViewModel = ViewModelProvider(this, BookViewModelFactory(jsonUtility))
             .get(BookViewModel::class.java)
-        bookViewModel.getBooks().observe(requireActivity(), Observer { books ->
+        bookViewModel.getBooks.observe(requireActivity(), Observer { books ->
             bookAdapter = BookAdapter(books, this)
             recyclerView.adapter = bookAdapter
         })
