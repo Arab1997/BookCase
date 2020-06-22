@@ -9,22 +9,25 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.view.animation.ScaleAnimation
-import android.widget.*
+import android.widget.CompoundButton
+import android.widget.TextView
+import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.ReviewAdapter
-import com.squareup.picasso.Picasso
+import com.shivamkumarjha.bookstore.ui.displaybook.adapter.SliderAdapter
 
 class DisplayBook(private val book: Book) : Fragment() {
 
     private lateinit var toolbar: Toolbar
-    private lateinit var bookImage: ImageView
     private lateinit var bookTitle: TextView
     private lateinit var bookAuthor: TextView
     private lateinit var bookDescription: TextView
@@ -36,6 +39,8 @@ class DisplayBook(private val book: Book) : Fragment() {
     private lateinit var bookCategory: TextView
     private lateinit var bookDetail: TextView
     private lateinit var wishStatus: ToggleButton
+    private lateinit var viewPager: ViewPager
+    private lateinit var sliderAdapter: SliderAdapter
     private lateinit var reviewAdapter: ReviewAdapter
     private lateinit var recyclerView: RecyclerView
 
@@ -73,7 +78,6 @@ class DisplayBook(private val book: Book) : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun setUpViews() {
         // init view items
-        bookImage = requireView().findViewById(R.id.display_book_image)
         bookTitle = requireView().findViewById(R.id.display_book_title_text_view_id)
         bookAuthor = requireView().findViewById(R.id.display_book_author_text_view_id)
         bookDescription = requireView().findViewById(R.id.display_book_description_text_view_id)
@@ -85,13 +89,13 @@ class DisplayBook(private val book: Book) : Fragment() {
         bookCategory = requireView().findViewById(R.id.display_book_category_text_view_id)
         bookDetail = requireView().findViewById(R.id.display_book_detail_text_view_id)
         wishStatus = requireView().findViewById(R.id.display_book_toggle_wish_id)
+        viewPager = requireView().findViewById(R.id.display_book_view_pager)
+
+        // slider adapter
+        sliderAdapter = SliderAdapter(requireContext(), arrayListOf(book.imageLink))
+        viewPager.adapter = sliderAdapter
 
         // set value
-        Picasso.get().load(book.imageLink)
-            .resize(500, 0).centerCrop()
-            .placeholder(R.mipmap.ic_launcher)
-            .error(R.mipmap.ic_launcher)
-            .into(bookImage)
         bookTitle.text = book.title
         bookAuthor.text = "By ${book.author}"
         bookDescription.text = book.description
