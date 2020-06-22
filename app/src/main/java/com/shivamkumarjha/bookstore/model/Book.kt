@@ -6,7 +6,7 @@ data class Book(
     val author: String,
     val description: String,
     val detail: String,
-    val imageLink: String,
+    val imageLink: ArrayList<String>,
     val category: String,
     val review: ArrayList<Review>,
     val price: Float,

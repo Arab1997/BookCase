@@ -38,7 +38,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         this.book = book
 
         // Load book image from URL
-        Picasso.get().load(book.imageLink).fit().centerCrop()
+        Picasso.get().load(book.imageLink[0]).fit().centerCrop()
             .placeholder(R.mipmap.ic_launcher)
             .error(R.mipmap.ic_launcher)
             .into(bookImage)

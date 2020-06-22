@@ -92,7 +92,7 @@ class DisplayBook(private val book: Book) : Fragment() {
         viewPager = requireView().findViewById(R.id.display_book_view_pager)
 
         // slider adapter
-        sliderAdapter = SliderAdapter(requireContext(), arrayListOf(book.imageLink))
+        sliderAdapter = SliderAdapter(requireContext(), book.imageLink)
         viewPager.adapter = sliderAdapter
 
         // set value

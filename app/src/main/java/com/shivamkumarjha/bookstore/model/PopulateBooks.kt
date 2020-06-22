@@ -108,7 +108,10 @@ class PopulateBooks {
             "A story of artistic ambition, personal crisis, and the possibilities and " +
                     "failures of literature, Drifts is a dramatic step forward for one of our " +
                     "most daring writers.",
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1578676099l/48585697.jpg",
+            arrayListOf(
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1578676099l/48585697.jpg",
+                "https://downtown-brooklyn.imgix.net/imgr/DRIFTS-cover-1059x1600.jpg"
+            ),
             "Novel",
             reviewList1,
             10f,
@@ -136,7 +139,9 @@ class PopulateBooks {
             "Equal parts tender and humorous, and told in spare but powerful prose, " +
                     "Days of Distraction is an offbeat coming-of-adulthood tale, a touching family story, " +
                     "and a razor-sharp appraisal of our times.",
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1561993078l/52973514._SX318_SY475_.jpg",
+            arrayListOf(
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1561993078l/52973514._SX318_SY475_.jpg"
+            ),
             "Novel",
             reviewList2,
             12f,
@@ -162,7 +167,9 @@ class PopulateBooks {
             "K.L. Slater",
             "They say every cloud has a silver lining. . .",
             "Old secrets refuse to stay buried and someone is determined to keep a terrible past, very much alive.",
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1591095350l/51140631._SX318_.jpg",
+            arrayListOf(
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1591095350l/51140631._SX318_.jpg"
+            ),
             "Thriller",
             reviewList3,
             2f,
@@ -189,7 +196,9 @@ class PopulateBooks {
             "The moment Joanna told me she was engaged, I had this awful feeling that something was wrong.",
             "An addictive, clever and suspenseful thriller that will keep you totally absorbed " +
                     "and page turning from the very beginning to the climax",
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583096810l/51974210._SY475_.jpg",
+            arrayListOf(
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583096810l/51974210._SY475_.jpg"
+            ),
             "Crime",
             reviewList4,
             3f,
@@ -216,7 +225,9 @@ class PopulateBooks {
             "You shared a secret with the wrong person.",
             "Janey faces an impossible choice. Stay quiet about what she saw that terrible day. " +
                     "Or speak up, and destroy the family she has worked so hard to protect…",
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1582557211l/51664923._SY475_.jpg",
+            arrayListOf(
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1582557211l/51664923._SY475_.jpg"
+            ),
             "Thriller",
             reviewList5,
             4f,
@@ -244,7 +255,9 @@ class PopulateBooks {
             "How far would you go to protect your happy home?",
             "This year’s most gripping psychological thriller" +
                     " – perfect for fans of My Lovely Wife, The Girl on the Train, and Something in the Water.",
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587990821l/51060039._SY475_.jpg",
+            arrayListOf(
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587990821l/51060039._SY475_.jpg"
+            ),
             "Novel",
             reviewList6,
             5f,
@@ -273,7 +286,9 @@ class PopulateBooks {
             "A perfect summer. A perfect stranger. A perfect nightmare.",
             "The House Guest is the chilling new psychological thriller from the three million " +
                     "copy bestselling author of Here to Stay and Follow You Home.",
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1584383149l/49073380._SY475_.jpg",
+            arrayListOf(
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1584383149l/49073380._SY475_.jpg"
+            ),
             "Thriller",
             reviewList7,
             7f,
@@ -301,7 +316,9 @@ class PopulateBooks {
             "The heatwave is back. And so is the killer.",
             "One summer. One stranger. One killer…\nTwo bad things happened that summer:\n" +
                     "A stranger arrived. And the first girl disappeared.",
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1589285385l/49082711.jpg",
+            arrayListOf(
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1589285385l/49082711.jpg"
+            ),
             "Crime",
             reviewList8,
             8f,
@@ -329,7 +346,9 @@ class PopulateBooks {
             "Blood is thicker than water... And it could cost you everything.",
             "Hurry Home is a tantalizing reflection of the chain-and-shackles relationship " +
                     "between sisters that asks: what lines wouldn't you cross for your own?",
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1571732733l/48552797._SY475_.jpg",
+            arrayListOf(
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1571732733l/48552797._SY475_.jpg"
+            ),
             "Thriller",
             reviewList9,
             2f,
@@ -358,7 +377,9 @@ class PopulateBooks {
             "Detective Josie Quinn hasn’t heard from her sister since Trinity stormed out of the house " +
                     "in the heat of an argument three weeks ago. So, when human remains are found at " +
                     "the remote hunting cabin where Trinity was last seen, Josie can only assume the worst.",
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1579807468l/50636220._SY475_.jpg",
+            arrayListOf(
+                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1579807468l/50636220._SY475_.jpg"
+            ),
             "Novel",
             reviewList10,
             10f,
