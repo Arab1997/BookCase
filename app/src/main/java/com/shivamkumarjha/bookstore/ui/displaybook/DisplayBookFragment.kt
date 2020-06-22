@@ -26,7 +26,7 @@ import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.ReviewAdapter
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.SliderAdapter
 
-class DisplayBook(private val book: Book) : Fragment() {
+class DisplayBookFragment(private val book: Book) : Fragment() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var bookTitle: TextView

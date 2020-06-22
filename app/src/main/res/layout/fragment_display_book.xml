@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.displaybook.DisplayBook">
+    tools:context=".ui.displaybook.DisplayBookFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

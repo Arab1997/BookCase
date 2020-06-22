@@ -15,13 +15,13 @@ import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookAdapter
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookItemClickListener
 import com.shivamkumarjha.bookstore.ui.cart.CartFragment
-import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBook
+import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBookFragment
 import com.shivamkumarjha.bookstore.utility.JsonUtility
 import java.io.File
 
-class BookFragment : Fragment(), BookItemClickListener {
+class BookListFragment : Fragment(), BookItemClickListener {
 
-    private lateinit var bookViewModel: BookViewModel
+    private lateinit var bookListViewModel: BookListViewModel
     private lateinit var bookAdapter: BookAdapter
     private lateinit var recyclerView: RecyclerView
 
@@ -72,7 +72,7 @@ class BookFragment : Fragment(), BookItemClickListener {
     override fun onBookClick(book: Book) {
         requireActivity().supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .replace(R.id.fragment_holder, DisplayBook(book))
+            .replace(R.id.fragment_holder, DisplayBookFragment(book))
             .addToBackStack(null)
             .commit()
     }
@@ -88,9 +88,9 @@ class BookFragment : Fragment(), BookItemClickListener {
     private fun setUpViewModel() {
         val booksFile = File(requireActivity().filesDir, "Books.json")
         val jsonUtility = JsonUtility(booksFile)
-        bookViewModel = ViewModelProvider(this, BookViewModelFactory(jsonUtility))
-            .get(BookViewModel::class.java)
-        bookViewModel.getBooks.observe(requireActivity(), Observer { books ->
+        bookListViewModel = ViewModelProvider(this, BookListViewModelFactory(jsonUtility))
+            .get(BookListViewModel::class.java)
+        bookListViewModel.getBooks.observe(requireActivity(), Observer { books ->
             bookAdapter = BookAdapter(books, this)
             recyclerView.adapter = bookAdapter
         })

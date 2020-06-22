@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.utility.JsonUtility
 
-class BookViewModel(private val jsonUtility: JsonUtility) : ViewModel() {
+class BookListViewModel(private val jsonUtility: JsonUtility) : ViewModel() {
     private var _getBooks = MutableLiveData<ArrayList<Book>>().apply {
         value = jsonUtility.getBooks()
     }

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
-import com.shivamkumarjha.bookstore.ui.booklist.BookFragment
+import com.shivamkumarjha.bookstore.ui.booklist.BookListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private fun callBookFragment() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .replace(R.id.fragment_holder, BookFragment())
+            .replace(R.id.fragment_holder, BookListFragment())
             .commit()
     }
 }
