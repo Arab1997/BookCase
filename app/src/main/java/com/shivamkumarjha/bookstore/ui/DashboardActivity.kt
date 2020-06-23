@@ -35,10 +35,8 @@ class DashboardActivity : AppCompatActivity() {
         val bundle = intent.getBundleExtra("bundle")
         val loggedInUserView = bundle?.getParcelable<LoggedInUserView>("loggedInUserView")
 
-        if (AppPreference(this).getIsNewLogin()) {
+        if (loggedInUserView != null)
             Toast.makeText(this, "Welcome " + loggedInUserView?.name, Toast.LENGTH_SHORT).show()
-            AppPreference(this).setIsNewLogin(false)
-        }
         return loggedInUserView
     }
 
