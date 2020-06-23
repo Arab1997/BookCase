@@ -39,4 +39,10 @@ class UserRepository(private val file: File) {
         users.add(user)
         writeUsers(users)
     }
+
+    fun checkIfEmailExists(email: String): Boolean {
+        if (getUsers().any { it.email == email })
+            return false
+        return true
+    }
 }

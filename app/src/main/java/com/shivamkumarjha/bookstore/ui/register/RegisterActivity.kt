@@ -69,6 +69,8 @@ class RegisterActivity : AppCompatActivity() {
                 nameEditText.error = getString(registerState.nameError)
             if (registerState.emailError != null)
                 emailEditText.error = getString(registerState.emailError)
+            if (registerState.duplicateEmailError != null)
+                emailEditText.error = getString(registerState.duplicateEmailError)
             if (registerState.passwordError != null)
                 passwordEditText.error = getString(registerState.passwordError)
             if (registerState.verifyPasswordError != null)

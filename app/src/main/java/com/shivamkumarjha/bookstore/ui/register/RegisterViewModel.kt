@@ -26,6 +26,11 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
                 RegisterFormState(
                     emailError = R.string.invalid_email, isDataValid = false
                 )
+        } else if (!userRepository.checkIfEmailExists(email)) {
+            _registerForm.value =
+                RegisterFormState(
+                    duplicateEmailError = R.string.invalid_email_registered, isDataValid = false
+                )
         } else if (!registerValidator.isPasswordValid(password)) {
             _registerForm.value =
                 RegisterFormState(
