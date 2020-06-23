@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.address.AddressFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="@dimen/margin_0dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/address_toolbar_id"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:subtitleTextAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+                app:titleTextAppearance="@android:style/TextAppearance.DeviceDefault.WindowTitle" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/address_constraint_layout_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/address_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/view_margin_larger"
+                    android:fontFamily="@font/firasans_semibold"
+                    android:gravity="center"
+                    android:text="@string/add_address"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                    android:textSize="@dimen/text_size_large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/address_mobile_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/margin_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/view_margin_large"
+                    android:layout_marginTop="@dimen/view_margin_large"
+                    android:layout_marginEnd="@dimen/view_margin_large"
+                    android:autofillHints="@string/prompt_mobile"
+                    android:hint="@string/prompt_mobile"
+                    android:selectAllOnFocus="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/address_text_view">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/address_mobile_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/address_flat_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/margin_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/view_margin_large"
+                    android:layout_marginTop="@dimen/view_margin_small"
+                    android:layout_marginEnd="@dimen/view_margin_large"
+                    android:autofillHints="@string/prompt_flat"
+                    android:hint="@string/prompt_flat"
+                    android:selectAllOnFocus="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/address_mobile_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/address_flat_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/address_street_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/margin_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/view_margin_large"
+                    android:layout_marginTop="@dimen/view_margin_small"
+                    android:layout_marginEnd="@dimen/view_margin_large"
+                    android:autofillHints="@string/prompt_street"
+                    android:hint="@string/prompt_street"
+                    android:selectAllOnFocus="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/address_flat_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/address_street_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/address_city_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/margin_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/view_margin_large"
+                    android:layout_marginTop="@dimen/view_margin_small"
+                    android:layout_marginEnd="@dimen/view_margin_large"
+                    android:autofillHints="@string/prompt_city"
+                    android:hint="@string/prompt_city"
+                    android:selectAllOnFocus="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/address_street_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/address_city_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/address_state_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/margin_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/view_margin_large"
+                    android:layout_marginTop="@dimen/view_margin_small"
+                    android:layout_marginEnd="@dimen/view_margin_large"
+                    android:autofillHints="@string/prompt_state"
+                    android:hint="@string/prompt_state"
+                    android:selectAllOnFocus="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/address_city_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/address_state_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/address_pin_code_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/margin_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/view_margin_large"
+                    android:layout_marginTop="@dimen/view_margin_small"
+                    android:layout_marginEnd="@dimen/view_margin_large"
+                    android:autofillHints="@string/prompt_pinCode"
+                    android:hint="@string/prompt_pinCode"
+                    android:selectAllOnFocus="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/address_state_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/address_pin_code_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/register_submit_id"
+                    android:layout_width="@dimen/margin_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/view_margin_large"
+                    android:layout_marginTop="@dimen/view_margin_large"
+                    android:layout_marginEnd="@dimen/view_margin_large"
+                    android:background="@drawable/button_background"
+                    android:enabled="false"
+                    android:text="@string/prompt_submit"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/address_pin_code_layout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</FrameLayout>

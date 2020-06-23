@@ -1,6 +1,7 @@
 package com.shivamkumarjha.bookstore.model
 
 data class Address(
+    val mobile: Int,
     val flat: String,
     val street: String,
     val city: String,

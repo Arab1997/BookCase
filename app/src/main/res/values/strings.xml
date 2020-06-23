@@ -51,10 +51,16 @@
     <string name="invalid_password_verify">Password do not match</string>
     <string name="login_failed">"Login failed"</string>
 
+    <string name="add_address">Add address</string>
+    <string name="prompt_mobile">Mobile</string>
+    <string name="prompt_flat">Flat</string>
+    <string name="prompt_street">Street</string>
+    <string name="prompt_city">City</string>
+    <string name="prompt_state">State</string>
+    <string name="prompt_pinCode">Pin code</string>
+
     <string name="file_books">Books.json</string>
     <string name="file_loggedInUser">LoggedInUser.json</string>
     <string name="file_users">Users.json</string>
     <string name="userId">userId</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

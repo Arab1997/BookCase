@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/register_text_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,9 +43,9 @@
                 android:fontFamily="@font/pacifico"
                 android:gravity="center"
                 android:text="@string/action_register"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
                 android:textColor="@color/white_color"
                 android:textSize="@dimen/text_size_title"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -156,7 +156,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/register_submit_id"
                 android:layout_width="@dimen/margin_0dp"
                 android:layout_height="wrap_content"
