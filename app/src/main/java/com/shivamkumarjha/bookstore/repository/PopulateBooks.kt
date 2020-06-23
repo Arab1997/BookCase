@@ -1,4 +1,7 @@
-package com.shivamkumarjha.bookstore.model
+package com.shivamkumarjha.bookstore.repository
+
+import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.model.Review
 
 class PopulateBooks {
 
@@ -77,7 +80,11 @@ class PopulateBooks {
                 else -> "Excellent book"
             }
             val review =
-                Review("Random user $index", randomRating.toFloat(), randomReview)
+                Review(
+                    "Random user $index",
+                    randomRating.toFloat(),
+                    randomReview
+                )
             commonReviews.add(review)
         }
         return commonReviews

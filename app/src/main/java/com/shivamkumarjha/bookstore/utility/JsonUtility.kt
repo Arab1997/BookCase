@@ -4,7 +4,7 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.shivamkumarjha.bookstore.model.Book
-import com.shivamkumarjha.bookstore.model.PopulateBooks
+import com.shivamkumarjha.bookstore.repository.PopulateBooks
 import java.io.*
 
 private const val TAG = "JSONUtility"
@@ -48,7 +48,8 @@ class JsonUtility(private val file: File) {
     fun getBooks(): ArrayList<Book> {
         if (!fileExists()) {
             // Create books JSON
-            val populateBooks = PopulateBooks()
+            val populateBooks =
+                PopulateBooks()
             populateBooks.populate()
             writeBooks(populateBooks.getBooks())
         }
