@@ -1,12 +1,12 @@
-package com.shivamkumarjha.bookstore.ui
+package com.shivamkumarjha.bookstore.ui.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.shivamkumarjha.bookstore.R
 
-class LoginActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_register)
     }
 }
