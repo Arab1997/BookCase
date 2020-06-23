@@ -1,12 +1,13 @@
-package com.shivamkumarjha.bookstore
+package com.shivamkumarjha.bookstore.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
+import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.ui.booklist.BookListFragment
 
-class MainActivity : AppCompatActivity() {
+class DashboardActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
 
