@@ -2,7 +2,6 @@ package com.shivamkumarjha.bookstore.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -42,7 +41,6 @@ class DashboardActivity : AppCompatActivity() {
         if (loggedInUserView != null) {
             AppPreference(this).setUserEmail(loggedInUserView.email)
             AppPreference(this).setUserName(loggedInUserView.name)
-            Toast.makeText(this, "Welcome " + loggedInUserView.name, Toast.LENGTH_SHORT).show()
             return loggedInUserView
         }
         return LoggedInUserView(

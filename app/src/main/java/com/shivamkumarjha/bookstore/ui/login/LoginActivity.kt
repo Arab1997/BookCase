@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
@@ -72,8 +73,9 @@ class LoginActivity : AppCompatActivity() {
                 passwordEditText.error = getString(loginResult.error)
             }
             if (loginResult.success != null) {
-                // Store preferences
                 AppPreference(this@LoginActivity).setSignIn(true)
+                Toast.makeText(this, "Welcome " + loginResult.success.name, Toast.LENGTH_SHORT)
+                    .show()
 
                 // Start Dashboard activity & pass LoggedInUser
                 val intent = Intent(this, DashboardActivity::class.java)
