@@ -24,7 +24,7 @@ class UserRepository(private val file: File) {
         }
     }
 
-    fun getUsers(): ArrayList<User> {
+    private fun getUsers(): ArrayList<User> {
         if (!commonFileRepository.fileExists()) {
             return arrayListOf()
         }

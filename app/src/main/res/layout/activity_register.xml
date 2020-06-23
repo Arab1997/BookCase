@@ -40,6 +40,7 @@
                 android:layout_marginStart="@dimen/view_margin_large"
                 android:layout_marginTop="@dimen/view_margin_larger"
                 android:layout_marginEnd="@dimen/view_margin_large"
+                android:fontFamily="@font/pacifico"
                 android:gravity="center"
                 android:text="@string/action_register"
                 android:textColor="@color/white_color"
