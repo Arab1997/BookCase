@@ -1,6 +1,5 @@
 package com.shivamkumarjha.bookstore.ui.displaybook.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.shivamkumarjha.bookstore.R
 import com.squareup.picasso.Picasso
 
-class SliderAdapter(private val context: Context, private val images: ArrayList<String>) :
+class SliderAdapter(private val images: ArrayList<String>) :
     PagerAdapter() {
 
     private lateinit var layoutInflater: LayoutInflater
@@ -21,12 +20,10 @@ class SliderAdapter(private val context: Context, private val images: ArrayList<
     override fun getCount(): Int = images.size
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val imageView: ImageView
-        layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        layoutInflater = LayoutInflater.from(container.context)
         val view: View = layoutInflater.inflate(R.layout.content_image_item, container, false)
-        imageView = view.findViewById(R.id.slider_image_view)
+        val imageView: ImageView = view.findViewById(R.id.slider_image_view)
         Picasso.get().load(images[position])
-            .resize(500, 0).centerCrop()
             .placeholder(R.mipmap.ic_launcher)
             .error(R.mipmap.ic_launcher)
             .into(imageView)

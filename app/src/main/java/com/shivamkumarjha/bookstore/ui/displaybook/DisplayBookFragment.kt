@@ -144,7 +144,7 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
             recyclerView.adapter = reviewAdapter
         })
         displayBookViewModel.imageLink.observe(viewLifecycleOwner, Observer {
-            sliderAdapter = SliderAdapter(requireContext(), it)
+            sliderAdapter = SliderAdapter(it)
             viewPager.adapter = sliderAdapter
         })
     }
