@@ -33,7 +33,6 @@
     <string name="prompt_submit">Submit</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="wrong_password">Wrong password</string>
     <string name="prompt_password_verify">Verify password</string>
     <string name="invalid_name">Not a valid username</string>
     <string name="invalid_email">Not a valid email</string>

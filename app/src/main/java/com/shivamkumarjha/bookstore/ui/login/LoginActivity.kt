@@ -67,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
             val loginResult = it ?: return@Observer
 
             if (loginResult.error != null) {
-                passwordEditText.error = resources.getString(R.string.wrong_password)
+                passwordEditText.error = getString(loginResult.error)
             }
             if (loginResult.success != null) {
                 AppPreference(this@LoginActivity).setSignIn(true)
