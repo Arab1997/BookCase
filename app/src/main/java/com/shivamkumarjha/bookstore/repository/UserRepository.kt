@@ -3,6 +3,7 @@ package com.shivamkumarjha.bookstore.repository
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.shivamkumarjha.bookstore.model.LoggedInUserView
 import com.shivamkumarjha.bookstore.model.User
 import java.io.File
 import java.io.IOException
@@ -46,10 +47,10 @@ class UserRepository(private val file: File) {
         return true
     }
 
-    fun login(email: String, password: String): User? {
+    fun login(email: String, password: String): LoggedInUserView? {
         getUsers().forEach {
             if (it.email == email && it.password == password)
-                return it
+                return LoggedInUserView(it.name, it.email)
         }
         return null
     }
