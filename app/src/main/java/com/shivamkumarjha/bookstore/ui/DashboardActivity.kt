@@ -10,6 +10,7 @@ import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
+import com.shivamkumarjha.bookstore.ui.address.AddressFragment
 import com.shivamkumarjha.bookstore.ui.booklist.BookListFragment
 import com.shivamkumarjha.bookstore.ui.cart.CartFragment
 import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBookFragment
@@ -76,6 +77,14 @@ class DashboardActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.fragment_holder, ProfileFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun callAddressFragment() {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, AddressFragment())
             .addToBackStack(null)
             .commit()
     }

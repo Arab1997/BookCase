@@ -19,7 +19,7 @@ class AddressViewModel(private val addressRepository: AddressRepository) : ViewM
     fun addressDataChanged(address: Address) {
         if (!addressValidator.isMobileValid(address.mobile)) {
             _addressForm.value = AddressFormState(
-                mobileError = R.string.invalid_flat, isDataValid = false
+                mobileError = R.string.invalid_mobile, isDataValid = false
             )
         } else if (!addressValidator.isAddressValid(address.flat)) {
             _addressForm.value = AddressFormState(
@@ -37,7 +37,7 @@ class AddressViewModel(private val addressRepository: AddressRepository) : ViewM
             _addressForm.value = AddressFormState(
                 stateError = R.string.invalid_state, isDataValid = false
             )
-        } else if (!addressValidator.isAddressValid(address.pinCode)) {
+        } else if (!addressValidator.isPinCodeValid(address.pinCode)) {
             _addressForm.value = AddressFormState(
                 pinError = R.string.invalid_pinCode, isDataValid = false
             )

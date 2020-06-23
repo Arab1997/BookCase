@@ -79,7 +79,7 @@ class AddressFragment : Fragment() {
     }
 
     private fun setUpViewModel() {
-        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
+        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_address))
         addressViewModel =
             ViewModelProvider(this, AddressViewModelFactory(AddressRepository(userFile)))
                 .get(AddressViewModel::class.java)

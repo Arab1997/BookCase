@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,7 @@ class ProfileFragment : Fragment() {
     private lateinit var toolbar: Toolbar
     private lateinit var nameTextView: TextView
     private lateinit var emailTextView: TextView
+    private lateinit var addAddressButton: Button
     private lateinit var loggedInUserView: LoggedInUserView
     private lateinit var profileViewModel: ProfileViewModel
 
@@ -54,7 +56,10 @@ class ProfileFragment : Fragment() {
     private fun initializer() {
         nameTextView = requireView().findViewById(R.id.profile_name_text_view_id)
         emailTextView = requireView().findViewById(R.id.profile_email_text_view_id)
+        addAddressButton = requireView().findViewById(R.id.profile_address_button)
         loggedInUserView = (activity as DashboardActivity).getUser()
+
+        addAddressButton.setOnClickListener { (activity as DashboardActivity).callAddressFragment() }
     }
 
     private fun setUpToolBar() {
