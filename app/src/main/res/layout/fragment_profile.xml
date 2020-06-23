@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.profile.ProfileFragment">
 
     <LinearLayout
@@ -28,26 +28,78 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-            <TextView
-                android:id="@+id/text_view_profile"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/fragment_margin"
-                android:layout_marginTop="@dimen/fragment_margin"
-                android:layout_marginEnd="@dimen/fragment_margin"
-                android:fontFamily="@font/firasans_semibold"
-                android:gravity="center_horizontal"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/text_size_large"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+                android:layout_height="wrap_content">
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/profile_name_text_view_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/view_margin_large"
+                    android:fontFamily="@font/firasans_semibold"
+                    android:text="@string/prompt_name"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                    android:textColor="@color/black_color"
+                    android:textSize="@dimen/text_size_large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/profile_email_text_view_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/view_margin_large"
+                    android:layout_marginLeft="@dimen/view_margin_large"
+                    android:layout_marginTop="@dimen/view_margin"
+                    android:layout_marginEnd="@dimen/view_margin_large"
+                    android:layout_marginRight="@dimen/view_margin_large"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/prompt_email"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textColor="@color/blue_grey_800"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_name_text_view_id" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profile_picture_card"
+                    android:layout_width="@dimen/card_view_height"
+                    android:layout_height="@dimen/card_view_height"
+                    android:layout_margin="@dimen/view_margin_large"
+                    app:cardCornerRadius="@dimen/card_image_radius"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/user_image"
+                        android:layout_width="@dimen/card_view_height"
+                        android:layout_height="@dimen/card_view_height"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/profile_image"
+                        android:src="@drawable/ic_profile_image" />
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:id="@+id/review_divider_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_margin"
+                    android:layout_marginTop="@dimen/view_margin_large"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/profile_picture_card" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 </FrameLayout>

@@ -28,6 +28,7 @@
     <string name="new_login_preference">NewLoginPreference</string>
 
     <string name="profile">Profile</string>
+    <string name="profile_image">Profile image</string>
     <string name="login">Login</string>
     <string name="action_sign_out">Sign out</string>
     <string name="action_sign_out_verify">Are you sure you want to sign out?</string>

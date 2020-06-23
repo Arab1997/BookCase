@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.shivamkumarjha.bookstore.R
-import com.shivamkumarjha.bookstore.ui.DashboardActivity
 
 class ProfileFragment : Fragment() {
 
@@ -43,7 +42,7 @@ class ProfileFragment : Fragment() {
         toolbar = requireView().findViewById(R.id.profile_toolbar_id)
         toolbar.setNavigationIcon(R.drawable.ic_back)
         toolbar.setNavigationOnClickListener { exitFragment() }
-        toolbar.title = (activity as DashboardActivity).getUser().name
+        toolbar.title = resources.getString(R.string.profile)
     }
 
     private fun backPressDispatcher() {
