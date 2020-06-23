@@ -83,9 +83,7 @@ class RegisterActivity : AppCompatActivity() {
         emailEditText.afterTextChanged { onDataChange() }
         passwordEditText.afterTextChanged { onDataChange() }
         verifyPasswordEditText.afterTextChanged { onDataChange() }
-        submitButton.setOnClickListener {
-            submitUser()
-        }
+        submitButton.setOnClickListener { submitUser() }
         registerConstraintLayout.setOnClickListener { hideKeyboard() }
     }
 

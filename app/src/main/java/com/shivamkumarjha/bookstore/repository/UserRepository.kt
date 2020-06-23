@@ -40,9 +40,17 @@ class UserRepository(private val file: File) {
         writeUsers(users)
     }
 
-    fun checkIfEmailExists(email: String): Boolean {
+    fun isEmailNotRegistered(email: String): Boolean {
         if (getUsers().any { it.email == email })
             return false
         return true
+    }
+
+    fun login(email: String, password: String): Boolean {
+        if (getUsers().any { it.email == email } &&
+            getUsers().any { it.password == password }) {
+            return true
+        }
+        return false
     }
 }

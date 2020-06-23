@@ -2,7 +2,7 @@ package com.shivamkumarjha.bookstore.repository
 
 import android.util.Patterns
 
-class RegisterValidator {
+class UserFieldValidator {
     fun isNameValid(name: String): Boolean {
         return name.length > 3
     }
