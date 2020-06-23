@@ -74,7 +74,6 @@ class LoginActivity : AppCompatActivity() {
             if (loginResult.success != null) {
                 // Store preferences
                 AppPreference(this@LoginActivity).setSignIn(true)
-                AppPreference(this).setUserEmail(loginResult.success.email)
 
                 // Start Dashboard activity & pass LoggedInUser
                 val intent = Intent(this, DashboardActivity::class.java)

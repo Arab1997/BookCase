@@ -23,7 +23,8 @@
 
     <string name="appPreference">AppPreference</string>
     <string name="logged_preference">LoggedPreference</string>
-    <string name="previous_email_preference">PreviousEmailPreference</string>
+    <string name="email_preference">EmailPreference</string>
+    <string name="name_preference">NamePreference</string>
     <string name="new_login_preference">NewLoginPreference</string>
 
     <string name="profile">Profile</string>

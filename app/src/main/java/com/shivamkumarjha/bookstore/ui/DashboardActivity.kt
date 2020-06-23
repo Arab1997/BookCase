@@ -34,13 +34,20 @@ class DashboardActivity : AppCompatActivity() {
         supportActionBar?.title = resources.getString(R.string.app_name)
     }
 
-    private fun getUser(): LoggedInUserView? {
+    private fun getUser(): LoggedInUserView {
         val bundle = intent.getBundleExtra("bundle")
         val loggedInUserView = bundle?.getParcelable<LoggedInUserView>("loggedInUserView")
 
-        if (loggedInUserView != null)
+        if (loggedInUserView != null) {
+            AppPreference(this).setUserEmail(loggedInUserView.email)
+            AppPreference(this).setUserName(loggedInUserView.name)
             Toast.makeText(this, "Welcome " + loggedInUserView.name, Toast.LENGTH_SHORT).show()
-        return loggedInUserView
+            return loggedInUserView
+        }
+        return LoggedInUserView(
+            AppPreference(this).getUserName()!!,
+            AppPreference(this).getUserEmail()!!
+        )
     }
 
     private fun callBookFragment() {

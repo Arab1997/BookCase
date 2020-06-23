@@ -14,16 +14,24 @@ class AppPreference(private val context: Context) {
 
     fun getUserEmail(): String? {
         return sharedPreferences.getString(
-            context.resources.getString(R.string.previous_email_preference), null
+            context.resources.getString(R.string.email_preference), null
         )
     }
 
     fun setUserEmail(email: String) {
         sharedPreferences.edit()
-            .putString(
-                context.resources.getString(R.string.previous_email_preference),
-                email
-            ).apply()
+            .putString(context.resources.getString(R.string.email_preference), email).apply()
+    }
+
+    fun getUserName(): String? {
+        return sharedPreferences.getString(
+            context.resources.getString(R.string.name_preference), null
+        )
+    }
+
+    fun setUserName(email: String) {
+        sharedPreferences.edit()
+            .putString(context.resources.getString(R.string.name_preference), email).apply()
     }
 
     fun getSignIn(): Boolean {
