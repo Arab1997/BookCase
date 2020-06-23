@@ -22,11 +22,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.shivamkumarjha.bookstore.R
-import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.repository.BookRepository
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.ReviewAdapter
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.SliderAdapter
+import java.io.File
 
-class DisplayBookFragment(private val book: Book) : Fragment() {
+class DisplayBookFragment(private val position: Int) : Fragment() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var bookTitle: TextView
@@ -87,12 +88,9 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
         wishStatus = requireView().findViewById(R.id.display_book_toggle_wish_id)
         viewPager = requireView().findViewById(R.id.display_book_view_pager)
         recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
-        displayBookViewModel = ViewModelProvider(this, DisplayBookViewModelFactory(book))
-            .get(DisplayBookViewModel::class.java)
     }
 
     private fun setUpToolBar() {
-        toolbar.title = book.title
         toolbar.setNavigationIcon(R.drawable.ic_back)
         toolbar.setNavigationOnClickListener { exitFragment() }
     }
@@ -109,8 +107,14 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
     }
 
     private fun setUpViewModel() {
+        val booksFile = File(requireActivity().filesDir, resources.getString(R.string.file_books))
+        val bookRepository = BookRepository(booksFile)
+        displayBookViewModel =
+            ViewModelProvider(this, DisplayBookViewModelFactory(bookRepository, position))
+                .get(DisplayBookViewModel::class.java)
         displayBookViewModel.bookTitle.observe(viewLifecycleOwner, Observer {
             bookTitle.text = it
+            toolbar.title = it
         })
         displayBookViewModel.bookAuthor.observe(viewLifecycleOwner, Observer {
             bookAuthor.text = it
@@ -151,9 +155,9 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
 
     private fun onWishClick(isChecked: Boolean) {
         val toastMessage = if (isChecked)
-            "Added ${book.title} to wish list."
+            "Added ${bookTitle.text} to wish list."
         else
-            "Removed ${book.title} from wish list."
+            "Removed ${bookTitle.text} from wish list."
         Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()
     }
 

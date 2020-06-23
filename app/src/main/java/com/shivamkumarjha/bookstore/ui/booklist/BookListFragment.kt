@@ -66,8 +66,8 @@ class BookListFragment : Fragment(), BookItemClickListener {
         return true
     }
 
-    override fun onBookClick(book: Book) {
-        (activity as DashboardActivity).callDisplayBookFragment(book)
+    override fun onBookClick(position: Int) {
+        (activity as DashboardActivity).callDisplayBookFragment(position)
     }
 
     override fun onWishClick(book: Book, isChecked: Boolean) {

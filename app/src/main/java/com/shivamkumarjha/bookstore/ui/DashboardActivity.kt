@@ -8,7 +8,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
-import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
 import com.shivamkumarjha.bookstore.ui.booklist.BookListFragment
 import com.shivamkumarjha.bookstore.ui.cart.CartFragment
@@ -56,10 +55,10 @@ class DashboardActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun callDisplayBookFragment(book: Book) {
+    fun callDisplayBookFragment(position: Int) {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .replace(R.id.fragment_holder, DisplayBookFragment(book))
+            .replace(R.id.fragment_holder, DisplayBookFragment(position))
             .addToBackStack(null)
             .commit()
     }

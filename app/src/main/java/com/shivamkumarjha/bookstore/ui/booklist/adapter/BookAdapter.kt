@@ -26,7 +26,7 @@ class BookAdapter(
     override fun getItemCount(): Int = books.size
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-        holder.initialize(books[position])
+        holder.initialize(books[position], position)
     }
 
     override fun getFilter(): Filter {
