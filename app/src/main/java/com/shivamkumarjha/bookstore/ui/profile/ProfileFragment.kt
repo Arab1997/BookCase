@@ -1,38 +1,31 @@
-package com.shivamkumarjha.bookstore.ui.cart
+package com.shivamkumarjha.bookstore.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.ui.DashboardActivity
 
-class CartFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-    private lateinit var cartViewModel: CartViewModel
     private lateinit var toolbar: Toolbar
-    private val textView by lazy {
-        requireView().findViewById<TextView>(R.id.text_cart)
-    }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_cart, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
-        setUpViewModel()
         backPressDispatcher()
     }
 
@@ -47,18 +40,10 @@ class CartFragment : Fragment() {
     }
 
     private fun setUpToolBar() {
-        toolbar = requireView().findViewById(R.id.cart_toolbar_id)
+        toolbar = requireView().findViewById(R.id.profile_toolbar_id)
         toolbar.setNavigationIcon(R.drawable.ic_back)
         toolbar.setNavigationOnClickListener { exitFragment() }
-        toolbar.title = resources.getString(R.string.title_cart)
-    }
-
-    private fun setUpViewModel() {
-        cartViewModel =
-            ViewModelProvider(this).get(CartViewModel::class.java)
-        cartViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        toolbar.title = (activity as DashboardActivity).getUser().name
     }
 
     private fun backPressDispatcher() {

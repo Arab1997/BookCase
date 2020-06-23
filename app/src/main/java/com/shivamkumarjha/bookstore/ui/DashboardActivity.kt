@@ -15,6 +15,7 @@ import com.shivamkumarjha.bookstore.ui.booklist.BookListFragment
 import com.shivamkumarjha.bookstore.ui.cart.CartFragment
 import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBookFragment
 import com.shivamkumarjha.bookstore.ui.login.LoginActivity
+import com.shivamkumarjha.bookstore.ui.profile.ProfileFragment
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -34,7 +35,7 @@ class DashboardActivity : AppCompatActivity() {
         supportActionBar?.title = resources.getString(R.string.app_name)
     }
 
-    private fun getUser(): LoggedInUserView {
+    fun getUser(): LoggedInUserView {
         val bundle = intent.getBundleExtra("bundle")
         val loggedInUserView = bundle?.getParcelable<LoggedInUserView>("loggedInUserView")
 
@@ -69,6 +70,14 @@ class DashboardActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.fragment_holder, CartFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun callProfileFragment() {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, ProfileFragment())
             .addToBackStack(null)
             .commit()
     }

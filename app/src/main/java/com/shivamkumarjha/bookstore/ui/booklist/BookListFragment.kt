@@ -59,13 +59,9 @@ class BookListFragment : Fragment(), BookItemClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.cart_menu_id -> {
-                callCartFragment()
-                return true
-            }
-            R.id.sign_out -> {
-                (activity as DashboardActivity).doSignOut()
-            }
+            R.id.cart_menu_id -> (activity as DashboardActivity).callCartFragment()
+            R.id.profile_menu -> (activity as DashboardActivity).callProfileFragment()
+            R.id.sign_out -> (activity as DashboardActivity).doSignOut()
         }
         return true
     }
@@ -98,9 +94,5 @@ class BookListFragment : Fragment(), BookItemClickListener {
         recyclerView = requireView().findViewById(R.id.book_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
-    }
-
-    private fun callCartFragment() {
-        (activity as DashboardActivity).callCartFragment()
     }
 }

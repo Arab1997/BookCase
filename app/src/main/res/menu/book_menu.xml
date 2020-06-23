@@ -13,6 +13,9 @@
         android:title="@string/title_cart"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/profile_menu"
+        android:title="@string/profile" />
+    <item
         android:id="@+id/sign_out"
         android:title="@string/action_sign_out" />
 </menu>
