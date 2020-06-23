@@ -49,6 +49,8 @@ class LoginActivity : AppCompatActivity() {
             ViewModelProvider(this, LoginViewModelFactory(UserRepository(userFile)))
                 .get(LoginViewModel::class.java)
 
+        // Set previous email where login was success
+        emailEditText.setText(AppPreference(this).getUserEmail())
     }
 
     private fun setUpViewModel() {
@@ -70,7 +72,11 @@ class LoginActivity : AppCompatActivity() {
                 passwordEditText.error = getString(loginResult.error)
             }
             if (loginResult.success != null) {
+                // Store preferences
                 AppPreference(this@LoginActivity).setSignIn(true)
+                AppPreference(this).setUserEmail(loginResult.success.email)
+
+                // Start Dashboard activity
                 val intent = Intent(this, DashboardActivity::class.java)
                 startActivity(intent)
                 this@LoginActivity.finish()

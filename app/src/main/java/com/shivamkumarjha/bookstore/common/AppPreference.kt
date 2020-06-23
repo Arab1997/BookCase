@@ -12,6 +12,20 @@ class AppPreference(private val context: Context) {
         )
     }
 
+    fun getUserEmail(): String? {
+        return sharedPreferences.getString(
+            context.resources.getString(R.string.previous_email_preference), null
+        )
+    }
+
+    fun setUserEmail(email: String) {
+        sharedPreferences.edit()
+            .putString(
+                context.resources.getString(R.string.previous_email_preference),
+                email
+            ).apply()
+    }
+
     fun getSignIn(): Boolean {
         return sharedPreferences.getBoolean(
             context.resources.getString(R.string.logged_preference),
