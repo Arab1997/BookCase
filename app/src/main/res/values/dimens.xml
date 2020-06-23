@@ -9,6 +9,7 @@
     <dimen name="view_margin_big">8dp</dimen>
     <dimen name="view_text_margin">10dp</dimen>
     <dimen name="view_margin_large">16dp</dimen>
+    <dimen name="view_margin_splash">48dp</dimen>
     <dimen name="card_view_height">130dp</dimen>
     <dimen name="card_image_height">120dp</dimen>
     <dimen name="book_image_height">300dp</dimen>
@@ -20,6 +21,7 @@
     <dimen name="fragment_margin">8dp</dimen>
     <dimen name="card_view_content_margin">4dp</dimen>
     <dimen name="toggle_button_size">40dp</dimen>
+    <dimen name="text_size_splash">48sp</dimen>
     <dimen name="text_size_title">24sp</dimen>
     <dimen name="text_size_price">20sp</dimen>
     <dimen name="text_size_large">18sp</dimen>

@@ -25,14 +25,15 @@ class SplashActivity : AppCompatActivity() {
                 val intent = Intent(this@SplashActivity, LoginActivity::class.java)
                 startActivity(intent)
                 this@SplashActivity.finish()
-            }, 500)
+            }, 800)
         }
     }
 
+    // To avoid back press
     override fun onBackPressed() {}
 
     override fun onDestroy() {
-        super.onDestroy()
         handler.removeCallbacksAndMessages(null)
+        super.onDestroy()
     }
 }
