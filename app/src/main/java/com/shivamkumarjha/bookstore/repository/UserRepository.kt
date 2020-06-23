@@ -12,7 +12,7 @@ import java.io.OutputStreamWriter
 class UserRepository(private val file: File) {
     private val gson = Gson()
     private val commonFileRepository = CommonFileRepository(file)
-    private val tag = "BookRepository"
+    private val tag = "UserRepository"
 
     private fun writeUsers(users: ArrayList<User>) {
         val data = gson.toJson(users)

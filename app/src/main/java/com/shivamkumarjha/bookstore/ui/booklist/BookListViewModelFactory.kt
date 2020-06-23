@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.repository.BookRepository
 
-class BookListViewModelFactory(private val bookRepository: BookRepository) : ViewModelProvider.Factory {
+class BookListViewModelFactory(private val bookRepository: BookRepository) :
+    ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(BookListViewModel::class.java))
