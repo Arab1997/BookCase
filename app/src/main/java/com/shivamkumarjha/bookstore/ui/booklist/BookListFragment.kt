@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.repository.BookRepository
+import com.shivamkumarjha.bookstore.ui.DashboardActivity
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookAdapter
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookItemClickListener
 import com.shivamkumarjha.bookstore.ui.cart.CartFragment
 import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBookFragment
-import com.shivamkumarjha.bookstore.repository.BookRepository
 import java.io.File
 
 class BookListFragment : Fragment(), BookItemClickListener {
@@ -61,9 +62,12 @@ class BookListFragment : Fragment(), BookItemClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.card_menu_id -> {
+            R.id.cart_menu_id -> {
                 callCartFragment()
                 return true
+            }
+            R.id.sign_out -> {
+                (activity as DashboardActivity).doSignOut()
             }
         }
         return true

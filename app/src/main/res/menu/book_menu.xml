@@ -8,8 +8,11 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/card_menu_id"
+        android:id="@+id/cart_menu_id"
         android:icon="@drawable/ic_cart"
         android:title="@string/title_cart"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/sign_out"
+        android:title="@string/action_sign_out" />
 </menu>

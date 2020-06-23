@@ -27,6 +27,8 @@
     <string name="new_login_preference">NewLoginPreference</string>
 
     <string name="login">Login</string>
+    <string name="action_sign_out">Sign out</string>
+    <string name="action_sign_out_verify">Are you sure you want to sign out?</string>
     <string name="got_account">Already a member?</string>
     <string name="register_now">Don\'t have an account? Sign Up</string>
     <string name="action_register">Get on board</string>
