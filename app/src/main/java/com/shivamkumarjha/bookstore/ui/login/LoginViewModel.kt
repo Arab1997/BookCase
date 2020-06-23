@@ -7,7 +7,7 @@ import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
 import com.shivamkumarjha.bookstore.model.LoginFormState
 import com.shivamkumarjha.bookstore.model.LoginResult
-import com.shivamkumarjha.bookstore.repository.UserFieldValidator
+import com.shivamkumarjha.bookstore.repository.RegisterValidator
 import com.shivamkumarjha.bookstore.repository.UserRepository
 
 class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
@@ -17,7 +17,7 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    private val userFieldValidator = UserFieldValidator()
+    private val userFieldValidator = RegisterValidator()
 
     fun loginDataChanged(email: String, password: String) {
         if (!userFieldValidator.isEmailValid(email)) {

@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.RegisterFormState
 import com.shivamkumarjha.bookstore.model.User
-import com.shivamkumarjha.bookstore.repository.UserFieldValidator
+import com.shivamkumarjha.bookstore.repository.RegisterValidator
 import com.shivamkumarjha.bookstore.repository.UserRepository
 
 class RegisterViewModel(private val userRepository: UserRepository) : ViewModel() {
-    private val userFieldValidator = UserFieldValidator()
+    private val userFieldValidator = RegisterValidator()
 
     private val _registerForm = MutableLiveData<RegisterFormState>()
     val registerFormState: LiveData<RegisterFormState> = _registerForm
