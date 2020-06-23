@@ -3,6 +3,7 @@ package com.shivamkumarjha.bookstore.ui.register
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -96,6 +97,11 @@ class RegisterActivity : AppCompatActivity() {
             )
         )
         hideKeyboard()
+        Toast.makeText(
+            this@RegisterActivity,
+            resources.getString(R.string.user_registered),
+            Toast.LENGTH_SHORT
+        ).show()
         onBackPressed()
     }
 

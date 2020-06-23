@@ -28,6 +28,7 @@
     <string name="got_account">Already a member?</string>
     <string name="register_now">Don\'t have an account? Sign Up</string>
     <string name="action_register">Get on board</string>
+    <string name="user_registered">Registered user</string>
     <string name="prompt_name">Name</string>
     <string name="prompt_submit">Submit</string>
     <string name="prompt_email">Email</string>
