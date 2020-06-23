@@ -36,7 +36,6 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
                 RegisterFormState(
                     verifyPasswordError = R.string.invalid_password_verify, isDataValid = false
                 )
-
         } else {
             _registerForm.value =
                 RegisterFormState(

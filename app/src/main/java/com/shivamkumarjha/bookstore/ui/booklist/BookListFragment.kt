@@ -86,7 +86,7 @@ class BookListFragment : Fragment(), BookItemClickListener {
     }
 
     private fun setUpViewModel() {
-        val booksFile = File(requireActivity().filesDir, "Books.json")
+        val booksFile = File(requireActivity().filesDir, resources.getString(R.string.file_books))
         val jsonUtility = JsonUtility(booksFile)
         bookListViewModel = ViewModelProvider(this, BookListViewModelFactory(jsonUtility))
             .get(BookListViewModel::class.java)
