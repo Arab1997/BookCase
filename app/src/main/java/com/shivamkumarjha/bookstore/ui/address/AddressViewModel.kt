@@ -9,7 +9,7 @@ import com.shivamkumarjha.bookstore.model.AddressFormState
 import com.shivamkumarjha.bookstore.repository.AddressRepository
 import com.shivamkumarjha.bookstore.repository.AddressValidator
 
-class AddressListViewModel(private val addressRepository: AddressRepository) : ViewModel() {
+class AddressViewModel(private val addressRepository: AddressRepository) : ViewModel() {
 
     private val addressValidator = AddressValidator()
 
@@ -17,7 +17,7 @@ class AddressListViewModel(private val addressRepository: AddressRepository) : V
     val addressFormState: LiveData<AddressFormState> = _addressForm
 
     fun addressDataChanged(address: Address) {
-        if (!addressValidator.isMobileValid(address.mobile.toString())) {
+        if (!addressValidator.isMobileValid(address.mobile)) {
             _addressForm.value = AddressFormState(
                 mobileError = R.string.invalid_flat, isDataValid = false
             )
@@ -37,7 +37,7 @@ class AddressListViewModel(private val addressRepository: AddressRepository) : V
             _addressForm.value = AddressFormState(
                 stateError = R.string.invalid_state, isDataValid = false
             )
-        } else if (!addressValidator.isAddressValid(address.pinCode.toString())) {
+        } else if (!addressValidator.isAddressValid(address.pinCode)) {
             _addressForm.value = AddressFormState(
                 pinError = R.string.invalid_pinCode, isDataValid = false
             )

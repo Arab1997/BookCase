@@ -52,6 +52,7 @@
     <string name="login_failed">"Login failed"</string>
 
     <string name="add_address">Add address</string>
+    <string name="address_added">Address added</string>
     <string name="prompt_mobile">Mobile</string>
     <string name="prompt_flat">Flat</string>
     <string name="prompt_street">Street</string>
@@ -65,6 +66,7 @@
     <string name="invalid_state">Invalid state</string>
     <string name="invalid_pinCode">Invalid pin</string>
 
+    <string name="file_address">Address.json</string>
     <string name="file_books">Books.json</string>
     <string name="file_loggedInUser">LoggedInUser.json</string>
     <string name="file_users">Users.json</string>
