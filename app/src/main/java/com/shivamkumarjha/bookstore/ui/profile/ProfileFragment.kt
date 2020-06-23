@@ -13,7 +13,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
+import com.shivamkumarjha.bookstore.repository.ProfileRepository
 import com.shivamkumarjha.bookstore.ui.DashboardActivity
+import java.io.File
 
 class ProfileFragment : Fragment() {
 
@@ -53,8 +55,6 @@ class ProfileFragment : Fragment() {
         nameTextView = requireView().findViewById(R.id.profile_name_text_view_id)
         emailTextView = requireView().findViewById(R.id.profile_email_text_view_id)
         loggedInUserView = (activity as DashboardActivity).getUser()
-        profileViewModel = ViewModelProvider(this, ProfileViewModelFactory(loggedInUserView))
-            .get(ProfileViewModel::class.java)
     }
 
     private fun setUpToolBar() {
@@ -65,6 +65,11 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setUpViewModel() {
+        val profileFile =
+            File(requireActivity().filesDir, resources.getString(R.string.file_loggedInUser))
+        val profileRepository = ProfileRepository(profileFile, loggedInUserView)
+        profileViewModel = ViewModelProvider(this, ProfileViewModelFactory(profileRepository))
+            .get(ProfileViewModel::class.java)
         profileViewModel.getName.observe(viewLifecycleOwner, Observer {
             nameTextView.text = it
         })

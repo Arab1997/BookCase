@@ -80,9 +80,8 @@ class BookListFragment : Fragment(), BookItemClickListener {
 
     private fun setUpViewModel() {
         val booksFile = File(requireActivity().filesDir, resources.getString(R.string.file_books))
-        val jsonUtility =
-            BookRepository(booksFile)
-        bookListViewModel = ViewModelProvider(this, BookListViewModelFactory(jsonUtility))
+        val bookRepository = BookRepository(booksFile)
+        bookListViewModel = ViewModelProvider(this, BookListViewModelFactory(bookRepository))
             .get(BookListViewModel::class.java)
         bookListViewModel.getBooks.observe(requireActivity(), Observer { books ->
             bookAdapter = BookAdapter(books, this)
