@@ -58,6 +58,12 @@
     <string name="prompt_city">City</string>
     <string name="prompt_state">State</string>
     <string name="prompt_pinCode">Pin code</string>
+    <string name="invalid_mobile">Invalid mobile</string>
+    <string name="invalid_flat">Invalid flat</string>
+    <string name="invalid_street">Invalid street</string>
+    <string name="invalid_city">Invalid city</string>
+    <string name="invalid_state">Invalid state</string>
+    <string name="invalid_pinCode">Invalid pin</string>
 
     <string name="file_books">Books.json</string>
     <string name="file_loggedInUser">LoggedInUser.json</string>
