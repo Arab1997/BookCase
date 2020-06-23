@@ -7,9 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.common.afterTextChanged
+import com.shivamkumarjha.bookstore.model.User
 import com.shivamkumarjha.bookstore.repository.UserRepository
-import com.shivamkumarjha.bookstore.repository.BookRepository
 import java.io.File
 
 class RegisterActivity : AppCompatActivity() {
@@ -38,10 +39,8 @@ class RegisterActivity : AppCompatActivity() {
 
         // ViewModel
         val userFile = File(filesDir, resources.getString(R.string.file_users))
-        val jsonUtility =
-            BookRepository(userFile)
         registerViewModel =
-            ViewModelProvider(this, RegisterViewModelFactory(UserRepository(jsonUtility)))
+            ViewModelProvider(this, RegisterViewModelFactory(UserRepository(userFile)))
                 .get(RegisterViewModel::class.java)
     }
 
@@ -66,7 +65,14 @@ class RegisterActivity : AppCompatActivity() {
         passwordEditText.afterTextChanged { onDataChange() }
         verifyPasswordEditText.afterTextChanged { onDataChange() }
         submitButton.setOnClickListener {
-            //TODO
+            registerViewModel.onSubmitClick(
+                User(
+                    AppPreference(this).newUserId(),
+                    nameEditText.text.toString(),
+                    emailEditText.text.toString(),
+                    passwordEditText.text.toString()
+                )
+            )
         }
     }
 

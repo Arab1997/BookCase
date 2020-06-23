@@ -24,4 +24,12 @@ class AppPreference(private val context: Context) {
             .putBoolean(context.resources.getString(R.string.logged_preference), value)
             .apply()
     }
+
+    fun newUserId(): Int {
+        val position =
+            sharedPreferences.getInt(context.resources.getString(R.string.userId), 0) + 1
+        sharedPreferences.edit()
+            .putInt(context.resources.getString(R.string.userId), position).apply()
+        return position
+    }
 }

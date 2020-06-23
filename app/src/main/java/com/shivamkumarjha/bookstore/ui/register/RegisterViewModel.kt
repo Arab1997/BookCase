@@ -44,7 +44,7 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
         }
     }
 
-    fun onSubmitClick(user: User, verifyPassword: String) {
-        //TODO
+    fun onSubmitClick(user: User) {
+        userRepository.addUser(user)
     }
 }
