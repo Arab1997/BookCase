@@ -5,7 +5,6 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,8 +15,6 @@ import com.shivamkumarjha.bookstore.repository.BookRepository
 import com.shivamkumarjha.bookstore.ui.DashboardActivity
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookAdapter
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookItemClickListener
-import com.shivamkumarjha.bookstore.ui.cart.CartFragment
-import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBookFragment
 import java.io.File
 
 class BookListFragment : Fragment(), BookItemClickListener {
@@ -74,11 +71,7 @@ class BookListFragment : Fragment(), BookItemClickListener {
     }
 
     override fun onBookClick(book: Book) {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .replace(R.id.fragment_holder, DisplayBookFragment(book))
-            .addToBackStack(null)
-            .commit()
+        (activity as DashboardActivity).callDisplayBookFragment(book)
     }
 
     override fun onWishClick(book: Book, isChecked: Boolean) {
@@ -108,10 +101,6 @@ class BookListFragment : Fragment(), BookItemClickListener {
     }
 
     private fun callCartFragment() {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .replace(R.id.fragment_holder, CartFragment())
-            .addToBackStack(null)
-            .commit()
+        (activity as DashboardActivity).callCartFragment()
     }
 }

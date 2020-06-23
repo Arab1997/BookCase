@@ -9,8 +9,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
+import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
 import com.shivamkumarjha.bookstore.ui.booklist.BookListFragment
+import com.shivamkumarjha.bookstore.ui.cart.CartFragment
+import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBookFragment
 import com.shivamkumarjha.bookstore.ui.login.LoginActivity
 
 class DashboardActivity : AppCompatActivity() {
@@ -36,7 +39,7 @@ class DashboardActivity : AppCompatActivity() {
         val loggedInUserView = bundle?.getParcelable<LoggedInUserView>("loggedInUserView")
 
         if (loggedInUserView != null)
-            Toast.makeText(this, "Welcome " + loggedInUserView?.name, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Welcome " + loggedInUserView.name, Toast.LENGTH_SHORT).show()
         return loggedInUserView
     }
 
@@ -44,6 +47,22 @@ class DashboardActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.fragment_holder, BookListFragment())
+            .commit()
+    }
+
+    fun callDisplayBookFragment(book: Book) {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, DisplayBookFragment(book))
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun callCartFragment() {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, CartFragment())
+            .addToBackStack(null)
             .commit()
     }
 
