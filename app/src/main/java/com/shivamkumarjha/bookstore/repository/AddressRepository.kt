@@ -24,7 +24,7 @@ class AddressRepository(private val file: File) {
         }
     }
 
-    private fun getAddress(): ArrayList<Address> {
+    fun getAddress(): ArrayList<Address> {
         if (!commonFileRepository.fileExists()) {
             return arrayListOf()
         }
