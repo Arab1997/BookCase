@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="colorPrimary">#d32f2f</color>
     <color name="colorPrimaryDark">#b71c1c</color>
     <color name="colorAccent">#e57373</color>
     <color name="divider">#bdbdbd</color>
+
+    <!-- Dashboard -->
     <color name="white_color">#ffffff</color>
     <color name="black_color">#000000</color>
     <color name="green_500">#4CAF50</color>
@@ -11,4 +13,10 @@
     <color name="blue_grey_500">#607D8B</color>
     <color name="blue_grey_800">#37474F</color>
     <color name="card_view_background_color">#ffcdd2</color>
+
+    <!-- Material EditText override -->
+    <color name="gray_300">#E0E0E0</color>
+    <color name="mtrl_textinput_default_box_stroke_color"
+        tools:ignore="PrivateResource">#fff
+    </color>
 </resources>

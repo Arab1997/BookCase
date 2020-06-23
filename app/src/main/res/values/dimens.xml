@@ -9,6 +9,7 @@
     <dimen name="view_margin_big">8dp</dimen>
     <dimen name="view_text_margin">10dp</dimen>
     <dimen name="view_margin_large">16dp</dimen>
+    <dimen name="view_margin_larger">24dp</dimen>
     <dimen name="view_margin_splash">48dp</dimen>
     <dimen name="card_view_height">130dp</dimen>
     <dimen name="card_image_height">120dp</dimen>

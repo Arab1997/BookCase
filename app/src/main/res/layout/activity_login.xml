@@ -1,9 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.LoginActivity">
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/login_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_background"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/userLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/view_margin_splash"
+            android:layout_marginStart="@dimen/view_margin_large"
+            android:layout_marginTop="@dimen/view_margin_splash"
+            android:layout_marginEnd="@dimen/view_margin_large"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/text_size_title"
+            app:layout_constraintBottom_toTopOf="@+id/user_Name_InputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_Name_InputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/view_margin_larger"
+            android:layout_marginTop="@dimen/view_margin_larger"
+            android:layout_marginEnd="@dimen/view_margin_larger"
+            android:textColorHint="@color/white_color"
+            app:boxStrokeColor="@color/gray_300"
+            app:hintTextColor="@color/white_color"
+            app:layout_constraintBottom_toTopOf="@id/password_InputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userLogin"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_login_mail_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/firasans_regular"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="@dimen/view_margin_larger"
+                android:paddingLeft="@dimen/view_margin_larger"
+                android:paddingEnd="@dimen/view_margin_larger"
+                android:textColor="@color/white_color" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_InputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/view_margin_larger"
+            android:layout_marginTop="@dimen/view_margin_large"
+            android:layout_marginEnd="@dimen/view_margin_larger"
+            android:textColorHint="@color/white_color"
+            app:boxStrokeColor="@color/gray_300"
+            app:errorIconDrawable="@null"
+            app:hintTextColor="@color/white_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/user_Name_InputLayout"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/firasans_regular"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword"
+                android:paddingStart="@dimen/view_margin_larger"
+                android:paddingLeft="@dimen/view_margin_larger"
+                android:paddingEnd="@dimen/view_margin_larger"
+                android:textColor="@color/white_color" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/view_margin_larger"
+            android:layout_marginTop="@dimen/view_margin_large"
+            android:layout_marginEnd="@dimen/view_margin_larger"
+            android:background="@drawable/button_background"
+            android:enabled="false"
+            android:fontFamily="@font/firasans_regular"
+            android:text="@string/login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password_InputLayout"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ProgressBar
+            android:id="@+id/progress_Bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin_large"
+            android:indeterminate="true"
+            android:max="100"
+            android:progress="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bt_login" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_not_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/view_margin_larger"
+            android:fontFamily="@font/firasans_semibold"
+            android:text="@string/register_now"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
