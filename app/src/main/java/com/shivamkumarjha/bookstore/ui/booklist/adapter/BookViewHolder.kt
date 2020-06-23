@@ -26,17 +26,17 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
     private val bookRating: TextView = itemView.findViewById(R.id.book_text_view_rating)
     private val bookRatingCount: TextView = itemView.findViewById(R.id.book_text_view_rating_count)
     private val wishStatus: ToggleButton = itemView.findViewById(R.id.book_toggle_wish_id)
-    private var bookPosition: Int = 0
+    private lateinit var book: Book
 
     init {
         itemView.setOnClickListener {
-            clickListener.onBookClick(bookPosition)
+            clickListener.onBookClick(book)
         }
     }
 
     @SuppressLint("SetTextI18n")
-    fun initialize(book: Book, bookPosition: Int) {
-        this.bookPosition = bookPosition
+    fun initialize(book: Book) {
+        this.book = book
 
         // Load book image from URL
         Picasso.get().load(book.imageLink[0]).fit().centerCrop()

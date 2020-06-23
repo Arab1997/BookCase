@@ -37,8 +37,4 @@ class BookRepository(private val file: File) {
         val detailsTypeToken = object : TypeToken<List<Book>>() {}.type
         return gson.fromJson(jsonString, detailsTypeToken)
     }
-
-    fun getBook(position: Int): Book {
-        return getBooks()[position]
-    }
 }
