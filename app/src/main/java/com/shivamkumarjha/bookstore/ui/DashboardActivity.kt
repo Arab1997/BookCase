@@ -84,14 +84,13 @@ class DashboardActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(resources.getString(R.string.action_sign_out))
         builder.setMessage(resources.getString(R.string.action_sign_out_verify))
-        builder.setPositiveButton(android.R.string.yes) { _, _ ->
+        builder.setPositiveButton(R.string.yes) { _, _ ->
             AppPreference(this).setSignIn(false)
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             this.finish()
         }
-        builder.setNegativeButton(android.R.string.no) { _, _ ->
-        }
+        builder.setNegativeButton(R.string.no) { _, _ -> }
         builder.show()
     }
 }

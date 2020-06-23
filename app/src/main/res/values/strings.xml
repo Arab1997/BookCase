@@ -3,6 +3,8 @@
     <string name="title_book">Book</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_cart">Cart</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
     <string name="book_name">Book title</string>
     <string name="book_author">Book author</string>
