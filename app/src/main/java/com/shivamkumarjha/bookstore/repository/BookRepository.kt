@@ -1,15 +1,14 @@
-package com.shivamkumarjha.bookstore.utility
+package com.shivamkumarjha.bookstore.repository
 
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.shivamkumarjha.bookstore.model.Book
-import com.shivamkumarjha.bookstore.repository.PopulateBooks
 import java.io.*
 
-private const val TAG = "JSONUtility"
+private const val TAG = "BookRepository"
 
-class JsonUtility(private val file: File) {
+class BookRepository(private val file: File) {
     private val gson = Gson()
 
     private fun fileExists(): Boolean {

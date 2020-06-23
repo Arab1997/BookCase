@@ -16,7 +16,7 @@ import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookAdapter
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookItemClickListener
 import com.shivamkumarjha.bookstore.ui.cart.CartFragment
 import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBookFragment
-import com.shivamkumarjha.bookstore.utility.JsonUtility
+import com.shivamkumarjha.bookstore.repository.BookRepository
 import java.io.File
 
 class BookListFragment : Fragment(), BookItemClickListener {
@@ -87,7 +87,8 @@ class BookListFragment : Fragment(), BookItemClickListener {
 
     private fun setUpViewModel() {
         val booksFile = File(requireActivity().filesDir, resources.getString(R.string.file_books))
-        val jsonUtility = JsonUtility(booksFile)
+        val jsonUtility =
+            BookRepository(booksFile)
         bookListViewModel = ViewModelProvider(this, BookListViewModelFactory(jsonUtility))
             .get(BookListViewModel::class.java)
         bookListViewModel.getBooks.observe(requireActivity(), Observer { books ->

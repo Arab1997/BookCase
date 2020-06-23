@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.afterTextChanged
 import com.shivamkumarjha.bookstore.repository.UserRepository
-import com.shivamkumarjha.bookstore.utility.JsonUtility
+import com.shivamkumarjha.bookstore.repository.BookRepository
 import java.io.File
 
 class RegisterActivity : AppCompatActivity() {
@@ -38,7 +38,8 @@ class RegisterActivity : AppCompatActivity() {
 
         // ViewModel
         val userFile = File(filesDir, resources.getString(R.string.file_users))
-        val jsonUtility = JsonUtility(userFile)
+        val jsonUtility =
+            BookRepository(userFile)
         registerViewModel =
             ViewModelProvider(this, RegisterViewModelFactory(UserRepository(jsonUtility)))
                 .get(RegisterViewModel::class.java)

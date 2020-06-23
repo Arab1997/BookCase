@@ -38,7 +38,6 @@
     <string name="invalid_password_verify">Password do not match</string>
     <string name="login_failed">"Login failed"</string>
 
-
     <string name="file_books">Books.json</string>
     <string name="file_users">Users.json</string>
 </resources>
