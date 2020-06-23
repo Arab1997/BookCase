@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
 import com.shivamkumarjha.bookstore.ui.booklist.BookListFragment
 
@@ -31,7 +32,10 @@ class DashboardActivity : AppCompatActivity() {
         val bundle = intent.getBundleExtra("bundle")
         val loggedInUserView = bundle?.getParcelable<LoggedInUserView>("loggedInUserView")
 
-        Toast.makeText(this, "Welcome " + loggedInUserView?.name, Toast.LENGTH_SHORT).show()
+        if (AppPreference(this).getIsNewLogin()) {
+            Toast.makeText(this, "Welcome " + loggedInUserView?.name, Toast.LENGTH_SHORT).show()
+            AppPreference(this).setIsNewLogin(false)
+        }
         return loggedInUserView
     }
 

@@ -39,6 +39,19 @@ class AppPreference(private val context: Context) {
             .apply()
     }
 
+    fun getIsNewLogin(): Boolean {
+        return sharedPreferences.getBoolean(
+            context.resources.getString(R.string.new_login_preference),
+            false
+        )
+    }
+
+    fun setIsNewLogin(value: Boolean) {
+        sharedPreferences.edit()
+            .putBoolean(context.resources.getString(R.string.new_login_preference), value)
+            .apply()
+    }
+
     fun newUserId(): Int {
         val position =
             sharedPreferences.getInt(context.resources.getString(R.string.userId), 0) + 1

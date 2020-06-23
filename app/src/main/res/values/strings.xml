@@ -24,6 +24,7 @@
     <string name="appPreference">AppPreference</string>
     <string name="logged_preference">LoggedPreference</string>
     <string name="previous_email_preference">PreviousEmailPreference</string>
+    <string name="new_login_preference">NewLoginPreference</string>
 
     <string name="login">Login</string>
     <string name="got_account">Already a member?</string>
