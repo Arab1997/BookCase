@@ -1,5 +1,6 @@
 package com.shivamkumarjha.bookstore.ui.login
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -61,12 +62,32 @@ class LoginActivity : AppCompatActivity() {
             if (loginState.passwordError != null)
                 passwordEditText.error = getString(loginState.passwordError)
         })
+
+        loginViewModel.loginResult.observe(this@LoginActivity, Observer {
+            val loginResult = it ?: return@Observer
+
+            if (loginResult.error != null) {
+                passwordEditText.error = resources.getString(R.string.wrong_password)
+            }
+            if (loginResult.success != null) {
+                AppPreference(this@LoginActivity).setSignIn(true)
+                val intent = Intent(this, DashboardActivity::class.java)
+                startActivity(intent)
+                this@LoginActivity.finish()
+                setResult(Activity.RESULT_OK)
+            }
+        })
     }
 
     private fun viewListeners() {
         emailEditText.afterTextChanged { onDataChange() }
         passwordEditText.afterTextChanged { onDataChange() }
-        submitButton.setOnClickListener { loginUser() }
+        submitButton.setOnClickListener {
+            loginViewModel.onLogin(
+                emailEditText.text.toString(),
+                passwordEditText.text.toString()
+            )
+        }
         loginConstraintLayout.setOnClickListener { hideKeyboard() }
         registerNowTextView.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
@@ -79,20 +100,5 @@ class LoginActivity : AppCompatActivity() {
             emailEditText.text.toString(),
             passwordEditText.text.toString()
         )
-    }
-
-    private fun loginUser() {
-        val loginResult = loginViewModel.onLogin(
-            emailEditText.text.toString(),
-            passwordEditText.text.toString()
-        )
-        if (loginResult) {
-            AppPreference(this@LoginActivity).setSignIn(true)
-            val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)
-            this@LoginActivity.finish()
-            return
-        } else
-            passwordEditText.error = resources.getString(R.string.wrong_password)
     }
 }

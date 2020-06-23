@@ -46,11 +46,11 @@ class UserRepository(private val file: File) {
         return true
     }
 
-    fun login(email: String, password: String): Boolean {
-        if (getUsers().any { it.email == email } &&
-            getUsers().any { it.password == password }) {
-            return true
+    fun login(email: String, password: String): User? {
+        getUsers().forEach {
+            if (it.email == email && it.password == password)
+                return it
         }
-        return false
+        return null
     }
 }
