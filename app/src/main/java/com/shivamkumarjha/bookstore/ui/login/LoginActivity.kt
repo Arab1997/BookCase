@@ -76,8 +76,11 @@ class LoginActivity : AppCompatActivity() {
                 AppPreference(this@LoginActivity).setSignIn(true)
                 AppPreference(this).setUserEmail(loginResult.success.email)
 
-                // Start Dashboard activity
+                // Start Dashboard activity & pass LoggedInUser
                 val intent = Intent(this, DashboardActivity::class.java)
+                val bundle = Bundle()
+                bundle.putParcelable("loggedInUserView", loginResult.success)
+                intent.putExtra("bundle", bundle)
                 startActivity(intent)
                 this@LoginActivity.finish()
                 setResult(Activity.RESULT_OK)
