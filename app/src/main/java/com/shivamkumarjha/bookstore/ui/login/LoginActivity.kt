@@ -31,8 +31,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         initializer()
-       // setUpViewModel()
-        submitButton.isEnabled = true
+        setUpViewModel()
         viewListeners()
     }
 
@@ -83,9 +82,17 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser() {
-        AppPreference(this@LoginActivity).setSignIn(true)
-        val intent = Intent(this, DashboardActivity::class.java)
-        startActivity(intent)
-        this@LoginActivity.finish()
+        val loginResult = loginViewModel.onLogin(
+            emailEditText.text.toString(),
+            passwordEditText.text.toString()
+        )
+        if (loginResult) {
+            AppPreference(this@LoginActivity).setSignIn(true)
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+            this@LoginActivity.finish()
+            return
+        } else
+            passwordEditText.error = resources.getString(R.string.wrong_password)
     }
 }

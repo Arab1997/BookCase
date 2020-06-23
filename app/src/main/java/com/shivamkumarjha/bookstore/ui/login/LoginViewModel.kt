@@ -20,7 +20,7 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                 LoginFormState(
                     emailError = R.string.invalid_email, isDataValid = false
                 )
-        } else if (userRepository.isEmailNotRegistered(password)) {
+        } else if (userRepository.isEmailNotRegistered(email)) {
             _loginForm.value =
                 LoginFormState(
                     emailUnregisteredError = R.string.invalid_email_unregistered,
