@@ -13,7 +13,7 @@ class UserRepository(private val file: File) {
     private val commonFileRepository = CommonFileRepository(file)
     private val tag = "BookRepository"
 
-    fun writeUsers(users: ArrayList<User>) {
+    private fun writeUsers(users: ArrayList<User>) {
         val data = gson.toJson(users)
         try {
             val outputStreamWriter = OutputStreamWriter(file.outputStream())
@@ -39,5 +39,4 @@ class UserRepository(private val file: File) {
         users.add(user)
         writeUsers(users)
     }
-
 }
