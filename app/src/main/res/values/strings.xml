@@ -82,6 +82,8 @@
     <string name="remove">Remove</string>
     <string name="add">Add</string>
     <string name="cart">Cart</string>
+    <string name="cart_empty">Cart empty</string>
     <string name="cart_add">Add to cart</string>
     <string name="added_cart">Added to cart</string>
+    <string name="buy_proceed">Proceed to buy</string>
 </resources>

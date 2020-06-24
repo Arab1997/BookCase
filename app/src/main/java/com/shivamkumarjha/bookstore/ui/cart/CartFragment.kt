@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -26,6 +27,7 @@ class CartFragment : Fragment(), CartItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var cartRepository: CartRepository
     private lateinit var cartViewModel: CartViewModel
+    private lateinit var buyButton: Button
     private var cartList: ArrayList<Cart> = arrayListOf()
 
     override fun onCreateView(
@@ -63,6 +65,7 @@ class CartFragment : Fragment(), CartItemClickListener {
     }
 
     private fun initializer() {
+        buyButton = requireView().findViewById(R.id.cart_proceed_button)
         recyclerView = requireView().findViewById(R.id.cart_recycler_view_id)
         val cartFile = File(requireActivity().filesDir, resources.getString(R.string.file_cart))
         cartRepository = CartRepository(cartFile)
@@ -79,6 +82,12 @@ class CartFragment : Fragment(), CartItemClickListener {
     private fun setUpViewModel() {
         cartViewModel.getCart().observe(viewLifecycleOwner, Observer {
             cartList = it
+            if (cartList.size > 0)
+                buyButton.isEnabled = true
+            else {
+                buyButton.isEnabled = false
+                buyButton.text = resources.getString(R.string.cart_empty)
+            }
             cartAdapter = CartAdapter(cartList, this)
             recyclerView.adapter = cartAdapter
         })
