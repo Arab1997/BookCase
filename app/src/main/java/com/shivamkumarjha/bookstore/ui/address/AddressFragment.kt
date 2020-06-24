@@ -87,7 +87,7 @@ class AddressFragment(private val address: Address?) : Fragment() {
     }
 
     private fun setUpToolBar() {
-        toolbar.title = resources.getString(R.string.add_address)
+        toolbar.title = resources.getString(R.string.address)
         toolbar.setNavigationIcon(R.drawable.ic_back)
         toolbar.setNavigationOnClickListener { exitFragment() }
     }

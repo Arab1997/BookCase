@@ -55,6 +55,7 @@
     <string name="login_failed">"Login failed"</string>
 
     <string name="add_address">Add address</string>
+    <string name="address">Address</string>
     <string name="address_added">Address added</string>
     <string name="prompt_mobile">Mobile</string>
     <string name="prompt_flat">Flat</string>
