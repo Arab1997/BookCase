@@ -21,6 +21,8 @@ import com.shivamkumarjha.bookstore.ui.PurchaseActivity
 import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryAdapter
 import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryItemClickListener
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DeliveryFragment : Fragment(), DeliveryItemClickListener {
 
@@ -67,11 +69,14 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     }
 
     override fun onAddressClick(address: Address) {
+        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+        val currentDate = sdf.format(Date())
         (activity as PurchaseActivity).callOrderFragment(
             Order(
                 AppPreference(requireContext()).newOrderId(),
                 cartRepository.getCart(),
-                address
+                address,
+                currentDate
             )
         )
     }
