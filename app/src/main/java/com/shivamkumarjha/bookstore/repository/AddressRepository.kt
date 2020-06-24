@@ -45,10 +45,23 @@ class AddressRepository(private val file: File) {
         writeAddress(addressList)
     }
 
+    private fun getIndex(address: Address, addressList: ArrayList<Address>): Int {
+        for (index in 0 until addressList.size) {
+            if (addressList[index].addressId == address.addressId)
+                return index
+        }
+        return -1
+    }
+
     fun updateAddress(address: Address) {
         val addressList = getAddress()
-        addressList.removeAll { it.addressId == address.addressId }
-        addressList.add(address)
+        val index = getIndex(address, addressList)
+        if (index != -1)
+            addressList[index] = address
+        else {
+            addressList.removeAll { it.addressId == address.addressId }
+            addressList.add(address)
+        }
         writeAddress(addressList)
     }
 }

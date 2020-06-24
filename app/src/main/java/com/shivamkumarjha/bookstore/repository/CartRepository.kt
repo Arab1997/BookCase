@@ -45,10 +45,23 @@ class CartRepository(private val file: File) {
         writeCart(cartList)
     }
 
+    private fun getIndex(cart: Cart, cartList: ArrayList<Cart>): Int {
+        for (index in 0 until cartList.size) {
+            if (cartList[index].itemId == cart.itemId)
+                return index
+        }
+        return -1
+    }
+
     fun updateCart(cart: Cart) {
         val cartList = getCart()
-        cartList.removeAll { it.itemId == cart.itemId }
-        cartList.add(cart)
+        val index = getIndex(cart, cartList)
+        if (index != -1)
+            cartList[index] = cart
+        else {
+            cartList.removeAll { it.itemId == cart.itemId }
+            cartList.add(cart)
+        }
         writeCart(cartList)
     }
 }
