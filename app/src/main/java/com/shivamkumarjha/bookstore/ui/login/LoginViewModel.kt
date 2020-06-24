@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shivamkumarjha.bookstore.R
-import com.shivamkumarjha.bookstore.model.LoggedInUserView
 import com.shivamkumarjha.bookstore.model.LoginFormState
 import com.shivamkumarjha.bookstore.model.LoginResult
 import com.shivamkumarjha.bookstore.repository.RegisterValidator
@@ -47,11 +46,9 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     fun onLogin(email: String, password: String) {
         val result = userRepository.login(email, password)
 
-        if (result != null) {
-            _loginResult.value =
-                LoginResult(success = LoggedInUserView(name = result.name, email = result.email))
-        } else {
+        if (result != null)
+            _loginResult.value = LoginResult(success = result)
+        else
             _loginResult.value = LoginResult(error = R.string.login_failed)
-        }
     }
 }
