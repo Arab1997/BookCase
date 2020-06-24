@@ -74,4 +74,8 @@ class CartRepository(private val file: File) {
         }
         return false
     }
+
+    fun makeCartEmpty() {
+        writeCart(arrayListOf())
+    }
 }

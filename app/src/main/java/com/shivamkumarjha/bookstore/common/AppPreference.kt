@@ -81,7 +81,7 @@ class AppPreference(private val context: Context) {
         val position =
             sharedPreferences.getInt(
                 context.resources.getString(R.string.order_id_preference),
-                0
+                10000
             ) + 1
         sharedPreferences.edit()
             .putInt(context.resources.getString(R.string.order_id_preference), position).apply()

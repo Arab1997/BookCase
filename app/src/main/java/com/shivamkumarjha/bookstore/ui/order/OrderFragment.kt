@@ -4,12 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Order
+import com.shivamkumarjha.bookstore.repository.CartRepository
+import com.shivamkumarjha.bookstore.repository.OrderRepository
+import java.io.File
 
 class OrderFragment(private val order: Order) : Fragment() {
+
+    private lateinit var orderRepository: OrderRepository
+    private lateinit var cartRepository: CartRepository
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,6 +26,15 @@ class OrderFragment(private val order: Order) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Toast.makeText(requireContext(), "" + order.cart[0].book.title, Toast.LENGTH_SHORT).show()
+
+        // order JSON
+        val orderFile = File(requireActivity().filesDir, resources.getString(R.string.file_order))
+        orderRepository = OrderRepository(orderFile)
+        orderRepository.addOrder(order)
+
+        // empty cart JSON
+        val cartFile = File(requireActivity().filesDir, resources.getString(R.string.file_cart))
+        cartRepository = CartRepository(cartFile)
+        cartRepository.makeCartEmpty()
     }
 }
