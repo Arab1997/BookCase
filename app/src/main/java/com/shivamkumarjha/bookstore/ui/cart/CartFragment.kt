@@ -96,10 +96,10 @@ class CartFragment : Fragment(), CartItemClickListener {
     }
 
     override fun onAddQuantity(cart: Cart) {
-        TODO("Not yet implemented")
+        cartRepository.updateCart(cart)
     }
 
     override fun onMinusQuantity(cart: Cart, position: Int) {
-        TODO("Not yet implemented")
+        cartRepository.updateCart(cart)
     }
 }

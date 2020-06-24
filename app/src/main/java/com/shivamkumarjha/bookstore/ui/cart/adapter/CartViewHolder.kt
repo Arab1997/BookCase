@@ -20,7 +20,7 @@ class CartViewHolder(
     private val bookAuthor: TextView = itemView.findViewById(R.id.cart_text_view_author)
     private val bookPrice: TextView = itemView.findViewById(R.id.cart_text_view_price)
     private val bookMRP: TextView = itemView.findViewById(R.id.cart_text_view_mrp)
-    private val bookDiscount: TextView = itemView.findViewById(R.id.cart_text_view_discount)
+    private val bookSaved: TextView = itemView.findViewById(R.id.cart_text_view_saved)
     private val bookQuantity: TextView = itemView.findViewById(R.id.display_book_cart_value_id)
     private val minusButton: ImageButton = itemView.findViewById(R.id.display_book_cart_minus_id)
     private val addButton: ImageButton = itemView.findViewById(R.id.display_book_cart_add_id)
@@ -63,10 +63,10 @@ class CartViewHolder(
         bookQuantity.text = cart.quantity.toString()
         bookMRP.text = "Rs $bookTotalMRP"
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-        bookDiscount.text = getDiscountPercentage(bookTotalPrice, bookTotalMRP).toString()
+        bookSaved.text = "Rs " + getAmountSaved(bookTotalPrice, bookTotalMRP) + " saved"
     }
 
-    private fun getDiscountPercentage(price: Float, maximumRetailPrice: Float): Float {
-        return (100 - (price / maximumRetailPrice) * 100)
+    private fun getAmountSaved(price: Float, maximumRetailPrice: Float): Float {
+        return maximumRetailPrice - price
     }
 }
