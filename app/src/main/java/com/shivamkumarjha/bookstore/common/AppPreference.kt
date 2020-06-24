@@ -57,9 +57,23 @@ class AppPreference(private val context: Context) {
 
     fun newAddressId(): Int {
         val position =
-            sharedPreferences.getInt(context.resources.getString(R.string.address_id_preference), 0) + 1
+            sharedPreferences.getInt(
+                context.resources.getString(R.string.address_id_preference),
+                0
+            ) + 1
         sharedPreferences.edit()
             .putInt(context.resources.getString(R.string.address_id_preference), position).apply()
+        return position
+    }
+
+    fun newCartId(): Int {
+        val position =
+            sharedPreferences.getInt(
+                context.resources.getString(R.string.cart_id_preference),
+                0
+            ) + 1
+        sharedPreferences.edit()
+            .putInt(context.resources.getString(R.string.cart_id_preference), position).apply()
         return position
     }
 }
