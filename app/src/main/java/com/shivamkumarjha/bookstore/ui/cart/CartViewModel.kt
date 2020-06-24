@@ -13,4 +13,12 @@ class CartViewModel(private val cartRepository: CartRepository) : ViewModel() {
         _cartList.value = cartRepository.getCart()
         return _cartList
     }
+
+    fun removeCart(cart: Cart) {
+        cartRepository.removeCart(cart)
+    }
+
+    fun updateCart(cart: Cart) {
+        cartRepository.updateCart(cart)
+    }
 }

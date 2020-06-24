@@ -26,6 +26,7 @@ class CartFragment : Fragment(), CartItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var cartRepository: CartRepository
     private lateinit var cartViewModel: CartViewModel
+    private var cartList: ArrayList<Cart> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -77,7 +78,8 @@ class CartFragment : Fragment(), CartItemClickListener {
 
     private fun setUpViewModel() {
         cartViewModel.getCart().observe(viewLifecycleOwner, Observer {
-            cartAdapter = CartAdapter(it, this)
+            cartList = it
+            cartAdapter = CartAdapter(cartList, this)
             recyclerView.adapter = cartAdapter
         })
     }
@@ -96,10 +98,15 @@ class CartFragment : Fragment(), CartItemClickListener {
     }
 
     override fun onAddQuantity(cart: Cart) {
-        cartRepository.updateCart(cart)
+        cartViewModel.updateCart(cart)
     }
 
     override fun onMinusQuantity(cart: Cart, position: Int) {
-        cartRepository.updateCart(cart)
+        if (cart.quantity == 0) {
+            cartViewModel.removeCart(cart)
+            cartList.removeAt(position)
+            cartAdapter.notifyItemRemoved(position)
+        }
+        cartViewModel.updateCart(cart)
     }
 }
