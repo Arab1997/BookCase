@@ -4,9 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.model.Cart
 import com.shivamkumarjha.bookstore.model.Review
+import com.shivamkumarjha.bookstore.repository.CartRepository
 
-class DisplayBookViewModel(private val book: Book) : ViewModel() {
+class DisplayBookViewModel(private val book: Book, private val cartRepository: CartRepository) :
+    ViewModel() {
 
     private val _bookTitle = MutableLiveData<String>().apply {
         value = book.title
@@ -68,5 +71,19 @@ class DisplayBookViewModel(private val book: Book) : ViewModel() {
     fun getImages(): LiveData<ArrayList<String>> {
         _imageLink.value = book.imageLink
         return _imageLink
+    }
+
+    fun addToCart(cartId: Int) {
+        cartRepository.addCart(
+            Cart(
+                cartId,
+                book,
+                1
+            )
+        )
+    }
+
+    fun isBookInCart(): Boolean {
+        return cartRepository.isBookInCart(book)
     }
 }

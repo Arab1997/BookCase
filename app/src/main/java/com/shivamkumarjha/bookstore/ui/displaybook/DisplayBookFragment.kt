@@ -21,7 +21,6 @@ import androidx.viewpager.widget.ViewPager
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Book
-import com.shivamkumarjha.bookstore.model.Cart
 import com.shivamkumarjha.bookstore.repository.CartRepository
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.ReviewAdapter
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.SliderAdapter
@@ -91,10 +90,11 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
         cartButton = requireView().findViewById(R.id.display_book_cart_button)
         viewPager = requireView().findViewById(R.id.display_book_view_pager)
         recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
-        displayBookViewModel = ViewModelProvider(this, DisplayBookViewModelFactory(book))
-            .get(DisplayBookViewModel::class.java)
         val cartFile = File(requireActivity().filesDir, resources.getString(R.string.file_cart))
         cartRepository = CartRepository(cartFile)
+        displayBookViewModel =
+            ViewModelProvider(this, DisplayBookViewModelFactory(book, cartRepository))
+                .get(DisplayBookViewModel::class.java)
     }
 
     private fun setUpToolBar() {
@@ -105,16 +105,10 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
 
     private fun setUpViews() {
         //cart
-        if (cartRepository.isBookInCart(book))
+        if (displayBookViewModel.isBookInCart())
             toggleCart()
         cartButton.setOnClickListener {
-            cartRepository.addCart(
-                Cart(
-                    AppPreference(requireContext()).newCartId(),
-                    book,
-                    1
-                )
-            )
+            displayBookViewModel.addToCart(AppPreference(requireContext()).newCartId())
             toggleCart()
         }
         // Strike MRP
