@@ -12,10 +12,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
+import com.shivamkumarjha.bookstore.repository.AddressRepository
 import com.shivamkumarjha.bookstore.repository.ProfileRepository
 import com.shivamkumarjha.bookstore.ui.DashboardActivity
+import com.shivamkumarjha.bookstore.ui.profile.adapter.AddressAdapter
 import java.io.File
 
 class ProfileFragment : Fragment() {
@@ -25,6 +29,8 @@ class ProfileFragment : Fragment() {
     private lateinit var emailTextView: TextView
     private lateinit var addAddressButton: Button
     private lateinit var loggedInUserView: LoggedInUserView
+    private lateinit var addressAdapter: AddressAdapter
+    private lateinit var recyclerView: RecyclerView
     private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreateView(
@@ -59,6 +65,11 @@ class ProfileFragment : Fragment() {
         addAddressButton = requireView().findViewById(R.id.profile_address_button)
         loggedInUserView = (activity as DashboardActivity).getUser()
 
+        // recycler view
+        recyclerView = requireView().findViewById(R.id.profile_address_recycler_view_id)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.setHasFixedSize(true)
+
         addAddressButton.setOnClickListener { (activity as DashboardActivity).callAddressFragment() }
     }
 
@@ -73,13 +84,21 @@ class ProfileFragment : Fragment() {
         val profileFile =
             File(requireActivity().filesDir, resources.getString(R.string.file_loggedInUser))
         val profileRepository = ProfileRepository(profileFile, loggedInUserView)
-        profileViewModel = ViewModelProvider(this, ProfileViewModelFactory(profileRepository))
-            .get(ProfileViewModel::class.java)
+        val addressFile =
+            File(requireActivity().filesDir, resources.getString(R.string.file_address))
+        val addressRepository = AddressRepository(addressFile)
+        profileViewModel =
+            ViewModelProvider(this, ProfileViewModelFactory(profileRepository, addressRepository))
+                .get(ProfileViewModel::class.java)
         profileViewModel.getName.observe(viewLifecycleOwner, Observer {
             nameTextView.text = it
         })
         profileViewModel.getEmail.observe(viewLifecycleOwner, Observer {
             emailTextView.text = it
+        })
+        profileViewModel.addressList.observe(viewLifecycleOwner, Observer {
+            addressAdapter = AddressAdapter(it)
+            recyclerView.adapter = addressAdapter
         })
     }
 
