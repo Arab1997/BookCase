@@ -1,6 +1,7 @@
 package com.shivamkumarjha.bookstore.ui.cart.adapter
 
 import android.annotation.SuppressLint
+import android.graphics.Paint
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -18,6 +19,8 @@ class CartViewHolder(
     private val bookTitle: TextView = itemView.findViewById(R.id.cart_text_view_title)
     private val bookAuthor: TextView = itemView.findViewById(R.id.cart_text_view_author)
     private val bookPrice: TextView = itemView.findViewById(R.id.cart_text_view_price)
+    private val bookMRP: TextView = itemView.findViewById(R.id.cart_text_view_mrp)
+    private val bookDiscount: TextView = itemView.findViewById(R.id.cart_text_view_discount)
     private val bookQuantity: TextView = itemView.findViewById(R.id.display_book_cart_value_id)
     private val minusButton: ImageButton = itemView.findViewById(R.id.display_book_cart_minus_id)
     private val addButton: ImageButton = itemView.findViewById(R.id.display_book_cart_add_id)
@@ -54,7 +57,16 @@ class CartViewHolder(
 
     @SuppressLint("SetTextI18n")
     private fun setPrices() {
-        bookPrice.text = "Rs " + cart.book.price * 76.25f * cart.quantity // Price USD to INR
+        val bookTotalPrice = cart.book.price * 76.25f * cart.quantity
+        val bookTotalMRP = cart.book.maximumRetailPrice * 76.25f * cart.quantity
+        bookPrice.text = "Rs $bookTotalPrice"
         bookQuantity.text = cart.quantity.toString()
+        bookMRP.text = "Rs $bookTotalMRP"
+        bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+        bookDiscount.text = getDiscountPercentage(bookTotalPrice, bookTotalMRP).toString()
+    }
+
+    private fun getDiscountPercentage(price: Float, maximumRetailPrice: Float): Float {
+        return (100 - (price / maximumRetailPrice) * 100)
     }
 }
