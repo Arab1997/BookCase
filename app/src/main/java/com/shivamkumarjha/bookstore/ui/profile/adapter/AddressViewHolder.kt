@@ -1,5 +1,6 @@
 package com.shivamkumarjha.bookstore.ui.profile.adapter
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -14,12 +15,13 @@ class AddressViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val addressState: TextView = itemView.findViewById(R.id.address_item_state_id)
     private val addressPinCode: TextView = itemView.findViewById(R.id.address_item_pinCode_id)
 
+    @SuppressLint("SetTextI18n")
     fun initialize(address: Address) {
-        addressMobile.text = address.mobile
-        addressFlat.text = address.flat
-        addressStreet.text = address.street
-        addressCity.text = address.city
-        addressState.text = address.state
-        addressPinCode.text = address.pinCode
+        addressMobile.text = "Address: " + address.mobile
+        addressFlat.text = "Flat: " + address.flat
+        addressStreet.text = "Street: " + address.street
+        addressCity.text = "City: " + address.city
+        addressState.text = "State: " + address.state
+        addressPinCode.text = "Pin code: " + address.pinCode
     }
 }

@@ -108,14 +108,6 @@
                         android:src="@drawable/ic_profile_image" />
                 </androidx.cardview.widget.CardView>
 
-                <View
-                    android:id="@+id/review_divider_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/divider_margin"
-                    android:layout_marginTop="@dimen/view_margin_large"
-                    android:background="@color/divider"
-                    app:layout_constraintTop_toBottomOf="@id/profile_picture_card" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/profile_address_recycler_view_id"
                     android:layout_width="match_parent"
@@ -124,8 +116,16 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/review_divider_id"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_picture_card"
                     tools:listitem="@layout/content_address_item" />
+
+                <View
+                    android:id="@+id/review_divider_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_margin"
+                    android:layout_marginTop="@dimen/view_margin_big"
+                    android:background="@color/divider"
+                    app:layout_constraintTop_toBottomOf="@id/profile_address_recycler_view_id" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
