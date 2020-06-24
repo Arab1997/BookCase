@@ -7,7 +7,7 @@ import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Address
 
 class AddressAdapter(
-    private var addresss: ArrayList<Address>,
+    private var address: ArrayList<Address>,
     private val clickListener: AddressItemClickListener
 ) :
     RecyclerView.Adapter<AddressViewHolder>() {
@@ -19,9 +19,9 @@ class AddressAdapter(
         return AddressViewHolder(itemView, clickListener)
     }
 
-    override fun getItemCount(): Int = addresss.size
+    override fun getItemCount(): Int = address.size
 
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
-        holder.initialize(addresss[position], position)
+        holder.initialize(address[position], position)
     }
 }
