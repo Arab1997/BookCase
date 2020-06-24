@@ -8,20 +8,20 @@ import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Address
 
 class DeliveryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val addressMobile: TextView = itemView.findViewById(R.id.address_item_mobile_id)
-    private val addressFlat: TextView = itemView.findViewById(R.id.address_item_flat_id)
-    private val addressStreet: TextView = itemView.findViewById(R.id.address_item_street_id)
-    private val addressCity: TextView = itemView.findViewById(R.id.address_item_city_id)
-    private val addressState: TextView = itemView.findViewById(R.id.address_item_state_id)
-    private val addressPinCode: TextView = itemView.findViewById(R.id.address_item_pinCode_id)
+    private val deliveryMobile: TextView = itemView.findViewById(R.id.delivery_item_mobile_id)
+    private val deliveryFlat: TextView = itemView.findViewById(R.id.delivery_item_flat_id)
+    private val deliveryStreet: TextView = itemView.findViewById(R.id.delivery_item_street_id)
+    private val deliveryCity: TextView = itemView.findViewById(R.id.delivery_item_city_id)
+    private val deliveryState: TextView = itemView.findViewById(R.id.delivery_item_state_id)
+    private val deliveryPinCode: TextView = itemView.findViewById(R.id.delivery_item_pinCode_id)
 
     @SuppressLint("SetTextI18n")
-    fun initialize(address: Address) {
-        addressMobile.text = "Mobile: " + address.mobile
-        addressFlat.text = "Flat: " + address.flat
-        addressStreet.text = "Street: " + address.street
-        addressCity.text = "City: " + address.city
-        addressState.text = "State: " + address.state
-        addressPinCode.text = "Pin code: " + address.pinCode
+    fun initialize(delivery: Address) {
+        deliveryMobile.text = "Mobile: " + delivery.mobile
+        deliveryFlat.text = "Flat: " + delivery.flat
+        deliveryStreet.text = "Street: " + delivery.street
+        deliveryCity.text = "City: " + delivery.city
+        deliveryState.text = "State: " + delivery.state
+        deliveryPinCode.text = "Pin code: " + delivery.pinCode
     }
 }

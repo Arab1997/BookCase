@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
 import com.shivamkumarjha.bookstore.R
-import com.shivamkumarjha.bookstore.ui.order.OrderFragment
+import com.shivamkumarjha.bookstore.ui.delivery.DeliveryFragment
 
 class PurchaseActivity : AppCompatActivity() {
 
@@ -14,7 +14,7 @@ class PurchaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_purchase)
         setUpToolbar()
-        callOrderFragment()
+        callDeliveryFragment()
     }
 
     private fun setUpToolbar() {
@@ -23,10 +23,10 @@ class PurchaseActivity : AppCompatActivity() {
         supportActionBar?.title = resources.getString(R.string.purchase)
     }
 
-    private fun callOrderFragment() {
+    private fun callDeliveryFragment() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .replace(R.id.purchase_fragment_holder, OrderFragment())
+            .replace(R.id.purchase_fragment_holder, DeliveryFragment())
             .commit()
     }
 }

@@ -6,7 +6,7 @@
     tools:context=".ui.delivery.DeliveryFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/order_recycler_view"
+        android:id="@+id/delivery_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"

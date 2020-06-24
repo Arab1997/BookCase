@@ -4,15 +4,62 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.model.Address
+import com.shivamkumarjha.bookstore.repository.AddressRepository
+import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryAdapter
+import java.io.File
 
 class DeliveryFragment : Fragment() {
+
+    private lateinit var deliveryAdapter: DeliveryAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var deliveryViewModel: DeliveryViewModel
+    private var addressList: ArrayList<Address> = arrayListOf()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_delivery, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        backPressDispatcher()
+        recyclerView = requireView().findViewById(R.id.delivery_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.setHasFixedSize(true)
+        val addressFile =
+            File(requireActivity().filesDir, resources.getString(R.string.file_address))
+        val addressRepository = AddressRepository(addressFile)
+        deliveryViewModel =
+            ViewModelProvider(this, DeliveryViewModelFactory(addressRepository))
+                .get(DeliveryViewModel::class.java)
+        deliveryViewModel.getAddress().observe(viewLifecycleOwner, Observer {
+            addressList = it
+            deliveryAdapter = DeliveryAdapter(addressList)
+            recyclerView.adapter = deliveryAdapter
+        })
+    }
+
+    private fun backPressDispatcher() {
+        val callBackObject = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                exitFragment()
+            }
+        }
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
+    }
+
+    private fun exitFragment() {
+        requireActivity().supportFragmentManager.popBackStack()
     }
 }
