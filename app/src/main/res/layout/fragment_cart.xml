@@ -32,21 +32,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/text_cart"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cart_recycler_view_id"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/fragment_margin"
-                android:layout_marginTop="@dimen/fragment_margin"
-                android:layout_marginEnd="@dimen/fragment_margin"
-                android:fontFamily="@font/firasans_semibold"
-                android:gravity="center_horizontal"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/text_size_large"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/content_cart_item" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </FrameLayout>

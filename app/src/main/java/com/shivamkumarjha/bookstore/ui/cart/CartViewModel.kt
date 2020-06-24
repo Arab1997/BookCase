@@ -3,11 +3,14 @@ package com.shivamkumarjha.bookstore.ui.cart
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.shivamkumarjha.bookstore.model.Cart
+import com.shivamkumarjha.bookstore.repository.CartRepository
 
-class CartViewModel : ViewModel() {
+class CartViewModel(private val cartRepository: CartRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is cart Fragment"
+    private var _cartList = MutableLiveData<ArrayList<Cart>>()
+    fun getCart(): LiveData<ArrayList<Cart>> {
+        _cartList.value = cartRepository.getCart()
+        return _cartList
     }
-    val text: LiveData<String> = _text
 }
