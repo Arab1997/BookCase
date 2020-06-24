@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/view_margin_large"
+    android:layout_marginLeft="@dimen/view_margin_large"
+    android:layout_marginTop="@dimen/view_margin"
+    android:layout_marginEnd="@dimen/view_margin_large"
+    android:layout_marginRight="@dimen/view_margin_large"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/address_item_mobile_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_margin"
+        android:fontFamily="@font/firasans_regular"
+        android:text="@string/prompt_mobile"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_normal" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/address_item_flat_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_margin"
+        android:fontFamily="@font/firasans_regular"
+        android:text="@string/prompt_flat"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:textColor="@color/blue_grey_800"
+        android:textSize="@dimen/text_size_small" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/address_item_street_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_margin"
+        android:fontFamily="@font/firasans_regular"
+        android:text="@string/prompt_street"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:textColor="@color/blue_grey_800"
+        android:textSize="@dimen/text_size_small" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/address_item_city_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_margin"
+        android:fontFamily="@font/firasans_regular"
+        android:text="@string/prompt_city"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:textColor="@color/blue_grey_800"
+        android:textSize="@dimen/text_size_small" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/address_item_state_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_margin"
+        android:fontFamily="@font/firasans_regular"
+        android:text="@string/prompt_state"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:textColor="@color/blue_grey_800"
+        android:textSize="@dimen/text_size_small" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/address_item_pinCode_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_margin"
+        android:fontFamily="@font/firasans_regular"
+        android:text="@string/prompt_pinCode"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:textColor="@color/blue_grey_800"
+        android:textSize="@dimen/text_size_small" />
+
+</LinearLayout>
