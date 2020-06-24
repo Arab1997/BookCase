@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.ui.delivery.DeliveryFragment
+import com.shivamkumarjha.bookstore.ui.order.OrderFragment
 
 class PurchaseActivity : AppCompatActivity() {
 
@@ -27,6 +29,13 @@ class PurchaseActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.purchase_fragment_holder, DeliveryFragment())
+            .commit()
+    }
+
+    fun callOrderFragment(address: Address) {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.purchase_fragment_holder, OrderFragment(address))
             .commit()
     }
 }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.repository.AddressRepository
+import com.shivamkumarjha.bookstore.ui.PurchaseActivity
 import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryAdapter
 import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryItemClickListener
 import java.io.File
@@ -53,7 +53,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     }
 
     override fun onAddressClick(address: Address) {
-        Toast.makeText(requireContext(), "" + address.state, Toast.LENGTH_SHORT).show()
+        (activity as PurchaseActivity).callOrderFragment(address)
     }
 
     private fun backPressDispatcher() {
