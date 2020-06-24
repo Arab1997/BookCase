@@ -1,4 +1,4 @@
-package com.shivamkumarjha.bookstore.model
+package com.shivamkumarjha.bookstore.ui.register
 
 data class RegisterFormState(
     val nameError: Int? = null,

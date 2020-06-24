@@ -1,4 +1,4 @@
-package com.shivamkumarjha.bookstore.model
+package com.shivamkumarjha.bookstore.ui.login
 
 data class LoginFormState(
     val emailError: Int? = null,

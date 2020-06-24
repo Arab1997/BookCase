@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shivamkumarjha.bookstore.R
-import com.shivamkumarjha.bookstore.model.RegisterFormState
 import com.shivamkumarjha.bookstore.model.User
 import com.shivamkumarjha.bookstore.repository.RegisterValidator
 import com.shivamkumarjha.bookstore.repository.UserRepository

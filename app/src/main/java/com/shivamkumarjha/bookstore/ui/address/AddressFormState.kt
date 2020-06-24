@@ -1,4 +1,4 @@
-package com.shivamkumarjha.bookstore.model
+package com.shivamkumarjha.bookstore.ui.address
 
 data class AddressFormState(
     val mobileError: Int? = null,
