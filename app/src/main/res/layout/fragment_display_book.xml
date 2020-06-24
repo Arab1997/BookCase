@@ -198,13 +198,30 @@
                         android:textSize="@dimen/text_size_large" />
                 </LinearLayout>
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/display_book_cart_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/view_margin_large"
+                    android:layout_marginLeft="@dimen/view_margin_large"
+                    android:layout_marginTop="@dimen/view_margin_small"
+                    android:layout_marginEnd="@dimen/view_margin_large"
+                    android:layout_marginRight="@dimen/view_margin_large"
+                    android:background="@drawable/button_background"
+                    android:text="@string/cart_add"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/display_book_prices_layout" />
+
                 <View
                     android:id="@+id/prices_divider_id"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/divider_margin"
                     android:layout_marginTop="@dimen/view_margin"
                     android:background="@color/divider"
-                    app:layout_constraintTop_toBottomOf="@id/display_book_prices_layout" />
+                    app:layout_constraintTop_toBottomOf="@id/display_book_cart_button" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/display_book_category_text_view_id"

@@ -79,4 +79,6 @@
     <string name="demo_book_cart_count">0</string>
     <string name="remove">Remove</string>
     <string name="add">Add</string>
+    <string name="cart">Cart</string>
+    <string name="cart_add">Add to cart</string>
 </resources>
