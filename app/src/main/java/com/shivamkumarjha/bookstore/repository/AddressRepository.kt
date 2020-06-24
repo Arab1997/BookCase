@@ -38,4 +38,17 @@ class AddressRepository(private val file: File) {
         addressList.add(address)
         writeAddress(addressList)
     }
+
+    fun removeAddress(address: Address) {
+        val addressList = getAddress()
+        addressList.removeAll { it.addressId == address.addressId }
+        writeAddress(addressList)
+    }
+
+    fun updateAddress(address: Address) {
+        val addressList = getAddress()
+        addressList.removeAll { it.addressId == address.addressId }
+        addressList.add(address)
+        writeAddress(addressList)
+    }
 }

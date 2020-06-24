@@ -15,14 +15,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
 import com.shivamkumarjha.bookstore.repository.AddressRepository
 import com.shivamkumarjha.bookstore.repository.ProfileRepository
 import com.shivamkumarjha.bookstore.ui.DashboardActivity
 import com.shivamkumarjha.bookstore.ui.profile.adapter.AddressAdapter
+import com.shivamkumarjha.bookstore.ui.profile.adapter.AddressItemClickListener
 import java.io.File
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), AddressItemClickListener {
 
     private lateinit var toolbar: Toolbar
     private lateinit var nameTextView: TextView
@@ -32,6 +34,7 @@ class ProfileFragment : Fragment() {
     private lateinit var addressAdapter: AddressAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var profileViewModel: ProfileViewModel
+    private lateinit var addressList: ArrayList<Address>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +48,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initializer()
         setUpToolBar()
+        setUpViews()
         setUpViewModel()
         backPressDispatcher()
     }
@@ -59,18 +63,21 @@ class ProfileFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar!!.show()
     }
 
+    override fun onEditClick(address: Address) {
+        (activity as DashboardActivity).callAddressFragment(address)
+    }
+
+    override fun onDeleteClick(address: Address, position: Int) {
+        profileViewModel.removeAddress(address)
+        addressList.removeAt(position)
+        addressAdapter.notifyItemRemoved(position)
+    }
+
     private fun initializer() {
         nameTextView = requireView().findViewById(R.id.profile_name_text_view_id)
         emailTextView = requireView().findViewById(R.id.profile_email_text_view_id)
         addAddressButton = requireView().findViewById(R.id.profile_address_button)
         loggedInUserView = (activity as DashboardActivity).getUser()
-
-        // recycler view
-        recyclerView = requireView().findViewById(R.id.profile_address_recycler_view_id)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.setHasFixedSize(true)
-
-        addAddressButton.setOnClickListener { (activity as DashboardActivity).callAddressFragment() }
     }
 
     private fun setUpToolBar() {
@@ -78,6 +85,16 @@ class ProfileFragment : Fragment() {
         toolbar.setNavigationIcon(R.drawable.ic_back)
         toolbar.setNavigationOnClickListener { exitFragment() }
         toolbar.title = resources.getString(R.string.profile)
+    }
+
+    private fun setUpViews() {
+        recyclerView = requireView().findViewById(R.id.profile_address_recycler_view_id)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.setHasFixedSize(true)
+
+        addAddressButton.setOnClickListener {
+            (activity as DashboardActivity).callAddressFragment(null)
+        }
     }
 
     private fun setUpViewModel() {
@@ -97,7 +114,8 @@ class ProfileFragment : Fragment() {
             emailTextView.text = it
         })
         profileViewModel.addressList.observe(viewLifecycleOwner, Observer {
-            addressAdapter = AddressAdapter(it)
+            addressList = it
+            addressAdapter = AddressAdapter(addressList, this)
             recyclerView.adapter = addressAdapter
         })
     }

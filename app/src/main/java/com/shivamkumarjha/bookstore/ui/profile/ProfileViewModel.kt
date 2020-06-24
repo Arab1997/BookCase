@@ -26,4 +26,8 @@ class ProfileViewModel(
         value = addressRepository.getAddress()
     }
     val addressList: LiveData<ArrayList<Address>> = _addressList
+
+    fun removeAddress(address: Address) {
+        addressRepository.removeAddress(address)
+    }
 }

@@ -57,4 +57,8 @@ class AddressViewModel(private val addressRepository: AddressRepository) : ViewM
     fun onSubmitClick(address: Address) {
         addressRepository.addAddress(address)
     }
+
+    fun updateAddress(address: Address) {
+        addressRepository.updateAddress(address)
+    }
 }

@@ -21,7 +21,7 @@ import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.repository.AddressRepository
 import java.io.File
 
-class AddressFragment : Fragment() {
+class AddressFragment(private val address: Address?) : Fragment() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var mobileEditText: EditText
@@ -33,6 +33,7 @@ class AddressFragment : Fragment() {
     private lateinit var submitButton: Button
     private lateinit var addressConstraintLayout: ConstraintLayout
     private lateinit var addressViewModel: AddressViewModel
+    private var addressId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,6 +72,18 @@ class AddressFragment : Fragment() {
         pinCodeEditText = requireView().findViewById(R.id.address_pin_code_id)
         submitButton = requireView().findViewById(R.id.address_submit_id)
         addressConstraintLayout = requireView().findViewById(R.id.address_constraint_layout_id)
+
+        // restore data if edit
+        if (address != null) {
+            addressId = address.addressId!!
+            mobileEditText.setText(address.mobile)
+            flatEditText.setText(address.flat)
+            streetEditText.setText(address.street)
+            cityEditText.setText(address.city)
+            stateEditText.setText(address.state)
+            pinCodeEditText.setText(address.pinCode)
+        } else
+            addressId = AppPreference(requireContext()).newAddressId()
     }
 
     private fun setUpToolBar() {
@@ -80,7 +93,8 @@ class AddressFragment : Fragment() {
     }
 
     private fun setUpViewModel() {
-        val addressFile = File(requireActivity().filesDir, resources.getString(R.string.file_address))
+        val addressFile =
+            File(requireActivity().filesDir, resources.getString(R.string.file_address))
         addressViewModel =
             ViewModelProvider(this, AddressViewModelFactory(AddressRepository(addressFile)))
                 .get(AddressViewModel::class.java)
@@ -129,17 +143,19 @@ class AddressFragment : Fragment() {
     }
 
     private fun submitAddress() {
-        addressViewModel.onSubmitClick(
-            Address(
-                AppPreference(requireContext()).newAddressId(),
-                mobileEditText.text.toString(),
-                flatEditText.text.toString(),
-                streetEditText.text.toString(),
-                cityEditText.text.toString(),
-                stateEditText.text.toString(),
-                pinCodeEditText.text.toString()
-            )
+        val newAddress = Address(
+            addressId,
+            mobileEditText.text.toString(),
+            flatEditText.text.toString(),
+            streetEditText.text.toString(),
+            cityEditText.text.toString(),
+            stateEditText.text.toString(),
+            pinCodeEditText.text.toString()
         )
+        if (address != null)
+            addressViewModel.updateAddress(newAddress)
+        else
+            addressViewModel.onSubmitClick(newAddress)
         exitFragment()
     }
 
