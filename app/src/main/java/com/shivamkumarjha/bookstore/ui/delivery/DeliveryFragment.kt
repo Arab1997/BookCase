@@ -11,8 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Address
+import com.shivamkumarjha.bookstore.model.Order
 import com.shivamkumarjha.bookstore.repository.AddressRepository
+import com.shivamkumarjha.bookstore.repository.CartRepository
 import com.shivamkumarjha.bookstore.ui.PurchaseActivity
 import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryAdapter
 import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryItemClickListener
@@ -23,6 +26,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     private lateinit var deliveryAdapter: DeliveryAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var deliveryViewModel: DeliveryViewModel
+    private lateinit var cartRepository: CartRepository
     private var addressList: ArrayList<Address> = arrayListOf()
 
     override fun onCreateView(
@@ -39,6 +43,8 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
         recyclerView = requireView().findViewById(R.id.delivery_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
+        val cartFile = File(requireActivity().filesDir, resources.getString(R.string.file_cart))
+        cartRepository = CartRepository(cartFile)
         val addressFile =
             File(requireActivity().filesDir, resources.getString(R.string.file_address))
         val addressRepository = AddressRepository(addressFile)
@@ -53,7 +59,13 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     }
 
     override fun onAddressClick(address: Address) {
-        (activity as PurchaseActivity).callOrderFragment(address)
+        (activity as PurchaseActivity).callOrderFragment(
+            Order(
+                AppPreference(requireContext()).newOrderId(),
+                cartRepository.getCart(),
+                address
+            )
+        )
     }
 
     private fun backPressDispatcher() {

@@ -76,4 +76,15 @@ class AppPreference(private val context: Context) {
             .putInt(context.resources.getString(R.string.cart_id_preference), position).apply()
         return position
     }
+
+    fun newOrderId(): Int {
+        val position =
+            sharedPreferences.getInt(
+                context.resources.getString(R.string.order_id_preference),
+                0
+            ) + 1
+        sharedPreferences.edit()
+            .putInt(context.resources.getString(R.string.order_id_preference), position).apply()
+        return position
+    }
 }
