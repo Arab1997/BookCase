@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.model.Order
+import com.shivamkumarjha.bookstore.ui.address.AddressFragment
 import com.shivamkumarjha.bookstore.ui.delivery.DeliveryFragment
 import com.shivamkumarjha.bookstore.ui.order.OrderFragment
 
@@ -30,6 +31,14 @@ class PurchaseActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.purchase_fragment_holder, DeliveryFragment())
+            .commit()
+    }
+
+    fun callAddressFragment(address: Address?) {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.purchase_fragment_holder, AddressFragment(address))
+            .addToBackStack(null)
             .commit()
     }
 

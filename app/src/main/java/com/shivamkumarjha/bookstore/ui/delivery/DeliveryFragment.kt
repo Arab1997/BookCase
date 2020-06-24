@@ -58,7 +58,9 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
                 Snackbar.make(
                     view,
                     "Please add address & retry.", Snackbar.LENGTH_LONG
-                ).show()
+                ).setAction(R.string.add_address) {
+                    (activity as PurchaseActivity).callAddressFragment(null)
+                }.show()
             deliveryAdapter = DeliveryAdapter(addressList, this)
             recyclerView.adapter = deliveryAdapter
         })
