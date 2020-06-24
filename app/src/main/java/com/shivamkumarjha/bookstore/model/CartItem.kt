@@ -1,7 +1,7 @@
 package com.shivamkumarjha.bookstore.model
 
-data class Cart(
-    val cartId: Int,
+data class CartItem(
+    val itemId: Int,
     val book: Book,
     val quantity: Int
 )

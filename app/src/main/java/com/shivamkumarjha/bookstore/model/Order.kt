@@ -2,6 +2,6 @@ package com.shivamkumarjha.bookstore.model
 
 data class Order(
     val orderId: Int,
-    val cart: ArrayList<Cart>,
+    val cartItem: ArrayList<CartItem>,
     val address: Address
 )
