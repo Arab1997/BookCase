@@ -8,10 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.view.animation.ScaleAnimation
-import android.widget.CompoundButton
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.ToggleButton
+import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -22,9 +19,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.model.Cart
+import com.shivamkumarjha.bookstore.repository.CartRepository
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.ReviewAdapter
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.SliderAdapter
+import java.io.File
 
 class DisplayBookFragment(private val book: Book) : Fragment() {
 
@@ -40,11 +41,13 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
     private lateinit var bookCategory: TextView
     private lateinit var bookDetail: TextView
     private lateinit var wishStatus: ToggleButton
+    private lateinit var cartButton: Button
     private lateinit var viewPager: ViewPager
     private lateinit var sliderAdapter: SliderAdapter
     private lateinit var reviewAdapter: ReviewAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var displayBookViewModel: DisplayBookViewModel
+    private lateinit var cartRepository: CartRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,10 +88,13 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
         bookCategory = requireView().findViewById(R.id.display_book_category_text_view_id)
         bookDetail = requireView().findViewById(R.id.display_book_detail_text_view_id)
         wishStatus = requireView().findViewById(R.id.display_book_toggle_wish_id)
+        cartButton = requireView().findViewById(R.id.display_book_cart_button)
         viewPager = requireView().findViewById(R.id.display_book_view_pager)
         recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
         displayBookViewModel = ViewModelProvider(this, DisplayBookViewModelFactory(book))
             .get(DisplayBookViewModel::class.java)
+        val cartFile = File(requireActivity().filesDir, resources.getString(R.string.file_cart))
+        cartRepository = CartRepository(cartFile)
     }
 
     private fun setUpToolBar() {
@@ -98,6 +104,19 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
     }
 
     private fun setUpViews() {
+        //cart
+        if (cartRepository.isBookInCart(book))
+            toggleCart()
+        cartButton.setOnClickListener {
+            cartRepository.addCart(
+                Cart(
+                    AppPreference(requireContext()).newCartId(),
+                    book,
+                    1
+                )
+            )
+            toggleCart()
+        }
         // Strike MRP
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         // wish toggle
@@ -106,6 +125,11 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
         // review recycler view
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
+    }
+
+    private fun toggleCart() {
+        cartButton.isEnabled = false
+        cartButton.text = resources.getString(R.string.added_cart)
     }
 
     private fun setUpViewModel() {

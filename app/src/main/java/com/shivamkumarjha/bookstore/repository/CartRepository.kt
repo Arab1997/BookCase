@@ -3,6 +3,7 @@ package com.shivamkumarjha.bookstore.repository
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.Cart
 import java.io.File
 import java.io.IOException
@@ -63,5 +64,14 @@ class CartRepository(private val file: File) {
             cartList.add(cart)
         }
         writeCart(cartList)
+    }
+
+    fun isBookInCart(book: Book): Boolean {
+        val cartList = getCart()
+        cartList.forEach {
+            if (it.book.bookID == book.bookID)
+                return true
+        }
+        return false
     }
 }
