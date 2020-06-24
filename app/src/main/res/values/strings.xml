@@ -74,6 +74,7 @@
     <string name="file_address">Address.json</string>
     <string name="file_books">Books.json</string>
     <string name="file_cart">Cart.json</string>
+    <string name="file_order">Order.json</string>
     <string name="file_loggedInUser">LoggedInUser.json</string>
     <string name="file_users">Users.json</string>
     <string name="userId">userId</string>
@@ -82,6 +83,7 @@
     <string name="remove">Remove</string>
     <string name="add">Add</string>
     <string name="cart">Cart</string>
+    <string name="delivery">Delivery address</string>
     <string name="purchase">Purchase</string>
     <string name="cart_empty">Cart empty</string>
     <string name="cart_add">Add to cart</string>

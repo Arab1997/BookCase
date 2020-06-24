@@ -93,7 +93,6 @@ class DashboardActivity : AppCompatActivity() {
     fun callPurchaseActivity() {
         val intent = Intent(this, PurchaseActivity::class.java)
         startActivity(intent)
-        this.finish()
     }
 
     fun doSignOut() {
