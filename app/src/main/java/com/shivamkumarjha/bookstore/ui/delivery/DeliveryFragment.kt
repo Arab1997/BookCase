@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Address
@@ -53,6 +54,11 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
                 .get(DeliveryViewModel::class.java)
         deliveryViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             addressList = it
+            if (it.size == 0)
+                Snackbar.make(
+                    view,
+                    "Please add address & retry.", Snackbar.LENGTH_LONG
+                ).show()
             deliveryAdapter = DeliveryAdapter(addressList, this)
             recyclerView.adapter = deliveryAdapter
         })
@@ -79,5 +85,6 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
 
     private fun exitFragment() {
         requireActivity().supportFragmentManager.popBackStack()
+        requireActivity().finish()
     }
 }
