@@ -27,6 +27,7 @@
     <string name="logged_preference">LoggedPreference</string>
     <string name="email_preference">EmailPreference</string>
     <string name="name_preference">NamePreference</string>
+    <string name="address_id_preference">AddressIdPreference</string>
     <string name="new_login_preference">NewLoginPreference</string>
 
     <string name="profile">Profile</string>

@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.common.afterTextChanged
 import com.shivamkumarjha.bookstore.common.hideKeyboard
 import com.shivamkumarjha.bookstore.model.Address
@@ -116,6 +117,7 @@ class AddressFragment : Fragment() {
     private fun onDataChange() {
         addressViewModel.addressDataChanged(
             Address(
+                null,
                 mobileEditText.text.toString(),
                 flatEditText.text.toString(),
                 streetEditText.text.toString(),
@@ -129,6 +131,7 @@ class AddressFragment : Fragment() {
     private fun submitAddress() {
         addressViewModel.onSubmitClick(
             Address(
+                AppPreference(requireContext()).newAddressId(),
                 mobileEditText.text.toString(),
                 flatEditText.text.toString(),
                 streetEditText.text.toString(),

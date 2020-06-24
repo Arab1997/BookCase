@@ -54,4 +54,12 @@ class AppPreference(private val context: Context) {
             .putInt(context.resources.getString(R.string.userId), position).apply()
         return position
     }
+
+    fun newAddressId(): Int {
+        val position =
+            sharedPreferences.getInt(context.resources.getString(R.string.address_id_preference), 0) + 1
+        sharedPreferences.edit()
+            .putInt(context.resources.getString(R.string.address_id_preference), position).apply()
+        return position
+    }
 }
