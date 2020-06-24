@@ -83,7 +83,7 @@ class BookListFragment : Fragment(), BookItemClickListener {
         val bookRepository = BookRepository(booksFile)
         bookListViewModel = ViewModelProvider(this, BookListViewModelFactory(bookRepository))
             .get(BookListViewModel::class.java)
-        bookListViewModel.getBooks.observe(requireActivity(), Observer { books ->
+        bookListViewModel.getBooks().observe(requireActivity(), Observer { books ->
             bookAdapter = BookAdapter(books, this)
             recyclerView.adapter = bookAdapter
         })

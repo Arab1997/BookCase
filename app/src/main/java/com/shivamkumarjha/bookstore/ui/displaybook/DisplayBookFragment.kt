@@ -139,11 +139,11 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
         displayBookViewModel.bookRatingCount.observe(viewLifecycleOwner, Observer {
             bookRatingCount.text = it
         })
-        displayBookViewModel.bookReview.observe(viewLifecycleOwner, Observer {
+        displayBookViewModel.getReviews().observe(viewLifecycleOwner, Observer {
             reviewAdapter = ReviewAdapter(it)
             recyclerView.adapter = reviewAdapter
         })
-        displayBookViewModel.imageLink.observe(viewLifecycleOwner, Observer {
+        displayBookViewModel.getImages().observe(viewLifecycleOwner, Observer {
             sliderAdapter = SliderAdapter(it)
             viewPager.adapter = sliderAdapter
         })

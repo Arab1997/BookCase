@@ -23,7 +23,6 @@ class ProfileViewModel(
     val getEmail: LiveData<String> = _getEmail
 
     private var _addressList = MutableLiveData<ArrayList<Address>>()
-
     fun getAddress(): LiveData<ArrayList<Address>> {
         _addressList.value = addressRepository.getAddress()
         return _addressList

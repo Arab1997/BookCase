@@ -7,8 +7,9 @@ import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.repository.BookRepository
 
 class BookListViewModel(private val bookRepository: BookRepository) : ViewModel() {
-    private var _getBooks = MutableLiveData<ArrayList<Book>>().apply {
-        value = bookRepository.getBooks()
+    private var _getBooks = MutableLiveData<ArrayList<Book>>()
+    fun getBooks(): LiveData<ArrayList<Book>> {
+        _getBooks.value = bookRepository.getBooks()
+        return _getBooks
     }
-    val getBooks: LiveData<ArrayList<Book>> = _getBooks
 }

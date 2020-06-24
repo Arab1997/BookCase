@@ -58,13 +58,15 @@ class DisplayBookViewModel(private val book: Book) : ViewModel() {
     }
     val bookRatingCount: LiveData<String> = _bookRatingCount
 
-    private var _bookReview = MutableLiveData<ArrayList<Review>>().apply {
-        value = book.review
+    private var _bookReview = MutableLiveData<ArrayList<Review>>()
+    fun getReviews(): LiveData<ArrayList<Review>> {
+        _bookReview.value = book.review
+        return _bookReview
     }
-    val bookReview: LiveData<ArrayList<Review>> = _bookReview
 
-    private var _imageLink = MutableLiveData<ArrayList<String>>().apply {
-        value = book.imageLink
+    private var _imageLink = MutableLiveData<ArrayList<String>>()
+    fun getImages(): LiveData<ArrayList<String>> {
+        _imageLink.value = book.imageLink
+        return _imageLink
     }
-    val imageLink: LiveData<ArrayList<String>> = _imageLink
 }
