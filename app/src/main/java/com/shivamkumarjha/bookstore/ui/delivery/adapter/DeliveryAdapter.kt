@@ -7,7 +7,8 @@ import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Address
 
 class DeliveryAdapter(
-    private var address: ArrayList<Address>
+    private var address: ArrayList<Address>,
+    private val clickListener: DeliveryItemClickListener
 ) :
     RecyclerView.Adapter<DeliveryViewHolder>() {
 
@@ -15,7 +16,7 @@ class DeliveryAdapter(
         val itemView =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.content_delivery_item, parent, false)
-        return DeliveryViewHolder(itemView)
+        return DeliveryViewHolder(itemView,clickListener)
     }
 
     override fun getItemCount(): Int = address.size
