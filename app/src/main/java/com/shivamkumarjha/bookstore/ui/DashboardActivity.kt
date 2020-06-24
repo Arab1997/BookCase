@@ -24,7 +24,7 @@ class DashboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_dashboard)
         setUpToolbar()
         getUser()
         callBookFragment()
@@ -88,6 +88,12 @@ class DashboardActivity : AppCompatActivity() {
             .replace(R.id.fragment_holder, AddressFragment(address))
             .addToBackStack(null)
             .commit()
+    }
+
+    fun callPurchaseActivity() {
+        val intent = Intent(this, PurchaseActivity::class.java)
+        startActivity(intent)
+        this.finish()
     }
 
     fun doSignOut() {

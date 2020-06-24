@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Cart
 import com.shivamkumarjha.bookstore.repository.CartRepository
+import com.shivamkumarjha.bookstore.ui.DashboardActivity
 import com.shivamkumarjha.bookstore.ui.cart.adapter.CartAdapter
 import com.shivamkumarjha.bookstore.ui.cart.adapter.CartItemClickListener
 import java.io.File
@@ -77,6 +78,11 @@ class CartFragment : Fragment(), CartItemClickListener {
         // recycler view
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
+
+        buyButton.setOnClickListener {
+            exitFragment()
+            (activity as DashboardActivity).callPurchaseActivity()
+        }
     }
 
     private fun setUpViewModel() {
