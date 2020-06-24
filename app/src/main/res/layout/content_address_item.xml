@@ -158,7 +158,7 @@
             android:id="@+id/address_item_delete_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/view_margin"
+            android:layout_marginStart="@dimen/view_margin_large"
             android:layout_marginLeft="@dimen/view_margin_small"
             android:background="@drawable/ic_delete"
             android:contentDescription="@string/delete" />
