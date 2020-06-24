@@ -140,7 +140,6 @@ class AddressFragment : Fragment() {
                 pinCodeEditText.text.toString()
             )
         )
-        hideKeyboard()
         exitFragment()
     }
 
@@ -154,6 +153,7 @@ class AddressFragment : Fragment() {
     }
 
     private fun exitFragment() {
+        hideKeyboard()
         requireActivity().supportFragmentManager.popBackStack()
     }
 }
