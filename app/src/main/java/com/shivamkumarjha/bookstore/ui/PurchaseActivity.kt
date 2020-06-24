@@ -20,7 +20,7 @@ class PurchaseActivity : AppCompatActivity() {
     private fun setUpToolbar() {
         toolbar = findViewById(R.id.purchase_toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = resources.getString(R.string.purchase)
+        supportActionBar?.title = resources.getString(R.string.chose_delivery)
     }
 
     private fun callDeliveryFragment() {

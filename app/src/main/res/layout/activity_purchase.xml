@@ -16,7 +16,6 @@
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:subtitleTextAppearance="@android:style/TextAppearance.DeviceDefault.Small"
-            app:title="@string/delivery"
             app:titleTextAppearance="@android:style/TextAppearance.DeviceDefault.WindowTitle" />
 
     </com.google.android.material.appbar.AppBarLayout>
