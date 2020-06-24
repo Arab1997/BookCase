@@ -34,7 +34,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
     private lateinit var addressAdapter: AddressAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var profileViewModel: ProfileViewModel
-    private lateinit var addressList: ArrayList<Address>
+    private var addressList: ArrayList<Address> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -113,7 +113,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
         profileViewModel.getEmail.observe(viewLifecycleOwner, Observer {
             emailTextView.text = it
         })
-        profileViewModel.addressList.observe(viewLifecycleOwner, Observer {
+        profileViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             addressList = it
             addressAdapter = AddressAdapter(addressList, this)
             recyclerView.adapter = addressAdapter

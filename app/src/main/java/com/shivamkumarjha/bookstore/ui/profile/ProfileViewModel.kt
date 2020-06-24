@@ -22,10 +22,12 @@ class ProfileViewModel(
     }
     val getEmail: LiveData<String> = _getEmail
 
-    private var _addressList = MutableLiveData<ArrayList<Address>>().apply {
-        value = addressRepository.getAddress()
+    private var _addressList = MutableLiveData<ArrayList<Address>>()
+
+    fun getAddress(): LiveData<ArrayList<Address>> {
+        _addressList.value = addressRepository.getAddress()
+        return _addressList
     }
-    val addressList: LiveData<ArrayList<Address>> = _addressList
 
     fun removeAddress(address: Address) {
         addressRepository.removeAddress(address)
