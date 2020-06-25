@@ -37,4 +37,8 @@ class OrderRepository(private val file: File) {
         orderList.add(order)
         writeOrders(orderList)
     }
+
+    fun removeAll() {
+        writeOrders(arrayListOf())
+    }
 }

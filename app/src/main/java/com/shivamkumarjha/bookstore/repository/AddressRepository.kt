@@ -45,6 +45,10 @@ class AddressRepository(private val file: File) {
         writeAddress(addressList)
     }
 
+    fun removeAll() {
+        writeAddress(arrayListOf())
+    }
+
     private fun getIndex(address: Address, addressList: ArrayList<Address>): Int {
         for (index in 0 until addressList.size) {
             if (addressList[index].addressId == address.addressId)
