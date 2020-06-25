@@ -160,7 +160,7 @@ class UserRepository(private val file: File) {
     fun isBookInCart(book: Book): Boolean {
         val cartList = getCart()
         cartList.forEach {
-            if (it.book.bookID == book.bookID)
+            if (it.book?.bookID == book.bookID)
                 return true
         }
         return false
