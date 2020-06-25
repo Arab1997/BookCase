@@ -85,6 +85,9 @@
     <string name="remove">Remove</string>
     <string name="add">Add</string>
     <string name="cart">Cart</string>
+    <string name="order">Order</string>
+    <string name="order_placed">Order placed</string>
+    <string name="shopping">Continue shopping?</string>
     <string name="chose_delivery">Pick delivery address</string>
     <string name="purchase">Purchase</string>
     <string name="cart_empty">Cart empty</string>
