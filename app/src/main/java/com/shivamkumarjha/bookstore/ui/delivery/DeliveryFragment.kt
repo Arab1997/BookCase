@@ -59,7 +59,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
             if (it.size == 0)
                 Snackbar.make(
                     view,
-                    "Please add address & retry.", Snackbar.LENGTH_LONG
+                    "Please add address & retry.", Snackbar.LENGTH_INDEFINITE
                 ).setAction(R.string.add_address) {
                     (activity as PurchaseActivity).callAddressFragment(null)
                 }.show()

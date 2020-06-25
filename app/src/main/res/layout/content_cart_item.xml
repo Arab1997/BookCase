@@ -81,8 +81,6 @@
                 android:id="@+id/cart_text_view_saved"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/view_margin"
-                android:layout_marginLeft="@dimen/view_margin"
                 android:fontFamily="@font/firasans_semibold"
                 android:text="@string/demo_book_price"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
