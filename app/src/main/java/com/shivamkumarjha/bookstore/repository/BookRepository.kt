@@ -27,10 +27,9 @@ class BookRepository(private val file: File) {
     fun getBooks(): ArrayList<Book> {
         if (!commonFileRepository.fileExists()) {
             // Create books JSON
-            val populateBooks =
-                PopulateBooks()
-            populateBooks.populate()
-            writeBooks(populateBooks.getBooks())
+            val booksGenerator = BooksGenerator()
+            booksGenerator.populate()
+            writeBooks(booksGenerator.getBooks())
         }
         // read JSON file storing array of Details object
         val jsonString = commonFileRepository.readFromFile()

@@ -3,7 +3,7 @@ package com.shivamkumarjha.bookstore.repository
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.Review
 
-class PopulateBooks {
+class BooksGenerator {
 
     private var books: ArrayList<Book> = ArrayList()
     private var booksCount = 0
