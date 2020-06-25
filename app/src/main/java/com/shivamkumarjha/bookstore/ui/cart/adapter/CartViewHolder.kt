@@ -44,28 +44,26 @@ class CartViewHolder(
     fun initialize(cartItem: CartItem, cartPosition: Int) {
         this.cartPosition = cartPosition
         this.cartItem = cartItem
-        bookTitle.text = cartItem.book?.title
-        bookAuthor.text = "By " + cartItem.book?.author
+        bookTitle.text = cartItem.book.title
+        bookAuthor.text = "By " + cartItem.book.author
         setPrices()
 
         // Load book image from URL
-        if (cartItem.book != null)
-            Picasso.get().load(cartItem.book.imageLink[0]).fit().centerCrop()
-                .placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher)
-                .into(bookImage)
+        Picasso.get().load(cartItem.book.imageLink[0]).fit().centerCrop()
+            .placeholder(R.mipmap.ic_launcher)
+            .error(R.mipmap.ic_launcher)
+            .into(bookImage)
     }
 
     @SuppressLint("SetTextI18n")
     private fun setPrices() {
-        val bookTotalPrice = cartItem.book?.price?.times(76.25f * cartItem.quantity)
-        val bookTotalMRP = cartItem.book?.maximumRetailPrice?.times(76.25f * cartItem.quantity)
+        val bookTotalPrice = cartItem.book.price * 76.25f * cartItem.quantity
+        val bookTotalMRP = cartItem.book.maximumRetailPrice * 76.25f * cartItem.quantity
         bookPrice.text = "Rs $bookTotalPrice"
         bookQuantity.text = cartItem.quantity.toString()
         bookMRP.text = "Rs $bookTotalMRP"
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-        if (cartItem.book != null)
-            bookSaved.text = "Rs " + getAmountSaved(bookTotalPrice!!, bookTotalMRP!!) + " saved"
+        bookSaved.text = "Rs " + getAmountSaved(bookTotalPrice, bookTotalMRP) + " saved"
     }
 
     private fun getAmountSaved(price: Float, maximumRetailPrice: Float): Float {
