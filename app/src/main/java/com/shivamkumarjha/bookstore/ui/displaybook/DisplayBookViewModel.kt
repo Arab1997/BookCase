@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.Cart
 import com.shivamkumarjha.bookstore.model.Review
-import com.shivamkumarjha.bookstore.repository.CartRepository
+import com.shivamkumarjha.bookstore.repository.UserRepository
 
-class DisplayBookViewModel(private val book: Book, private val cartRepository: CartRepository) :
+class DisplayBookViewModel(private val book: Book, private val userRepository: UserRepository) :
     ViewModel() {
 
     private val _bookTitle = MutableLiveData<String>().apply {
@@ -74,7 +74,7 @@ class DisplayBookViewModel(private val book: Book, private val cartRepository: C
     }
 
     fun addToCart(cartId: Int) {
-        cartRepository.addCart(
+        userRepository.addCart(
             Cart(
                 cartId,
                 book,
@@ -84,6 +84,6 @@ class DisplayBookViewModel(private val book: Book, private val cartRepository: C
     }
 
     fun isBookInCart(): Boolean {
-        return cartRepository.isBookInCart(book)
+        return userRepository.isBookInCart(book)
     }
 }

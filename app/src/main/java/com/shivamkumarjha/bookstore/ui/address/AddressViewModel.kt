@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Address
-import com.shivamkumarjha.bookstore.repository.AddressRepository
 import com.shivamkumarjha.bookstore.repository.AddressValidator
+import com.shivamkumarjha.bookstore.repository.UserRepository
 
-class AddressViewModel(private val addressRepository: AddressRepository) : ViewModel() {
+class AddressViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     private val addressValidator = AddressValidator()
 
@@ -55,10 +55,10 @@ class AddressViewModel(private val addressRepository: AddressRepository) : ViewM
     }
 
     fun onSubmitClick(address: Address) {
-        addressRepository.addAddress(address)
+        userRepository.addAddress(address)
     }
 
     fun updateAddress(address: Address) {
-        addressRepository.updateAddress(address)
+        userRepository.updateAddress(address)
     }
 }

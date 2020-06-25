@@ -21,7 +21,7 @@ import androidx.viewpager.widget.ViewPager
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Book
-import com.shivamkumarjha.bookstore.repository.CartRepository
+import com.shivamkumarjha.bookstore.repository.UserRepository
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.ReviewAdapter
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.SliderAdapter
 import java.io.File
@@ -46,7 +46,7 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
     private lateinit var reviewAdapter: ReviewAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var displayBookViewModel: DisplayBookViewModel
-    private lateinit var cartRepository: CartRepository
+    private lateinit var userRepository: UserRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -90,10 +90,10 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
         cartButton = requireView().findViewById(R.id.display_book_cart_button)
         viewPager = requireView().findViewById(R.id.display_book_view_pager)
         recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
-        val cartFile = File(requireActivity().filesDir, resources.getString(R.string.file_cart))
-        cartRepository = CartRepository(cartFile)
+        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
+        userRepository = UserRepository(userFile)
         displayBookViewModel =
-            ViewModelProvider(this, DisplayBookViewModelFactory(book, cartRepository))
+            ViewModelProvider(this, DisplayBookViewModelFactory(book, userRepository))
                 .get(DisplayBookViewModel::class.java)
     }
 

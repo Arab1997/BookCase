@@ -12,16 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Order
-import com.shivamkumarjha.bookstore.repository.CartRepository
-import com.shivamkumarjha.bookstore.repository.OrderRepository
+import com.shivamkumarjha.bookstore.repository.UserRepository
 import java.io.File
 
 class OrderFragment(private val order: Order) : Fragment() {
 
     private lateinit var orderIdTextView: TextView
     private lateinit var shoppingButton: Button
-    private lateinit var orderRepository: OrderRepository
-    private lateinit var cartRepository: CartRepository
+    private lateinit var userRepository: UserRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,14 +37,10 @@ class OrderFragment(private val order: Order) : Fragment() {
             resources.getString(R.string.order)
 
         // order JSON
-        val orderFile = File(requireActivity().filesDir, resources.getString(R.string.file_order))
-        orderRepository = OrderRepository(orderFile)
-        orderRepository.addOrder(order)
-
-        // empty cart JSON
-        val cartFile = File(requireActivity().filesDir, resources.getString(R.string.file_cart))
-        cartRepository = CartRepository(cartFile)
-        cartRepository.makeCartEmpty()
+        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
+        userRepository = UserRepository(userFile)
+        userRepository.addOrder(order)
+        userRepository.makeCartEmpty()
 
         //view
         orderIdTextView = requireView().findViewById(R.id.order_id_view_id)

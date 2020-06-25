@@ -73,11 +73,7 @@
     <string name="invalid_state">Invalid state</string>
     <string name="invalid_pinCode">Invalid pin</string>
 
-    <string name="file_address">Address.json</string>
     <string name="file_books">Books.json</string>
-    <string name="file_cart">Cart.json</string>
-    <string name="file_order">Order.json</string>
-    <string name="file_loggedInUser">LoggedInUser.json</string>
     <string name="file_users">Users.json</string>
     <string name="userId">userId</string>
 

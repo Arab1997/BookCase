@@ -16,8 +16,7 @@ import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.model.Order
-import com.shivamkumarjha.bookstore.repository.AddressRepository
-import com.shivamkumarjha.bookstore.repository.CartRepository
+import com.shivamkumarjha.bookstore.repository.UserRepository
 import com.shivamkumarjha.bookstore.ui.PurchaseActivity
 import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryAdapter
 import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryItemClickListener
@@ -30,7 +29,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     private lateinit var deliveryAdapter: DeliveryAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var deliveryViewModel: DeliveryViewModel
-    private lateinit var cartRepository: CartRepository
+    private lateinit var userRepository: UserRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,15 +51,12 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
         recyclerView.adapter = deliveryAdapter
 
         //repository
-        val cartFile = File(requireActivity().filesDir, resources.getString(R.string.file_cart))
-        cartRepository = CartRepository(cartFile)
-        val addressFile =
-            File(requireActivity().filesDir, resources.getString(R.string.file_address))
-        val addressRepository = AddressRepository(addressFile)
+        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
+        userRepository = UserRepository(userFile)
 
         //view model
         deliveryViewModel =
-            ViewModelProvider(this, DeliveryViewModelFactory(addressRepository))
+            ViewModelProvider(this, DeliveryViewModelFactory(userRepository))
                 .get(DeliveryViewModel::class.java)
         deliveryViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             if (it.size == 0)
@@ -81,7 +77,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
         (activity as PurchaseActivity).callOrderFragment(
             Order(
                 AppPreference(requireContext()).newOrderId(),
-                cartRepository.getCart(),
+                userRepository.getCart(),
                 address,
                 currentDate
             )

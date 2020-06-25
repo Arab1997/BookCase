@@ -18,7 +18,7 @@ import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.common.afterTextChanged
 import com.shivamkumarjha.bookstore.common.hideKeyboard
 import com.shivamkumarjha.bookstore.model.Address
-import com.shivamkumarjha.bookstore.repository.AddressRepository
+import com.shivamkumarjha.bookstore.repository.UserRepository
 import java.io.File
 
 class AddressFragment(private val address: Address?) : Fragment() {
@@ -93,11 +93,10 @@ class AddressFragment(private val address: Address?) : Fragment() {
     }
 
     private fun setUpViewModel() {
-        val addressFile =
-            File(requireActivity().filesDir, resources.getString(R.string.file_address))
-        addressViewModel =
-            ViewModelProvider(this, AddressViewModelFactory(AddressRepository(addressFile)))
-                .get(AddressViewModel::class.java)
+        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
+        val userRepository = UserRepository(userFile)
+        addressViewModel = ViewModelProvider(this, AddressViewModelFactory(userRepository))
+            .get(AddressViewModel::class.java)
 
         addressViewModel.addressFormState.observe(requireActivity(), Observer {
             val addressFormState = it ?: return@Observer

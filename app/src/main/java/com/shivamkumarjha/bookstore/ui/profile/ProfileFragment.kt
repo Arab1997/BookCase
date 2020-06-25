@@ -15,10 +15,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
-import com.shivamkumarjha.bookstore.repository.AddressRepository
-import com.shivamkumarjha.bookstore.repository.ProfileRepository
+import com.shivamkumarjha.bookstore.repository.UserRepository
 import com.shivamkumarjha.bookstore.ui.DashboardActivity
 import com.shivamkumarjha.bookstore.ui.profile.adapter.AddressAdapter
 import com.shivamkumarjha.bookstore.ui.profile.adapter.AddressItemClickListener
@@ -98,24 +98,17 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
         addAddressButton.setOnClickListener {
             (activity as DashboardActivity).callAddressFragment(null)
         }
+
+        nameTextView.text = AppPreference(requireContext()).getUserName()
+        emailTextView.text = AppPreference(requireContext()).getUserEmail()
     }
 
     private fun setUpViewModel() {
-        val profileFile =
-            File(requireActivity().filesDir, resources.getString(R.string.file_loggedInUser))
-        val profileRepository = ProfileRepository(profileFile, loggedInUserView)
-        val addressFile =
-            File(requireActivity().filesDir, resources.getString(R.string.file_address))
-        val addressRepository = AddressRepository(addressFile)
+        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
+        val userRepository = UserRepository(userFile)
         profileViewModel =
-            ViewModelProvider(this, ProfileViewModelFactory(profileRepository, addressRepository))
+            ViewModelProvider(this, ProfileViewModelFactory(userRepository))
                 .get(ProfileViewModel::class.java)
-        profileViewModel.getName.observe(viewLifecycleOwner, Observer {
-            nameTextView.text = it
-        })
-        profileViewModel.getEmail.observe(viewLifecycleOwner, Observer {
-            emailTextView.text = it
-        })
         profileViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             addressAdapter.setAddress(it)
         })

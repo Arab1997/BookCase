@@ -3,8 +3,7 @@ package com.shivamkumarjha.bookstore.repository
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.shivamkumarjha.bookstore.model.LoggedInUserView
-import com.shivamkumarjha.bookstore.model.User
+import com.shivamkumarjha.bookstore.model.*
 import java.io.File
 import java.io.IOException
 import java.io.OutputStreamWriter
@@ -53,5 +52,146 @@ class UserRepository(private val file: File) {
                 return LoggedInUserView(it.name, it.email)
         }
         return null
+    }
+
+    private fun writeAddress(address: ArrayList<Address>) {
+        val data = gson.toJson(address)
+        try {
+            val outputStreamWriter = OutputStreamWriter(file.outputStream())
+            outputStreamWriter.write(data)
+            outputStreamWriter.close()
+        } catch (e: IOException) {
+            Log.e(tag, "File write failed: $e")
+        }
+    }
+
+    fun getAddress(): ArrayList<Address> {
+        if (!commonFileRepository.fileExists())
+            return arrayListOf()
+        val jsonString = commonFileRepository.readFromFile()
+        val detailsTypeToken = object : TypeToken<List<Address>>() {}.type
+        return gson.fromJson(jsonString, detailsTypeToken)
+    }
+
+    fun addAddress(address: Address) {
+        val addressList = getAddress()
+        addressList.add(address)
+        writeAddress(addressList)
+    }
+
+    fun removeAddress(address: Address) {
+        val addressList = getAddress()
+        addressList.removeAll { it.addressId == address.addressId }
+        writeAddress(addressList)
+    }
+
+    private fun getAddressIndex(address: Address, addressList: ArrayList<Address>): Int {
+        for (index in 0 until addressList.size) {
+            if (addressList[index].addressId == address.addressId)
+                return index
+        }
+        return -1
+    }
+
+    fun updateAddress(address: Address) {
+        val addressList = getAddress()
+        val index = getAddressIndex(address, addressList)
+        if (index != -1)
+            addressList[index] = address
+        else {
+            addressList.removeAll { it.addressId == address.addressId }
+            addressList.add(address)
+        }
+        writeAddress(addressList)
+    }
+
+    private fun writeCart(cart: ArrayList<Cart>) {
+        val data = gson.toJson(cart)
+        try {
+            val outputStreamWriter = OutputStreamWriter(file.outputStream())
+            outputStreamWriter.write(data)
+            outputStreamWriter.close()
+        } catch (e: IOException) {
+            Log.e(tag, "File write failed: $e")
+        }
+    }
+
+    fun getCart(): ArrayList<Cart> {
+        if (!commonFileRepository.fileExists()) {
+            return arrayListOf()
+        }
+        val jsonString = commonFileRepository.readFromFile()
+        val detailsTypeToken = object : TypeToken<List<Cart>>() {}.type
+        return gson.fromJson(jsonString, detailsTypeToken)
+    }
+
+    fun addCart(cart: Cart) {
+        val cartList = getCart()
+        cartList.add(cart)
+        writeCart(cartList)
+    }
+
+    fun removeCart(cart: Cart) {
+        val cartList = getCart()
+        cartList.removeAll { it.itemId == cart.itemId }
+        writeCart(cartList)
+    }
+
+    private fun getCartIndex(cart: Cart, cartList: ArrayList<Cart>): Int {
+        for (index in 0 until cartList.size) {
+            if (cartList[index].itemId == cart.itemId)
+                return index
+        }
+        return -1
+    }
+
+    fun updateCart(cart: Cart) {
+        val cartList = getCart()
+        val index = getCartIndex(cart, cartList)
+        if (index != -1)
+            cartList[index] = cart
+        else {
+            cartList.removeAll { it.itemId == cart.itemId }
+            cartList.add(cart)
+        }
+        writeCart(cartList)
+    }
+
+    fun isBookInCart(book: Book): Boolean {
+        val cartList = getCart()
+        cartList.forEach {
+            if (it.book.bookID == book.bookID)
+                return true
+        }
+        return false
+    }
+
+    fun makeCartEmpty() {
+        writeCart(arrayListOf())
+    }
+
+    private fun writeOrders(order: ArrayList<Order>) {
+        val data = gson.toJson(order)
+        try {
+            val outputStreamWriter = OutputStreamWriter(file.outputStream())
+            outputStreamWriter.write(data)
+            outputStreamWriter.close()
+        } catch (e: IOException) {
+            Log.e(tag, "File write failed: $e")
+        }
+    }
+
+    fun getOrders(): ArrayList<Order> {
+        if (!commonFileRepository.fileExists())
+            return arrayListOf()
+        val jsonString = commonFileRepository.readFromFile()
+        val detailsTypeToken = object : TypeToken<List<Order>>() {}.type
+        return gson.fromJson(jsonString, detailsTypeToken)
+    }
+
+    fun addOrder(order: Order) {
+        val orderList = getOrders()
+        orderList.add(order)
+        writeOrders(orderList)
     }
 }

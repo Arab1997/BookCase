@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shivamkumarjha.bookstore.model.Address
-import com.shivamkumarjha.bookstore.repository.AddressRepository
+import com.shivamkumarjha.bookstore.repository.UserRepository
 
-class DeliveryViewModel(private val addressRepository: AddressRepository) : ViewModel() {
+class DeliveryViewModel(private val userRepository: UserRepository) : ViewModel() {
     private var _addressList = MutableLiveData<ArrayList<Address>>()
     fun getAddress(): LiveData<ArrayList<Address>> {
-        _addressList.value = addressRepository.getAddress()
+        _addressList.value = userRepository.getAddress()
         return _addressList
     }
 }
