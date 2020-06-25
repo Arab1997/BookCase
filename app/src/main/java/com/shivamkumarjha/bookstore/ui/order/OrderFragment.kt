@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Order
@@ -34,6 +35,8 @@ class OrderFragment(private val order: Order) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         backPressDispatcher()
+        (activity as AppCompatActivity).supportActionBar?.title =
+            resources.getString(R.string.order)
 
         // order JSON
         val orderFile = File(requireActivity().filesDir, resources.getString(R.string.file_order))
@@ -47,7 +50,7 @@ class OrderFragment(private val order: Order) : Fragment() {
 
         //view
         orderIdTextView = requireView().findViewById(R.id.order_id_view_id)
-        orderIdTextView.text = "${order.orderId} ${order.timestamp}"
+        orderIdTextView.text = "ID: ${order.orderId} ${order.timestamp}"
         shoppingButton = requireView().findViewById(R.id.order_shopping_button)
         shoppingButton.setOnClickListener {
             exitFragment()
