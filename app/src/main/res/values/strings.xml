@@ -56,6 +56,7 @@
     <string name="invalid_password_verify">Password do not match</string>
     <string name="login_failed">"Login failed"</string>
 
+    <string name="no_address">Please add address and retry.</string>
     <string name="add_address">Add address</string>
     <string name="address">Address</string>
     <string name="address_added">Address added</string>

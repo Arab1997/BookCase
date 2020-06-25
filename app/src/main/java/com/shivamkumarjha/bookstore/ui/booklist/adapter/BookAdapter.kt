@@ -10,12 +10,11 @@ import com.shivamkumarjha.bookstore.model.Book
 import java.util.*
 import kotlin.collections.ArrayList
 
-class BookAdapter(
-    private var books: ArrayList<Book>,
-    private val clickListener: BookItemClickListener
-) : RecyclerView.Adapter<BookViewHolder>(), Filterable {
+class BookAdapter(private val clickListener: BookItemClickListener) :
+    RecyclerView.Adapter<BookViewHolder>(), Filterable {
 
-    private val backupList = books
+    private var books: ArrayList<Book> = arrayListOf()
+    private lateinit var backupList: ArrayList<Book>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val itemView =
@@ -27,6 +26,11 @@ class BookAdapter(
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         holder.initialize(books[position])
+    }
+
+    fun setBooks(books: ArrayList<Book>) {
+        this.books = books
+        backupList = books
     }
 
     override fun getFilter(): Filter {

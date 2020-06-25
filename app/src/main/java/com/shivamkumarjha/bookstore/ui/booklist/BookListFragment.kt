@@ -83,9 +83,8 @@ class BookListFragment : Fragment(), BookItemClickListener {
         val bookRepository = BookRepository(booksFile)
         bookListViewModel = ViewModelProvider(this, BookListViewModelFactory(bookRepository))
             .get(BookListViewModel::class.java)
-        bookListViewModel.getBooks().observe(requireActivity(), Observer { books ->
-            bookAdapter = BookAdapter(books, this)
-            recyclerView.adapter = bookAdapter
+        bookListViewModel.getBooks().observe(requireActivity(), Observer {
+            bookAdapter.setBooks(it)
         })
     }
 
@@ -93,5 +92,7 @@ class BookListFragment : Fragment(), BookItemClickListener {
         recyclerView = requireView().findViewById(R.id.book_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
+        bookAdapter = BookAdapter(this)
+        recyclerView.adapter = bookAdapter
     }
 }

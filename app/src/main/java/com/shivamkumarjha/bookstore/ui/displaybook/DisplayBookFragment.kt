@@ -116,9 +116,12 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
         // wish toggle
         wishToggleAnimation()
         wishStatus.setOnClickListener { onWishClick(wishStatus.isChecked) }
+
         // review recycler view
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
+        reviewAdapter = ReviewAdapter()
+        recyclerView.adapter = reviewAdapter
     }
 
     private fun toggleCart() {
@@ -158,8 +161,7 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
             bookRatingCount.text = it
         })
         displayBookViewModel.getReviews().observe(viewLifecycleOwner, Observer {
-            reviewAdapter = ReviewAdapter(it)
-            recyclerView.adapter = reviewAdapter
+            reviewAdapter.setReviews(it)
         })
         displayBookViewModel.getImages().observe(viewLifecycleOwner, Observer {
             sliderAdapter = SliderAdapter(it)

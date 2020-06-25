@@ -1,5 +1,6 @@
 package com.shivamkumarjha.bookstore.ui.delivery
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +31,6 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var deliveryViewModel: DeliveryViewModel
     private lateinit var cartRepository: CartRepository
-    private var addressList: ArrayList<Address> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,31 +43,38 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         backPressDispatcher()
+
+        //recycler view
         recyclerView = requireView().findViewById(R.id.delivery_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
+        deliveryAdapter = DeliveryAdapter(this)
+        recyclerView.adapter = deliveryAdapter
+
+        //repository
         val cartFile = File(requireActivity().filesDir, resources.getString(R.string.file_cart))
         cartRepository = CartRepository(cartFile)
         val addressFile =
             File(requireActivity().filesDir, resources.getString(R.string.file_address))
         val addressRepository = AddressRepository(addressFile)
+
+        //view model
         deliveryViewModel =
             ViewModelProvider(this, DeliveryViewModelFactory(addressRepository))
                 .get(DeliveryViewModel::class.java)
         deliveryViewModel.getAddress().observe(viewLifecycleOwner, Observer {
-            addressList = it
             if (it.size == 0)
                 Snackbar.make(
                     view,
-                    "Please add address & retry.", Snackbar.LENGTH_INDEFINITE
+                    resources.getString(R.string.no_address), Snackbar.LENGTH_INDEFINITE
                 ).setAction(R.string.add_address) {
                     (activity as PurchaseActivity).callAddressFragment(null)
                 }.show()
-            deliveryAdapter = DeliveryAdapter(addressList, this)
-            recyclerView.adapter = deliveryAdapter
+            deliveryAdapter.setAddress(it)
         })
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun onAddressClick(address: Address) {
         val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
         val currentDate = sdf.format(Date())

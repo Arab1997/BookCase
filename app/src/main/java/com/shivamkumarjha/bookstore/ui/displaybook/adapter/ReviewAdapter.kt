@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Review
 
-class ReviewAdapter(private var reviews: ArrayList<Review>) :
-    RecyclerView.Adapter<ReviewViewHolder>() {
+class ReviewAdapter : RecyclerView.Adapter<ReviewViewHolder>() {
+
+    private var reviews: ArrayList<Review> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
         val itemView =
@@ -19,5 +20,9 @@ class ReviewAdapter(private var reviews: ArrayList<Review>) :
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
         holder.initialize(reviews[position])
+    }
+
+    fun setReviews(reviews: ArrayList<Review>) {
+        this.reviews = reviews
     }
 }
