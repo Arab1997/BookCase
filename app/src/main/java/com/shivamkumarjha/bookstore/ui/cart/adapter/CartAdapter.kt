@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
-import com.shivamkumarjha.bookstore.model.Cart
+import com.shivamkumarjha.bookstore.model.CartItem
 
 class CartAdapter(private val clickListener: CartItemClickListener) :
     RecyclerView.Adapter<CartViewHolder>() {
 
-    private var carts: ArrayList<Cart> = arrayListOf()
+    private var cartItems: ArrayList<CartItem> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val itemView =
@@ -18,16 +18,16 @@ class CartAdapter(private val clickListener: CartItemClickListener) :
         return CartViewHolder(itemView, clickListener)
     }
 
-    override fun getItemCount(): Int = carts.size
+    override fun getItemCount(): Int = cartItems.size
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        holder.initialize(carts[position], position)
+        holder.initialize(cartItems[position], position)
     }
 
-    fun setCarts(carts: ArrayList<Cart>) {
-        this.carts = carts
+    fun setCarts(cartItems: ArrayList<CartItem>) {
+        this.cartItems = cartItems
         notifyDataSetChanged()
     }
 
-    fun getCarts(): ArrayList<Cart> = carts
+    fun getCarts(): ArrayList<CartItem> = cartItems
 }

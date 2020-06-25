@@ -105,8 +105,8 @@ class UserRepository(private val file: File) {
         writeAddress(addressList)
     }
 
-    private fun writeCart(cart: ArrayList<Cart>) {
-        val data = gson.toJson(cart)
+    private fun writeCart(cartItem: ArrayList<CartItem>) {
+        val data = gson.toJson(cartItem)
         try {
             val outputStreamWriter = OutputStreamWriter(file.outputStream())
             outputStreamWriter.write(data)
@@ -116,43 +116,41 @@ class UserRepository(private val file: File) {
         }
     }
 
-    fun getCart(): ArrayList<Cart> {
-        if (!commonFileRepository.fileExists()) {
-            return arrayListOf()
-        }
+    fun getCart(): ArrayList<CartItem> {
         val jsonString = commonFileRepository.readFromFile()
-        val detailsTypeToken = object : TypeToken<List<Cart>>() {}.type
-        return gson.fromJson(jsonString, detailsTypeToken)
+        val detailsTypeToken = object : TypeToken<List<User>>() {}.type
+        val users = gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
+        return users[0].cartItemList
     }
 
-    fun addCart(cart: Cart) {
+    fun addCart(cartItem: CartItem) {
         val cartList = getCart()
-        cartList.add(cart)
+        cartList.add(cartItem)
         writeCart(cartList)
     }
 
-    fun removeCart(cart: Cart) {
+    fun removeCart(cartItem: CartItem) {
         val cartList = getCart()
-        cartList.removeAll { it.itemId == cart.itemId }
+        cartList.removeAll { it.itemId == cartItem.itemId }
         writeCart(cartList)
     }
 
-    private fun getCartIndex(cart: Cart, cartList: ArrayList<Cart>): Int {
-        for (index in 0 until cartList.size) {
-            if (cartList[index].itemId == cart.itemId)
+    private fun getCartIndex(cartItem: CartItem, cartItemList: ArrayList<CartItem>): Int {
+        for (index in 0 until cartItemList.size) {
+            if (cartItemList[index].itemId == cartItem.itemId)
                 return index
         }
         return -1
     }
 
-    fun updateCart(cart: Cart) {
+    fun updateCart(cartItem: CartItem) {
         val cartList = getCart()
-        val index = getCartIndex(cart, cartList)
+        val index = getCartIndex(cartItem, cartList)
         if (index != -1)
-            cartList[index] = cart
+            cartList[index] = cartItem
         else {
-            cartList.removeAll { it.itemId == cart.itemId }
-            cartList.add(cart)
+            cartList.removeAll { it.itemId == cartItem.itemId }
+            cartList.add(cartItem)
         }
         writeCart(cartList)
     }

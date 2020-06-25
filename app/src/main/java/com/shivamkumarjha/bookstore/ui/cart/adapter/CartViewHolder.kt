@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
-import com.shivamkumarjha.bookstore.model.Cart
+import com.shivamkumarjha.bookstore.model.CartItem
 import com.squareup.picasso.Picasso
 
 class CartViewHolder(
@@ -25,32 +25,32 @@ class CartViewHolder(
     private val minusButton: ImageButton = itemView.findViewById(R.id.display_book_cart_minus_id)
     private val addButton: ImageButton = itemView.findViewById(R.id.display_book_cart_add_id)
     private var cartPosition: Int = 0
-    private lateinit var cart: Cart
+    private lateinit var cartItem: CartItem
 
     init {
         addButton.setOnClickListener {
-            cart.quantity++
+            cartItem.quantity++
             setPrices()
-            clickListener.onAddQuantity(cart)
+            clickListener.onAddQuantity(cartItem)
         }
         minusButton.setOnClickListener {
-            cart.quantity--
+            cartItem.quantity--
             setPrices()
-            clickListener.onMinusQuantity(cart, cartPosition)
+            clickListener.onMinusQuantity(cartItem, cartPosition)
         }
     }
 
     @SuppressLint("SetTextI18n")
-    fun initialize(cart: Cart, cartPosition: Int) {
+    fun initialize(cartItem: CartItem, cartPosition: Int) {
         this.cartPosition = cartPosition
-        this.cart = cart
-        bookTitle.text = cart.book?.title
-        bookAuthor.text = "By " + cart.book?.author
+        this.cartItem = cartItem
+        bookTitle.text = cartItem.book?.title
+        bookAuthor.text = "By " + cartItem.book?.author
         setPrices()
 
         // Load book image from URL
-        if (cart.book != null)
-            Picasso.get().load(cart.book.imageLink[0]).fit().centerCrop()
+        if (cartItem.book != null)
+            Picasso.get().load(cartItem.book.imageLink[0]).fit().centerCrop()
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
                 .into(bookImage)
@@ -58,13 +58,13 @@ class CartViewHolder(
 
     @SuppressLint("SetTextI18n")
     private fun setPrices() {
-        val bookTotalPrice = cart.book?.price?.times(76.25f * cart.quantity)
-        val bookTotalMRP = cart.book?.maximumRetailPrice?.times(76.25f * cart.quantity)
+        val bookTotalPrice = cartItem.book?.price?.times(76.25f * cartItem.quantity)
+        val bookTotalMRP = cartItem.book?.maximumRetailPrice?.times(76.25f * cartItem.quantity)
         bookPrice.text = "Rs $bookTotalPrice"
-        bookQuantity.text = cart.quantity.toString()
+        bookQuantity.text = cartItem.quantity.toString()
         bookMRP.text = "Rs $bookTotalMRP"
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-        if (cart.book != null)
+        if (cartItem.book != null)
             bookSaved.text = "Rs " + getAmountSaved(bookTotalPrice!!, bookTotalMRP!!) + " saved"
     }
 

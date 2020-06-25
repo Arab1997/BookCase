@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
-import com.shivamkumarjha.bookstore.model.Cart
+import com.shivamkumarjha.bookstore.model.CartItem
 import com.shivamkumarjha.bookstore.repository.UserRepository
 import com.shivamkumarjha.bookstore.ui.DashboardActivity
 import com.shivamkumarjha.bookstore.ui.cart.adapter.CartAdapter
@@ -111,18 +111,18 @@ class CartFragment : Fragment(), CartItemClickListener {
         requireActivity().supportFragmentManager.popBackStack()
     }
 
-    override fun onAddQuantity(cart: Cart) {
-        cartViewModel.updateCart(cart)
+    override fun onAddQuantity(cartItem: CartItem) {
+        cartViewModel.updateCart(cartItem)
     }
 
-    override fun onMinusQuantity(cart: Cart, position: Int) {
-        if (cart.quantity == 0) {
-            cartViewModel.removeCart(cart)
-            val list: ArrayList<Cart> = cartAdapter.getCarts()
+    override fun onMinusQuantity(cartItem: CartItem, position: Int) {
+        if (cartItem.quantity == 0) {
+            cartViewModel.removeCart(cartItem)
+            val list: ArrayList<CartItem> = cartAdapter.getCarts()
             list.removeAt(position)
             cartAdapter.setCarts(list)
             cartAdapter.notifyItemRemoved(position)
         }
-        cartViewModel.updateCart(cart)
+        cartViewModel.updateCart(cartItem)
     }
 }

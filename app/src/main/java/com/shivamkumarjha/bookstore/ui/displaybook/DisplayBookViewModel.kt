@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shivamkumarjha.bookstore.model.Book
-import com.shivamkumarjha.bookstore.model.Cart
+import com.shivamkumarjha.bookstore.model.CartItem
 import com.shivamkumarjha.bookstore.model.Review
 import com.shivamkumarjha.bookstore.repository.UserRepository
 
@@ -75,7 +75,7 @@ class DisplayBookViewModel(private val book: Book, private val userRepository: U
 
     fun addToCart(cartId: Int) {
         userRepository.addCart(
-            Cart(
+            CartItem(
                 cartId,
                 book,
                 1
