@@ -5,7 +5,7 @@ data class User(
     val name: String,
     val email: String,
     val password: String,
-    val addressList: ArrayList<Address> = arrayListOf(),
-    val cartItemList: ArrayList<CartItem> = arrayListOf(),
-    val orderList: ArrayList<Order> = arrayListOf()
+    val addresses: ArrayList<Address> = arrayListOf(),
+    val cartItems: ArrayList<CartItem> = arrayListOf(),
+    val orders: ArrayList<Order> = arrayListOf()
 )

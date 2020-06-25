@@ -31,7 +31,7 @@ class UserRepository(private val file: File) {
         // read JSON file storing array of Details object
         val jsonString = commonFileRepository.readFromFile()
         val detailsTypeToken = object : TypeToken<List<User>>() {}.type
-        return gson.fromJson(jsonString, detailsTypeToken)
+        return gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
     }
 
     fun addUser(user: User) {
@@ -66,11 +66,10 @@ class UserRepository(private val file: File) {
     }
 
     fun getAddress(): ArrayList<Address> {
-        if (!commonFileRepository.fileExists())
-            return arrayListOf()
         val jsonString = commonFileRepository.readFromFile()
-        val detailsTypeToken = object : TypeToken<List<Address>>() {}.type
-        return gson.fromJson(jsonString, detailsTypeToken)
+        val detailsTypeToken = object : TypeToken<List<User>>() {}.type
+        val users = gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
+        return users[0].addresses
     }
 
     fun addAddress(address: Address) {
@@ -120,7 +119,7 @@ class UserRepository(private val file: File) {
         val jsonString = commonFileRepository.readFromFile()
         val detailsTypeToken = object : TypeToken<List<User>>() {}.type
         val users = gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
-        return users[0].cartItemList
+        return users[0].cartItems
     }
 
     fun addCart(cartItem: CartItem) {
@@ -180,11 +179,10 @@ class UserRepository(private val file: File) {
     }
 
     fun getOrders(): ArrayList<Order> {
-        if (!commonFileRepository.fileExists())
-            return arrayListOf()
         val jsonString = commonFileRepository.readFromFile()
-        val detailsTypeToken = object : TypeToken<List<Order>>() {}.type
-        return gson.fromJson(jsonString, detailsTypeToken)
+        val detailsTypeToken = object : TypeToken<List<User>>() {}.type
+        val users = gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
+        return users[0].orders
     }
 
     fun addOrder(order: Order) {
