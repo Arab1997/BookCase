@@ -34,7 +34,6 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
     private lateinit var addressAdapter: AddressAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var profileViewModel: ProfileViewModel
-    private var addressList: ArrayList<Address> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,7 +68,9 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
 
     override fun onDeleteClick(address: Address, position: Int) {
         profileViewModel.removeAddress(address)
-        addressList.removeAt(position)
+        val list: ArrayList<Address> = addressAdapter.getAddress()
+        list.removeAt(position)
+        addressAdapter.setAddress(list)
         addressAdapter.notifyItemRemoved(position)
     }
 
@@ -91,6 +92,8 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
         recyclerView = requireView().findViewById(R.id.profile_address_recycler_view_id)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
+        addressAdapter = AddressAdapter(this)
+        recyclerView.adapter = addressAdapter
 
         addAddressButton.setOnClickListener {
             (activity as DashboardActivity).callAddressFragment(null)
@@ -114,9 +117,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
             emailTextView.text = it
         })
         profileViewModel.getAddress().observe(viewLifecycleOwner, Observer {
-            addressList = it
-            addressAdapter = AddressAdapter(addressList, this)
-            recyclerView.adapter = addressAdapter
+            addressAdapter.setAddress(it)
         })
     }
 

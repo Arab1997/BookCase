@@ -6,11 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Address
 
-class AddressAdapter(
-    private var address: ArrayList<Address>,
-    private val clickListener: AddressItemClickListener
-) :
+class AddressAdapter(private val clickListener: AddressItemClickListener) :
     RecyclerView.Adapter<AddressViewHolder>() {
+
+    private var address: ArrayList<Address> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
         val itemView =
@@ -24,4 +23,11 @@ class AddressAdapter(
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
         holder.initialize(address[position], position)
     }
+
+    fun setAddress(address: ArrayList<Address>) {
+        this.address = address
+        notifyDataSetChanged()
+    }
+
+    fun getAddress(): ArrayList<Address> = address
 }
