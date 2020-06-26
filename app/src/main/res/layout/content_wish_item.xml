@@ -15,7 +15,7 @@
         android:weightSum="6">
 
         <ImageView
-            android:id="@+id/book_image_view_id"
+            android:id="@+id/wish_image_view_id"
             android:layout_width="@dimen/margin_0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -34,7 +34,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/book_text_view_title"
+                android:id="@+id/wish_text_view_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/firasans_extrabold"
@@ -44,7 +44,7 @@
                 android:textSize="@dimen/text_size_large" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/book_text_view_author"
+                android:id="@+id/wish_text_view_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/firasans_regular"

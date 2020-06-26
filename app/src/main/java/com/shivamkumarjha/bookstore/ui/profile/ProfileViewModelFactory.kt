@@ -4,9 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.repository.UserRepository
 
-class ProfileViewModelFactory(
-    private val userRepository: UserRepository
-) :
+class ProfileViewModelFactory(private val userRepository: UserRepository) :
     ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
