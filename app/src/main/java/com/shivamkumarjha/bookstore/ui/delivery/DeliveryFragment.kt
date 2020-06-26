@@ -77,7 +77,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
         (activity as PurchaseActivity).callOrderFragment(
             Order(
                 AppPreference(requireContext()).newOrderId(),
-                userRepository.getCart(),
+                userRepository.getCartItems(),
                 address,
                 currentDate
             )

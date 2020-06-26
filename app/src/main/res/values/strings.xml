@@ -33,6 +33,7 @@
     <string name="address_id_preference">AddressIdPreference</string>
     <string name="cart_id_preference">CartIdPreference</string>
     <string name="order_id_preference">OrderIdPreference</string>
+    <string name="wish_id_preference">WishIdPreference</string>
     <string name="new_login_preference">NewLoginPreference</string>
 
     <string name="profile">Profile</string>

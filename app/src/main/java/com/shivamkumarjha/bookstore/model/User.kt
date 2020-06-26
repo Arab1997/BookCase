@@ -7,5 +7,6 @@ data class User(
     var password: String,
     var addresses: ArrayList<Address> = arrayListOf(),
     var cartItems: ArrayList<CartItem> = arrayListOf(),
-    var orders: ArrayList<Order> = arrayListOf()
+    var orders: ArrayList<Order> = arrayListOf(),
+    var wishItems: ArrayList<WishItem> = arrayListOf()
 )

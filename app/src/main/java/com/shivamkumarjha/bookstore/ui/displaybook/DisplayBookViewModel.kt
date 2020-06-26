@@ -74,7 +74,7 @@ class DisplayBookViewModel(private val book: Book, private val userRepository: U
     }
 
     fun addToCart(cartId: Int) {
-        userRepository.addCart(
+        userRepository.addCartItem(
             CartItem(
                 cartId,
                 book,
@@ -84,6 +84,6 @@ class DisplayBookViewModel(private val book: Book, private val userRepository: U
     }
 
     fun isBookInCart(): Boolean {
-        return userRepository.isBookInCart(book)
+        return userRepository.isBookInCartItems(book)
     }
 }

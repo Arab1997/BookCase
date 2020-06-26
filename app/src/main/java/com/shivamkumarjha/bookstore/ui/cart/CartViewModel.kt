@@ -10,15 +10,15 @@ class CartViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     private var _cartList = MutableLiveData<ArrayList<CartItem>>()
     fun getCart(): LiveData<ArrayList<CartItem>> {
-        _cartList.value = userRepository.getCart()
+        _cartList.value = userRepository.getCartItems()
         return _cartList
     }
 
     fun removeCart(cartItem: CartItem) {
-        userRepository.removeCart(cartItem)
+        userRepository.removeCartItem(cartItem)
     }
 
     fun updateCart(cartItem: CartItem) {
-        userRepository.updateCart(cartItem)
+        userRepository.updateCartItem(cartItem)
     }
 }

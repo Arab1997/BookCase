@@ -41,7 +41,7 @@ class OrderFragment(private val order: Order) : Fragment() {
         val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
         userRepository = UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
         userRepository.addOrder(order)
-        userRepository.makeCartEmpty()
+        userRepository.makeCartItemsEmpty()
 
         //view
         orderIdTextView = requireView().findViewById(R.id.order_id_view_id)

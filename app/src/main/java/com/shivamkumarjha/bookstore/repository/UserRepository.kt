@@ -111,7 +111,7 @@ class UserRepository(private val file: File, private val email: String?) {
         writeAddress(addressList)
     }
 
-    private fun writeCart(cartItems: ArrayList<CartItem>) {
+    private fun writeCartItems(cartItems: ArrayList<CartItem>) {
         val users = getUsers()
         users[getLoggedInUserIndex()].cartItems = cartItems
         val data = gson.toJson(users)
@@ -124,24 +124,24 @@ class UserRepository(private val file: File, private val email: String?) {
         }
     }
 
-    fun getCart(): ArrayList<CartItem> {
+    fun getCartItems(): ArrayList<CartItem> {
         val users = getUsers()
         return users[getLoggedInUserIndex()].cartItems
     }
 
-    fun addCart(cartItem: CartItem) {
-        val cartList = getCart()
+    fun addCartItem(cartItem: CartItem) {
+        val cartList = getCartItems()
         cartList.add(cartItem)
-        writeCart(cartList)
+        writeCartItems(cartList)
     }
 
-    fun removeCart(cartItem: CartItem) {
-        val cartList = getCart()
+    fun removeCartItem(cartItem: CartItem) {
+        val cartList = getCartItems()
         cartList.removeAll { it.itemId == cartItem.itemId }
-        writeCart(cartList)
+        writeCartItems(cartList)
     }
 
-    private fun getCartIndex(cartItem: CartItem, cartItemList: ArrayList<CartItem>): Int {
+    private fun getCartItemIndex(cartItem: CartItem, cartItemList: ArrayList<CartItem>): Int {
         for (index in 0 until cartItemList.size) {
             if (cartItemList[index].itemId == cartItem.itemId)
                 return index
@@ -149,20 +149,20 @@ class UserRepository(private val file: File, private val email: String?) {
         return -1
     }
 
-    fun updateCart(cartItem: CartItem) {
-        val cartList = getCart()
-        val index = getCartIndex(cartItem, cartList)
+    fun updateCartItem(cartItem: CartItem) {
+        val cartList = getCartItems()
+        val index = getCartItemIndex(cartItem, cartList)
         if (index != -1)
             cartList[index] = cartItem
         else {
             cartList.removeAll { it.itemId == cartItem.itemId }
             cartList.add(cartItem)
         }
-        writeCart(cartList)
+        writeCartItems(cartList)
     }
 
-    fun isBookInCart(book: Book): Boolean {
-        val cartList = getCart()
+    fun isBookInCartItems(book: Book): Boolean {
+        val cartList = getCartItems()
         cartList.forEach {
             if (it.book.bookID == book.bookID)
                 return true
@@ -170,8 +170,8 @@ class UserRepository(private val file: File, private val email: String?) {
         return false
     }
 
-    fun makeCartEmpty() {
-        writeCart(arrayListOf())
+    fun makeCartItemsEmpty() {
+        writeCartItems(arrayListOf())
     }
 
     private fun writeOrders(orders: ArrayList<Order>) {
@@ -196,5 +196,64 @@ class UserRepository(private val file: File, private val email: String?) {
         val orderList = getOrders()
         orderList.add(order)
         writeOrders(orderList)
+    }
+
+    private fun writeWishItems(wishItems: ArrayList<WishItem>) {
+        val users = getUsers()
+        users[getLoggedInUserIndex()].wishItems = wishItems
+        val data = gson.toJson(users)
+        try {
+            val outputStreamWriter = OutputStreamWriter(file.outputStream())
+            outputStreamWriter.write(data)
+            outputStreamWriter.close()
+        } catch (e: IOException) {
+            Log.e(tag, "File write failed: $e")
+        }
+    }
+
+    fun getWishItems(): ArrayList<WishItem> {
+        val users = getUsers()
+        return users[getLoggedInUserIndex()].wishItems
+    }
+
+    fun addWishItem(wishItem: WishItem) {
+        val wishList = getWishItems()
+        wishList.add(wishItem)
+        writeWishItems(wishList)
+    }
+
+    fun removeWishItem(wishItem: WishItem) {
+        val wishList = getWishItems()
+        wishList.removeAll { it.wishId == wishItem.wishId }
+        writeWishItems(wishList)
+    }
+
+    private fun getWishItemIndex(wishItem: WishItem, wishItemList: ArrayList<WishItem>): Int {
+        for (index in 0 until wishItemList.size) {
+            if (wishItemList[index].wishId == wishItem.wishId)
+                return index
+        }
+        return -1
+    }
+
+    fun updateWishItem(wishItem: WishItem) {
+        val wishList = getWishItems()
+        val index = getWishItemIndex(wishItem, wishList)
+        if (index != -1)
+            wishList[index] = wishItem
+        else {
+            wishList.removeAll { it.wishId == wishItem.wishId }
+            wishList.add(wishItem)
+        }
+        writeWishItems(wishList)
+    }
+
+    fun isBookInWishItems(book: Book): Boolean {
+        val wishList = getWishItems()
+        wishList.forEach {
+            if (it.book.bookID == book.bookID)
+                return true
+        }
+        return false
     }
 }
