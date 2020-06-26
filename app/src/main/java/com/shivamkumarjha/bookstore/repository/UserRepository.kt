@@ -25,12 +25,10 @@ class UserRepository(private val file: File, private val email: String?) {
     }
 
     private fun getUsers(): ArrayList<User> {
-        if (!commonFileRepository.fileExists()) {
+        if (!commonFileRepository.fileExists())
             return arrayListOf()
-        }
-        // read JSON file storing array of Details object
         val jsonString = commonFileRepository.readFromFile()
-        val detailsTypeToken = object : TypeToken<List<User>>() {}.type
+        val detailsTypeToken = object : TypeToken<ArrayList<User>>() {}.type
         return gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
     }
 
@@ -77,9 +75,7 @@ class UserRepository(private val file: File, private val email: String?) {
     }
 
     fun getAddress(): ArrayList<Address> {
-        val jsonString = commonFileRepository.readFromFile()
-        val detailsTypeToken = object : TypeToken<List<User>>() {}.type
-        val users = gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
+        val users = getUsers()
         return users[getLoggedInUserIndex()].addresses
     }
 
@@ -129,9 +125,7 @@ class UserRepository(private val file: File, private val email: String?) {
     }
 
     fun getCart(): ArrayList<CartItem> {
-        val jsonString = commonFileRepository.readFromFile()
-        val detailsTypeToken = object : TypeToken<List<User>>() {}.type
-        val users = gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
+        val users = getUsers()
         return users[getLoggedInUserIndex()].cartItems
     }
 
@@ -194,9 +188,7 @@ class UserRepository(private val file: File, private val email: String?) {
     }
 
     fun getOrders(): ArrayList<Order> {
-        val jsonString = commonFileRepository.readFromFile()
-        val detailsTypeToken = object : TypeToken<List<User>>() {}.type
-        val users = gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
+        val users = getUsers()
         return users[getLoggedInUserIndex()].orders
     }
 
