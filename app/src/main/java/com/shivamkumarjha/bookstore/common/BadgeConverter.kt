@@ -2,6 +2,7 @@ package com.shivamkumarjha.bookstore.common
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -10,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.shivamkumarjha.bookstore.R
 
-object Converter {
+object BadgeConverter {
     fun convertLayoutToImage(
         mContext: Context,
         count: Int,
@@ -30,20 +31,18 @@ object Converter {
             textView.text = count.toString()
         }
         view.measure(
-            View.MeasureSpec.makeMeasureSpec(
-                0,
-                View.MeasureSpec.UNSPECIFIED
-            ),
-            View.MeasureSpec.makeMeasureSpec(
-                0,
-                View.MeasureSpec.UNSPECIFIED
-            )
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         )
         view.layout(0, 0, view.measuredWidth, view.measuredHeight)
-        view.isDrawingCacheEnabled = true
-        view.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
-        val bitmap = Bitmap.createBitmap(view.drawingCache)
-        view.isDrawingCacheEnabled = false
-        return BitmapDrawable(mContext.resources, bitmap)
+        return BitmapDrawable(mContext.resources, getBitmapFromView(view))
+    }
+
+    private fun getBitmapFromView(view: View): Bitmap? {
+        val bitmap =
+            Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        view.draw(canvas)
+        return bitmap
     }
 }

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
-import com.shivamkumarjha.bookstore.common.Converter
+import com.shivamkumarjha.bookstore.common.BadgeConverter
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.WishItem
 import com.shivamkumarjha.bookstore.repository.BookRepository
@@ -57,7 +57,7 @@ class BookListFragment : Fragment(), BookItemClickListener {
         //badge
         val badgeCount = userRepository.getCartItems().size
         val menuItem = menu.findItem(R.id.cart_menu_id)
-        menuItem.icon = Converter.convertLayoutToImage(
+        menuItem.icon = BadgeConverter.convertLayoutToImage(
             requireActivity(),
             badgeCount,
             R.drawable.ic_cart
