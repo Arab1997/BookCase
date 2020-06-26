@@ -79,6 +79,8 @@
     <string name="chose_delivery">Pick delivery address</string>
     <string name="cart_empty">Cart empty</string>
     <string name="cart_add">Add to cart</string>
+    <string name="total_price">Total price:</string>
+    <string name="demo_price">Rs 1500</string>
     <string name="added_cart">Added to cart</string>
     <string name="buy_proceed">Proceed to buy</string>
 </resources>

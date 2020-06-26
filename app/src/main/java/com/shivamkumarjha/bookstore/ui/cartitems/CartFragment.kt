@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -26,6 +27,8 @@ import java.io.File
 class CartFragment : Fragment(), CartItemClickListener {
 
     private lateinit var toolbar: Toolbar
+    private lateinit var priceTextView: TextView
+    private lateinit var savingTextView: TextView
     private lateinit var cartAdapter: CartAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var userRepository: UserRepository
@@ -67,6 +70,8 @@ class CartFragment : Fragment(), CartItemClickListener {
     }
 
     private fun initializer() {
+        priceTextView = requireView().findViewById(R.id.cart_price_text_view_id)
+        savingTextView = requireView().findViewById(R.id.cart_save_text_view_id)
         buyButton = requireView().findViewById(R.id.cart_proceed_button)
         recyclerView = requireView().findViewById(R.id.cart_recycler_view_id)
         val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
@@ -89,14 +94,19 @@ class CartFragment : Fragment(), CartItemClickListener {
     }
 
     private fun setUpViewModel() {
-        cartViewModel.getCart().observe(viewLifecycleOwner, Observer {
-            if (it.size > 0)
+        cartViewModel.getCart().observe(viewLifecycleOwner, Observer { cartItems ->
+            // toggle cart button
+            if (cartItems.size > 0)
                 buyButton.isEnabled = true
             else {
                 buyButton.isEnabled = false
                 buyButton.text = resources.getString(R.string.cart_empty)
             }
-            cartAdapter.setCarts(it)
+            // recycler view
+            cartAdapter.setCarts(cartItems)
+            //text view
+            priceTextView.text = cartViewModel.getCartTotalPrice(cartItems)
+            savingTextView.text = cartViewModel.getCartSavings(cartItems)
         })
     }
 
@@ -114,10 +124,18 @@ class CartFragment : Fragment(), CartItemClickListener {
     }
 
     override fun onAddQuantity(cartItem: CartItem) {
+        //text view
+        priceTextView.text = cartViewModel.getCartTotalPrice(cartAdapter.getCarts())
+        savingTextView.text = cartViewModel.getCartSavings(cartAdapter.getCarts())
+        // update JSON
         cartViewModel.updateCart(cartItem)
     }
 
     override fun onMinusQuantity(cartItem: CartItem, position: Int) {
+        //text view
+        priceTextView.text = cartViewModel.getCartTotalPrice(cartAdapter.getCarts())
+        savingTextView.text = cartViewModel.getCartSavings(cartAdapter.getCarts())
+        // update JSON
         if (cartItem.quantity <= 0) {
             cartViewModel.removeCart(cartItem)
             val list: ArrayList<CartItem> = cartAdapter.getCarts()
