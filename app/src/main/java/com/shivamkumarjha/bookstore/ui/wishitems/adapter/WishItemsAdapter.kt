@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.WishItem
 
-class WishItemsAdapter : RecyclerView.Adapter<WishItemsViewHolder>() {
+class WishItemsAdapter(private val bookClickListener: BookClickListener) : RecyclerView.Adapter<WishItemsViewHolder>() {
 
     private var wishItems: ArrayList<WishItem> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WishItemsViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.content_wish_item, parent, false)
-        return WishItemsViewHolder(itemView)
+        return WishItemsViewHolder(itemView,bookClickListener)
     }
 
     override fun getItemCount(): Int = wishItems.size
