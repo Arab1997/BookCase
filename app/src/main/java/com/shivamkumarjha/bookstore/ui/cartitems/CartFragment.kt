@@ -105,8 +105,7 @@ class CartFragment : Fragment(), CartItemClickListener {
             // recycler view
             cartAdapter.setCarts(cartItems)
             //text view
-            priceTextView.text = cartViewModel.getCartTotalPrice(cartItems)
-            savingTextView.text = cartViewModel.getCartSavings(cartItems)
+            setPriceTextViews(cartItems)
         })
     }
 
@@ -124,18 +123,12 @@ class CartFragment : Fragment(), CartItemClickListener {
     }
 
     override fun onAddQuantity(cartItem: CartItem) {
-        //text view
-        priceTextView.text = cartViewModel.getCartTotalPrice(cartAdapter.getCarts())
-        savingTextView.text = cartViewModel.getCartSavings(cartAdapter.getCarts())
-        // update JSON
+        setPriceTextViews(cartAdapter.getCarts()) //text view
         cartViewModel.updateCart(cartItem)
     }
 
     override fun onMinusQuantity(cartItem: CartItem, position: Int) {
-        //text view
-        priceTextView.text = cartViewModel.getCartTotalPrice(cartAdapter.getCarts())
-        savingTextView.text = cartViewModel.getCartSavings(cartAdapter.getCarts())
-        // update JSON
+        setPriceTextViews(cartAdapter.getCarts()) //text view
         if (cartItem.quantity <= 0) {
             cartViewModel.removeCart(cartItem)
             val list: ArrayList<CartItem> = cartAdapter.getCarts()
@@ -145,5 +138,10 @@ class CartFragment : Fragment(), CartItemClickListener {
             return
         }
         cartViewModel.updateCart(cartItem)
+    }
+
+    private fun setPriceTextViews(cartsItems: ArrayList<CartItem>) {
+        priceTextView.text = cartViewModel.getCartTotalPrice(cartsItems)
+        savingTextView.text = cartViewModel.getCartSavings(cartsItems)
     }
 }
