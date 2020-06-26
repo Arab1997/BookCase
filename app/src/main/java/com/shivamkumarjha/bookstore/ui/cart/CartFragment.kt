@@ -117,12 +117,13 @@ class CartFragment : Fragment(), CartItemClickListener {
     }
 
     override fun onMinusQuantity(cartItem: CartItem, position: Int) {
-        if (cartItem.quantity == 0) {
+        if (cartItem.quantity <= 0) {
             cartViewModel.removeCart(cartItem)
             val list: ArrayList<CartItem> = cartAdapter.getCarts()
             list.removeAt(position)
             cartAdapter.setCarts(list)
             cartAdapter.notifyItemRemoved(position)
+            return
         }
         cartViewModel.updateCart(cartItem)
     }
