@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view_id"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/view_margin"
+    app:cardCornerRadius="@dimen/card_stroke_radius"
+    app:strokeWidth="@dimen/card_stroke_width">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_view_height"
+        android:background="@color/card_view_background_color"
+        android:weightSum="6">
+
+        <ImageView
+            android:id="@+id/book_image_view_id"
+            android:layout_width="@dimen/margin_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:contentDescription="@string/book_image"
+            android:padding="@dimen/card_image_padding"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="@dimen/margin_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/view_text_margin"
+            android:layout_marginLeft="@dimen/view_text_margin"
+            android:layout_marginTop="@dimen/view_margin"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/book_text_view_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/firasans_extrabold"
+                android:text="@string/book_name"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                android:textColor="@color/black_color"
+                android:textSize="@dimen/text_size_large" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/book_text_view_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/firasans_regular"
+                android:text="@string/book_author"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                android:textColor="@color/black_color"
+                android:textSize="@dimen/text_size_normal" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

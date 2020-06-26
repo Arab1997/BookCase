@@ -35,7 +35,7 @@ class BookListFragment : Fragment(), BookItemClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_book, container, false)
+        return inflater.inflate(R.layout.fragment_book_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

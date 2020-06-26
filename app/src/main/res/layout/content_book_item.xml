@@ -18,7 +18,7 @@
             android:id="@+id/book_image_view_id"
             android:layout_width="@dimen/margin_0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1.6"
             android:contentDescription="@string/book_image"
             android:padding="@dimen/card_image_padding"
             android:scaleType="centerCrop"
@@ -135,7 +135,8 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/view_margin"
             android:layout_marginRight="@dimen/view_margin"
-            android:layout_weight="1.2"
+            android:layout_marginTop="@dimen/view_margin_small"
+            android:layout_weight="1.1"
             android:gravity="end"
             android:orientation="vertical">
 
