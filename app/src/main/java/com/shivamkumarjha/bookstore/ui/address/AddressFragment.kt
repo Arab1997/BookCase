@@ -94,7 +94,8 @@ class AddressFragment(private val address: Address?) : Fragment() {
 
     private fun setUpViewModel() {
         val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
-        val userRepository = UserRepository(userFile,AppPreference(requireContext()).getUserEmail()!!)
+        val userRepository =
+            UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
         addressViewModel = ViewModelProvider(this, AddressViewModelFactory(userRepository))
             .get(AddressViewModel::class.java)
 
