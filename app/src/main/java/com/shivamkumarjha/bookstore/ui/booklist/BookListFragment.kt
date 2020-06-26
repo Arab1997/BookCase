@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
+import com.shivamkumarjha.bookstore.common.Converter
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.WishItem
 import com.shivamkumarjha.bookstore.repository.BookRepository
@@ -29,12 +30,16 @@ class BookListFragment : Fragment(), BookItemClickListener {
     private lateinit var bookListViewModel: BookListViewModel
     private lateinit var bookAdapter: BookAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var userRepository: UserRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
+        userRepository =
+            UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
         return inflater.inflate(R.layout.fragment_book_list, container, false)
     }
 
@@ -49,6 +54,14 @@ class BookListFragment : Fragment(), BookItemClickListener {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         requireActivity().menuInflater.inflate(R.menu.book_menu, menu)
+        //badge
+        val badgeCount = userRepository.getCartItems().size
+        val menuItem = menu.findItem(R.id.cart_menu_id)
+        menuItem.icon = Converter.convertLayoutToImage(
+            requireActivity(),
+            badgeCount,
+            R.drawable.ic_cart
+        )
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
