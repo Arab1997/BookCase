@@ -55,6 +55,8 @@ class BookListFragment : Fragment(), BookItemClickListener {
         when (item.itemId) {
             R.id.cart_menu_id -> (activity as DashboardActivity).callCartFragment()
             R.id.profile_menu -> (activity as DashboardActivity).callProfileFragment()
+            R.id.order_menu -> (activity as DashboardActivity).callOrderListFragment()
+            R.id.wish_menu -> (activity as DashboardActivity).callWishItemsFragment()
             R.id.sign_out -> (activity as DashboardActivity).doSignOut()
         }
         return true

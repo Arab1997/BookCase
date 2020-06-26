@@ -13,10 +13,12 @@ import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
 import com.shivamkumarjha.bookstore.ui.address.AddressFragment
 import com.shivamkumarjha.bookstore.ui.booklist.BookListFragment
-import com.shivamkumarjha.bookstore.ui.cart.CartFragment
+import com.shivamkumarjha.bookstore.ui.cartitems.CartFragment
 import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBookFragment
 import com.shivamkumarjha.bookstore.ui.login.LoginActivity
+import com.shivamkumarjha.bookstore.ui.orderitems.OrderItemsFragment
 import com.shivamkumarjha.bookstore.ui.profile.ProfileFragment
+import com.shivamkumarjha.bookstore.ui.wishitems.WishItemsFragment
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -86,6 +88,22 @@ class DashboardActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.fragment_holder, AddressFragment(address))
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun callOrderListFragment() {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, OrderItemsFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun callWishItemsFragment() {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, WishItemsFragment())
             .addToBackStack(null)
             .commit()
     }
