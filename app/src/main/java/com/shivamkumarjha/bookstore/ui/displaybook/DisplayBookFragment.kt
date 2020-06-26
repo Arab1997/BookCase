@@ -21,6 +21,7 @@ import androidx.viewpager.widget.ViewPager
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.model.WishItem
 import com.shivamkumarjha.bookstore.repository.UserRepository
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.ReviewAdapter
 import com.shivamkumarjha.bookstore.ui.displaybook.adapter.SliderAdapter
@@ -105,7 +106,7 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
 
     private fun setUpViews() {
         //cart
-        if (displayBookViewModel.isBookInCart())
+        if (displayBookViewModel.isBookInCartItems())
             toggleCart()
         cartButton.setOnClickListener {
             displayBookViewModel.addToCart(AppPreference(requireContext()).newCartId())
@@ -115,8 +116,8 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         // wish toggle
         wishToggleAnimation()
+        wishStatus.isChecked = displayBookViewModel.isBookInWishItems()
         wishStatus.setOnClickListener { onWishClick(wishStatus.isChecked) }
-
         // review recycler view
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
@@ -170,10 +171,19 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
     }
 
     private fun onWishClick(isChecked: Boolean) {
-        val toastMessage = if (isChecked)
-            "Added ${book.title} to wish list."
-        else
-            "Removed ${book.title} from wish list."
+        var toastMessage: String
+        if (isChecked) {
+            toastMessage = "Added ${book.title} to wish list."
+            displayBookViewModel.addWishItem(
+                WishItem(
+                    AppPreference(requireContext()).newWishId(),
+                    book
+                )
+            )
+        } else {
+            toastMessage = "Removed ${book.title} from wish list."
+            displayBookViewModel.removeWishItem(book)
+        }
         Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()
     }
 

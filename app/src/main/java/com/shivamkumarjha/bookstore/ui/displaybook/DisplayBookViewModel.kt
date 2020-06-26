@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.CartItem
 import com.shivamkumarjha.bookstore.model.Review
+import com.shivamkumarjha.bookstore.model.WishItem
 import com.shivamkumarjha.bookstore.repository.UserRepository
 
 class DisplayBookViewModel(private val book: Book, private val userRepository: UserRepository) :
@@ -83,7 +84,19 @@ class DisplayBookViewModel(private val book: Book, private val userRepository: U
         )
     }
 
-    fun isBookInCart(): Boolean {
+    fun isBookInCartItems(): Boolean {
         return userRepository.isBookInCartItems(book)
+    }
+
+    fun isBookInWishItems(): Boolean {
+        return userRepository.isBookInWishItems(book)
+    }
+
+    fun addWishItem(wishItem: WishItem) {
+        userRepository.addWishItem(wishItem)
+    }
+
+    fun removeWishItem(book: Book) {
+        userRepository.removeWishItem(book)
     }
 }

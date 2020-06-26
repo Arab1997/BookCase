@@ -222,9 +222,9 @@ class UserRepository(private val file: File, private val email: String?) {
         writeWishItems(wishList)
     }
 
-    fun removeWishItem(wishItem: WishItem) {
+    fun removeWishItem(book: Book) {
         val wishList = getWishItems()
-        wishList.removeAll { it.wishId == wishItem.wishId }
+        wishList.removeAll { it.book.bookID == book.bookID }
         writeWishItems(wishList)
     }
 
