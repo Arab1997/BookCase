@@ -24,6 +24,7 @@
     <string name="demo_book_rating">4.5</string>
 
     <string name="search">Search</string>
+    <string name="search_books">Search books</string>
 
     <string name="appPreference">AppPreference</string>
     <string name="logged_preference">LoggedPreference</string>

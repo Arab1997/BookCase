@@ -1,9 +1,13 @@
 package com.shivamkumarjha.bookstore.ui.booklist
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,6 +38,7 @@ class BookListFragment : Fragment(), BookItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+        searchBooks()
         setUpRecyclerView()
         setUpViewModel()
     }
@@ -41,20 +46,6 @@ class BookListFragment : Fragment(), BookItemClickListener {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         requireActivity().menuInflater.inflate(R.menu.book_menu, menu)
-
-        // Search books
-        val searchItem: MenuItem = menu.findItem(R.id.list_search_id)
-        val searchView: SearchView = searchItem.actionView as SearchView
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                bookAdapter.filter.filter(newText)
-                return false
-            }
-        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -76,6 +67,28 @@ class BookListFragment : Fragment(), BookItemClickListener {
         else
             "Removed ${book.title} from wish list."
         Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun searchBooks() {
+        val searchView: SearchView = requireView().findViewById(R.id.book_search)
+        val searchIcon = searchView.findViewById<ImageView>(R.id.search_mag_icon)
+        searchIcon.setColorFilter(Color.WHITE)
+        val cancelIcon = searchView.findViewById<ImageView>(R.id.search_close_btn)
+        cancelIcon.setColorFilter(Color.WHITE)
+        val searchTextView = searchView.findViewById<TextView>(R.id.search_src_text)
+        searchTextView.setTextColor(Color.WHITE)
+        searchTextView.hint = resources.getString(R.string.search_books)
+        searchTextView.setHintTextColor(ContextCompat.getColor(requireContext(), R.color.gray_300))
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                bookAdapter.filter.filter(newText)
+                return false
+            }
+        })
     }
 
     private fun setUpViewModel() {
