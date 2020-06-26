@@ -7,6 +7,7 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.model.WishItem
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -14,6 +15,7 @@ class BookAdapter(private val clickListener: BookItemClickListener) :
     RecyclerView.Adapter<BookViewHolder>(), Filterable {
 
     private var books: ArrayList<Book> = arrayListOf()
+    private var wishItems: ArrayList<WishItem> = arrayListOf()
     private lateinit var backupList: ArrayList<Book>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -25,12 +27,16 @@ class BookAdapter(private val clickListener: BookItemClickListener) :
     override fun getItemCount(): Int = books.size
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-        holder.initialize(books[position])
+        holder.initialize(books[position], wishItems)
     }
 
     fun setBooks(books: ArrayList<Book>) {
         this.books = books
         backupList = books
+    }
+
+    fun setWishItems(wishItems: ArrayList<WishItem>) {
+        this.wishItems = wishItems
     }
 
     override fun getFilter(): Filter {

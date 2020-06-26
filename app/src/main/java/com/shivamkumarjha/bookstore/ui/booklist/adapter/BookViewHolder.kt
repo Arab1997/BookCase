@@ -13,6 +13,7 @@ import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.model.WishItem
 import com.squareup.picasso.Picasso
 
 class BookViewHolder(itemView: View, private val clickListener: BookItemClickListener) :
@@ -35,7 +36,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
     }
 
     @SuppressLint("SetTextI18n")
-    fun initialize(book: Book) {
+    fun initialize(book: Book, wishItems: ArrayList<WishItem>) {
         this.book = book
 
         // Load book image from URL
@@ -52,11 +53,12 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         bookDiscount.text = book.discount.toInt().toString() + "% off"
         bookRating.text = "%.2f".format(book.review.map { it.rating }.average()) // Average rating
         bookRatingCount.text = "${book.review.size} reviews"
+
+        // wish toggle
+        wishStatus.isChecked = isBookInWishItems(book, wishItems)
         wishStatus.setOnClickListener {
             clickListener.onWishClick(book, wishStatus.isChecked)
         }
-
-        // wish toggle button animation
         val scaleAnimation = ScaleAnimation(
             0.7f,
             1.0f,
@@ -77,5 +79,13 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
 
             override fun onClick(p0: View?) {}
         })
+    }
+
+    fun isBookInWishItems(book: Book, wishItems: ArrayList<WishItem>): Boolean {
+        wishItems.forEach {
+            if (it.book.bookID == book.bookID)
+                return true
+        }
+        return false
     }
 }

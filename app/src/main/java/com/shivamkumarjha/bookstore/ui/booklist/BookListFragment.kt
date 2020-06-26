@@ -14,8 +14,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.model.WishItem
 import com.shivamkumarjha.bookstore.repository.BookRepository
+import com.shivamkumarjha.bookstore.repository.UserRepository
 import com.shivamkumarjha.bookstore.ui.DashboardActivity
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookAdapter
 import com.shivamkumarjha.bookstore.ui.booklist.adapter.BookItemClickListener
@@ -62,10 +65,19 @@ class BookListFragment : Fragment(), BookItemClickListener {
     }
 
     override fun onWishClick(book: Book, isChecked: Boolean) {
-        val toastMessage = if (isChecked)
-            "Added ${book.title} to wish list."
-        else
-            "Removed ${book.title} from wish list."
+        val toastMessage: String
+        if (isChecked) {
+            toastMessage = "Added ${book.title} to wish list."
+            bookListViewModel.addWishItem(
+                WishItem(
+                    AppPreference(requireContext()).newWishId(),
+                    book
+                )
+            )
+        } else {
+            toastMessage = "Removed ${book.title} from wish list."
+            bookListViewModel.removeWishItem(book)
+        }
         Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()
     }
 
@@ -94,10 +106,17 @@ class BookListFragment : Fragment(), BookItemClickListener {
     private fun setUpViewModel() {
         val booksFile = File(requireActivity().filesDir, resources.getString(R.string.file_books))
         val bookRepository = BookRepository(booksFile)
-        bookListViewModel = ViewModelProvider(this, BookListViewModelFactory(bookRepository))
-            .get(BookListViewModel::class.java)
+        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
+        val userRepository =
+            UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
+        bookListViewModel =
+            ViewModelProvider(this, BookListViewModelFactory(bookRepository, userRepository))
+                .get(BookListViewModel::class.java)
         bookListViewModel.getBooks().observe(requireActivity(), Observer {
             bookAdapter.setBooks(it)
+        })
+        bookListViewModel.getWishItems().observe(requireActivity(), Observer {
+            bookAdapter.setWishItems(it)
         })
     }
 

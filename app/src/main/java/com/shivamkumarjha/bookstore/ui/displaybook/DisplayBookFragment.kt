@@ -171,7 +171,7 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
     }
 
     private fun onWishClick(isChecked: Boolean) {
-        var toastMessage: String
+        val toastMessage: String
         if (isChecked) {
             toastMessage = "Added ${book.title} to wish list."
             displayBookViewModel.addWishItem(
