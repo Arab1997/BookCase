@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
+import com.shivamkumarjha.bookstore.common.UserViewModelFactory
 import com.shivamkumarjha.bookstore.common.afterTextChanged
 import com.shivamkumarjha.bookstore.common.hideKeyboard
 import com.shivamkumarjha.bookstore.repository.UserRepository
@@ -48,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
         val userFile = File(filesDir, resources.getString(R.string.file_users))
         val userRepository = UserRepository(userFile, null)
         loginViewModel =
-            ViewModelProvider(this, LoginViewModelFactory(userRepository))
+            ViewModelProvider(this, UserViewModelFactory(userRepository))
                 .get(LoginViewModel::class.java)
 
         // Set previous email where login was success

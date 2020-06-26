@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
+import com.shivamkumarjha.bookstore.common.UserViewModelFactory
 import com.shivamkumarjha.bookstore.common.afterTextChanged
 import com.shivamkumarjha.bookstore.common.hideKeyboard
 import com.shivamkumarjha.bookstore.model.User
@@ -49,7 +50,7 @@ class RegisterActivity : AppCompatActivity() {
         val userFile = File(filesDir, resources.getString(R.string.file_users))
         val userRepository = UserRepository(userFile, AppPreference(this).getUserEmail())
         registerViewModel =
-            ViewModelProvider(this, RegisterViewModelFactory(userRepository))
+            ViewModelProvider(this, UserViewModelFactory(userRepository))
                 .get(RegisterViewModel::class.java)
     }
 

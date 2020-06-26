@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
+import com.shivamkumarjha.bookstore.common.UserViewModelFactory
 import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
 import com.shivamkumarjha.bookstore.repository.UserRepository
@@ -108,7 +109,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
         val userRepository =
             UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
         profileViewModel =
-            ViewModelProvider(this, ProfileViewModelFactory(userRepository))
+            ViewModelProvider(this, UserViewModelFactory(userRepository))
                 .get(ProfileViewModel::class.java)
         profileViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             addressAdapter.setAddress(it)

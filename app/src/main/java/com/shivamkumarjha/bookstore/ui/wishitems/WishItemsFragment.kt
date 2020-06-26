@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
+import com.shivamkumarjha.bookstore.common.UserViewModelFactory
 import com.shivamkumarjha.bookstore.repository.UserRepository
 import com.shivamkumarjha.bookstore.ui.wishitems.adapter.WishItemsAdapter
 import java.io.File
@@ -71,7 +72,7 @@ class WishItemsFragment : Fragment() {
         val userRepository =
             UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
         wishItemsViewModel =
-            ViewModelProvider(this, WishItemsViewModelFactory(userRepository))
+            ViewModelProvider(this, UserViewModelFactory(userRepository))
                 .get(WishItemsViewModel::class.java)
         wishItemsViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             wishItemsAdapter.setWishItems(it)

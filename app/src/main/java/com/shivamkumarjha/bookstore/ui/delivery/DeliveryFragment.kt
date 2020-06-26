@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
+import com.shivamkumarjha.bookstore.common.UserViewModelFactory
 import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.model.Order
 import com.shivamkumarjha.bookstore.repository.UserRepository
@@ -56,7 +57,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
 
         //view model
         deliveryViewModel =
-            ViewModelProvider(this, DeliveryViewModelFactory(userRepository))
+            ViewModelProvider(this, UserViewModelFactory(userRepository))
                 .get(DeliveryViewModel::class.java)
         deliveryViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             if (it.size == 0)
