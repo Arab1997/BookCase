@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">BookStore</string>
-    <string name="title_book">Book</string>
-    <string name="title_dashboard">Dashboard</string>
     <string name="title_cart">Cart</string>
     <string name="wish">Wish</string>
     <string name="yes">Yes</string>
@@ -15,16 +13,9 @@
     <string name="book_detail">Book detail</string>
     <string name="book_category">Book category</string>
     <string name="book_image">Book cover</string>
-    <string name="book_rating">Book rating</string>
-    <string name="book_review">Book review</string>
-    <string name="book_discount">Book discount</string>
-    <string name="book_price">Book price</string>
-    <string name="book_mrp">Book MRP</string>
-    <string name="book_stock">Book stock</string>
     <string name="demo_book_price">$299</string>
     <string name="demo_book_rating">4.5</string>
 
-    <string name="search">Search</string>
     <string name="search_books">Search books</string>
 
     <string name="appPreference">AppPreference</string>
@@ -35,7 +26,6 @@
     <string name="cart_id_preference">CartIdPreference</string>
     <string name="order_id_preference">OrderIdPreference</string>
     <string name="wish_id_preference">WishIdPreference</string>
-    <string name="new_login_preference">NewLoginPreference</string>
 
     <string name="profile">Profile</string>
     <string name="profile_image">Profile image</string>
@@ -62,7 +52,6 @@
     <string name="no_address">Please add address and retry.</string>
     <string name="add_address">Add address</string>
     <string name="address">Address</string>
-    <string name="address_added">Address added</string>
     <string name="prompt_mobile">Mobile</string>
     <string name="prompt_flat">Flat</string>
     <string name="prompt_street">Street</string>
@@ -83,13 +72,11 @@
     <string name="demo_book_cart_count">0</string>
     <string name="remove">Remove</string>
     <string name="add">Add</string>
-    <string name="cart">Cart</string>
     <string name="order">Order</string>
     <string name="orders">Orders</string>
     <string name="order_placed">Order placed</string>
     <string name="shopping">Continue shopping?</string>
     <string name="chose_delivery">Pick delivery address</string>
-    <string name="purchase">Purchase</string>
     <string name="cart_empty">Cart empty</string>
     <string name="cart_add">Add to cart</string>
     <string name="added_cart">Added to cart</string>

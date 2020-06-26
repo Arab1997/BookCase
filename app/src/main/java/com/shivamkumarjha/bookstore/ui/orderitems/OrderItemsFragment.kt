@@ -1,16 +1,14 @@
 package com.shivamkumarjha.bookstore.ui.orderitems
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import com.shivamkumarjha.bookstore.R
-import com.shivamkumarjha.bookstore.model.Book
-import com.shivamkumarjha.bookstore.ui.DashboardActivity
 
 class OrderItemsFragment : Fragment() {
 
