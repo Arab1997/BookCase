@@ -105,7 +105,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
 
     private fun setUpViewModel() {
         val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
-        val userRepository = UserRepository(userFile)
+        val userRepository = UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
         profileViewModel =
             ViewModelProvider(this, ProfileViewModelFactory(userRepository))
                 .get(ProfileViewModel::class.java)

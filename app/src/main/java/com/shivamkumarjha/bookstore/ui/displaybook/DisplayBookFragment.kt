@@ -91,7 +91,7 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
         viewPager = requireView().findViewById(R.id.display_book_view_pager)
         recyclerView = requireView().findViewById(R.id.display_book_review_recycler_view_id)
         val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
-        userRepository = UserRepository(userFile)
+        userRepository = UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
         displayBookViewModel =
             ViewModelProvider(this, DisplayBookViewModelFactory(book, userRepository))
                 .get(DisplayBookViewModel::class.java)

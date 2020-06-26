@@ -47,8 +47,9 @@ class RegisterActivity : AppCompatActivity() {
 
         // ViewModel
         val userFile = File(filesDir, resources.getString(R.string.file_users))
+        val userRepository = UserRepository(userFile, AppPreference(this).getUserEmail())
         registerViewModel =
-            ViewModelProvider(this, RegisterViewModelFactory(UserRepository(userFile)))
+            ViewModelProvider(this, RegisterViewModelFactory(userRepository))
                 .get(RegisterViewModel::class.java)
     }
 

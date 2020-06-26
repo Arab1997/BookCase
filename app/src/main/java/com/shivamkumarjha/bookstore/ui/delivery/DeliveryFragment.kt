@@ -52,7 +52,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
 
         //repository
         val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
-        userRepository = UserRepository(userFile)
+        userRepository = UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
 
         //view model
         deliveryViewModel =

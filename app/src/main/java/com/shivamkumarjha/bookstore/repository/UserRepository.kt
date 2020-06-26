@@ -8,7 +8,7 @@ import java.io.File
 import java.io.IOException
 import java.io.OutputStreamWriter
 
-class UserRepository(private val file: File) {
+class UserRepository(private val file: File, private val email: String?) {
     private val gson = Gson()
     private val commonFileRepository = CommonFileRepository(file)
     private val tag = "UserRepository"
@@ -34,6 +34,15 @@ class UserRepository(private val file: File) {
         return gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
     }
 
+    private fun getLoggedInUserIndex(): Int {
+        val users = getUsers()
+        for (index in 0 until users.size) {
+            if (users[index].email == email)
+                return index
+        }
+        return -1
+    }
+
     fun addUser(user: User) {
         val users = getUsers()
         users.add(user)
@@ -56,7 +65,7 @@ class UserRepository(private val file: File) {
 
     private fun writeAddress(address: ArrayList<Address>) {
         val users = getUsers()
-        users[0].addresses = address
+        users[getLoggedInUserIndex()].addresses = address
         val data = gson.toJson(users)
         try {
             val outputStreamWriter = OutputStreamWriter(file.outputStream())
@@ -71,7 +80,7 @@ class UserRepository(private val file: File) {
         val jsonString = commonFileRepository.readFromFile()
         val detailsTypeToken = object : TypeToken<List<User>>() {}.type
         val users = gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
-        return users[0].addresses
+        return users[getLoggedInUserIndex()].addresses
     }
 
     fun addAddress(address: Address) {
@@ -108,7 +117,7 @@ class UserRepository(private val file: File) {
 
     private fun writeCart(cartItems: ArrayList<CartItem>) {
         val users = getUsers()
-        users[0].cartItems = cartItems
+        users[getLoggedInUserIndex()].cartItems = cartItems
         val data = gson.toJson(users)
         try {
             val outputStreamWriter = OutputStreamWriter(file.outputStream())
@@ -123,7 +132,7 @@ class UserRepository(private val file: File) {
         val jsonString = commonFileRepository.readFromFile()
         val detailsTypeToken = object : TypeToken<List<User>>() {}.type
         val users = gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
-        return users[0].cartItems
+        return users[getLoggedInUserIndex()].cartItems
     }
 
     fun addCart(cartItem: CartItem) {
@@ -173,7 +182,7 @@ class UserRepository(private val file: File) {
 
     private fun writeOrders(orders: ArrayList<Order>) {
         val users = getUsers()
-        users[0].orders = orders
+        users[getLoggedInUserIndex()].orders = orders
         val data = gson.toJson(users)
         try {
             val outputStreamWriter = OutputStreamWriter(file.outputStream())
@@ -188,7 +197,7 @@ class UserRepository(private val file: File) {
         val jsonString = commonFileRepository.readFromFile()
         val detailsTypeToken = object : TypeToken<List<User>>() {}.type
         val users = gson.fromJson<ArrayList<User>>(jsonString, detailsTypeToken)
-        return users[0].orders
+        return users[getLoggedInUserIndex()].orders
     }
 
     fun addOrder(order: Order) {

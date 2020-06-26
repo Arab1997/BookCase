@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.CartItem
 import com.shivamkumarjha.bookstore.repository.UserRepository
 import com.shivamkumarjha.bookstore.ui.DashboardActivity
@@ -68,7 +69,7 @@ class CartFragment : Fragment(), CartItemClickListener {
         buyButton = requireView().findViewById(R.id.cart_proceed_button)
         recyclerView = requireView().findViewById(R.id.cart_recycler_view_id)
         val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
-        userRepository = UserRepository(userFile)
+        userRepository = UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
         cartViewModel = ViewModelProvider(this, CartViewModelFactory(userRepository))
             .get(CartViewModel::class.java)
     }

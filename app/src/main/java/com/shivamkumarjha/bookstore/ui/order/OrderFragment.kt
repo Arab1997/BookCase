@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Order
 import com.shivamkumarjha.bookstore.repository.UserRepository
 import java.io.File
@@ -38,7 +39,7 @@ class OrderFragment(private val order: Order) : Fragment() {
 
         // order JSON
         val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
-        userRepository = UserRepository(userFile)
+        userRepository = UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
         userRepository.addOrder(order)
         userRepository.makeCartEmpty()
 

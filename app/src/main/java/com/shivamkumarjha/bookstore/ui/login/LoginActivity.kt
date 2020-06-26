@@ -46,8 +46,9 @@ class LoginActivity : AppCompatActivity() {
 
         // ViewModel
         val userFile = File(filesDir, resources.getString(R.string.file_users))
+        val userRepository = UserRepository(userFile, null)
         loginViewModel =
-            ViewModelProvider(this, LoginViewModelFactory(UserRepository(userFile)))
+            ViewModelProvider(this, LoginViewModelFactory(userRepository))
                 .get(LoginViewModel::class.java)
 
         // Set previous email where login was success
