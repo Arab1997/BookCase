@@ -14,6 +14,7 @@ import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Order
 import com.shivamkumarjha.bookstore.repository.UserRepository
+import com.shivamkumarjha.bookstore.ui.DashboardActivity
 import java.io.File
 
 class OrderFragment(private val order: Order) : Fragment() {
@@ -63,6 +64,6 @@ class OrderFragment(private val order: Order) : Fragment() {
 
     private fun exitFragment() {
         requireActivity().supportFragmentManager.popBackStack()
-        requireActivity().finish()
+        (activity as DashboardActivity).callBookFragment()
     }
 }

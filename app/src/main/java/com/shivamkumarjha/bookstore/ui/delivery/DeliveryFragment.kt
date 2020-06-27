@@ -18,7 +18,7 @@ import com.shivamkumarjha.bookstore.common.UserViewModelFactory
 import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.model.Order
 import com.shivamkumarjha.bookstore.repository.UserRepository
-import com.shivamkumarjha.bookstore.ui.PurchaseActivity
+import com.shivamkumarjha.bookstore.ui.DashboardActivity
 import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryAdapter
 import com.shivamkumarjha.bookstore.ui.delivery.adapter.DeliveryItemClickListener
 import java.io.File
@@ -65,7 +65,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
                     view,
                     resources.getString(R.string.no_address), Snackbar.LENGTH_INDEFINITE
                 ).setAction(R.string.add_address) {
-                    (activity as PurchaseActivity).callAddressFragment(null)
+                    (activity as DashboardActivity).callAddressFragment(null)
                 }.show()
             deliveryAdapter.setAddress(it)
         })
@@ -75,7 +75,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     override fun onAddressClick(address: Address) {
         val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
         val currentDate = sdf.format(Date())
-        (activity as PurchaseActivity).callOrderFragment(
+        (activity as DashboardActivity).callOrderFragment(
             Order(
                 AppPreference(requireContext()).newOrderId(),
                 userRepository.getCartItems(),
@@ -96,6 +96,5 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
 
     private fun exitFragment() {
         requireActivity().supportFragmentManager.popBackStack()
-        requireActivity().finish()
     }
 }

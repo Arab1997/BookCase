@@ -11,11 +11,14 @@ import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Address
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.LoggedInUserView
+import com.shivamkumarjha.bookstore.model.Order
 import com.shivamkumarjha.bookstore.ui.address.AddressFragment
 import com.shivamkumarjha.bookstore.ui.booklist.BookListFragment
 import com.shivamkumarjha.bookstore.ui.cartitems.CartFragment
+import com.shivamkumarjha.bookstore.ui.delivery.DeliveryFragment
 import com.shivamkumarjha.bookstore.ui.displaybook.DisplayBookFragment
 import com.shivamkumarjha.bookstore.ui.login.LoginActivity
+import com.shivamkumarjha.bookstore.ui.order.OrderFragment
 import com.shivamkumarjha.bookstore.ui.orderitems.OrderItemsFragment
 import com.shivamkumarjha.bookstore.ui.profile.ProfileFragment
 import com.shivamkumarjha.bookstore.ui.wishitems.WishItemsFragment
@@ -53,7 +56,7 @@ class DashboardActivity : AppCompatActivity() {
         )
     }
 
-    private fun callBookFragment() {
+    fun callBookFragment() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.fragment_holder, BookListFragment())
@@ -108,9 +111,18 @@ class DashboardActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun callPurchaseActivity() {
-        val intent = Intent(this, PurchaseActivity::class.java)
-        startActivity(intent)
+    fun callDeliveryFragment() {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, DeliveryFragment())
+            .commit()
+    }
+
+    fun callOrderFragment(order: Order) {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, OrderFragment(order))
+            .commit()
     }
 
     fun doSignOut() {

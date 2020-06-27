@@ -90,7 +90,7 @@ class CartFragment : Fragment(), CartItemClickListener {
 
         buyButton.setOnClickListener {
             exitFragment()
-            (activity as DashboardActivity).callPurchaseActivity()
+            (activity as DashboardActivity).callDeliveryFragment()
         }
     }
 
