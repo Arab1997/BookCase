@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
@@ -19,6 +20,7 @@ import java.io.File
 
 class OrderFragment(private val order: Order) : Fragment() {
 
+    private lateinit var toolbar: Toolbar
     private lateinit var orderIdTextView: TextView
     private lateinit var shoppingButton: Button
     private lateinit var userRepository: UserRepository
@@ -35,8 +37,7 @@ class OrderFragment(private val order: Order) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         backPressDispatcher()
-        (activity as AppCompatActivity).supportActionBar?.title =
-            resources.getString(R.string.order)
+        setUpToolBar()
 
         // order JSON
         val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
@@ -51,6 +52,23 @@ class OrderFragment(private val order: Order) : Fragment() {
         shoppingButton.setOnClickListener {
             exitFragment()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar!!.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity).supportActionBar!!.show()
+    }
+
+    private fun setUpToolBar() {
+        toolbar = requireView().findViewById(R.id.order_toolbar_id)
+        toolbar.setNavigationIcon(R.drawable.ic_back)
+        toolbar.setNavigationOnClickListener { exitFragment() }
+        toolbar.title = resources.getString(R.string.order)
     }
 
     private fun backPressDispatcher() {

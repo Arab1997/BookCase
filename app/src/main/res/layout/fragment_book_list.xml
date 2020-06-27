@@ -27,7 +27,5 @@
             android:clipToPadding="false"
             android:padding="@dimen/view_margin"
             tools:listitem="@layout/content_book_item" />
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

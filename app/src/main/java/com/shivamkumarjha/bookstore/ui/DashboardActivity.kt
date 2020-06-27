@@ -115,6 +115,7 @@ class DashboardActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.fragment_holder, DeliveryFragment())
+            .addToBackStack(null)
             .commit()
     }
 
@@ -122,6 +123,7 @@ class DashboardActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.fragment_holder, OrderFragment(order))
+            .addToBackStack(null)
             .commit()
     }
 

@@ -6,15 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".ui.delivery.DeliveryFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/delivery_recycler_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:padding="@dimen/view_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/content_delivery_item" />
+        android:orientation="vertical">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="@dimen/margin_0dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/delivery_toolbar_id"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:subtitleTextAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+                app:titleTextAppearance="@android:style/TextAppearance.DeviceDefault.WindowTitle" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/delivery_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="@dimen/view_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/content_delivery_item" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

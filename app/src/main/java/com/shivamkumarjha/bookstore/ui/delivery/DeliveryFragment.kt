@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +29,7 @@ import java.util.*
 
 class DeliveryFragment : Fragment(), DeliveryItemClickListener {
 
+    private lateinit var toolbar: Toolbar
     private lateinit var deliveryAdapter: DeliveryAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var deliveryViewModel: DeliveryViewModel
@@ -43,6 +46,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         backPressDispatcher()
+        setUpToolBar()
 
         //recycler view
         recyclerView = requireView().findViewById(R.id.delivery_recycler_view)
@@ -83,6 +87,23 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
                 currentDate
             )
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar!!.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity).supportActionBar!!.show()
+    }
+
+    private fun setUpToolBar() {
+        toolbar = requireView().findViewById(R.id.delivery_toolbar_id)
+        toolbar.setNavigationIcon(R.drawable.ic_back)
+        toolbar.setNavigationOnClickListener { exitFragment() }
+        toolbar.title = resources.getString(R.string.chose_delivery)
     }
 
     private fun backPressDispatcher() {
