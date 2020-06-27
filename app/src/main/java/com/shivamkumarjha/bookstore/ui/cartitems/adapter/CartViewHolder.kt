@@ -16,7 +16,6 @@ class CartViewHolder(
     itemView: View,
     private val clickListener: CartItemClickListener
 ) : RecyclerView.ViewHolder(itemView) {
-    private val cartCardView: CardView = itemView.findViewById(R.id.card_cart_view_id)
     private val bookImage: ImageView = itemView.findViewById(R.id.cart_image_view_id)
     private val bookTitle: TextView = itemView.findViewById(R.id.cart_text_view_title)
     private val bookAuthor: TextView = itemView.findViewById(R.id.cart_text_view_author)
@@ -40,7 +39,7 @@ class CartViewHolder(
             setPrices()
             clickListener.onMinusQuantity(cartItem, cartPosition)
         }
-        cartCardView.setOnClickListener {
+        bookImage.setOnClickListener {
             clickListener.onBookClick(cartItem.book)
         }
     }
