@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.common.UserViewModelFactory
+import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.model.CartItem
 import com.shivamkumarjha.bookstore.repository.UserRepository
 import com.shivamkumarjha.bookstore.ui.DashboardActivity
@@ -138,6 +139,10 @@ class CartFragment : Fragment(), CartItemClickListener {
             return
         }
         cartViewModel.updateCart(cartItem)
+    }
+
+    override fun onBookClick(book: Book) {
+        (activity as DashboardActivity).callDisplayBookFragment(book)
     }
 
     private fun setPriceTextViews(cartsItems: ArrayList<CartItem>) {
