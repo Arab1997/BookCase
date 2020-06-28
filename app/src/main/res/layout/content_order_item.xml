@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
@@ -10,26 +11,34 @@
         android:id="@+id/order_id_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/view_margin"
-        android:layout_marginLeft="@dimen/view_margin"
+        android:layout_marginStart="@dimen/view_margin_big"
+        android:layout_marginLeft="@dimen/view_margin_big"
         android:fontFamily="@font/firasans_semibold"
         android:text="@string/order"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:textColor="@color/blue_grey_800"
-        android:textSize="@dimen/text_size_normal" />
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/order_time_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/view_margin"
-        android:layout_marginLeft="@dimen/view_margin"
+        android:layout_marginStart="@dimen/view_margin_big"
+        android:layout_marginLeft="@dimen/view_margin_big"
         android:layout_marginTop="@dimen/view_margin_small"
         android:fontFamily="@font/firasans_regular"
         android:text="@string/order"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
         android:textColor="@color/blue_grey_800"
-        android:textSize="@dimen/text_size_small" />
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_id_text_view" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_order_books"
@@ -37,11 +46,16 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/view_margin"
         android:clipToPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_time_text_view"
         tools:listitem="@layout/content_order_book_item" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider_margin"
         android:layout_marginTop="@dimen/view_margin_small"
-        android:background="@color/divider" />
-</LinearLayout>
+        android:background="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/recyclerview_order_books" />
+</androidx.constraintlayout.widget.ConstraintLayout>
