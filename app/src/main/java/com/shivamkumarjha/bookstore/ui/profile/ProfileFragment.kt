@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -68,11 +69,18 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
     }
 
     override fun onDeleteClick(address: Address, position: Int) {
-        profileViewModel.removeAddress(address)
-        val list: ArrayList<Address> = addressAdapter.getAddress()
-        list.removeAt(position)
-        addressAdapter.setAddress(list)
-        addressAdapter.notifyItemRemoved(position)
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(resources.getString(R.string.address_confirm_title))
+        builder.setMessage(resources.getString(R.string.address_confirm_message))
+        builder.setPositiveButton(R.string.yes) { _, _ ->
+            profileViewModel.removeAddress(address)
+            val list: ArrayList<Address> = addressAdapter.getAddress()
+            list.removeAt(position)
+            addressAdapter.setAddress(list)
+            addressAdapter.notifyItemRemoved(position)
+        }
+        builder.setNegativeButton(R.string.no) { _, _ -> }
+        builder.show()
     }
 
     private fun initializer() {
