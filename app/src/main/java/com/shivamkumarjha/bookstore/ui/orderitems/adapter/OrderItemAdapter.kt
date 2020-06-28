@@ -36,18 +36,20 @@ class OrderItemAdapter : RecyclerView.Adapter<OrderItemAdapter.ViewHolder>() {
         holder: ViewHolder,
         position: Int
     ) {
-        val book = orders[position]
-        holder.orderId.text = book.orderId.toString()
+        val order = orders[position]
+        holder.orderId.text = "Order ID: ${order.orderId}"
+        holder.orderTime.text = order.timestamp
         val bookItemLayout = LinearLayoutManager(holder.bookRecyclerView.context, RecyclerView.HORIZONTAL, false)
         holder.bookRecyclerView.apply {
             layoutManager = bookItemLayout
-            adapter = BookItemAdapter(book.cartItem)
+            adapter = BookItemAdapter(order.cartItem)
             setRecycledViewPool(viewPool)
         }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val bookRecyclerView: RecyclerView = itemView.findViewById(R.id.recyclerview_order_books)
-        val orderId: TextView = itemView.findViewById(R.id.order_number_text_view)
+        val orderId: TextView = itemView.findViewById(R.id.order_id_text_view)
+        val orderTime: TextView = itemView.findViewById(R.id.order_time_text_view)
     }
 }
