@@ -8,11 +8,19 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
+import com.shivamkumarjha.bookstore.repository.UserRepository
+import com.shivamkumarjha.bookstore.ui.orderitems.adapter.OrderItemAdapter
+import java.io.File
 
 class OrderItemsFragment : Fragment() {
 
     private lateinit var toolbar: Toolbar
+    private lateinit var orderItemAdapter: OrderItemAdapter
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +33,7 @@ class OrderItemsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
+        setUpRecyclerView()
         backPressDispatcher()
     }
 
@@ -43,6 +52,19 @@ class OrderItemsFragment : Fragment() {
         toolbar.setNavigationIcon(R.drawable.ic_back)
         toolbar.setNavigationOnClickListener { exitFragment() }
         toolbar.title = resources.getString(R.string.orders)
+    }
+
+    private fun setUpRecyclerView() {
+        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
+        val userRepository =
+            UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
+
+        recyclerView = requireView().findViewById(R.id.order_list_list_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.setHasFixedSize(true)
+        orderItemAdapter = OrderItemAdapter()
+        orderItemAdapter.setOrders(userRepository.getOrders())
+        recyclerView.adapter = orderItemAdapter
     }
 
     private fun backPressDispatcher() {

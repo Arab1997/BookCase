@@ -39,7 +39,7 @@
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/display_book_view_pager"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/book_image_height"
                     android:layout_marginTop="@dimen/view_margin"
                     app:layout_constraintEnd_toEndOf="parent"
