@@ -16,7 +16,7 @@ class BookItemAdapter(
         val itemView =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.content_order_book_item, parent, false)
-        return BookItemViewHolder(itemView,clickListener)
+        return BookItemViewHolder(itemView, clickListener)
     }
 
     override fun getItemCount(): Int = cartItem.size

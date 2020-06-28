@@ -8,9 +8,9 @@ data class Book(
     val detail: String,
     val imageLink: ArrayList<String>,
     val category: String,
-    val review: ArrayList<Review>,
-    val price: Float,
-    val maximumRetailPrice: Float,
-    val discount: Float
+    var review: ArrayList<Review>,
+    var price: Float,
+    var maximumRetailPrice: Float,
+    var discount: Float
 )
 

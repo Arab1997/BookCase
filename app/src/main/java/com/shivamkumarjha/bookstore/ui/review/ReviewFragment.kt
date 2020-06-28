@@ -6,14 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.shivamkumarjha.bookstore.R
+import com.shivamkumarjha.bookstore.common.AppPreference
+import com.shivamkumarjha.bookstore.common.hideKeyboard
 import com.shivamkumarjha.bookstore.model.Book
+import com.shivamkumarjha.bookstore.model.Review
+import com.shivamkumarjha.bookstore.repository.BookRepository
+import java.io.File
 
-class ReviewFragment(book: Book) : Fragment() {
+class ReviewFragment(private val book: Book) : Fragment() {
 
     private lateinit var toolbar: Toolbar
+    private lateinit var ratingBar: AppCompatRatingBar
+    private lateinit var submitButton: AppCompatButton
+    private lateinit var reviewEditText: AppCompatEditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +38,24 @@ class ReviewFragment(book: Book) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
         backPressDispatcher()
+        val bookFile = File(requireActivity().filesDir, resources.getString(R.string.file_books))
+        val bookRepository = BookRepository(bookFile)
+        // initialize views
+        ratingBar = requireView().findViewById(R.id.review_rating_bar_id)
+        submitButton = requireView().findViewById(R.id.review_submit_button)
+        reviewEditText = requireView().findViewById(R.id.review_text_view_id)
+        // button
+        submitButton.setOnClickListener {
+            bookRepository.addBookReview(
+                book,
+                Review(
+                    AppPreference(requireContext()).getUserName()!!,
+                    ratingBar.rating,
+                    reviewEditText.text.toString()
+                )
+            )
+            exitFragment()
+        }
     }
 
     override fun onResume() {
@@ -56,6 +85,7 @@ class ReviewFragment(book: Book) : Fragment() {
     }
 
     private fun exitFragment() {
+        hideKeyboard()
         requireActivity().supportFragmentManager.popBackStack()
     }
 }
