@@ -15,7 +15,7 @@ class BookItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun initialize(cartItem: CartItem) {
         bookTitle.text = cartItem.book.title
         // Load book image from URL
-        Picasso.get().load(cartItem.book.imageLink[0]).fit().centerInside()
+        Picasso.get().load(cartItem.book.imageLink[0]).fit()
             .placeholder(R.mipmap.ic_launcher)
             .error(R.mipmap.ic_launcher)
             .into(bookImage)

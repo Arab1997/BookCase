@@ -22,13 +22,13 @@
             android:text="@string/order"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
             android:textColor="@color/black_color"
-            android:textSize="@dimen/text_size_large"
-            android:textStyle="bold" />
+            android:textSize="@dimen/text_size_large" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_order_books"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin"
             android:clipToPadding="false"
             tools:listitem="@layout/content_order_book_item" />
     </LinearLayout>

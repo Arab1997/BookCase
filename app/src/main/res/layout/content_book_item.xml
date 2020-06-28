@@ -4,7 +4,7 @@
     android:id="@+id/card_view_id"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/view_margin"
+    android:layout_margin="@dimen/view_margin_small"
     app:cardCornerRadius="@dimen/card_stroke_radius"
     app:strokeWidth="@dimen/card_stroke_width">
 

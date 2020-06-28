@@ -1,5 +1,6 @@
 package com.shivamkumarjha.bookstore.ui.orderitems.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,21 +31,19 @@ class OrderItemAdapter : RecyclerView.Adapter<OrderItemAdapter.ViewHolder>() {
         this.orders = orders
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(
         holder: ViewHolder,
         position: Int
     ) {
         val book = orders[position]
         holder.orderId.text = book.orderId.toString()
-        val childLayoutManager =
-            LinearLayoutManager(holder.bookRecyclerView.context, RecyclerView.HORIZONTAL, false)
-        childLayoutManager.initialPrefetchItemCount = 4
+        val bookItemLayout = LinearLayoutManager(holder.bookRecyclerView.context, RecyclerView.HORIZONTAL, false)
         holder.bookRecyclerView.apply {
-            layoutManager = childLayoutManager
+            layoutManager = bookItemLayout
             adapter = BookItemAdapter(book.cartItem)
             setRecycledViewPool(viewPool)
         }
-
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
