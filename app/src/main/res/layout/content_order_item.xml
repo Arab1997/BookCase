@@ -8,6 +8,22 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/order_price_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/view_margin_big"
+        android:layout_marginRight="@dimen/view_margin_big"
+        android:fontFamily="@font/firasans_semibold"
+        android:text="@string/demo_book_price"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textColor="@color/blue_grey_800"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/order_id_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,7 +71,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider_margin"
-        android:layout_marginTop="@dimen/view_margin_small"
+        android:layout_marginTop="@dimen/view_margin_big"
         android:background="@color/divider"
         app:layout_constraintTop_toBottomOf="@id/recyclerview_order_books" />
 </androidx.constraintlayout.widget.ConstraintLayout>

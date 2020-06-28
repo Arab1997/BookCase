@@ -41,6 +41,13 @@ class OrderItemAdapter(private val clickListener: BookClickListener) :
         val order = orders[position]
         holder.orderId.text = "Order ID: ${order.orderId}"
         holder.orderTime.text = order.timestamp
+        //price
+        var price = 0f
+        for (index in 0 until order.cartItem.size) {
+            price += order.cartItem[index].book.price
+        }
+        holder.orderPrice.text = "Rs " + price * 76.25f // Price USD to INR
+        // order-book recycler view
         val bookItemLayout =
             LinearLayoutManager(holder.bookRecyclerView.context, RecyclerView.HORIZONTAL, false)
         holder.bookRecyclerView.apply {
@@ -54,5 +61,6 @@ class OrderItemAdapter(private val clickListener: BookClickListener) :
         val bookRecyclerView: RecyclerView = itemView.findViewById(R.id.recyclerview_order_books)
         val orderId: TextView = itemView.findViewById(R.id.order_id_text_view)
         val orderTime: TextView = itemView.findViewById(R.id.order_time_text_view)
+        val orderPrice: TextView = itemView.findViewById(R.id.order_price_text_view)
     }
 }

@@ -81,7 +81,7 @@ class BookViewHolder(itemView: View, private val clickListener: BookItemClickLis
         })
     }
 
-    fun isBookInWishItems(book: Book, wishItems: ArrayList<WishItem>): Boolean {
+    private fun isBookInWishItems(book: Book, wishItems: ArrayList<WishItem>): Boolean {
         wishItems.forEach {
             if (it.book.bookID == book.bookID)
                 return true
