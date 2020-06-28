@@ -21,6 +21,7 @@ import com.shivamkumarjha.bookstore.ui.login.LoginActivity
 import com.shivamkumarjha.bookstore.ui.order.OrderFragment
 import com.shivamkumarjha.bookstore.ui.orderitems.OrderItemsFragment
 import com.shivamkumarjha.bookstore.ui.profile.ProfileFragment
+import com.shivamkumarjha.bookstore.ui.review.ReviewFragment
 import com.shivamkumarjha.bookstore.ui.wishitems.WishItemsFragment
 
 class DashboardActivity : AppCompatActivity() {
@@ -123,6 +124,14 @@ class DashboardActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.fragment_holder, OrderFragment(order))
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun callReviewFragment(book: Book) {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.fragment_holder, ReviewFragment(book))
             .addToBackStack(null)
             .commit()
     }

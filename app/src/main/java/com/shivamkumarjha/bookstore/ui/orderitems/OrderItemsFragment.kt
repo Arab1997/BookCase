@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -89,6 +88,6 @@ class OrderItemsFragment : Fragment(), OrderClickListener {
     }
 
     override fun onBookReviewClick(book: Book) {
-        Toast.makeText(requireContext(), "Review clicked ${book.title}", Toast.LENGTH_SHORT).show()
+        (activity as DashboardActivity).callReviewFragment(book)
     }
 }

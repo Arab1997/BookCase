@@ -86,4 +86,6 @@
     <string name="demo_price">Rs 1500</string>
     <string name="added_cart">Added to cart</string>
     <string name="buy_proceed">Proceed to buy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
