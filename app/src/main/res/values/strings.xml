@@ -15,6 +15,7 @@
     <string name="book_image">Book cover</string>
     <string name="demo_book_price">$299</string>
     <string name="demo_book_rating">4.5</string>
+    <string name="review">Review</string>
 
     <string name="search_books">Search books</string>
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -15,11 +16,11 @@ import com.shivamkumarjha.bookstore.common.AppPreference
 import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.repository.UserRepository
 import com.shivamkumarjha.bookstore.ui.DashboardActivity
+import com.shivamkumarjha.bookstore.ui.orderitems.adapter.OrderClickListener
 import com.shivamkumarjha.bookstore.ui.orderitems.adapter.OrderItemAdapter
-import com.shivamkumarjha.bookstore.ui.wishitems.adapter.BookClickListener
 import java.io.File
 
-class OrderItemsFragment : Fragment(), BookClickListener {
+class OrderItemsFragment : Fragment(), OrderClickListener {
 
     private lateinit var toolbar: Toolbar
     private lateinit var orderItemAdapter: OrderItemAdapter
@@ -85,5 +86,9 @@ class OrderItemsFragment : Fragment(), BookClickListener {
 
     override fun onBookClick(book: Book) {
         (activity as DashboardActivity).callDisplayBookFragment(book)
+    }
+
+    override fun onBookReviewClick(book: Book) {
+        Toast.makeText(requireContext(), "Review clicked ${book.title}", Toast.LENGTH_SHORT).show()
     }
 }

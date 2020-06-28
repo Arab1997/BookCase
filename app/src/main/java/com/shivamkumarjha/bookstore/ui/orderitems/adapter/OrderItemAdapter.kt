@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Order
-import com.shivamkumarjha.bookstore.ui.wishitems.adapter.BookClickListener
 
-class OrderItemAdapter(private val clickListener: BookClickListener) :
+class OrderItemAdapter(private val clickListener: OrderClickListener) :
     RecyclerView.Adapter<OrderItemAdapter.ViewHolder>() {
     private val viewPool = RecyclerView.RecycledViewPool()
     private var orders: ArrayList<Order> = arrayListOf()

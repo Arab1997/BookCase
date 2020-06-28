@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.CartItem
-import com.shivamkumarjha.bookstore.ui.wishitems.adapter.BookClickListener
 
 class BookItemAdapter(
     private val cartItem: ArrayList<CartItem>,
-    private val clickListener: BookClickListener
+    private val clickListener: OrderClickListener
 ) :
     RecyclerView.Adapter<BookItemViewHolder>() {
 
