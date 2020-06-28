@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.model.Order
+import com.shivamkumarjha.bookstore.ui.wishitems.adapter.BookClickListener
 
-class OrderItemAdapter : RecyclerView.Adapter<OrderItemAdapter.ViewHolder>() {
+class OrderItemAdapter(private val clickListener: BookClickListener) :
+    RecyclerView.Adapter<OrderItemAdapter.ViewHolder>() {
     private val viewPool = RecyclerView.RecycledViewPool()
     private var orders: ArrayList<Order> = arrayListOf()
 
@@ -39,10 +41,11 @@ class OrderItemAdapter : RecyclerView.Adapter<OrderItemAdapter.ViewHolder>() {
         val order = orders[position]
         holder.orderId.text = "Order ID: ${order.orderId}"
         holder.orderTime.text = order.timestamp
-        val bookItemLayout = LinearLayoutManager(holder.bookRecyclerView.context, RecyclerView.HORIZONTAL, false)
+        val bookItemLayout =
+            LinearLayoutManager(holder.bookRecyclerView.context, RecyclerView.HORIZONTAL, false)
         holder.bookRecyclerView.apply {
             layoutManager = bookItemLayout
-            adapter = BookItemAdapter(order.cartItem)
+            adapter = BookItemAdapter(order.cartItem, clickListener)
             setRecycledViewPool(viewPool)
         }
     }

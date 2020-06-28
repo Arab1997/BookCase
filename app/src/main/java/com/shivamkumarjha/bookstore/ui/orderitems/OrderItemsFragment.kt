@@ -12,11 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
+import com.shivamkumarjha.bookstore.model.Book
 import com.shivamkumarjha.bookstore.repository.UserRepository
+import com.shivamkumarjha.bookstore.ui.DashboardActivity
 import com.shivamkumarjha.bookstore.ui.orderitems.adapter.OrderItemAdapter
+import com.shivamkumarjha.bookstore.ui.wishitems.adapter.BookClickListener
 import java.io.File
 
-class OrderItemsFragment : Fragment() {
+class OrderItemsFragment : Fragment(), BookClickListener {
 
     private lateinit var toolbar: Toolbar
     private lateinit var orderItemAdapter: OrderItemAdapter
@@ -62,7 +65,7 @@ class OrderItemsFragment : Fragment() {
         recyclerView = requireView().findViewById(R.id.order_list_list_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
-        orderItemAdapter = OrderItemAdapter()
+        orderItemAdapter = OrderItemAdapter(this)
         orderItemAdapter.setOrders(userRepository.getOrders())
         recyclerView.adapter = orderItemAdapter
     }
@@ -78,5 +81,9 @@ class OrderItemsFragment : Fragment() {
 
     private fun exitFragment() {
         requireActivity().supportFragmentManager.popBackStack()
+    }
+
+    override fun onBookClick(book: Book) {
+        (activity as DashboardActivity).callDisplayBookFragment(book)
     }
 }
