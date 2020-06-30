@@ -19,6 +19,7 @@
     <string name="write_review">Write your review</string>
 
     <string name="search_books">Search books</string>
+    <string name="select_image">Select image</string>
 
     <string name="appPreference">AppPreference</string>
     <string name="logged_preference">LoggedPreference</string>

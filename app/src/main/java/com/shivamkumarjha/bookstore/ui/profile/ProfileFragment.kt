@@ -1,10 +1,16 @@
 package com.shivamkumarjha.bookstore.ui.profile
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.graphics.ImageDecoder
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
@@ -26,16 +32,19 @@ import com.shivamkumarjha.bookstore.ui.profile.adapter.AddressAdapter
 import com.shivamkumarjha.bookstore.ui.profile.adapter.AddressItemClickListener
 import java.io.File
 
+
 class ProfileFragment : Fragment(), AddressItemClickListener {
 
     private lateinit var toolbar: Toolbar
     private lateinit var nameTextView: TextView
     private lateinit var emailTextView: TextView
     private lateinit var addAddressButton: Button
+    private lateinit var userImage: ImageView
     private lateinit var loggedInUserView: LoggedInUserView
     private lateinit var addressAdapter: AddressAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var profileViewModel: ProfileViewModel
+    private val pickImage = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,6 +73,33 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
         (activity as AppCompatActivity).supportActionBar!!.show()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            val selectedPhotoUri = data.data
+            try {
+                selectedPhotoUri?.apply {
+                    if (Build.VERSION.SDK_INT < 28) {
+                        val bitmap = MediaStore.Images.Media.getBitmap(
+                            requireActivity().contentResolver,
+                            selectedPhotoUri
+                        )
+                        userImage.setImageBitmap(bitmap)
+                    } else {
+                        val source = ImageDecoder.createSource(
+                            requireActivity().contentResolver,
+                            selectedPhotoUri
+                        )
+                        val bitmap = ImageDecoder.decodeBitmap(source)
+                        userImage.setImageBitmap(bitmap)
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     override fun onEditClick(address: Address) {
         (activity as DashboardActivity).callAddressFragment(address)
     }
@@ -87,6 +123,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
         nameTextView = requireView().findViewById(R.id.profile_name_text_view_id)
         emailTextView = requireView().findViewById(R.id.profile_email_text_view_id)
         addAddressButton = requireView().findViewById(R.id.profile_address_button)
+        userImage = requireView().findViewById(R.id.user_image)
         loggedInUserView = (activity as DashboardActivity).getUser()
     }
 
@@ -110,6 +147,18 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
 
         nameTextView.text = AppPreference(requireContext()).getUserName()
         emailTextView.text = AppPreference(requireContext()).getUserEmail()
+
+        userImage.setOnClickListener(View.OnClickListener {
+            val gallery = Intent()
+            gallery.type = "image/*"
+            gallery.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(
+                Intent.createChooser(
+                    gallery,
+                    resources.getString(R.string.select_image)
+                ), pickImage
+            )
+        })
     }
 
     private fun setUpViewModel() {
