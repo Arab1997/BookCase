@@ -89,7 +89,6 @@ class CartFragment : Fragment(), CartItemClickListener {
         recyclerView.adapter = cartAdapter
 
         buyButton.setOnClickListener {
-            exitFragment()
             (activity as DashboardActivity).callDeliveryFragment()
         }
     }
