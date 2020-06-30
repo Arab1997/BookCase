@@ -11,7 +11,7 @@
     <dimen name="card_view_height">130dp</dimen>
     <dimen name="card_image_radius">75dp</dimen>
     <dimen name="book_image_height">300dp</dimen>
-    <dimen name="book_image_height_smaller">150dp</dimen>
+    <dimen name="book_image_height_smaller">180dp</dimen>
     <dimen name="card_image_padding">5dp</dimen>
     <dimen name="card_stroke_radius">6dp</dimen>
     <dimen name="card_stroke_width">1dp</dimen>

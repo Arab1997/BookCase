@@ -32,7 +32,7 @@ class BookItemViewHolder(itemView: View, private val clickListener: OrderClickLi
         this.book = cartItem.book
         bookTitle.text = cartItem.book.title
         // Load book image from URL
-        Picasso.get().load(cartItem.book.imageLink[0]).fit()
+        Picasso.get().load(cartItem.book.imageLink[0]).fit().centerInside()
             .placeholder(R.mipmap.ic_launcher)
             .error(R.mipmap.ic_launcher)
             .into(bookImage)
