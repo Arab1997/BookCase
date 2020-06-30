@@ -85,6 +85,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
                             selectedPhotoUri
                         )
                         userImage.setImageBitmap(bitmap)
+                        profileViewModel.updateProfilePicture(bitmap)
                     } else {
                         val source = ImageDecoder.createSource(
                             requireActivity().contentResolver,
@@ -92,6 +93,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
                         )
                         val bitmap = ImageDecoder.decodeBitmap(source)
                         userImage.setImageBitmap(bitmap)
+                        profileViewModel.updateProfilePicture(bitmap)
                     }
                 }
             } catch (e: Exception) {
@@ -135,19 +137,26 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
     }
 
     private fun setUpViews() {
+        // recyclerView
         recyclerView = requireView().findViewById(R.id.profile_address_recycler_view_id)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
         addressAdapter = AddressAdapter(this)
         recyclerView.adapter = addressAdapter
-
+        // viewmodel
+        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
+        val userRepository =
+            UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
+        profileViewModel =
+            ViewModelProvider(this, UserViewModelFactory(userRepository))
+                .get(ProfileViewModel::class.java)
+        // fields
         addAddressButton.setOnClickListener {
             (activity as DashboardActivity).callAddressFragment(null)
         }
-
         nameTextView.text = AppPreference(requireContext()).getUserName()
         emailTextView.text = AppPreference(requireContext()).getUserEmail()
-
+        // profile picture
         userImage.setOnClickListener(View.OnClickListener {
             val gallery = Intent()
             gallery.type = "image/*"
@@ -159,15 +168,13 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
                 ), pickImage
             )
         })
+        if (profileViewModel.getProfilePicture() != null)
+            userImage.setImageBitmap(profileViewModel.getProfilePicture())
+        else
+            userImage.setBackgroundResource(R.drawable.ic_profile_image)
     }
 
     private fun setUpViewModel() {
-        val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
-        val userRepository =
-            UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
-        profileViewModel =
-            ViewModelProvider(this, UserViewModelFactory(userRepository))
-                .get(ProfileViewModel::class.java)
         profileViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             addressAdapter.setAddress(it)
         })
