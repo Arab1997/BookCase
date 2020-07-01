@@ -1,9 +1,10 @@
 package com.shivamkumarjha.bookstore.ui.profile
 
-import android.app.Activity.RESULT_OK
+import android.app.Activity
 import android.content.Intent
-import android.graphics.ImageDecoder
-import android.os.Build
+import android.database.Cursor
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -45,6 +46,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var profileViewModel: ProfileViewModel
     private val pickImage = 1
+    private var imagePath: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,29 +77,25 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            val selectedPhotoUri = data.data
-            try {
-                selectedPhotoUri?.apply {
-                    if (Build.VERSION.SDK_INT < 28) {
-                        val bitmap = MediaStore.Images.Media.getBitmap(
-                            requireActivity().contentResolver,
-                            selectedPhotoUri
-                        )
-                        userImage.setImageBitmap(bitmap)
-                        profileViewModel.updateProfilePicture(bitmap)
-                    } else {
-                        val source = ImageDecoder.createSource(
-                            requireActivity().contentResolver,
-                            selectedPhotoUri
-                        )
-                        val bitmap = ImageDecoder.decodeBitmap(source)
-                        userImage.setImageBitmap(bitmap)
-                        profileViewModel.updateProfilePicture(bitmap)
-                    }
+        if (resultCode != Activity.RESULT_CANCELED) {
+            val selectedImage: Uri? = data!!.data
+            val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+            if (selectedImage != null) {
+                val cursor: Cursor? = requireActivity().contentResolver.query(
+                    selectedImage,
+                    filePathColumn,
+                    null,
+                    null,
+                    null
+                )
+                if (cursor != null) {
+                    cursor.moveToFirst()
+                    val columnIndex: Int = cursor.getColumnIndex(filePathColumn[0])
+                    imagePath = cursor.getString(columnIndex)
+                    userImage.setImageBitmap(BitmapFactory.decodeFile(imagePath))
+                    profileViewModel.updateProfilePicture(imagePath)
+                    cursor.close()
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
             }
         }
     }
@@ -168,8 +166,9 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
                 ), pickImage
             )
         })
-        if (profileViewModel.getProfilePicture() != null)
-            userImage.setImageBitmap(profileViewModel.getProfilePicture())
+        imagePath = profileViewModel.getProfilePicture()
+        if (imagePath != null)
+            userImage.setImageBitmap(BitmapFactory.decodeFile(imagePath))
         else
             userImage.setBackgroundResource(R.drawable.ic_profile_image)
     }

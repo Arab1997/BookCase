@@ -1,6 +1,5 @@
 package com.shivamkumarjha.bookstore.repository
 
-import android.graphics.Bitmap
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -62,14 +61,14 @@ class UserRepository(private val file: File, private val email: String?) {
         return null
     }
 
-    fun getProfilePicture(): Bitmap? {
+    fun getProfilePicture(): String? {
         val users = getUsers()
         return users[getLoggedInUserIndex()].userImage
     }
 
-    fun updateProfilePicture(bitmap: Bitmap?) {
+    fun updateProfilePicture(imagePath: String?) {
         val users = getUsers()
-        users[getLoggedInUserIndex()].userImage = bitmap
+        users[getLoggedInUserIndex()].userImage = imagePath
         writeUsers(users)
     }
 

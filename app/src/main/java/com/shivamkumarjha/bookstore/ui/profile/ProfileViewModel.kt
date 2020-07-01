@@ -1,6 +1,5 @@
 package com.shivamkumarjha.bookstore.ui.profile
 
-import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,11 +18,11 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
         userRepository.removeAddress(address)
     }
 
-    fun getProfilePicture(): Bitmap? {
+    fun getProfilePicture(): String? {
         return userRepository.getProfilePicture()
     }
 
-    fun updateProfilePicture(bitmap: Bitmap?) {
-        userRepository.updateProfilePicture(bitmap)
+    fun updateProfilePicture(imagePath: String?) {
+        userRepository.updateProfilePicture(imagePath)
     }
 }
