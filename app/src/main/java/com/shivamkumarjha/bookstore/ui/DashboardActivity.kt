@@ -1,10 +1,14 @@
 package com.shivamkumarjha.bookstore.ui
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
 import com.shivamkumarjha.bookstore.R
 import com.shivamkumarjha.bookstore.common.AppPreference
@@ -33,6 +37,7 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard)
         setUpToolbar()
         getUser()
+        setupPermissions()
         callBookFragment()
     }
 
@@ -134,6 +139,22 @@ class DashboardActivity : AppCompatActivity() {
             .replace(R.id.fragment_holder, ReviewFragment(book))
             .addToBackStack(null)
             .commit()
+    }
+
+    private fun setupPermissions() {
+        val permissionsReadRequestCode = 101
+
+        val readStoragePermission = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+        if (readStoragePermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                permissionsReadRequestCode
+            )
+        }
     }
 
     fun doSignOut() {
