@@ -155,7 +155,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
         nameTextView.text = AppPreference(requireContext()).getUserName()
         emailTextView.text = AppPreference(requireContext()).getUserEmail()
         // profile picture
-        userImage.setOnClickListener(View.OnClickListener {
+        userImage.setOnClickListener {
             val gallery = Intent()
             gallery.type = "image/*"
             gallery.action = Intent.ACTION_GET_CONTENT
@@ -165,7 +165,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
                     resources.getString(R.string.select_image)
                 ), pickImage
             )
-        })
+        }
         imagePath = profileViewModel.getProfilePicture()
         if (imagePath != null)
             userImage.setImageBitmap(BitmapFactory.decodeFile(imagePath))
