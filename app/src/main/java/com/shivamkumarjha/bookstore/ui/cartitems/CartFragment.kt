@@ -99,8 +99,7 @@ class CartFragment : Fragment(), CartItemClickListener {
             if (cartItems.size > 0)
                 buyButton.isEnabled = true
             else {
-                buyButton.isEnabled = false
-                buyButton.text = resources.getString(R.string.cart_empty)
+                disableCartButton()
             }
             // recycler view
             cartAdapter.setCarts(cartItems)
@@ -120,6 +119,8 @@ class CartFragment : Fragment(), CartItemClickListener {
             cartViewModel.removeCart(cartItem)
             val list: ArrayList<CartItem> = cartAdapter.getCarts()
             list.removeAt(position)
+            if (list.size == 0)
+                disableCartButton()
             cartAdapter.setCarts(list)
             cartAdapter.notifyItemRemoved(position)
             return
@@ -134,5 +135,10 @@ class CartFragment : Fragment(), CartItemClickListener {
     private fun setPriceTextViews(cartsItems: ArrayList<CartItem>) {
         priceTextView.text = cartViewModel.getCartTotalPrice(cartsItems)
         savingTextView.text = cartViewModel.getCartSavings(cartsItems)
+    }
+
+    private fun disableCartButton() {
+        buyButton.isEnabled = false
+        buyButton.text = resources.getString(R.string.cart_empty)
     }
 }
