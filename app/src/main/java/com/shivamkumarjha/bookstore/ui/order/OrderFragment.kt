@@ -81,7 +81,6 @@ class OrderFragment(private val order: Order) : Fragment() {
     }
 
     private fun exitFragment() {
-        requireActivity().supportFragmentManager.popBackStack()
         (activity as DashboardActivity).callBookFragment()
     }
 }
