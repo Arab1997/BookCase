@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -36,7 +35,6 @@ class OrderFragment(private val order: Order) : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        backPressDispatcher()
         setUpToolBar()
 
         // order JSON
@@ -71,16 +69,7 @@ class OrderFragment(private val order: Order) : Fragment() {
         toolbar.title = resources.getString(R.string.order)
     }
 
-    private fun backPressDispatcher() {
-        val callBackObject = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                exitFragment()
-            }
-        }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
-    }
-
     private fun exitFragment() {
-        (activity as DashboardActivity).callBookFragment()
+        (activity as DashboardActivity).callBookListFragment()
     }
 }

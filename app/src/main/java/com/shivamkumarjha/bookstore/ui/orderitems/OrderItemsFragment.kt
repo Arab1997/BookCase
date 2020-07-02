@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -37,7 +36,6 @@ class OrderItemsFragment : Fragment(), OrderClickListener {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
         setUpRecyclerView()
-        backPressDispatcher()
     }
 
     override fun onResume() {
@@ -53,7 +51,9 @@ class OrderItemsFragment : Fragment(), OrderClickListener {
     private fun setUpToolBar() {
         toolbar = requireView().findViewById(R.id.order_list_toolbar_id)
         toolbar.setNavigationIcon(R.drawable.ic_back)
-        toolbar.setNavigationOnClickListener { exitFragment() }
+        toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
         toolbar.title = resources.getString(R.string.orders)
     }
 
@@ -68,19 +68,6 @@ class OrderItemsFragment : Fragment(), OrderClickListener {
         orderItemAdapter = OrderItemAdapter(this)
         orderItemAdapter.setOrders(userRepository.getOrders())
         recyclerView.adapter = orderItemAdapter
-    }
-
-    private fun backPressDispatcher() {
-        val callBackObject = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                exitFragment()
-            }
-        }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
-    }
-
-    private fun exitFragment() {
-        requireActivity().supportFragmentManager.popBackStack()
     }
 
     override fun onBookClick(book: Book) {

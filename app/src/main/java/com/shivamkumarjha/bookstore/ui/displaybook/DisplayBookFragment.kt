@@ -9,7 +9,6 @@ import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.view.animation.ScaleAnimation
 import android.widget.*
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -59,7 +58,6 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializer()
-        backPressDispatcher()
         setUpToolBar()
         setUpViews()
         setUpViewModel()
@@ -101,7 +99,9 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
     private fun setUpToolBar() {
         toolbar.title = book.title
         toolbar.setNavigationIcon(R.drawable.ic_back)
-        toolbar.setNavigationOnClickListener { exitFragment() }
+        toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
     }
 
     private fun setUpViews() {
@@ -208,18 +208,5 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
 
             override fun onClick(p0: View?) {}
         })
-    }
-
-    private fun backPressDispatcher() {
-        val callBackObject = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                exitFragment()
-            }
-        }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
-    }
-
-    private fun exitFragment() {
-        requireActivity().supportFragmentManager.popBackStack()
     }
 }

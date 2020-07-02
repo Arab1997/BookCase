@@ -13,7 +13,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -62,7 +61,6 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
         setUpToolBar()
         setUpViews()
         setUpViewModel()
-        backPressDispatcher()
     }
 
     override fun onResume() {
@@ -130,7 +128,9 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
     private fun setUpToolBar() {
         toolbar = requireView().findViewById(R.id.profile_toolbar_id)
         toolbar.setNavigationIcon(R.drawable.ic_back)
-        toolbar.setNavigationOnClickListener { exitFragment() }
+        toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
         toolbar.title = resources.getString(R.string.profile)
     }
 
@@ -141,7 +141,7 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
         recyclerView.setHasFixedSize(true)
         addressAdapter = AddressAdapter(this)
         recyclerView.adapter = addressAdapter
-        // viewmodel
+        // view model
         val userFile = File(requireActivity().filesDir, resources.getString(R.string.file_users))
         val userRepository =
             UserRepository(userFile, AppPreference(requireContext()).getUserEmail()!!)
@@ -177,18 +177,5 @@ class ProfileFragment : Fragment(), AddressItemClickListener {
         profileViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             addressAdapter.setAddress(it)
         })
-    }
-
-    private fun backPressDispatcher() {
-        val callBackObject = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                exitFragment()
-            }
-        }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
-    }
-
-    private fun exitFragment() {
-        requireActivity().supportFragmentManager.popBackStack()
     }
 }

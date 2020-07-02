@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -45,7 +44,6 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        backPressDispatcher()
         setUpToolBar()
 
         //recycler view
@@ -102,20 +100,9 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     private fun setUpToolBar() {
         toolbar = requireView().findViewById(R.id.delivery_toolbar_id)
         toolbar.setNavigationIcon(R.drawable.ic_back)
-        toolbar.setNavigationOnClickListener { exitFragment() }
-        toolbar.title = resources.getString(R.string.chose_delivery)
-    }
-
-    private fun backPressDispatcher() {
-        val callBackObject = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                exitFragment()
-            }
+        toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
         }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
-    }
-
-    private fun exitFragment() {
-        requireActivity().supportFragmentManager.popBackStack()
+        toolbar.title = resources.getString(R.string.chose_delivery)
     }
 }

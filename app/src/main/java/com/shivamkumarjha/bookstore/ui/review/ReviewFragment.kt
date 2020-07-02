@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
@@ -37,7 +36,6 @@ class ReviewFragment(private val book: Book) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
-        backPressDispatcher()
         val bookFile = File(requireActivity().filesDir, resources.getString(R.string.file_books))
         val bookRepository = BookRepository(bookFile)
         // initialize views
@@ -75,17 +73,8 @@ class ReviewFragment(private val book: Book) : Fragment() {
         toolbar.title = resources.getString(R.string.review)
     }
 
-    private fun backPressDispatcher() {
-        val callBackObject = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                exitFragment()
-            }
-        }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
-    }
-
     private fun exitFragment() {
         hideKeyboard()
-        requireActivity().supportFragmentManager.popBackStack()
+        requireActivity().onBackPressed()
     }
 }

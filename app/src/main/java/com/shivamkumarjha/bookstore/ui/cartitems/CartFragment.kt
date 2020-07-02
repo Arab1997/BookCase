@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -50,7 +49,6 @@ class CartFragment : Fragment(), CartItemClickListener {
         setUpViews()
         setUpToolBar()
         setUpViewModel()
-        backPressDispatcher()
     }
 
     override fun onResume() {
@@ -66,7 +64,9 @@ class CartFragment : Fragment(), CartItemClickListener {
     private fun setUpToolBar() {
         toolbar = requireView().findViewById(R.id.cart_toolbar_id)
         toolbar.setNavigationIcon(R.drawable.ic_back)
-        toolbar.setNavigationOnClickListener { exitFragment() }
+        toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
         toolbar.title = resources.getString(R.string.title_cart)
     }
 
@@ -107,19 +107,6 @@ class CartFragment : Fragment(), CartItemClickListener {
             //text view
             setPriceTextViews(cartItems)
         })
-    }
-
-    private fun backPressDispatcher() {
-        val callBackObject = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                exitFragment()
-            }
-        }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
-    }
-
-    private fun exitFragment() {
-        requireActivity().supportFragmentManager.popBackStack()
     }
 
     override fun onAddQuantity(cartItem: CartItem) {

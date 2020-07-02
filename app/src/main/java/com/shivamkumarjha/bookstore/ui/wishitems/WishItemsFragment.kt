@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -40,7 +39,6 @@ class WishItemsFragment : Fragment(), BookClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
-        backPressDispatcher()
         setupViews()
         setUpViewModel()
     }
@@ -62,7 +60,9 @@ class WishItemsFragment : Fragment(), BookClickListener {
     private fun setUpToolBar() {
         toolbar = requireView().findViewById(R.id.wish_toolbar_id)
         toolbar.setNavigationIcon(R.drawable.ic_back)
-        toolbar.setNavigationOnClickListener { exitFragment() }
+        toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
         toolbar.title = resources.getString(R.string.wish)
     }
 
@@ -84,18 +84,5 @@ class WishItemsFragment : Fragment(), BookClickListener {
         wishItemsViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             wishItemsAdapter.setWishItems(it)
         })
-    }
-
-    private fun backPressDispatcher() {
-        val callBackObject = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                exitFragment()
-            }
-        }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
-    }
-
-    private fun exitFragment() {
-        requireActivity().supportFragmentManager.popBackStack()
     }
 }

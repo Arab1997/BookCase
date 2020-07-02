@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +47,6 @@ class AddressFragment(private val address: Address?) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initializer()
         setUpToolBar()
-        backPressDispatcher()
         setUpViewModel()
         viewListeners()
     }
@@ -160,17 +158,8 @@ class AddressFragment(private val address: Address?) : Fragment() {
         exitFragment()
     }
 
-    private fun backPressDispatcher() {
-        val callBackObject = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                exitFragment()
-            }
-        }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callBackObject)
-    }
-
     private fun exitFragment() {
         hideKeyboard()
-        requireActivity().supportFragmentManager.popBackStack()
+        requireActivity().onBackPressed()
     }
 }

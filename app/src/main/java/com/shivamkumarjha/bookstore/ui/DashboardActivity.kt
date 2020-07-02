@@ -39,7 +39,7 @@ class DashboardActivity : AppCompatActivity() {
         setUpToolbar()
         getUser()
         setupPermissions()
-        callBookFragment()
+        callBookListFragment()
     }
 
     private fun setUpToolbar() {
@@ -63,7 +63,7 @@ class DashboardActivity : AppCompatActivity() {
         )
     }
 
-    fun callBookFragment() {
+    fun callBookListFragment() {
         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
