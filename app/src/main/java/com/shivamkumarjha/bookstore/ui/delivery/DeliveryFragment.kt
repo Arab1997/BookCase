@@ -29,6 +29,7 @@ import java.util.*
 class DeliveryFragment : Fragment(), DeliveryItemClickListener {
 
     private lateinit var toolbar: Toolbar
+    private lateinit var snackBar: Snackbar
     private lateinit var deliveryAdapter: DeliveryAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var deliveryViewModel: DeliveryViewModel
@@ -45,6 +46,12 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolBar()
+        snackBar = Snackbar.make(
+            view,
+            resources.getString(R.string.no_address), Snackbar.LENGTH_INDEFINITE
+        ).setAction(R.string.add_address) {
+            (activity as DashboardActivity).callAddressFragment(null)
+        }
 
         //recycler view
         recyclerView = requireView().findViewById(R.id.delivery_recycler_view)
@@ -63,12 +70,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
                 .get(DeliveryViewModel::class.java)
         deliveryViewModel.getAddress().observe(viewLifecycleOwner, Observer {
             if (it.size == 0)
-                Snackbar.make(
-                    view,
-                    resources.getString(R.string.no_address), Snackbar.LENGTH_INDEFINITE
-                ).setAction(R.string.add_address) {
-                    (activity as DashboardActivity).callAddressFragment(null)
-                }.show()
+                snackBar.show()
             deliveryAdapter.setAddress(it)
         })
     }
@@ -94,6 +96,7 @@ class DeliveryFragment : Fragment(), DeliveryItemClickListener {
 
     override fun onStop() {
         super.onStop()
+        snackBar.dismiss()
         (activity as AppCompatActivity).supportActionBar!!.show()
     }
 
