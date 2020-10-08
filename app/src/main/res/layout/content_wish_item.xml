@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/card_view_height"
-        android:background="@color/card_view_background_color"
+        android:layout_height="100dp"
+        android:background="@color/cardview_light_background"
         android:weightSum="6">
 
         <ImageView

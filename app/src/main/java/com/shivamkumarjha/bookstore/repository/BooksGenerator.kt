@@ -94,36 +94,44 @@ class BooksGenerator {
         val reviewList1: ArrayList<Review> = ArrayList()
         reviewList1.add(
             Review(
-                "Lauren",
+                "Рита",
                 4.5f,
-                "This is by no stretch of even the most liberal definition of the term a novel " +
-                        "- and call me cynical, but the author and publishing company attempting to foist " +
-                        "it off as such belies their knowledge that if they marketed it as what it IS, few would want to read it."
+                "Не фанат философии но книга реально увлекла«Наука логики» является главным произведением" +
+                        " Гегеля, сыгравшим выдающуюся роль в истории развития диалектического метода и в подготовке диалектического материализма."
             )
         )
         reviewList1.add(
+                Review(
+                    "Саша",
+                    2.5f,
+                    "Известна высокая оценка этого произведения основоположниками марксизма-ленинизма, несмотря на весь идеализм, на всю «мистику идей»," +
+                            " содержащиеся в «Науке логики». «Итог и резюме, последнее слово и суть логики Гегеля есть диалектический метод – это крайне замечательно."
+                )
+                )
+        reviewList1.add(
             Review(
-                "Doug",
+                "Алех",
                 2.5f,
-                "Time is a slippery thing. Zambreno reckons with the problematic relationship writers have with time."
+                "Гегеля есть диалектический метод – это крайне замечательно. И еще одно: в этом самом идеалистическом " +
+                        "произведении Гегеля всего меньше идеализма, всего больше материализма."
             )
         )
         reviewList1.addAll(getCommonReviews())
         val book1 = Book(
             booksCount,
-            "Drifts",
-            "Kate Zambreno",
-            "A restlessly brilliant novel of creative crisis and transformation",
-            "A story of artistic ambition, personal crisis, and the possibilities and " +
-                    "failures of literature, Drifts is a dramatic step forward for one of our " +
-                    "most daring writers.",
+            "Наука логики",
+            "Георг Гегель",
+            " Логика служит для абсолютной идеи стихией чистоты.",
+            "«Наука логики» – один из фундаментальных трудов Георга Вильгельма Фридриха Гегеля " +
+                    "(Georg Wilhelm Friedrich Hegel, 1770 – 1831) – немецкого философа, одного из создателей немецкой классической философии," +
+                    " последовательного теоретика философии романтизма",
             arrayListOf(
-                "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1578676099l/48585697.jpg",
+                "https://be2.aldebaran.ru/static/bookimages/24/29/23/24292383.bin.dir/24292383.cover_250.jpg",
                 "https://downtown-brooklyn.imgix.net/imgr/DRIFTS-cover-1059x1600.jpg",
                 "https://pbs.twimg.com/media/EZ1V_D_WAAE6OFn?format=jpg",
                 "https://pbs.twimg.com/media/EYYiqBTXsAE9oMl?format=jpg"
             ),
-            "Novel",
+            "Саморазвития",
             reviewList1,
             10f,
             14f,

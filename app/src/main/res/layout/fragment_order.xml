@@ -80,10 +80,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/order_success_card"
-        android:layout_width="@dimen/card_view_height"
-        android:layout_height="@dimen/card_view_height"
-        android:layout_margin="@dimen/view_margin_large"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
         app:cardCornerRadius="@dimen/card_image_radius"
+        app:layout_constraintBottom_toTopOf="@+id/order_shopping_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,8 +92,8 @@
 
         <ImageView
             android:id="@+id/order_success_image"
-            android:layout_width="@dimen/card_view_height"
-            android:layout_height="@dimen/card_view_height"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/profile_image"
             android:src="@drawable/ic_check" />

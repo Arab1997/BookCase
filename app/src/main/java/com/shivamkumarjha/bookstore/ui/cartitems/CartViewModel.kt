@@ -19,7 +19,7 @@ class CartViewModel(private val userRepository: UserRepository) : ViewModel() {
         for (index in 0 until cartItems.size) {
             price += cartItems[index].book.price * cartItems[index].quantity * 76.25f
         }
-        return "Rs $price"
+        return "сум $price"
     }
 
     fun getCartSavings(cartItems: ArrayList<CartItem>): String {
@@ -30,7 +30,7 @@ class CartViewModel(private val userRepository: UserRepository) : ViewModel() {
                 cartItems[index].book.maximumRetailPrice * 76.25f * cartItems[index].quantity
             savings += bookTotalMRP - bookTotalPrice
         }
-        return "Rs $savings saved"
+        return "сум $savings сохраненный"
     }
 
     fun removeCart(cartItem: CartItem) {

@@ -18,7 +18,7 @@ class DisplayBookViewModel(private val book: Book, private val userRepository: U
     val bookTitle: LiveData<String> = _bookTitle
 
     private val _bookAuthor = MutableLiveData<String>().apply {
-        value = "By ${book.author}"
+        value = "автор ${book.author}"
     }
     val bookAuthor: LiveData<String> = _bookAuthor
 
@@ -28,17 +28,17 @@ class DisplayBookViewModel(private val book: Book, private val userRepository: U
     val bookDescription: LiveData<String> = _bookDescription
 
     private val _bookPrice = MutableLiveData<String>().apply {
-        value = "Rs " + book.price * 76.25f // Price USD to INR
+        value = "сум " + book.price * 762.5f // Price USD to INR
     }
     val bookPrice: LiveData<String> = _bookPrice
 
     private val _bookMRP = MutableLiveData<String>().apply {
-        value = "Rs " + book.maximumRetailPrice * 76.25f // Price USD to INR
+        value = "сум " + book.maximumRetailPrice * 762.5f // Price USD to INR
     }
     val bookMRP: LiveData<String> = _bookMRP
 
     private val _bookDiscount = MutableLiveData<String>().apply {
-        value = book.discount.toInt().toString() + "% off"
+        value = book.discount.toInt().toString() + "%"
     }
     val bookDiscount: LiveData<String> = _bookDiscount
 
@@ -53,12 +53,12 @@ class DisplayBookViewModel(private val book: Book, private val userRepository: U
     val bookDetail: LiveData<String> = _bookDetail
 
     private val _bookRating = MutableLiveData<String>().apply {
-        value = "%.2f".format(book.review.map { it.rating }.average()) // Average rating
+        value = "%.1f".format(book.review.map { it.rating }.average()) // Average rating
     }
     val bookRating: LiveData<String> = _bookRating
 
     private val _bookRatingCount = MutableLiveData<String>().apply {
-        value = "${book.review.size} reviews"
+        value = "${book.review.size} отзывы"
     }
     val bookRatingCount: LiveData<String> = _bookRatingCount
 

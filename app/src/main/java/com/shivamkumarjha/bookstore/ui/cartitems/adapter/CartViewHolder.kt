@@ -48,7 +48,7 @@ class CartViewHolder(
         this.cartPosition = cartPosition
         this.cartItem = cartItem
         bookTitle.text = cartItem.book.title
-        bookAuthor.text = "By " + cartItem.book.author
+        bookAuthor.text = "автор " + cartItem.book.author
         setPrices()
 
         // Load book image from URL
@@ -62,11 +62,11 @@ class CartViewHolder(
     private fun setPrices() {
         val bookTotalPrice = cartItem.book.price * 76.25f * cartItem.quantity
         val bookTotalMRP = cartItem.book.maximumRetailPrice * 76.25f * cartItem.quantity
-        bookPrice.text = "Rs $bookTotalPrice"
+        bookPrice.text = "сум $bookTotalPrice"
         bookQuantity.text = cartItem.quantity.toString()
-        bookMRP.text = "Rs $bookTotalMRP"
+        bookMRP.text = "сум $bookTotalMRP"
         bookMRP.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-        bookSaved.text = "Rs " + getAmountSaved(bookTotalPrice, bookTotalMRP) + " saved"
+        bookSaved.text = "сум " + getAmountSaved(bookTotalPrice, bookTotalMRP) + " сохраненный"
     }
 
     private fun getAmountSaved(price: Float, maximumRetailPrice: Float): Float {

@@ -75,23 +75,22 @@
                     android:id="@+id/profile_address_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/view_margin_large"
-                    android:layout_marginLeft="@dimen/view_margin_large"
-                    android:layout_marginTop="@dimen/view_margin_larger"
                     android:layout_marginEnd="@dimen/view_margin_large"
                     android:layout_marginRight="@dimen/view_margin_large"
                     android:background="@drawable/button_background"
                     android:text="@string/add_address"
                     android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_picture_card"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_email_text_view_id" />
+                    app:layout_constraintHorizontal_bias="0.406"
+                    app:layout_constraintStart_toEndOf="@+id/profile_email_text_view_id"
+                    app:layout_constraintTop_toTopOf="@+id/profile_picture_card"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/profile_picture_card"
-                    android:layout_width="@dimen/card_view_height"
-                    android:layout_height="@dimen/card_view_height"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_margin="@dimen/view_margin_large"
                     app:cardCornerRadius="@dimen/card_image_radius"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -101,8 +100,8 @@
 
                     <ImageView
                         android:id="@+id/user_image"
-                        android:layout_width="@dimen/card_view_height"
-                        android:layout_height="@dimen/card_view_height"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/profile_image"
                         android:src="@drawable/ic_profile_image" />
@@ -113,6 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"

@@ -76,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginResult.success != null) {
                 AppPreference(this@LoginActivity).setSignIn(true)
-                Toast.makeText(this, "Welcome " + loginResult.success.name, Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Добро пожаловать " + loginResult.success.name, Toast.LENGTH_SHORT)
                     .show()
 
                 // Start Dashboard activity & pass LoggedInUser

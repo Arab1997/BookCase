@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@drawable/back"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
@@ -9,7 +10,7 @@
         android:id="@+id/login_constraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/login_background"
+        android:background="@drawable/blur"
         android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView
@@ -96,10 +97,11 @@
             android:layout_marginStart="@dimen/view_margin_larger"
             android:layout_marginTop="@dimen/view_margin_large"
             android:layout_marginEnd="@dimen/view_margin_larger"
-            android:background="@drawable/button_background"
+            android:background="@drawable/rounded_white_bordered_card"
             android:enabled="false"
             android:fontFamily="@font/firasans_regular"
             android:text="@string/login"
+            android:textColor="@color/gray_300"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password_InputLayout"
@@ -109,11 +111,12 @@
             android:id="@+id/tv_not_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/view_margin_larger"
+            android:layout_margin="@dimen/view_margin_large"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/pacifico"
             android:text="@string/register_now"
             android:textColor="@color/white_color"
-            android:textSize="@dimen/text_size_large"
+            android:textSize="@dimen/text_size_normal"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

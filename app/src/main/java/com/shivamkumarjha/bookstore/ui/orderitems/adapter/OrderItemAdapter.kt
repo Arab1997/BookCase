@@ -45,7 +45,7 @@ class OrderItemAdapter(private val clickListener: OrderClickListener) :
         for (index in 0 until order.cartItem.size) {
             price += order.cartItem[index].book.price
         }
-        holder.orderPrice.text = "Rs " + price * 76.25f // Price USD to INR
+        holder.orderPrice.text = "сум " + price * 76.25f // Price USD to INR
         // order-book recycler view
         val bookItemLayout =
             LinearLayoutManager(holder.bookRecyclerView.context, RecyclerView.HORIZONTAL, false)
