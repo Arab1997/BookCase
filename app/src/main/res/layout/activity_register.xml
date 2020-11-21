@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
-
+    android:background="#195CE1"
     tools:context=".ui.register.RegisterActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -34,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/view_margin_large"
-                android:layout_marginTop="@dimen/view_margin_larger"
+                android:layout_marginTop="@dimen/view_margin_small"
                 android:layout_marginEnd="@dimen/view_margin_large"
                 android:fontFamily="@font/pacifico"
                 android:gravity="center"
@@ -154,10 +153,10 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/register_submit_id"
-                android:layout_width="@dimen/margin_0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="379dp"
+                android:layout_height="56dp"
                 android:layout_margin="@dimen/view_margin_large"
-                android:background="@drawable/button_background"
+                android:background="@drawable/rounded_white_bordered_card"
                 android:enabled="false"
                 android:text="@string/prompt_submit"
                 android:textColor="@android:color/white"

@@ -62,7 +62,7 @@ class AddressFragment(private val address: Address?) : Fragment() {
     }
 
     private fun initializer() {
-       // toolbar = requireView().findViewById(R.id.address_toolbar_id)
+        toolbar = requireView().findViewById(R.id.address_toolbar_id)
         mobileEditText = requireView().findViewById(R.id.address_mobile_id)
         flatEditText = requireView().findViewById(R.id.address_flat_id)
         streetEditText = requireView().findViewById(R.id.address_street_id)

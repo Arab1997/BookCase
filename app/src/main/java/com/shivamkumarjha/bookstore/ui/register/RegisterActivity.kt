@@ -56,7 +56,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun setUpToolbar() {
         toolbar = findViewById(R.id.register_toolbar)
-        toolbar.title = resources.getString(R.string.got_account)
+       /* toolbar.title = resources.getString(R.string.got_account)*/
         toolbar.setNavigationIcon(R.drawable.ic_back)
         toolbar.setNavigationOnClickListener {
             onBackPressed()

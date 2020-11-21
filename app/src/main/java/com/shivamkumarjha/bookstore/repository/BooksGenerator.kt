@@ -142,7 +142,7 @@ class BooksGenerator {
         val reviewList2: ArrayList<Review> = ArrayList()
         reviewList2.add(
             Review(
-                "Pam",
+                "Навсегда",
                 3.77f,
                 "This is really a wonderful book. I would say it is a “quiet” book, but that’s true only on the surface."
             )
@@ -150,8 +150,8 @@ class BooksGenerator {
         reviewList2.addAll(getCommonReviews())
         val book2 = Book(
             booksCount,
-            "Days of Distraction",
-            "Alexandra Chang",
+            "День каторый я ",
+            "Александр Миша ",
             "A wry, tender portrait of a young woman—finally free to decide her own path",
             "Equal parts tender and humorous, and told in spare but powerful prose, " +
                     "Days of Distraction is an offbeat coming-of-adulthood tale, a touching family story, " +
@@ -161,7 +161,7 @@ class BooksGenerator {
                 "https://pbs.twimg.com/media/EAVPiqOXYAA7Loa?format=jpg",
                 "https://pbs.twimg.com/media/EZB94zzXgAEydQH?format=jpg"
             ),
-            "Novel",
+            "Миша",
             reviewList2,
             12f,
             14f,
@@ -172,7 +172,7 @@ class BooksGenerator {
         val reviewList3: ArrayList<Review> = ArrayList()
         reviewList3.add(
             Review(
-                "Jim",
+                "Жон Маккинг",
                 3.73f,
                 "This is another devouring with few bites, finishing at one sit, quick, fast pacing and exciting page-turner!"
             )
@@ -180,15 +180,15 @@ class BooksGenerator {
         reviewList3.addAll(getCommonReviews())
         val book3 = Book(
             booksCount,
-            "The Apartment",
-            "K.L. Slater",
+            "Люди Х",
+            "Хамелтон",
             "They say every cloud has a silver lining. . .",
             "Old secrets refuse to stay buried and someone is determined to keep a terrible past, very much alive.",
             arrayListOf(
                 "https://pbs.twimg.com/media/EWj9MAEXkAEBTCR?format=jpg",
                 "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1591095350l/51140631._SX318_.jpg"
             ),
-            "Thriller",
+            "Триллер",
             reviewList3,
             2f,
             4f,
@@ -199,7 +199,7 @@ class BooksGenerator {
         val reviewList4: ArrayList<Review> = ArrayList()
         reviewList4.add(
             Review(
-                "Dwight Schrute",
+                "Любовь ",
                 3.53f,
                 "This book keeps me pulled in. The first chapter is curious enough to keep you reading."
             )
@@ -207,8 +207,8 @@ class BooksGenerator {
         reviewList4.addAll(getCommonReviews())
         val book4 = Book(
             booksCount,
-            "The Bride",
-            "Wendy Clarke",
+            "Мост",
+            "Фёдер Бондарчук",
             "The moment Joanna told me she was engaged, I had this awful feeling that something was wrong.",
             "An addictive, clever and suspenseful thriller that will keep you totally absorbed " +
                     "and page turning from the very beginning to the climax",
@@ -216,7 +216,7 @@ class BooksGenerator {
                 "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583096810l/51974210._SY475_.jpg",
                 "https://i2.wp.com/onceuponatimebookblog.com/wp-content/uploads/2020/05/F8D0B8A6-1980-4EB7-882B-786CF418029E.png"
             ),
-            "Crime",
+            "Кремль",
             reviewList4,
             3f,
             4f,
@@ -227,7 +227,7 @@ class BooksGenerator {
         val reviewList5: ArrayList<Review> = ArrayList()
         reviewList5.add(
             Review(
-                "Michael Scott",
+                "Под Гипносом",
                 4.10f,
                 "I'm always happy to read a new Slater book and this one is filled with secrets, gossip, and lies."
             )
@@ -235,8 +235,8 @@ class BooksGenerator {
         reviewList5.addAll(getCommonReviews())
         val book5 = Book(
             booksCount,
-            "Little Whispers",
-            "K.L. Slater",
+            "Младшый брат",
+            "Сталкер ",
             "You shared a secret with the wrong person.",
             "Janey faces an impossible choice. Stay quiet about what she saw that terrible day. " +
                     "Or speak up, and destroy the family she has worked so hard to protect…",
@@ -244,7 +244,7 @@ class BooksGenerator {
                 "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1582557211l/51664923._SY475_.jpg",
                 "https://orlandobooksblog.files.wordpress.com/2020/06/1f438e02-633d-428e-b9ed-018218b85016.jpeg"
             ),
-            "Thriller",
+            "Триллер",
             reviewList5,
             4f,
             6f,
@@ -255,7 +255,7 @@ class BooksGenerator {
         val reviewList6: ArrayList<Review> = ArrayList()
         reviewList6.add(
             Review(
-                "Erin",
+                "Молодь",
                 3.92f,
                 "The book is addictive. It is slow at the beginning, but picks up pace as it nears conclusion. " +
                         "Once it is in the top gear, there is no stopping it! A well crafted psychological thriller indeed."
@@ -264,7 +264,7 @@ class BooksGenerator {
         reviewList6.addAll(getCommonReviews())
         val book6 = Book(
             booksCount,
-            "One Mistake",
+            "Ошибки",
             "Rona Halsall",
             "How far would you go to protect your happy home?",
             "This year’s most gripping psychological thriller" +
@@ -273,7 +273,7 @@ class BooksGenerator {
                 "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587990821l/51060039._SY475_.jpg",
                 "https://i1.wp.com/onceuponatimebookblog.com/wp-content/uploads/2020/05/40F25859-CCC7-48F3-B078-D71B97AA7338.png"
             ),
-            "Novel",
+            "Ериллер",
             reviewList6,
             5f,
             8f,
@@ -284,7 +284,7 @@ class BooksGenerator {
         val reviewList7: ArrayList<Review> = ArrayList()
         reviewList7.add(
             Review(
-                "Marcus",
+                "Маркус Рева",
                 4.00f,
                 "A long-time fan of Mark Edwards and his writing, I turned to this book to see if " +
                         "it would bring the same psychological thrill. Edwards succeeds in delivering " +
@@ -294,8 +294,8 @@ class BooksGenerator {
         reviewList7.addAll(getCommonReviews())
         val book7 = Book(
             booksCount,
-            "The House Guest",
-            "Mark Edwards",
+            "Гость",
+            "Артур кардашян",
             "A perfect summer. A perfect stranger. A perfect nightmare.",
             "The House Guest is the chilling new psychological thriller from the three million " +
                     "copy bestselling author of Here to Stay and Follow You Home.",
@@ -303,7 +303,7 @@ class BooksGenerator {
                 "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1584383149l/49073380._SY475_.jpg",
                 "https://pbs.twimg.com/media/EZkv-ClWoAATJw2?format=jpg"
             ),
-            "Thriller",
+            "Триллер",
             reviewList7,
             7f,
             10f,
@@ -314,7 +314,7 @@ class BooksGenerator {
         val reviewList8: ArrayList<Review> = ArrayList()
         reviewList8.add(
             Review(
-                "Bruno",
+                "Фобия",
                 4.12f,
                 "I have to admit Katerina Diamond is one of my favourite authors, " +
                         "so I was jumping for joy to get the chance to review this book."
@@ -323,8 +323,8 @@ class BooksGenerator {
         reviewList8.addAll(getCommonReviews())
         val book8 = Book(
             booksCount,
-            "The Heatwave",
-            "Katerina Diamond",
+            "На весь",
+            "Катрин Солид",
             "The heatwave is back. And so is the killer.",
             "One summer. One stranger. One killer…\nTwo bad things happened that summer:\n" +
                     "A stranger arrived. And the first girl disappeared.",
@@ -333,7 +333,7 @@ class BooksGenerator {
                 "https://pbs.twimg.com/media/EZW6huVXsAABkiK?format=jpg",
                 "https://pbs.twimg.com/media/ET8oCerXkAEZM9M?format=jpg"
             ),
-            "Crime",
+            "Вода",
             reviewList8,
             8f,
             10f,
@@ -344,7 +344,7 @@ class BooksGenerator {
         val reviewList9: ArrayList<Review> = ArrayList()
         reviewList9.add(
             Review(
-                "David",
+                "Семь",
                 4.03f,
                 "This is my first completed book of 2020 and Roz Nay nailed it.\n" +
                         "Before this book I used to wish I had a sister. Not anymore."
@@ -353,7 +353,7 @@ class BooksGenerator {
         reviewList9.addAll(getCommonReviews())
         val book9 = Book(
             booksCount,
-            "Hurry Home",
+            "Дом",
             "Roz Nay",
             "Blood is thicker than water... And it could cost you everything.",
             "Hurry Home is a tantalizing reflection of the chain-and-shackles relationship " +
@@ -363,7 +363,7 @@ class BooksGenerator {
                 "https://pbs.twimg.com/media/EakQ7DSWAAgBm6f?format=jpg",
                 "https://pbs.twimg.com/media/ETjhPx0WsAEImGz?format=jpg"
             ),
-            "Thriller",
+            "Триллер",
             reviewList9,
             2f,
             3f,
@@ -374,7 +374,7 @@ class BooksGenerator {
         val reviewList10: ArrayList<Review> = ArrayList()
         reviewList10.add(
             Review(
-                "Dean Henderson",
+                "Младшый Тайсон",
                 4.63f,
                 "This one is just as good as the previous seven titles in the series. " +
                         "I devoured the first three back-to-back and now I’ve eagerly read each new installment."
@@ -383,8 +383,8 @@ class BooksGenerator {
         reviewList10.addAll(getCommonReviews())
         val book10 = Book(
             booksCount,
-            "Find Her Alive",
-            "Lisa Regan",
+            "Алиса ",
+            "Сан Андерсон",
             "Guess who's back, back again, Josie's back, tell a friend.",
             "Detective Josie Quinn hasn’t heard from her sister since Trinity stormed out of the house " +
                     "in the heat of an argument three weeks ago. So, when human remains are found at " +
@@ -393,7 +393,7 @@ class BooksGenerator {
                 "https://pbs.twimg.com/media/EVtP3zDWoAAB9Cv?format=jpg",
                 "https://pbs.twimg.com/media/EVo_745XYAALTmC?format=jpg"
             ),
-            "Novel",
+            "Триллер",
             reviewList10,
             10f,
             12f,
