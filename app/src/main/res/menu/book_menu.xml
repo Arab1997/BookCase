@@ -6,13 +6,13 @@
     android:icon="@drawable/search"
     android:title="@string/search_books"
     app:showAsAction="ifRoom" />-->
-   <item
+   <!--<item
        android:id="@+id/action_search"
        android:title="@string/search_books"
        android:icon="@drawable/search"
        android:orderInCategory="1"
        app:actionViewClass="androidx.appcompat.widget.SearchView"
-       app:showAsAction="always|collapseActionView"/>
+       app:showAsAction="always|collapseActionView"/>-->
     <item
         android:id="@+id/wish_menu"
         android:icon="@drawable/ic_wish_menu"
