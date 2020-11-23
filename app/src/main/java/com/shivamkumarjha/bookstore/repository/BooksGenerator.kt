@@ -30,44 +30,44 @@ class BooksGenerator {
         val commonReviews: ArrayList<Review> = ArrayList()
         commonReviews.add(
             Review(
-                "Shivam Kumar Jha",
+                "Аех",
                 4f,
-                "Thanks for sharing."
+                "Спасибо что поделились."
             )
         )
         commonReviews.add(
             Review(
-                "Nikhil Jain",
+                "John",
                 5f,
-                "Enjoyed it. Thanks a lot"
+                "Наслаждаться этим. Большое спасибо"
             )
         )
         commonReviews.add(
             Review(
-                "Gunjan Sharma",
+                "Алекс",
                 3f,
-                "Fine book."
+                "Прекрасная книга."
             )
         )
         commonReviews.add(
             Review(
-                "Bruce Wayne",
+                "Гоша",
                 4f,
-                "Somehow I ended up liking this book."
+                "Каким-то образом эта книга мне понравилась."
             )
         )
         commonReviews.add(
             Review(
-                "Thor Odinson",
+                "Артур",
                 5f,
-                "My new favourite book."
+                "Моя новая любимая книга."
             )
         )
         commonReviews.add(
             Review(
-                "Lucifer Morningstar",
+                "Мона",
                 2f,
-                "I did not enjoy it..."
+                "Мне это не понравилось..."
             )
         )
         val loopSize = getRandomNumber(20, 50)
@@ -273,7 +273,7 @@ class BooksGenerator {
                 "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587990821l/51060039._SY475_.jpg",
                 "https://i1.wp.com/onceuponatimebookblog.com/wp-content/uploads/2020/05/40F25859-CCC7-48F3-B078-D71B97AA7338.png"
             ),
-            "Ериллер",
+            "Триллер",
             reviewList6,
             5f,
             8f,
