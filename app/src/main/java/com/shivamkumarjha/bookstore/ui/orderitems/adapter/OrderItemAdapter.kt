@@ -38,7 +38,7 @@ class OrderItemAdapter(private val clickListener: OrderClickListener) :
         position: Int
     ) {
         val order = orders[position]
-        holder.orderId.text = "Order ID: ${order.orderId}"
+        holder.orderId.text = "Номер заказа: ${order.orderId}"
         holder.orderTime.text = order.timestamp
         //price
         var price = 0f

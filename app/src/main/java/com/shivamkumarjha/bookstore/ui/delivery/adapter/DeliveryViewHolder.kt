@@ -30,11 +30,11 @@ class DeliveryViewHolder(
     @SuppressLint("SetTextI18n")
     fun initialize(delivery: Address) {
         this.delivery = delivery
-        deliveryMobile.text = "Mobile: " + delivery.mobile
-        deliveryFlat.text = "Flat: " + delivery.flat
-        deliveryStreet.text = "Street: " + delivery.street
-        deliveryCity.text = "City: " + delivery.city
-        deliveryState.text = "State: " + delivery.state
-        deliveryPinCode.text = "Pin code: " + delivery.pinCode
+        deliveryMobile.text = "Мобильный: " + delivery.mobile
+        deliveryFlat.text = "Квартира: " + delivery.flat
+        deliveryStreet.text = "Улица: " + delivery.street
+        deliveryCity.text = "Город: " + delivery.city
+        deliveryState.text = "Государство: " + delivery.state
+        deliveryPinCode.text = "Pin-код: " + delivery.pinCode
     }
 }

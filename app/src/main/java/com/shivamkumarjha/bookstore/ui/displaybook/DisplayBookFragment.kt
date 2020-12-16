@@ -173,7 +173,7 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
     private fun onWishClick(isChecked: Boolean) {
         val toastMessage: String
         if (isChecked) {
-            toastMessage = "Added ${book.title} to wish list."
+            toastMessage = "Добавлен ${book.title} к списку желаний."
             displayBookViewModel.addWishItem(
                 WishItem(
                     AppPreference(requireContext()).newWishId(),
@@ -181,7 +181,7 @@ class DisplayBookFragment(private val book: Book) : Fragment() {
                 )
             )
         } else {
-            toastMessage = "Removed ${book.title} from wish list."
+            toastMessage = "Удаленный ${book.title} из списка желаний."
             displayBookViewModel.removeWishItem(book)
         }
         Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()

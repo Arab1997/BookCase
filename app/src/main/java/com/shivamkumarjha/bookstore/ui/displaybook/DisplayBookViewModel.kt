@@ -18,7 +18,7 @@ class DisplayBookViewModel(private val book: Book, private val userRepository: U
     val bookTitle: LiveData<String> = _bookTitle
 
     private val _bookAuthor = MutableLiveData<String>().apply {
-        value = "автор ${book.author}"
+        value = "Автор ${book.author}"
     }
     val bookAuthor: LiveData<String> = _bookAuthor
 
@@ -28,12 +28,12 @@ class DisplayBookViewModel(private val book: Book, private val userRepository: U
     val bookDescription: LiveData<String> = _bookDescription
 
     private val _bookPrice = MutableLiveData<String>().apply {
-        value = "сум " + book.price * 762.5f // Price USD to INR
+        value = "сум " + book.price * 3500.5f // Price USD to INR
     }
     val bookPrice: LiveData<String> = _bookPrice
 
     private val _bookMRP = MutableLiveData<String>().apply {
-        value = "сум " + book.maximumRetailPrice * 762.5f // Price USD to INR
+        value = "сум " + book.maximumRetailPrice * 4500.5f // Price USD to INR
     }
     val bookMRP: LiveData<String> = _bookMRP
 

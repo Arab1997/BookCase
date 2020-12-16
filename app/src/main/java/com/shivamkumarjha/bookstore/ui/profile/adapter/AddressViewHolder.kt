@@ -36,11 +36,11 @@ class AddressViewHolder(
     fun initialize(address: Address, addressPosition: Int) {
         this.addressPosition = addressPosition
         this.address = address
-        addressMobile.text = "Mobile: " + address.mobile
-        addressFlat.text = "Flat: " + address.flat
-        addressStreet.text = "Street: " + address.street
-        addressCity.text = "City: " + address.city
-        addressState.text = "State: " + address.state
-        addressPinCode.text = "Pin code: " + address.pinCode
+        addressMobile.text = "Мобильный: " + address.mobile
+        addressFlat.text = "Квартира: " + address.flat
+        addressStreet.text = "Улица: " + address.street
+        addressCity.text = "Город: " + address.city
+        addressState.text = "Государство: " + address.state
+        addressPinCode.text = "Pin-код: " + address.pinCode
     }
 }
